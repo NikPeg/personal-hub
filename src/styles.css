@@ -232,3 +232,30 @@ button { font: inherit; }
   .rotating-words { min-height: 1.08em; }
   .hero::after { bottom: -1.2rem; }
 }
+
+/* Latest polish */
+.hero-actions .primary { animation: contactPulse 8.5s ease-in-out infinite; }
+.hero::after { font-size: clamp(3rem, 7vw, 5.6rem); bottom: .6rem; text-shadow: 0 12px 40px color-mix(in srgb, var(--accent) 65%, transparent); }
+.rotating-title { grid-template-columns: minmax(0, 1fr); max-width: 100%; }
+.rotating-words { min-height: 1.12em; line-height: 1.08; padding-bottom: .08em; }
+.rotating-words span { white-space: nowrap; }
+.modal-card { background: linear-gradient(145deg, color-mix(in srgb, var(--card-strong) 92%, white 8%), color-mix(in srgb, var(--card) 88%, white 12%)); }
+html[data-theme="dark"] .modal-card { background: linear-gradient(145deg, rgba(255,255,255,.18), rgba(255,255,255,.11)); }
+@keyframes contactPulse { 0%, 72%, 100% { box-shadow: var(--shadow); filter: saturate(1); } 78%, 86% { box-shadow: 0 0 0 .35rem color-mix(in srgb, var(--accent) 22%, transparent), var(--shadow); filter: saturate(1.2); } }
+@media (max-width: 820px) {
+  .rotating-title { font-size: clamp(2.55rem, 13.5vw, 5.2rem); }
+  .rotating-words { min-height: 1.25em; }
+  .hero::after { bottom: -2.2rem; }
+}
+@media (max-width: 430px) {
+  .rotating-title { font-size: clamp(2.35rem, 12vw, 4.6rem); }
+}
+
+/* Metric row balance: keep repos compact, stretch SLO, pin ideas to the right */
+.system-metrics { grid-template-columns: minmax(8.5rem, .9fr) minmax(10rem, 1.45fr) minmax(5.8rem, .55fr); }
+.system-metrics div:nth-child(2) { min-width: 0; }
+.system-metrics div:nth-child(3) { justify-self: end; width: 100%; max-width: 7.2rem; }
+@media (max-width: 820px) {
+  .system-metrics { grid-template-columns: minmax(0, .9fr) minmax(0, 1.35fr) minmax(4.8rem, .6fr); }
+  .system-metrics div:nth-child(3) { max-width: 6.2rem; }
+}
