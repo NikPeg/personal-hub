@@ -65,7 +65,7 @@ function OpenCard({ item, children, onOpen, className = 'card' }) {
 function DetailModal({ item, onClose, t }) {
   const [copied, setCopied] = useState(false);
   if (!item) return null;
-  const copyText = [item.title, item.date, item.fullText || item.text || item.description].filter(Boolean).join('\n\n');
+  const copyText = [item.title, item.date, item.fullText || item.text || item.description, 'by NikPeg'].filter(Boolean).join('\n\n');
   async function copyToClipboard() {
     try {
       if (navigator.clipboard?.writeText) {
@@ -133,16 +133,17 @@ function Thoughts({ t, lang, onOpen }) {
   }, [lang]);
   const tags = useMemo(() => Array.from(new Set(thoughts.flatMap((thought) => thought.tags || []))).sort(), [thoughts]);
   const filteredThoughts = tag === 'all' ? thoughts : thoughts.filter((thought) => thought.tags?.includes(tag));
-  const visibleThoughts = filteredThoughts.slice(0, visibleCount);
+  const sortedThoughts = useMemo(() => [...filteredThoughts].sort((a, b) => String(b.date || '').localeCompare(String(a.date || '')) || Number(b.sourceIndex || 0) - Number(a.sourceIndex || 0)), [filteredThoughts]);
+  const visibleThoughts = sortedThoughts.slice(0, visibleCount);
   useEffect(() => {
-    if (loading || visibleCount >= filteredThoughts.length) return undefined;
+    if (loading || visibleCount >= sortedThoughts.length) return undefined;
     const observer = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting) setVisibleCount((count) => Math.min(count + pageSize, filteredThoughts.length));
+      if (entry.isIntersecting) setVisibleCount((count) => Math.min(count + pageSize, sortedThoughts.length));
     }, { rootMargin: '320px 0px' });
     const node = sentinelRef.current;
     if (node) observer.observe(node);
     return () => observer.disconnect();
-  }, [loading, visibleCount, filteredThoughts.length]);
+  }, [loading, visibleCount, sortedThoughts.length]);
   return <section className="section page-hero reveal visible">
     <PageHeading eyebrow={t.thoughtsEyebrow} title={t.thoughtsTitle} lead={t.thoughtsLead} />
     {loading ? <div className="glass-panel loading-panel">{t.loading}</div> : <>
