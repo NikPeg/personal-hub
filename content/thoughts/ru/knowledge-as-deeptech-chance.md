@@ -2,8 +2,9 @@
 id: thought-161
 date: 2021-09
 tags:
-  - knowledge
-  - deeptech
+  - наука
+  - бизнес
+  - работа
 sourceIndex: 161
 ---
 # Знание как шанс

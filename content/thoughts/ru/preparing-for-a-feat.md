@@ -2,8 +2,8 @@
 id: thought-162
 date: 2021-12
 tags:
-  - purpose
-  - discipline
+  - этика
+  - философия
 sourceIndex: 162
 ---
 # Подготовка к подвигу

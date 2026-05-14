@@ -2,8 +2,8 @@
 id: thought-135
 date: 2021-06
 tags:
-  - thinking
-  - causality
+  - philosophy
+  - science
 sourceIndex: 135
 ---
 # Correlation and Deeper Causes

@@ -3,7 +3,7 @@ id: thought-144
 date: 2021-07
 tags:
   - management
-  - feedback
+  - communication
 sourceIndex: 144
 ---
 # Employee Access to Leadership

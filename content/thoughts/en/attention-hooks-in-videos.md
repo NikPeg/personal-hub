@@ -1,14 +1,16 @@
 ---
-id: attention-hooks-in-videos
+id: thought-242
 date: 2026-01
-tags: [video, attention, marketing]
+tags:
+  - communication
+  - business
+  - culture
 sourceIndex: 242
 ---
-
 # Attention Hooks in Videos
 
 Analyze ways of attracting attention in videos.
 
-Why is she wearing lenses? Anticipation. Some tiny detail, like a dog in the corner.
+Why did she put on lenses? Anticipation. Some small detail, like a dog in the corner.
 
-These things usually make people write a comment, which already increases engagement.
+Usually these things make people write a comment, which already increases engagement.

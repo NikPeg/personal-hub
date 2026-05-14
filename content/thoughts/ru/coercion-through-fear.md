@@ -2,8 +2,9 @@
 id: thought-156
 date: 2021-10
 tags:
-  - manipulation
   - этика
+  - коммуникация
+  - психология
 sourceIndex: 156
 ---
 # Принуждение через страх

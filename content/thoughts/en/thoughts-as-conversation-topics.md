@@ -3,7 +3,7 @@ id: thought-166
 date: 2021-12
 tags:
   - communication
-  - ideas
+  - psychology
 sourceIndex: 166
 ---
 # Thoughts as Conversation Topics

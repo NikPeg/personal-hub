@@ -1,32 +1,37 @@
 ---
-id: everyone-has-their-own-catastrophe
+id: thought-244
 date: 2026-02
-tags: [psychology, anxiety, relationships]
+tags:
+  - psychology
+  - relationships
 sourceIndex: 244
 ---
+# Everyone Has Their Own Personal Catastrophe
 
-# Everyone Has Their Own Catastrophe
+A thought from E. (an AI psychologist).
 
-An AI psychologist gently flicks you on the forehead: “Because everyone has their own personal catastrophe, and you are not part of it.”
+E. gently flicks you on the forehead: “Because everyone has their own personal catastrophe, and you are not part of it.”
 
-The myth: “Everyone is looking, judging, whispering.”
+You think: “Everyone is looking, judging, whispering.”
 
-Reality: most people are wearing headphones and scrolling TikTok, some are nervously preparing for their own presentation, and some do not even remember your name.
+Reality:
+
+- 60% are wearing headphones and scrolling TikTok;
+- 30% are nervously preparing for their own presentation;
+- 10% do not even remember your name.
 
 Why do they not care?
 
-They do not have your dossier. To them, you are a background character. They do not know your social media, your grades, or your private worries.
+1. They do not have your file. To them, you are a background character. They do not know your Instagram, your grades, or what this guy means to you.
+2. They are scared too. Everyone worries about their appearance, their coursework, and their own awkward moments.
+3. The human brain is selfish: it spends 80% of its energy on itself. You are at most “oh, a couple,” and then forgotten.
 
-They are scared too. Everyone is worried about their appearance, their coursework, and their awkward moments.
+How can you test this?
 
-The human brain is selfish: it spends most of its energy on itself. At most, you are “oh, a couple,” and then forgotten.
+1. Experiment: come in tomorrow and remember what the most noticeable person in the group was wearing yesterday. You do not remember? They do not remember you either.
+2. Brutal math: even if 2 people notice and judge you, that is 2 out of 100 people in the hallway. Is their opinion worth your happiness?
+3. Reverse the script: imagine seeing another couple. Do you laugh, remember it for a year, or think about your lab assignment five minutes later?
 
-How can you check this? Tomorrow, try to remember what the most noticeable person in the group wore yesterday. You do not remember? They do not remember you either.
+The world does not revolve around you — and that is liberating. You are free to be with the person dear to you.
 
-Even if two people notice and judge, that is two out of a hundred in the hallway. Is their opinion worth your happiness?
-
-Reverse the scenario: if you see another couple, do you laugh, remember them for a year, or think about your lab work five minutes later?
-
-The world does not revolve around you, and that is liberating. You are free to be with the person dear to you.
-
-And if someone does glance over, just hold your beloved person’s hand tighter. Let them envy you.
+And if someone does glance over, just squeeze the guy's hand tighter. Let them be jealous.

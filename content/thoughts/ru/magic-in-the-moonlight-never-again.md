@@ -1,11 +1,12 @@
 ---
-id: magic-in-the-moonlight-never-again
+id: thought-239
 date: 2025-12
-tags: [cinema, nostalgia, feelings]
+tags:
+  - искусство
+  - психология
 sourceIndex: 239
 ---
-
-# Никогда снова
+# «Магия лунного света» и никогда
 
 Фильм «Магия лунного света».
 

@@ -3,7 +3,7 @@ id: thought-136
 date: 2021-06
 tags:
   - management
-  - organizations
+  - business
 sourceIndex: 136
 ---
 # A Wide, Not Tall, Management Graph

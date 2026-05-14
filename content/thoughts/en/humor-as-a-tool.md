@@ -3,7 +3,7 @@ id: thought-164
 date: 2021-12
 tags:
   - communication
-  - humor
+  - psychology
 sourceIndex: 164
 ---
 # Humor as a Tool

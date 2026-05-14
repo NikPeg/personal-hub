@@ -2,8 +2,8 @@
 id: thought-174
 date: 2022-02
 tags:
-  - literature
-  - people
+  - culture
+  - relationships
 sourceIndex: 174
 ---
 # Changes in Books and People

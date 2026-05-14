@@ -3,7 +3,7 @@ id: thought-143
 date: 2021-07
 tags:
   - ethics
-  - strength
+  - philosophy
 sourceIndex: 143
 ---
 # The Obligation of Strength

@@ -3,7 +3,7 @@ id: thought-154
 date: 2021-10
 tags:
   - art
-  - work
+  - psychology
 sourceIndex: 154
 ---
 # Art and Unfelt Feelings

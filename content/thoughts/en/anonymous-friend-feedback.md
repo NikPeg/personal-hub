@@ -2,8 +2,8 @@
 id: thought-149
 date: 2021-09
 tags:
-  - feedback
-  - self-development
+  - communication
+  - psychology
 sourceIndex: 149
 ---
 # Anonymous Feedback from Friends

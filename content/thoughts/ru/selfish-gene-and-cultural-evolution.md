@@ -3,8 +3,7 @@ id: thought-168
 date: 2021-12
 tags:
   - культура
-  - evolution
-  - memes
+  - наука
 sourceIndex: 168
 ---
 # Эгоистичный ген и эволюция культуры

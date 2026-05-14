@@ -2,8 +2,8 @@
 id: thought-167
 date: 2021-12
 tags:
-  - relationships
   - communication
+  - relationships
 sourceIndex: 167
 ---
 # Controlling Social Intensity

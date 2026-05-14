@@ -2,8 +2,8 @@
 id: thought-142
 date: 2021-07
 tags:
-  - goals
-  - journaling
+  - psychology
+  - work
 sourceIndex: 142
 ---
 # Life Goals in the Diary

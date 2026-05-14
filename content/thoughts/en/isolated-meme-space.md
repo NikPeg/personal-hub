@@ -1,10 +1,11 @@
 ---
-id: isolated-meme-space
+id: thought-228
 date: 2025-02
-tags: [memes, internet, culture]
+tags:
+  - culture
+  - society
 sourceIndex: 228
 ---
-
 # An Isolated Meme Space
 
-An isolated meme space: memes from the Russian internet almost never go outward; they only arrive from outside.
+An isolated meme space: memes do not leave the Russian internet; they only come in from outside.

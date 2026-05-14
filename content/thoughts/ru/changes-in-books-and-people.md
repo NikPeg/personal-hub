@@ -2,8 +2,8 @@
 id: thought-174
 date: 2022-02
 tags:
-  - literature
-  - люди
+  - культура
+  - отношения
 sourceIndex: 174
 ---
 # Изменения в книгах и людях

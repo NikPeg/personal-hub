@@ -3,8 +3,7 @@ id: thought-168
 date: 2021-12
 tags:
   - culture
-  - evolution
-  - memes
+  - science
 sourceIndex: 168
 ---
 # The Selfish Gene and Cultural Evolution

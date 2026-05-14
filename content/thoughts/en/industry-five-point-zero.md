@@ -4,7 +4,7 @@ date: 2021-10
 tags:
   - future
   - technology
-  - analytics
+  - business
 sourceIndex: 155
 ---
 # Industry 5.0

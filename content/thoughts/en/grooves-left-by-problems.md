@@ -2,8 +2,8 @@
 id: thought-151
 date: 2021-09
 tags:
-  - learning
-  - neuroscience
+  - science
+  - education
 sourceIndex: 151
 ---
 # Grooves Left by Solved Problems

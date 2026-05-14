@@ -2,8 +2,8 @@
 id: thought-152
 date: 2021-09
 tags:
-  - service
-  - loyalty
+  - ethics
+  - society
 sourceIndex: 152
 ---
 # The Beauty of Serving

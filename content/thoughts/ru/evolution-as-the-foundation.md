@@ -3,7 +3,7 @@ id: thought-170
 date: 2022-01
 tags:
   - культура
-  - evolution
+  - наука
 sourceIndex: 170
 ---
 # Эволюция как основа всего

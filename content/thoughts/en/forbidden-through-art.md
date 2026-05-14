@@ -1,10 +1,13 @@
 ---
 id: forbidden-through-art
 date: 2022-10
-tags: [art, ethics]
+tags:
+  - art
+  - ethics
+  - culture
 sourceIndex: 189
 ---
 
-# The Forbidden Through Art
+# A Path to the Forbidden Through Art
 
-An acquaintance’s thought: the path to the forbidden through art—GTA, Crime and Punishment, Lolita.
+A thought for P.: a path to the forbidden through art. *GTA*, *Crime and Punishment*, *Lolita*.

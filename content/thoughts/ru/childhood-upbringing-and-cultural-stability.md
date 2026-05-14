@@ -3,8 +3,7 @@ id: thought-176
 date: 2022-03
 tags:
   - культура
-  - parenting
-  - memes
+  - образование
 sourceIndex: 176
 ---
 # Воспитание и стабильность культуры

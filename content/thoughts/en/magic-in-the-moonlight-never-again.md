@@ -1,12 +1,13 @@
 ---
-id: magic-in-the-moonlight-never-again
+id: thought-239
 date: 2025-12
-tags: [cinema, nostalgia, feelings]
+tags:
+  - art
+  - psychology
 sourceIndex: 239
 ---
-
-# Never Again
+# Magic in the Moonlight and Never Again
 
 The film Magic in the Moonlight.
 
-Never, never, never. I will not have anything like that again.
+Never, never, never. I will never have something like that again.

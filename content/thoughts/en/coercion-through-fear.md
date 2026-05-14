@@ -2,8 +2,9 @@
 id: thought-156
 date: 2021-10
 tags:
-  - manipulation
   - ethics
+  - communication
+  - psychology
 sourceIndex: 156
 ---
 # Coercion Through Fear

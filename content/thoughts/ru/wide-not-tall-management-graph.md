@@ -3,7 +3,7 @@ id: thought-136
 date: 2021-06
 tags:
   - управление
-  - organizations
+  - бизнес
 sourceIndex: 136
 ---
 # Широкий, а не высокий граф управления

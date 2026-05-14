@@ -2,8 +2,8 @@
 id: thought-152
 date: 2021-09
 tags:
-  - service
-  - loyalty
+  - этика
+  - общество
 sourceIndex: 152
 ---
 # Красота служения

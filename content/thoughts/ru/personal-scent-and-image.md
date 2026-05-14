@@ -3,7 +3,7 @@ id: thought-133
 date: 2021-05
 tags:
   - отношения
-  - perception
+  - психология
 sourceIndex: 133
 ---
 # Личный запах и образ

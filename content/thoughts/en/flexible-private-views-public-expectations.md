@@ -3,7 +3,6 @@ id: thought-169
 date: 2022-01
 tags:
   - economics
-  - strategy
   - ethics
 sourceIndex: 169
 ---

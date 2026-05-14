@@ -3,8 +3,7 @@ id: thought-137
 date: 2021-06
 tags:
   - education
-  - parenting
-  - incentives
+  - ethics
 sourceIndex: 137
 ---
 # Rewarding Study Without Rewarding Cheating

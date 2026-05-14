@@ -1,7 +1,10 @@
 ---
 id: centralization-and-information
 date: 2023-01
-tags: [systems, information]
+tags:
+  - экономика
+  - технологии
+  - управление
 sourceIndex: 192
 ---
 

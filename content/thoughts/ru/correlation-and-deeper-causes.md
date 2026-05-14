@@ -2,8 +2,8 @@
 id: thought-135
 date: 2021-06
 tags:
-  - thinking
-  - causality
+  - философия
+  - наука
 sourceIndex: 135
 ---
 # Корреляция и более общие причины

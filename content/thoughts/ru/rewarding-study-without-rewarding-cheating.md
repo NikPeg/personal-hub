@@ -3,8 +3,7 @@ id: thought-137
 date: 2021-06
 tags:
   - образование
-  - parenting
-  - incentives
+  - этика
 sourceIndex: 137
 ---
 # Поощрение учёбы без поощрения списывания

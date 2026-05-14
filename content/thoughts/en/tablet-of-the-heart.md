@@ -2,8 +2,8 @@
 id: thought-146
 date: 2021-08
 tags:
-  - religion
-  - memory
+  - culture
+  - history
 sourceIndex: 146
 ---
 # The Tablet of the Heart

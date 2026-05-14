@@ -2,8 +2,8 @@
 id: thought-163
 date: 2021-12
 tags:
-  - people
-  - strategy
+  - psychology
+  - management
 sourceIndex: 163
 ---
 # Using Human Laziness

@@ -2,8 +2,8 @@
 id: thought-159
 date: 2021-09
 tags:
-  - self-reflection
-  - social-life
+  - психология
+  - общество
 sourceIndex: 159
 ---
 # Нужна компания людей

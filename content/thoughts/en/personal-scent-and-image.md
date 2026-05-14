@@ -3,7 +3,7 @@ id: thought-133
 date: 2021-05
 tags:
   - relationships
-  - perception
+  - psychology
 sourceIndex: 133
 ---
 # Personal Scent and Image

@@ -2,8 +2,8 @@
 id: thought-142
 date: 2021-07
 tags:
-  - goals
-  - journaling
+  - психология
+  - работа
 sourceIndex: 142
 ---
 # Цели жизни в дневнике

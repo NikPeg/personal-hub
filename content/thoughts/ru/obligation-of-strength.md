@@ -3,7 +3,7 @@ id: thought-143
 date: 2021-07
 tags:
   - этика
-  - strength
+  - философия
 sourceIndex: 143
 ---
 # Обязательство силы

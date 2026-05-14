@@ -1,10 +1,13 @@
 ---
-id: memes-to-hold-onto
+id: thought-222
 date: 2024-11
-tags: [memes, prediction, attention]
+tags:
+  - culture
+  - future
 sourceIndex: 222
 ---
+# Memes to Hold Onto
 
-# Memes Worth Holding Onto
+Choose memes that you can “attach” yourself to. Predict which memes will be popular in your century, and invest your mental resources in finding them.
 
-Choose memes you can “attach” yourself to. Predict which memes will become popular in your lifetime and invest your mental resources in finding them. If you believe immortality will not be invented in your lifetime, what is the point of clinging to the idea of immortality?
+If you believe immortality will not be invented in your lifetime, what is the point of clinging to it?

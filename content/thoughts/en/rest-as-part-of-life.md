@@ -1,12 +1,13 @@
 ---
-id: rest-as-part-of-life
+id: thought-235
 date: 2025-12
-tags: [rest, work, life]
+tags:
+  - work
+  - psychology
 sourceIndex: 235
 ---
-
 # Rest as Part of Life
 
-Rest as an essential part of life—is that really true?
+Rest as an integral part of life — is that really so?
 
 Is it normal to live without rest if you have found work you love?

@@ -2,8 +2,8 @@
 id: thought-134
 date: 2021-05
 tags:
-  - habits
-  - self-tracking
+  - technology
+  - psychology
 sourceIndex: 134
 ---
 # Tracking Social Network Hours

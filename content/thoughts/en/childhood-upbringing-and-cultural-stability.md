@@ -3,8 +3,7 @@ id: thought-176
 date: 2022-03
 tags:
   - culture
-  - parenting
-  - memes
+  - education
 sourceIndex: 176
 ---
 # Childhood Upbringing and Cultural Stability

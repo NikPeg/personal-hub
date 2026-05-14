@@ -2,7 +2,7 @@
 id: thought-150
 date: 2021-09
 tags:
-  - values
+  - этика
   - работа
 sourceIndex: 150
 ---

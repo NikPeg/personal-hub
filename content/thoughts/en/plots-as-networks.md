@@ -1,10 +1,13 @@
 ---
 id: plots-as-networks
 date: 2024-03
-tags: [stories, creativity]
+tags:
+  - art
+  - psychology
+  - culture
 sourceIndex: 202
 ---
 
-# Plots as a Net
+# Plots as Networks
 
-Plots seem to catch a person in a net: instead of creating something, they make you follow the path laid down by the creator.
+Plots seem to capture a person in a net: instead of creating something, they make him follow a path laid by the creator.

@@ -1,10 +1,11 @@
 ---
-id: art-as-dream
+id: thought-247
 date: 2026-03
-tags: [art, dreams]
+tags:
+  - искусство
+  - философия
 sourceIndex: 247
 ---
-
 # Искусство как сон
 
 Искусство как сон.

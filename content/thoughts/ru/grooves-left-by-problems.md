@@ -2,8 +2,8 @@
 id: thought-151
 date: 2021-09
 tags:
-  - learning
-  - neuroscience
+  - наука
+  - образование
 sourceIndex: 151
 ---
 # Бороздки от решённых задач

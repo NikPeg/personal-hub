@@ -2,9 +2,8 @@
 id: thought-148
 date: 2021-09
 tags:
-  - parenting
   - ethics
-  - religion
+  - education
 sourceIndex: 148
 ---
 # Religion, Tact, and Upbringing

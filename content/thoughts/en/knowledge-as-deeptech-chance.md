@@ -2,8 +2,9 @@
 id: thought-161
 date: 2021-09
 tags:
-  - knowledge
-  - deeptech
+  - science
+  - business
+  - work
 sourceIndex: 161
 ---
 # Knowledge as a DeepTech Chance

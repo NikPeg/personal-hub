@@ -1,10 +1,11 @@
 ---
 id: lack-of-positive-emotions
 date: 2024-05
-tags: [mood, self]
+tags:
+  - psychology
 sourceIndex: 206
 ---
 
-# Positive Emotions
+# A Lack of Positive Emotions
 
-I badly lack positive emotions in life.
+I really lack positive emotions in life.

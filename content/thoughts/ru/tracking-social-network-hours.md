@@ -2,8 +2,8 @@
 id: thought-134
 date: 2021-05
 tags:
-  - habits
-  - self-tracking
+  - технологии
+  - психология
 sourceIndex: 134
 ---
 # Учёт часов в соцсети

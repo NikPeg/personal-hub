@@ -2,8 +2,8 @@
 id: thought-162
 date: 2021-12
 tags:
-  - purpose
-  - discipline
+  - ethics
+  - philosophy
 sourceIndex: 162
 ---
 # Preparing for a Feat

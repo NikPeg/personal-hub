@@ -1,10 +1,15 @@
 ---
 id: two-poles-of-art
 date: 2022-09
-tags: [art, literature]
+tags:
+  - art
+  - business
+  - culture
 sourceIndex: 185
 ---
 
-# Two Poles of Art
+# The Two Poles of Art
 
-From iPhuck 10: the two poles of art are young people trying to laugh and break into the second pole, and old-timers for whom art is a business project. The first pole tries to mimic the second; the second mimics the first.
+From Pelevin’s *iPhuck 10*: the two poles of art are young people trying to laugh and break into the second pole, and old-timers for whom art is a business project.
+
+The first pole tries to mimic the second, and the second tries to mimic the first.

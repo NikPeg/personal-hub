@@ -3,7 +3,7 @@ id: thought-170
 date: 2022-01
 tags:
   - culture
-  - evolution
+  - science
 sourceIndex: 170
 ---
 # Evolution as the Foundation

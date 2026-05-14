@@ -2,8 +2,8 @@
 id: thought-138
 date: 2021-07
 tags:
-  - self-development
-  - will
+  - psychology
+  - philosophy
 sourceIndex: 138
 ---
 # The Mind as the Servant of Desire

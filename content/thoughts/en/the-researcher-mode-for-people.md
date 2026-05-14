@@ -2,8 +2,8 @@
 id: thought-173
 date: 2022-02
 tags:
-  - people
   - psychology
+  - relationships
 sourceIndex: 173
 ---
 # The Researcher Mode for People

@@ -2,8 +2,9 @@
 id: thought-158
 date: 2021-09
 tags:
+  - economics
+  - politics
   - society
-  - power
 sourceIndex: 158
 ---
 # Great Families and Surplus Value

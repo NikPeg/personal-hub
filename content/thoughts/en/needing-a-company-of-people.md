@@ -2,8 +2,8 @@
 id: thought-159
 date: 2021-09
 tags:
-  - self-reflection
-  - social-life
+  - psychology
+  - society
 sourceIndex: 159
 ---
 # Needing a Company of People
