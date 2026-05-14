@@ -1,6 +1,7 @@
 import { useMemo, useState } from 'react';
 import { content } from './content.js';
 import { dictionary } from './i18n.js';
+import { thoughtFiles } from './thoughtFiles.js';
 import './styles.css';
 
 const pathToTab = (pathname) => {
@@ -28,10 +29,10 @@ function Hero({ t }) {
   return <section className="hero section reveal visible">
     <div className="hero-copy">
       <p className="eyebrow">{t.eyebrow}</p>
-      <h1 className="rotating-title"><span className="rotating-words">{t.heroPhrases.map((phrase, index) => <span key={phrase} style={{ animationDelay: `${index * 2.1}s` }}>{phrase}</span>)}</span><span className="static-name">{t.heroStaticName}</span></h1>
+      <h1 className={`rotating-title ${lang === 'ru' ? 'ru-title' : ''}`}><span className="rotating-words">{t.heroPhrases.map((phrase, index) => <span key={phrase} style={{ animationDelay: `${index * 2.1}s` }}>{phrase}</span>)}</span><span className="static-name">{t.heroStaticName}</span></h1>
       <p className="lead">{t.heroLead}</p>
       <div className="hero-actions">
-        <a className="btn primary" href="https://t.me/nikpeg" target="_blank" rel="noreferrer">Telegram</a>
+        <a className="btn primary" href="https://t.me/nikpeg" target="_blank" rel="noreferrer">{t.contact}</a>
         <a className="btn secondary" href="https://nikpeg.github.io/docs/CV.pdf" target="_blank" rel="noreferrer">{t.cv}</a>
       </div>
     </div>
@@ -93,10 +94,14 @@ function Ideas({ t, data, onOpen }) {
   </section>;
 }
 
-function Thoughts({ t, data, onOpen }) {
+function Thoughts({ t, thoughts, onOpen }) {
+  const [tag, setTag] = useState('all');
+  const tags = useMemo(() => Array.from(new Set(thoughts.flatMap((thought) => thought.tags || []))).sort(), [thoughts]);
+  const visibleThoughts = tag === 'all' ? thoughts : thoughts.filter((thought) => thought.tags?.includes(tag));
   return <section className="section page-hero reveal visible">
     <PageHeading eyebrow={t.thoughtsEyebrow} title={t.thoughtsTitle} lead={t.thoughtsLead} />
-    <div className="cards three">{data.thoughts.map(thought => <OpenCard className="card" item={thought} key={thought.id} onOpen={onOpen}><span className="tag">{t.draft}</span><h3>{thought.title}</h3><p>{thought.text}</p></OpenCard>)}</div>
+    <div className="toolbar tag-toolbar"><span>{t.filterByTag}</span><button className={tag === 'all' ? 'active' : ''} onClick={() => setTag('all')}>{t.allTags}</button>{tags.map((item) => <button key={item} className={tag === item ? 'active' : ''} onClick={() => setTag(item)}>{item}</button>)}</div>
+    <div className="cards three">{visibleThoughts.map(thought => <OpenCard className="card" item={thought} key={thought.id} onOpen={onOpen}><span className="tag">{thought.tags?.join(' · ') || t.draft}</span><h3>{thought.title}</h3><p>{thought.text}</p></OpenCard>)}</div>
   </section>;
 }
 
@@ -138,6 +143,7 @@ export default function App() {
   const [lang, setLangState] = useState(localStorage.getItem('lang') || 'en');
   const t = dictionary[lang];
   const data = content[lang];
+  const thoughts = thoughtFiles[lang];
 
   function go(nextTab) {
     setTab(nextTab);
@@ -158,7 +164,7 @@ export default function App() {
       {tab === 'feed' && <Feed t={t} data={data} onOpen={setSelected} />}
       {tab === 'channels' && <Channels t={t} data={data} />}
       {tab === 'ideas' && <Ideas t={t} data={data} onOpen={setSelected} />}
-      {tab === 'thoughts' && <Thoughts t={t} data={data} onOpen={setSelected} />}
+      {tab === 'thoughts' && <Thoughts t={t} thoughts={thoughts} onOpen={setSelected} />}
       {tab === 'projects' && <Projects t={t} data={data} go={go} />}
       {tab === 'photos' && <Photos t={t} />}
       {tab.startsWith('project:') && <ProjectLanding t={t} data={data} slug={tab.split(':')[1]} go={go} />}

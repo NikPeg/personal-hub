@@ -5,7 +5,7 @@ export const dictionary = {
     heroPhrases: ['Who is', 'What moves', 'What writes', 'What builds', 'What thinks'],
     heroStaticName: 'NikPeg',
     heroLead: 'A curious builder, systems thinker, and practical romantic: trying to do important work beautifully, understand the world, and turn ideas into useful tools.',
-    cv: 'CV', portraitAlt: 'Portrait of NikPeg',
+    cv: 'CV', contact: 'Contact', portraitAlt: 'Portrait of NikPeg',
     identityLabel: 'runtime', identityValue: 'effective gentleman',
     metricRepos: 'repos', metricIdeas: 'ideas',
     homeIndexTitle: 'Everything in one place.',
@@ -15,7 +15,7 @@ export const dictionary = {
     channelsEyebrow: 'Channels', channelsTitle: 'Places where NikPeg writes.', channelsLead: 'Telegram, VK, GitHub, LinkedIn, and other stable corners of the internet where projects, notes, code, and mood live.',
     projectsEyebrow: 'Projects', projectsTitle: 'Project landings', projectsLead: 'Each project is shaped as a small landing page: focused, visual, and clear about the value it wants to sell.',
     photosEyebrow: 'Photos', photosTitle: 'Photos', photosLead: 'A future room for portraits, places, work-in-progress moments, and visual notes. Nothing here yet — but the shelf is ready.',
-    recent: 'recent', upvotes: 'upvotes', draft: 'draft', seed: 'seed', sortBy: 'Sort by', open: 'Open →', openLanding: 'Open landing →', backToProjects: 'Back to projects', images: 'images', close: 'Close', note: 'note',
+    recent: 'recent', upvotes: 'upvotes', draft: 'draft', seed: 'seed', sortBy: 'Sort by', allTags: 'All', filterByTag: 'Filter by tag', open: 'Open →', openLanding: 'Open landing →', backToProjects: 'Back to projects', images: 'images', close: 'Close', note: 'note',
     footerText: 'Personal hub of NikPeg.'
   },
   ru: {
@@ -24,7 +24,7 @@ export const dictionary = {
     heroPhrases: ['Кто такой', 'О чём думает', 'О чём пишет', 'Что разрабатывает', 'Куда движется'],
     heroStaticName: 'НикПег',
     heroLead: 'Любопытный создатель, системный мыслитель и практичный романтик: старается красиво делать важное, понимать мир и превращать идеи в полезные инструменты.',
-    cv: 'Резюме', portraitAlt: 'Портрет НикПега',
+    cv: 'Резюме', contact: 'Связаться', portraitAlt: 'Портрет НикПега',
     identityLabel: 'runtime', identityValue: 'эффективный джентльмен',
     metricRepos: 'репозиториев', metricIdeas: 'идей',
     homeIndexTitle: 'Всё, что есть в хабе.',
@@ -34,7 +34,7 @@ export const dictionary = {
     channelsEyebrow: 'Каналы', channelsTitle: 'Где пишет НикПег.', channelsLead: 'Telegram, VK, GitHub, LinkedIn и другие устойчивые точки в интернете: тексты, код, проекты и настроение.',
     projectsEyebrow: 'Проекты', projectsTitle: 'Лендинги проектов', projectsLead: 'Каждый проект — отдельная страница: с понятной подачей, своим стилем и акцентом на ценность.',
     photosEyebrow: 'Фото', photosTitle: 'Фотографии', photosLead: 'Здесь будут портреты, места, рабочие моменты и визуальные заметки. Пока пусто, но место уже готово.',
-    recent: 'новизне', upvotes: 'апвоутам', draft: 'черновик', seed: 'зерно', sortBy: 'Сортировать по', open: 'Открыть →', openLanding: 'Открыть лендинг →', backToProjects: 'Назад к проектам', images: 'изображения', close: 'Закрыть', note: 'заметка',
+    recent: 'новизне', upvotes: 'апвоутам', draft: 'черновик', seed: 'зерно', sortBy: 'Сортировать по', allTags: 'Все', filterByTag: 'Тег', open: 'Открыть →', openLanding: 'Открыть лендинг →', backToProjects: 'Назад к проектам', images: 'изображения', close: 'Закрыть', note: 'заметка',
     footerText: 'Личный хаб НикПега.'
   }
 };

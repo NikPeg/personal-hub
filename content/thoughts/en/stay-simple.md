@@ -1,0 +1,10 @@
+---
+id: thought-089
+date: 2020-09
+tags: ["clarity", "principles"]
+sourceIndex: 89
+---
+
+# Simplicity
+
+Stay simple
