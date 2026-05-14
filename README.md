@@ -1,6 +1,6 @@
 # personal-hub
 
-Cozy, smart personal website for NikPeg: feed, channels, Telegram/VK links, pet project landings, thoughts, startup ideas, experiments, and a future life dashboard — hosted self-managed with smooth animations and one warm visual style.
+Cozy, smart personal website for NikPeg: feed, channels, Telegram/VK links, project pages, thoughts, startup ideas, photos, experiments, and a future life dashboard — hosted self-managed with smooth animations and one warm visual style.
 
 ## Stack
 
@@ -21,7 +21,8 @@ The production artifact is `dist/`, served by Nginx on the server.
 - **Ideas** — mainly startup/product ideas; already structured for scores and upvotes.
 - **Thoughts** — raw, less polished thoughts that are not ready to become posts yet.
 - **Channels** — stable places where NikPeg writes or leaves public signals: Telegram, VK, GitHub, LinkedIn, and future sources.
-- **Projects** — pet projects and experiments that can later get their own landings.
+- **Projects** — pet projects and experiments in one place.
+- **Photos** — a future room for NikPeg photos and visual notes.
 
 ## Roadmap / plans
 
@@ -35,7 +36,7 @@ The production artifact is `dist/`, served by Nginx on the server.
   - comments under posts, ideas, and possibly photos;
   - likes/reactions for posts, thoughts, and ideas.
 - Add dedicated project landing pages.
-- Possibly add a **Photos** tab later.
+- Fill the **Photos** tab with portraits, places, work-in-progress moments, and visual notes.
 - Add a backend and persistence/API layer when votes, ratings, likes, comments, and comparisons need to survive across sessions.
 
 ## Deployment
