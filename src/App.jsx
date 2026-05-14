@@ -38,7 +38,7 @@ function Hero({ t }) {
     <aside className="hero-card" aria-label="Identity card">
       <div className="portrait-wrap"><img src="/assets/nikpeg-portrait.jpg" alt={t.portraitAlt} className="portrait" /></div>
       <div className="status-line"><span>{t.identityLabel}</span><strong>{t.identityValue}</strong></div>
-      <div className="metric-grid system-metrics"><div><b>94</b><span>{t.metricRepos}</span></div><div><b>99.95%</b><span>SLA</span></div><div><b>∞</b><span>SLO</span></div><div><b>p95</b><span>{t.metricCuriosity}</span></div></div>
+      <div className="metric-grid system-metrics"><div><b>94</b><span>{t.metricRepos}</span></div><div><b>99.95%</b><span>SLO</span></div><div><b>∞</b><span>{t.metricIdeas}</span></div></div>
     </aside>
   </section>;
 }
@@ -72,6 +72,22 @@ function DetailModal({ item, onClose, t }) {
       <p>{item.fullText || item.text || item.description}</p>
     </article>
   </div>;
+}
+
+
+function HomeIndex({ t, go }) {
+  const items = [
+    ['feed', t.navFeed, t.feedLead],
+    ['channels', t.navChannels, t.channelsLead],
+    ['ideas', t.navIdeas, t.ideasLead],
+    ['thoughts', t.navThoughts, t.thoughtsLead],
+    ['projects', t.navProjects, t.projectsLead],
+    ['photos', t.navPhotos, t.photosLead]
+  ];
+  return <section className="section reveal visible">
+    <div className="section-heading feed-heading"><p className="eyebrow">{t.navHome}</p><h2>{t.homeIndexTitle}</h2></div>
+    <div className="cards home-index">{items.map(([id, title, lead]) => <button className="card open-card index-card" key={id} onClick={() => go(id)}><h3>{title}</h3><p>{lead}</p></button>)}</div>
+  </section>;
 }
 
 function Feed({ t, data, embedded = false, onOpen }) {
@@ -152,7 +168,7 @@ export default function App() {
     <div className="aurora" aria-hidden="true"></div><div className="grain" aria-hidden="true"></div>
     <Header tab={tab} go={go} lang={lang} setLang={setLang} theme={theme} setTheme={setTheme} t={t} />
     <main>
-      {tab === 'home' && <><Hero t={t} /><Feed t={t} data={data} embedded onOpen={setSelected} /><Projects t={t} data={data} go={go} /></>}
+      {tab === 'home' && <><Hero t={t} /><HomeIndex t={t} go={go} /><Feed t={t} data={data} embedded onOpen={setSelected} /><Projects t={t} data={data} go={go} /></>}
       {tab === 'feed' && <Feed t={t} data={data} onOpen={setSelected} />}
       {tab === 'channels' && <Channels t={t} data={data} />}
       {tab === 'ideas' && <Ideas t={t} data={data} onOpen={setSelected} />}
