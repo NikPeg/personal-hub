@@ -96,14 +96,14 @@ function Ideas({ t, data, onOpen }) {
 
 function Thoughts({ t, lang, onOpen }) {
   const [tag, setTag] = useState('all');
-  const [visibleCount, setVisibleCount] = useState(36);
+  const [visibleCount, setVisibleCount] = useState(35);
   const [thoughts, setThoughts] = useState([]);
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     let active = true;
     setLoading(true);
     setTag('all');
-    setVisibleCount(36);
+    setVisibleCount(35);
     loadThoughts(lang).then((items) => { if (active) { setThoughts(items); setLoading(false); } }).catch(() => { if (active) { setThoughts([]); setLoading(false); } });
     return () => { active = false; };
   }, [lang]);
@@ -113,9 +113,9 @@ function Thoughts({ t, lang, onOpen }) {
   return <section className="section page-hero reveal visible">
     <PageHeading eyebrow={t.thoughtsEyebrow} title={t.thoughtsTitle} lead={t.thoughtsLead} />
     {loading ? <div className="glass-panel loading-panel">{t.loading}</div> : <>
-      <div className="toolbar tag-toolbar"><span>{t.filterByTag}</span><button className={tag === 'all' ? 'active' : ''} onClick={() => { setTag('all'); setVisibleCount(36); }}>{t.allTags}</button>{tags.map((item) => <button key={item} className={tag === item ? 'active' : ''} onClick={() => { setTag(item); setVisibleCount(36); }}>{item}</button>)}</div>
-      <div className="cards three">{visibleThoughts.map(thought => <OpenCard className="card" item={thought} key={thought.id} onOpen={onOpen}><span className="tag">{thought.tags?.join(' · ') || t.draft}</span><h3>{thought.title}</h3><p>{thought.text}</p></OpenCard>)}</div>
-      {visibleCount < filteredThoughts.length && <div className="load-more-wrap"><button className="btn secondary" onClick={() => setVisibleCount((count) => count + 36)}>{t.showMore}</button></div>}
+      <div className="toolbar tag-toolbar"><span>{t.filterByTag}</span><button className={tag === 'all' ? 'active' : ''} onClick={() => { setTag('all'); setVisibleCount(35); }}>{t.allTags}</button>{tags.map((item) => <button key={item} className={tag === item ? 'active' : ''} onClick={() => { setTag(item); setVisibleCount(35); }}>{item}</button>)}</div>
+      <div className="thought-list">{visibleThoughts.map(thought => <OpenCard className="card thought-row" item={thought} key={thought.id} onOpen={onOpen}><span className="tag">{thought.tags?.join(' · ') || t.draft}</span><h3>{thought.title}</h3><p>{thought.text}</p></OpenCard>)}</div>
+      {visibleCount < filteredThoughts.length && <div className="load-more-wrap"><button className="btn secondary" onClick={() => setVisibleCount((count) => count + 35)}>{t.showMore}</button></div>}
     </>}
   </section>;
 }

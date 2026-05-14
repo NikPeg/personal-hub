@@ -292,3 +292,14 @@ html[data-theme="dark"] .modal-card { background: linear-gradient(145deg, rgba(2
 @media (max-width: 430px) {
   .system-metrics { grid-template-columns: minmax(0, 1fr) minmax(0, 1.16fr) minmax(4.65rem, .68fr); gap: .55rem; }
 }
+
+/* Thoughts archive: readable rows instead of tall 3-column cards */
+.tag-toolbar { align-items: center; }
+.tag-toolbar > span { align-self: center; line-height: 2.2rem; }
+.thought-list { display: grid; grid-template-columns: 1fr; gap: 1rem; }
+.thought-row { width: 100%; text-align: left; display: grid; grid-template-columns: minmax(0, 1fr); gap: .35rem; }
+.thought-row h3 { margin: .1rem 0 .15rem; }
+.thought-row p { margin: 0; max-width: 78ch; }
+@media (min-width: 900px) {
+  .thought-row { padding: 1.15rem 1.35rem; }
+}
