@@ -28,7 +28,7 @@ function Header({ tab, go, lang, setLang, theme, setTheme, t }) {
 function Hero({ t, lang }) {
   return <section className="hero section reveal visible">
     <div className="hero-copy">
-      <p className="eyebrow">{t.eyebrow}</p>
+      {t.eyebrow && <p className="eyebrow">{t.eyebrow}</p>}
       <h1 className={`rotating-title ${lang === 'ru' ? 'ru-title' : ''}`}><span className="rotating-words">{t.heroPhrases.map((phrase, index) => <span key={phrase} style={{ animationDelay: `${index * 2.1}s` }}>{phrase}</span>)}</span><span className="static-name">{t.heroStaticName}</span></h1>
       <p className="lead">{t.heroLead}</p>
       <div className="hero-actions">

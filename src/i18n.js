@@ -1,7 +1,7 @@
 export const dictionary = {
   en: {
     brandName: 'NikPeg', navHome: 'Home', navFeed: 'Feed', navChannels: 'Channels', navIdeas: 'Ideas', navThoughts: 'Thoughts', navQuotes: 'Quotes', navProjects: 'Projects', navPhotos: 'Photos',
-    eyebrow: 'personal page · feed · ideas · living notes',
+    eyebrow: '',
     heroPhrases: ['Who is', 'What moves', 'What writes', 'What builds', 'What thinks'],
     heroStaticName: 'NikPeg',
     heroLead: 'A curious builder, systems thinker, and practical romantic: trying to do important work beautifully, understand the world, and turn ideas into useful tools.',
@@ -21,7 +21,7 @@ export const dictionary = {
   },
   ru: {
     brandName: 'НикПег', navHome: 'Главная', navFeed: 'Лента', navChannels: 'Каналы', navIdeas: 'Идеи', navThoughts: 'Мысли', navQuotes: 'Цитаты', navProjects: 'Проекты', navPhotos: 'Фото',
-    eyebrow: 'личная страница · лента · идеи · живые заметки',
+    eyebrow: '',
     heroPhrases: ['Кто такой', 'О чём думает', 'О чём пишет', 'Что делает', 'Куда движется'],
     heroStaticName: 'НикПег',
     heroLead: 'Любопытный создатель, системный мыслитель и практичный романтик: старается красиво делать важное, понимать мир и превращать идеи в полезные инструменты.',
