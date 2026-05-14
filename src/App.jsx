@@ -14,7 +14,7 @@ const pathToTab = (pathname) => {
 
 function Header({ tab, go, lang, setLang, theme, setTheme, t }) {
   const nav = [
-    ['home', t.navHome], ['feed', t.navFeed], ['channels', t.navChannels], ['ideas', t.navIdeas], ['thoughts', t.navThoughts], ['quotes', t.navQuotes], ['projects', t.navProjects], ['photos', t.navPhotos]
+    ['home', t.navHome], ['feed', t.navFeed], ['channels', t.navChannels], ['projects', t.navProjects], ['ideas', t.navIdeas], ['thoughts', t.navThoughts], ['quotes', t.navQuotes], ['photos', t.navPhotos]
   ];
   return <header className="site-header">
     <button className="brand ghost" onClick={() => go('home')} aria-label={`${t.brandName} home`}><img className="brand-logo" src="/logo.svg" alt="" /><span className="brand-text">{t.brandName}</span></button>
@@ -46,6 +46,10 @@ function Hero({ t, lang }) {
 
 function PageHeading({ eyebrow, title, lead }) {
   return <div className="section-heading page-heading"><p className="eyebrow">{eyebrow}</p><h2>{title}</h2>{lead && <p className="lead">{lead}</p>}</div>;
+}
+
+function NextLink({ label, onClick }) {
+  return <div className="next-section-wrap"><button className="next-section-card" onClick={onClick}><span>{label}</span><strong>→</strong></button></div>;
 }
 
 function ImageCarousel({ images = [], title }) {
@@ -101,24 +105,26 @@ function DetailModal({ item, onClose, t }) {
 
 
 
-function Feed({ t, data, embedded = false, onOpen }) {
+function Feed({ t, data, embedded = false, onOpen, go, nextLabel }) {
   return <section className={`section reveal visible ${embedded ? '' : 'page-hero'}`}>
     <div className="section-heading feed-heading"><p className="eyebrow">{t.feedEyebrow}</p>{!embedded && <><h2>{t.feedTitle}</h2><p className="lead">{t.feedLead}</p></>}</div>
     <div className="post-feed">{data.posts.map(post => <OpenCard className="card post-card" item={post} key={post.id} onOpen={onOpen}><span className="tag">{t[post.status] ?? post.status} · {post.tag}</span><h3>{post.title}</h3><p>{post.text}</p>{post.images?.length > 0 && <span className="media-count">{post.images.length} {t.images}</span>}</OpenCard>)}</div>
+    {go && nextLabel && <NextLink label={nextLabel} onClick={() => go('channels')} />}
   </section>;
 }
 
-function Ideas({ t, data, onOpen }) {
+function Ideas({ t, data, onOpen, go }) {
   const [sort, setSort] = useState('created');
   const sortedIdeas = useMemo(() => [...data.ideas].sort((a, b) => b[sort] - a[sort]), [data.ideas, sort]);
   return <section className="section page-hero reveal visible">
     <PageHeading eyebrow={t.ideasEyebrow} title={t.ideasTitle} lead={t.ideasLead} />
     <div className="toolbar"><span>{t.sortBy}</span><button className={sort === 'created' ? 'active' : ''} onClick={() => setSort('created')}>{t.recent}</button><button className={sort === 'upvotes' ? 'active' : ''} onClick={() => setSort('upvotes')}>{t.upvotes}</button></div>
     <div className="cards three">{sortedIdeas.map(idea => <OpenCard className="card project-card" item={idea} key={idea.id} onOpen={onOpen}><span className="tag">{idea.tag}</span><h3>{idea.title}</h3><p>{idea.text}</p></OpenCard>)}</div>
+    <NextLink label={t.nextThoughts} onClick={() => go('thoughts')} />
   </section>;
 }
 
-function ArchivePage({ t, lang, onOpen, kind = 'thoughts' }) {
+function ArchivePage({ t, lang, onOpen, go, kind = 'thoughts' }) {
   const pageSize = 35;
   const [tag, setTag] = useState('all');
   const [visibleCount, setVisibleCount] = useState(pageSize);
@@ -152,14 +158,17 @@ function ArchivePage({ t, lang, onOpen, kind = 'thoughts' }) {
       <div className="toolbar tag-toolbar"><span>{t.filterByTag}</span><button className={tag === 'all' ? 'active' : ''} onClick={() => { setTag('all'); setVisibleCount(pageSize); }}>{t.allTags}</button>{tags.map((item) => <button key={item} className={tag === item ? 'active' : ''} onClick={() => { setTag(item); setVisibleCount(pageSize); }}>{item}</button>)}</div>
       <div className="thought-list">{visibleItems.map(item => <OpenCard className="card thought-row" item={item} key={item.id} onOpen={onOpen}><div className="thought-row-top"><span className="tag">{item.tags?.join(' · ') || t.draft}</span>{item.date && <time className="thought-date">{item.date}</time>}</div><h3>{item.title}</h3><p>{item.text}</p></OpenCard>)}</div>
       <div ref={sentinelRef} className="scroll-sentinel" aria-hidden="true" />
+      {kind === 'thoughts' && <NextLink label={t.nextQuotes} onClick={() => go('quotes')} />}
+      {kind === 'quotes' && <NextLink label={t.nextPhotos} onClick={() => go('photos')} />}
     </>}
   </section>;
 }
 
-function Channels({ t, data }) {
+function Channels({ t, data, go }) {
   return <section className="section page-hero reveal visible">
     <PageHeading eyebrow={t.channelsEyebrow} title={t.channelsTitle} lead={t.channelsLead} />
     <div className="cards channel-grid">{data.channels.map(channel => <a className="card channel-card" key={channel.id} href={channel.url} target="_blank" rel="noreferrer"><span className="tag">{channel.type}</span><h3>{channel.title}</h3><p>{channel.description}</p><strong>{t.open}</strong></a>)}</div>
+    <NextLink label={t.nextProjects} onClick={() => go('projects')} />
   </section>;
 }
 
@@ -167,6 +176,7 @@ function Projects({ t, data, go }) {
   return <section className="section page-hero reveal visible" id="projects">
     <PageHeading eyebrow={t.projectsEyebrow} title={t.projectsTitle} lead={t.projectsLead} />
     <div className="cards three">{data.projects.map(project => <button className="card project-card open-card" key={project.id} onClick={() => go(`project:${project.slug}`)}><span className="tag">{project.tag}</span><h3>{project.title}</h3><p>{project.text}</p><strong>{t.openLanding}</strong></button>)}</div>
+    <NextLink label={t.nextIdeas} onClick={() => go('ideas')} />
   </section>;
 }
 
@@ -219,12 +229,12 @@ export default function App() {
     <div className="aurora" aria-hidden="true"></div><div className="grain" aria-hidden="true"></div>
     <Header tab={tab} go={go} lang={lang} setLang={setLang} theme={theme} setTheme={setTheme} t={t} />
     <main>
-      {tab === 'home' && <><Hero t={t} lang={lang} /><Feed t={t} data={data} embedded onOpen={setSelected} /></>}
-      {tab === 'feed' && <Feed t={t} data={data} onOpen={setSelected} />}
-      {tab === 'channels' && <Channels t={t} data={data} />}
-      {tab === 'ideas' && <Ideas t={t} data={data} onOpen={setSelected} />}
-      {tab === 'thoughts' && <ArchivePage t={t} lang={lang} onOpen={setSelected} kind="thoughts" />}
-      {tab === 'quotes' && <ArchivePage t={t} lang={lang} onOpen={setSelected} kind="quotes" />}
+      {tab === 'home' && <><Hero t={t} lang={lang} /><Feed t={t} data={data} embedded onOpen={setSelected} go={go} nextLabel={t.nextChannels} /></>}
+      {tab === 'feed' && <Feed t={t} data={data} onOpen={setSelected} go={go} nextLabel={t.nextChannels} />}
+      {tab === 'channels' && <Channels t={t} data={data} go={go} />}
+      {tab === 'ideas' && <Ideas t={t} data={data} onOpen={setSelected} go={go} />}
+      {tab === 'thoughts' && <ArchivePage t={t} lang={lang} onOpen={setSelected} go={go} kind="thoughts" />}
+      {tab === 'quotes' && <ArchivePage t={t} lang={lang} onOpen={setSelected} go={go} kind="quotes" />}
       {tab === 'projects' && <Projects t={t} data={data} go={go} />}
       {tab === 'photos' && <Photos t={t} />}
       {tab.startsWith('project:') && <ProjectLanding t={t} data={data} slug={tab.split(':')[1]} go={go} />}

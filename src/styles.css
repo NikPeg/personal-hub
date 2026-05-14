@@ -319,3 +319,8 @@ html[data-theme="dark"] .modal-card { background: linear-gradient(145deg, rgba(2
   .thought-row-top { align-items: flex-start; flex-direction: column; gap: .45rem; }
   .thought-row .tag { max-width: 100%; }
 }
+
+.next-section-wrap { display: flex; justify-content: center; margin-top: clamp(2rem, 5vw, 4rem); }
+.next-section-card { width: min(620px, 100%); display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1.15rem 1.35rem; border: 1px solid var(--line); border-radius: 1.4rem; background: linear-gradient(135deg, color-mix(in srgb, var(--accent) 18%, var(--card)), var(--card)); color: var(--text); box-shadow: var(--shadow); cursor: pointer; font: inherit; font-weight: 900; text-align: left; }
+.next-section-card strong { width: 2.3rem; height: 2.3rem; display: grid; place-items: center; border-radius: 999px; background: color-mix(in srgb, var(--accent) 22%, transparent); color: var(--accent); font-size: 1.35rem; }
+.next-section-card:hover { transform: translateY(-2px); border-color: color-mix(in srgb, var(--accent) 45%, var(--line)); }
