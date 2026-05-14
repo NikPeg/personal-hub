@@ -95,7 +95,7 @@ function DetailModal({ item, onClose, t }) {
   return <div className="modal-backdrop" role="presentation" onClick={onClose}>
     <article className="modal-card" role="dialog" aria-modal="true" aria-label={item.title} onClick={(event) => event.stopPropagation()}>
       <div className="modal-tools"><button className="copy-button" onClick={copyToClipboard} aria-label={t.copy}>{copied ? '✓' : '⧉'}</button><button className="modal-close" onClick={onClose} aria-label={t.close}>×</button></div>
-      <div className="modal-meta"><span className="tag">{item.tag || item.type || t.note}</span>{item.date && <time>{item.date}</time>}</div>
+      <div className="modal-meta"><span className="tag">{item.tags?.join(' · ') || item.tag || item.type || t.note}</span>{item.date && <time>{item.date}</time>}</div>
       <h2>{item.title}</h2>
       <ImageCarousel images={item.images} title={item.title} />
       <p>{item.fullText || item.text || item.description}</p>
