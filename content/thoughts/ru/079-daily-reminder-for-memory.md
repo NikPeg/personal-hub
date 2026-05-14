@@ -2,8 +2,8 @@
 id: "079-daily-reminder-for-memory"
 date: "2020-08"
 tags:
-  - "образование"
-  - "психология"
+  - образование
+  - психология
 sourceIndex: 79
 ---
 

@@ -2,9 +2,9 @@
 id: "077-language-before-writing"
 date: "2020-08"
 tags:
-  - "culture"
-  - "history"
-  - "communication"
+  - culture
+  - history
+  - communication
 sourceIndex: 77
 ---
 

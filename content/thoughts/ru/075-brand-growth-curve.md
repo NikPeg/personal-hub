@@ -2,8 +2,8 @@
 id: "075-brand-growth-curve"
 date: "2020-07"
 tags:
-  - "бизнес"
-  - "экономика"
+  - бизнес
+  - экономика
 sourceIndex: 75
 ---
 

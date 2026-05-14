@@ -2,9 +2,9 @@
 id: "053-shrug-before-language"
 date: "2020-05"
 tags:
-  - "culture"
-  - "history"
-  - "communication"
+  - culture
+  - history
+  - communication
 sourceIndex: 53
 ---
 

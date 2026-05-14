@@ -2,8 +2,8 @@
 id: "081-life-scenarios"
 date: "2020-08"
 tags:
-  - "culture"
-  - "psychology"
+  - culture
+  - psychology
 sourceIndex: 81
 ---
 

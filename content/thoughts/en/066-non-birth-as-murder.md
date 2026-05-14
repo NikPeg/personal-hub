@@ -2,9 +2,9 @@
 id: "066-non-birth-as-murder"
 date: "2020-07"
 tags:
-  - "ethics"
-  - "history"
-  - "philosophy"
+  - ethics
+  - history
+  - philosophy
 sourceIndex: 66
 ---
 

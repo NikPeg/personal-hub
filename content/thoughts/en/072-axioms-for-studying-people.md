@@ -2,9 +2,9 @@
 id: "072-axioms-for-studying-people"
 date: "2020-07"
 tags:
-  - "philosophy"
-  - "science"
-  - "psychology"
+  - philosophy
+  - science
+  - psychology
 sourceIndex: 72
 ---
 

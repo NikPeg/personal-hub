@@ -2,9 +2,9 @@
 id: "059-sometimes-stay-silent"
 date: "2020-06"
 tags:
-  - "communication"
-  - "relationships"
-  - "ethics"
+  - communication
+  - relationships
+  - ethics
 sourceIndex: 59
 ---
 

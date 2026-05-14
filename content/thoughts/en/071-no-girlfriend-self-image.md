@@ -2,8 +2,8 @@
 id: "071-no-girlfriend-self-image"
 date: "2020-07"
 tags:
-  - "relationships"
-  - "psychology"
+  - relationships
+  - psychology
 sourceIndex: 71
 ---
 

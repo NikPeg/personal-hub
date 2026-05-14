@@ -2,9 +2,9 @@
 id: "074-paralympics-for-cyborgs"
 date: "2020-07"
 tags:
-  - "future"
-  - "technology"
-  - "society"
+  - future
+  - technology
+  - society
 sourceIndex: 74
 ---
 

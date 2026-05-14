@@ -2,8 +2,8 @@
 id: "067-dinosaur-reconstruction"
 date: "2020-07"
 tags:
-  - "science"
-  - "history"
+  - science
+  - history
 sourceIndex: 67
 ---
 

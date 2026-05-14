@@ -2,8 +2,8 @@
 id: "088-dudintsev-evil-and-substances"
 date: "2020-09"
 tags:
-  - "ethics"
-  - "philosophy"
+  - ethics
+  - philosophy
 sourceIndex: 88
 ---
 

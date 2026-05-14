@@ -2,9 +2,8 @@
 id: "085-dostoevsky-freedom-and-living-standard"
 date: "2020-09"
 tags:
-  - "политика"
-  - "философия"
-  - "общество"
+  - философия
+  - общество
 sourceIndex: 85
 ---
 

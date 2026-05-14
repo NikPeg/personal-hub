@@ -2,8 +2,8 @@
 id: "083-family-against-external-enemy"
 date: "2020-08"
 tags:
-  - "отношения"
-  - "общество"
+  - отношения
+  - общество
 sourceIndex: 83
 ---
 

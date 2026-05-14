@@ -2,7 +2,7 @@
 id: "058-point-in-the-sky"
 date: "2020-06"
 tags:
-  - "философия"
+  - философия
 sourceIndex: 58
 ---
 

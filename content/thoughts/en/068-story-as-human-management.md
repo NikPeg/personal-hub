@@ -2,9 +2,9 @@
 id: "068-story-as-human-management"
 date: "2020-07"
 tags:
-  - "management"
-  - "psychology"
-  - "culture"
+  - management
+  - psychology
+  - culture
 sourceIndex: 68
 ---
 

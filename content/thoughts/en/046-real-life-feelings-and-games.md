@@ -2,9 +2,9 @@
 id: "046-real-life-feelings-and-games"
 date: "2020-04"
 tags:
-  - "psychology"
-  - "art"
-  - "technology"
+  - psychology
+  - art
+  - technology
 sourceIndex: 46
 ---
 

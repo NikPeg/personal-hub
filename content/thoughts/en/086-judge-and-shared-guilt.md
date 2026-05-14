@@ -2,9 +2,9 @@
 id: "086-judge-and-shared-guilt"
 date: "2020-09"
 tags:
-  - "ethics"
-  - "philosophy"
-  - "society"
+  - ethics
+  - philosophy
+  - society
 sourceIndex: 86
 ---
 

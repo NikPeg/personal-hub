@@ -2,8 +2,8 @@
 id: "065-short-words-in-ancient-languages"
 date: "2020-07"
 tags:
-  - "культура"
-  - "история"
+  - культура
+  - история
 sourceIndex: 65
 ---
 

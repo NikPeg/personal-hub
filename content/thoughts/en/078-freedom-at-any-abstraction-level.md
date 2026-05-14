@@ -2,7 +2,7 @@
 id: "078-freedom-at-any-abstraction-level"
 date: "2020-08"
 tags:
-  - "philosophy"
+  - philosophy
 sourceIndex: 78
 ---
 

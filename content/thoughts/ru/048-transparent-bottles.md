@@ -2,8 +2,8 @@
 id: "048-transparent-bottles"
 date: "2020-04"
 tags:
-  - "психология"
-  - "технологии"
+  - психология
+  - технологии
 sourceIndex: 48
 ---
 

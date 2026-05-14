@@ -2,9 +2,9 @@
 id: "087-helping-from-above-and-below"
 date: "2020-09"
 tags:
-  - "ethics"
-  - "economics"
-  - "technology"
+  - ethics
+  - economics
+  - technology
 sourceIndex: 87
 ---
 

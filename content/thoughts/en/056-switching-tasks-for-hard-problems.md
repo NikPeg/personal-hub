@@ -2,9 +2,9 @@
 id: "056-switching-tasks-for-hard-problems"
 date: "2020-06"
 tags:
-  - "psychology"
-  - "education"
-  - "work"
+  - psychology
+  - education
+  - work
 sourceIndex: 56
 ---
 

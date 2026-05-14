@@ -2,8 +2,8 @@
 id: "054-bad-news-in-text"
 date: "2020-05"
 tags:
-  - "communication"
-  - "psychology"
+  - communication
+  - psychology
 sourceIndex: 54
 ---
 

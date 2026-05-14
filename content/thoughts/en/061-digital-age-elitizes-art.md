@@ -2,9 +2,9 @@
 id: "061-digital-age-elitizes-art"
 date: "2020-07"
 tags:
-  - "art"
-  - "technology"
-  - "economics"
+  - art
+  - technology
+  - economics
 sourceIndex: 61
 ---
 

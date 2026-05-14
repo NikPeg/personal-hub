@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { content } from './content.js';
 import { dictionary } from './i18n.js';
 import { loadThoughts } from './thoughtFiles.js';
@@ -63,11 +63,33 @@ function OpenCard({ item, children, onOpen, className = 'card' }) {
 }
 
 function DetailModal({ item, onClose, t }) {
+  const [copied, setCopied] = useState(false);
   if (!item) return null;
+  const copyText = [item.title, item.date, item.fullText || item.text || item.description].filter(Boolean).join('\n\n');
+  async function copyToClipboard() {
+    try {
+      if (navigator.clipboard?.writeText) {
+        await navigator.clipboard.writeText(copyText);
+      } else {
+        const area = document.createElement('textarea');
+        area.value = copyText;
+        area.style.position = 'fixed';
+        area.style.opacity = '0';
+        document.body.appendChild(area);
+        area.select();
+        document.execCommand('copy');
+        document.body.removeChild(area);
+      }
+      setCopied(true);
+      setTimeout(() => setCopied(false), 1200);
+    } catch (error) {
+      setCopied(false);
+    }
+  }
   return <div className="modal-backdrop" role="presentation" onClick={onClose}>
     <article className="modal-card" role="dialog" aria-modal="true" aria-label={item.title} onClick={(event) => event.stopPropagation()}>
-      <button className="modal-close" onClick={onClose} aria-label={t.close}>×</button>
-      <span className="tag">{item.tag || item.type || t.note}</span>
+      <div className="modal-tools"><button className="copy-button" onClick={copyToClipboard} aria-label={t.copy}>{copied ? '✓' : '⧉'}</button><button className="modal-close" onClick={onClose} aria-label={t.close}>×</button></div>
+      <div className="modal-meta"><span className="tag">{item.tag || item.type || t.note}</span>{item.date && <time>{item.date}</time>}</div>
       <h2>{item.title}</h2>
       <ImageCarousel images={item.images} title={item.title} />
       <p>{item.fullText || item.text || item.description}</p>
@@ -95,27 +117,38 @@ function Ideas({ t, data, onOpen }) {
 }
 
 function Thoughts({ t, lang, onOpen }) {
+  const pageSize = 35;
   const [tag, setTag] = useState('all');
-  const [visibleCount, setVisibleCount] = useState(35);
+  const [visibleCount, setVisibleCount] = useState(pageSize);
   const [thoughts, setThoughts] = useState([]);
   const [loading, setLoading] = useState(true);
+  const sentinelRef = useRef(null);
   useEffect(() => {
     let active = true;
     setLoading(true);
     setTag('all');
-    setVisibleCount(35);
+    setVisibleCount(pageSize);
     loadThoughts(lang).then((items) => { if (active) { setThoughts(items); setLoading(false); } }).catch(() => { if (active) { setThoughts([]); setLoading(false); } });
     return () => { active = false; };
   }, [lang]);
   const tags = useMemo(() => Array.from(new Set(thoughts.flatMap((thought) => thought.tags || []))).sort(), [thoughts]);
   const filteredThoughts = tag === 'all' ? thoughts : thoughts.filter((thought) => thought.tags?.includes(tag));
   const visibleThoughts = filteredThoughts.slice(0, visibleCount);
+  useEffect(() => {
+    if (loading || visibleCount >= filteredThoughts.length) return undefined;
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) setVisibleCount((count) => Math.min(count + pageSize, filteredThoughts.length));
+    }, { rootMargin: '320px 0px' });
+    const node = sentinelRef.current;
+    if (node) observer.observe(node);
+    return () => observer.disconnect();
+  }, [loading, visibleCount, filteredThoughts.length]);
   return <section className="section page-hero reveal visible">
     <PageHeading eyebrow={t.thoughtsEyebrow} title={t.thoughtsTitle} lead={t.thoughtsLead} />
     {loading ? <div className="glass-panel loading-panel">{t.loading}</div> : <>
-      <div className="toolbar tag-toolbar"><span>{t.filterByTag}</span><button className={tag === 'all' ? 'active' : ''} onClick={() => { setTag('all'); setVisibleCount(35); }}>{t.allTags}</button>{tags.map((item) => <button key={item} className={tag === item ? 'active' : ''} onClick={() => { setTag(item); setVisibleCount(35); }}>{item}</button>)}</div>
-      <div className="thought-list">{visibleThoughts.map(thought => <OpenCard className="card thought-row" item={thought} key={thought.id} onOpen={onOpen}><span className="tag">{thought.tags?.join(' · ') || t.draft}</span><h3>{thought.title}</h3><p>{thought.text}</p></OpenCard>)}</div>
-      {visibleCount < filteredThoughts.length && <div className="load-more-wrap"><button className="btn secondary" onClick={() => setVisibleCount((count) => count + 35)}>{t.showMore}</button></div>}
+      <div className="toolbar tag-toolbar"><span>{t.filterByTag}</span><button className={tag === 'all' ? 'active' : ''} onClick={() => { setTag('all'); setVisibleCount(pageSize); }}>{t.allTags}</button>{tags.map((item) => <button key={item} className={tag === item ? 'active' : ''} onClick={() => { setTag(item); setVisibleCount(pageSize); }}>{item}</button>)}</div>
+      <div className="thought-list">{visibleThoughts.map(thought => <OpenCard className="card thought-row" item={thought} key={thought.id} onOpen={onOpen}><div className="thought-row-top"><span className="tag">{thought.tags?.join(' · ') || t.draft}</span>{thought.date && <time className="thought-date">{thought.date}</time>}</div><h3>{thought.title}</h3><p>{thought.text}</p></OpenCard>)}</div>
+      <div ref={sentinelRef} className="scroll-sentinel" aria-hidden="true" />
     </>}
   </section>;
 }

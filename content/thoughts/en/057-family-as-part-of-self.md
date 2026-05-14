@@ -2,8 +2,8 @@
 id: "057-family-as-part-of-self"
 date: "2020-06"
 tags:
-  - "relationships"
-  - "society"
+  - relationships
+  - society
 sourceIndex: 57
 ---
 

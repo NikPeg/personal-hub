@@ -2,8 +2,8 @@
 id: "045-aggression-as-a-push"
 date: "2020-04"
 tags:
-  - "psychology"
-  - "communication"
+  - psychology
+  - communication
 sourceIndex: 45
 ---
 

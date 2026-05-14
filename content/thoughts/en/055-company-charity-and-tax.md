@@ -2,9 +2,9 @@
 id: "055-company-charity-and-tax"
 date: "2020-05"
 tags:
-  - "business"
-  - "economics"
-  - "ethics"
+  - business
+  - economics
+  - ethics
 sourceIndex: 55
 ---
 

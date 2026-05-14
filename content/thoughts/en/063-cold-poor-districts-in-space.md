@@ -2,9 +2,9 @@
 id: "063-cold-poor-districts-in-space"
 date: "2020-07"
 tags:
-  - "future"
-  - "society"
-  - "economics"
+  - future
+  - society
+  - economics
 sourceIndex: 63
 ---
 

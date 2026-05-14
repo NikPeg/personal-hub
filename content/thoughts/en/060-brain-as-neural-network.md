@@ -2,9 +2,9 @@
 id: "060-brain-as-neural-network"
 date: "2020-06"
 tags:
-  - "psychology"
-  - "science"
-  - "society"
+  - psychology
+  - science
+  - society
 sourceIndex: 60
 ---
 

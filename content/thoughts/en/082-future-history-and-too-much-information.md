@@ -2,9 +2,9 @@
 id: "082-future-history-and-too-much-information"
 date: "2020-08"
 tags:
-  - "history"
-  - "future"
-  - "technology"
+  - history
+  - future
+  - technology
 sourceIndex: 82
 ---
 

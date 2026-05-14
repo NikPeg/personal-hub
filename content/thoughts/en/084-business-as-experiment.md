@@ -2,8 +2,8 @@
 id: "084-business-as-experiment"
 date: "2020-09"
 tags:
-  - "business"
-  - "management"
+  - business
+  - management
 sourceIndex: 84
 ---
 

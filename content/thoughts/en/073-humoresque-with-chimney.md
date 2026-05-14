@@ -2,8 +2,8 @@
 id: "073-humoresque-with-chimney"
 date: "2020-07"
 tags:
-  - "art"
-  - "philosophy"
+  - art
+  - philosophy
 sourceIndex: 73
 ---
 

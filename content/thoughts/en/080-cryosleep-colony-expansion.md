@@ -2,9 +2,9 @@
 id: "080-cryosleep-colony-expansion"
 date: "2020-08"
 tags:
-  - "future"
-  - "technology"
-  - "society"
+  - future
+  - technology
+  - society
 sourceIndex: 80
 ---
 

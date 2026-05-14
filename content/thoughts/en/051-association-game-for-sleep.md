@@ -2,7 +2,7 @@
 id: "051-association-game-for-sleep"
 date: "2020-05"
 tags:
-  - "psychology"
+  - psychology
 sourceIndex: 51
 ---
 

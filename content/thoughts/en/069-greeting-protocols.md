@@ -2,9 +2,9 @@
 id: "069-greeting-protocols"
 date: "2020-07"
 tags:
-  - "communication"
-  - "society"
-  - "culture"
+  - communication
+  - society
+  - culture
 sourceIndex: 69
 ---
 

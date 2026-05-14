@@ -2,8 +2,8 @@
 id: "050-no-fog-before-certainty"
 date: "2020-05"
 tags:
-  - "отношения"
-  - "коммуникация"
+  - отношения
+  - коммуникация
 sourceIndex: 50
 ---
 

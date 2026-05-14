@@ -2,9 +2,9 @@
 id: "049-lazy-worker-concept"
 date: "2020-04"
 tags:
-  - "management"
-  - "work"
-  - "psychology"
+  - management
+  - work
+  - psychology
 sourceIndex: 49
 ---
 

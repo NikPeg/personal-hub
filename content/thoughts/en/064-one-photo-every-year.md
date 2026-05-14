@@ -2,8 +2,8 @@
 id: "064-one-photo-every-year"
 date: "2020-07"
 tags:
-  - "psychology"
-  - "culture"
+  - psychology
+  - culture
 sourceIndex: 64
 ---
 

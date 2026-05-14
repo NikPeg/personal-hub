@@ -2,7 +2,7 @@
 id: "076-nats-olympiads"
 date: "2020-07"
 tags:
-  - "образование"
+  - образование
 sourceIndex: 76
 ---
 

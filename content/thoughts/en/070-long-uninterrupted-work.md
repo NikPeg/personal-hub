@@ -2,8 +2,8 @@
 id: "070-long-uninterrupted-work"
 date: "2020-07"
 tags:
-  - "work"
-  - "psychology"
+  - work
+  - psychology
 sourceIndex: 70
 ---
 

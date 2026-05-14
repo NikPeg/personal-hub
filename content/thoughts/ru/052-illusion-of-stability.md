@@ -2,8 +2,8 @@
 id: "052-illusion-of-stability"
 date: "2020-05"
 tags:
-  - "психология"
-  - "будущее"
+  - психология
+  - будущее
 sourceIndex: 52
 ---
 
