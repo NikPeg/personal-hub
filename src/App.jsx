@@ -215,6 +215,10 @@ export default function App() {
     return () => window.removeEventListener('popstate', handlePopState);
   }, []);
 
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+  }, [tab]);
+
   function go(nextTab) {
     setTab(nextTab);
     setSelected(null);
