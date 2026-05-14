@@ -1,0 +1,40 @@
+export const dictionary = {
+  en: {
+    navHome: 'Home', navPosts: 'Posts', navThoughts: 'Thoughts', navIdeas: 'Ideas', navProjects: 'Projects',
+    eyebrow: 'personal page · posts · ideas · living notes',
+    heroTitle: 'Who is NikPeg?',
+    heroLead: 'A curious builder, systems thinker, and practical romantic: trying to do important work beautifully, understand the world, and turn ideas into useful things.',
+    identityLabel: 'Identity', identityValue: 'effective gentleman',
+    metricCuriosity: 'curiosity', metricMission: 'mission', metricProjects: 'projects',
+    postsEyebrow: 'Posts', postsTitle: 'A feed of shaped thoughts and public notes.', postsLead: 'Posts are the polished layer: beautifully packaged ideas, essays, project notes, and observations worth sharing.',
+    ideasEyebrow: 'Startup ideas', ideasTitle: 'Seeds for future useful things.', ideasLead: 'A garden of startup and product ideas. Later: upvotes, scoring, sorting, comparison tables, and criteria-based decisions.',
+    thoughtsEyebrow: 'Thoughts', thoughtsTitle: 'Raw notes from a living mind.', thoughtsLead: 'Thoughts are lighter than posts: observations, principles, fragments, and drafts that are not fully shaped yet.',
+    projectsEyebrow: 'Projects', projectsTitle: 'Pet projects and experiments will get their own landings here.',
+    eduText: 'Education tools, payments, referrals, and useful automation for learning.',
+    scriboText: 'A place for product story, feedback loops, and writing systems.',
+    slidebotText: 'Presentation automation and bot experiments with practical value.',
+    comingSoon: 'Coming soon →',
+    photosSoon: 'Photos may become their own room later.',
+    score: 'score', upvotes: 'upvotes', draft: 'draft', seed: 'seed',
+    footerText: 'Personal hub prototype for NikPeg.'
+  },
+  ru: {
+    navHome: 'Главная', navPosts: 'Посты', navThoughts: 'Мысли', navIdeas: 'Идеи', navProjects: 'Проекты',
+    eyebrow: 'личная страница · посты · идеи · живые заметки',
+    heroTitle: 'Кто такой NikPeg?',
+    heroLead: 'Любопытный создатель, системный мыслитель и практичный романтик: старается красиво делать важное, понимать мир и превращать идеи в полезные штуки.',
+    identityLabel: 'Идентичность', identityValue: 'эффективный джентльмен',
+    metricCuriosity: 'любопытства', metricMission: 'миссия', metricProjects: 'проектов',
+    postsEyebrow: 'Посты', postsTitle: 'Лента оформленных мыслей и публичных заметок.', postsLead: 'Посты — более собранный слой: красиво упакованные идеи, эссе, заметки о проектах и наблюдения, которыми хочется делиться.',
+    ideasEyebrow: 'Стартап-идеи', ideasTitle: 'Семена будущих полезных вещей.', ideasLead: 'Сад стартапных и продуктовых идей. Позже: апвоуты, оценки, сортировка, таблицы сравнения и решения по критериям.',
+    thoughtsEyebrow: 'Мысли', thoughtsTitle: 'Сырые заметки живого ума.', thoughtsLead: 'Мысли легче постов: наблюдения, принципы, фрагменты и черновики, которые ещё недостаточно оформлены.',
+    projectsEyebrow: 'Проекты', projectsTitle: 'Пет‑проекты и эксперименты получат здесь отдельные лендинги.',
+    eduText: 'Образовательные инструменты, оплаты, рефералки и полезная автоматизация обучения.',
+    scriboText: 'Место для истории продукта, фидбэк‑лупов и письменных систем.',
+    slidebotText: 'Автоматизация презентаций и ботовые эксперименты с практической пользой.',
+    comingSoon: 'Скоро →',
+    photosSoon: 'Фотографии позже могут стать отдельной комнатой.',
+    score: 'оценка', upvotes: 'апвоуты', draft: 'черновик', seed: 'зерно',
+    footerText: 'Прототип личного хаба NikPeg.'
+  }
+};

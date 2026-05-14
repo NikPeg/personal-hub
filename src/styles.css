@@ -146,3 +146,16 @@ h3 { font-size: 1.35rem; margin: .4rem 0 .7rem; letter-spacing: -.03em; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
 }
+
+button { font: inherit; }
+.ghost { border: 0; background: transparent; color: inherit; cursor: pointer; padding: 0; }
+.nav button { border: 0; background: transparent; color: inherit; cursor: pointer; padding: .55rem .7rem; border-radius: 999px; transition: .25s ease; }
+.nav button:hover, .nav button.active { color: var(--text); background: var(--card); }
+.post-feed { display: grid; gap: 1rem; }
+.post-card { min-height: 170px; }
+.toolbar { display: flex; align-items: center; gap: .7rem; flex-wrap: wrap; margin: 0 0 1.4rem; color: var(--muted); }
+.toolbar button { border: 1px solid var(--line); background: var(--card); color: var(--text); border-radius: 999px; padding: .55rem .75rem; cursor: pointer; }
+.toolbar button.active { background: linear-gradient(135deg, var(--accent), var(--accent2)); color: white; }
+.idea-meta { display: flex; gap: .65rem; flex-wrap: wrap; margin-top: 1rem; color: var(--muted); }
+.idea-meta span { padding: .45rem .6rem; border: 1px solid var(--line); border-radius: 999px; background: color-mix(in srgb, var(--card-strong) 70%, transparent); }
+.idea-meta b { color: var(--text); }

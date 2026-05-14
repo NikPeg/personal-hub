@@ -3,75 +3,14 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Who is NikPeg: personal page, thoughts, ideas, projects, and links." />
+  <meta name="description" content="Who is NikPeg: personal page, posts, thoughts, ideas, projects, and links." />
   <title>Who is NikPeg?</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20260514-mobile" />
 </head>
 <body>
-  <div class="aurora" aria-hidden="true"></div><div class="grain" aria-hidden="true"></div>
-  <header class="site-header">
-    <a class="brand" href="index.html" aria-label="NikPeg home"><span class="brand-mark">N</span><span class="brand-text">NikPeg</span></a>
-    <nav class="nav" aria-label="Main navigation">
-      <a href="index.html" data-i18n="navHome">Who</a>
-      <a href="thoughts.html" data-i18n="navThoughts">Thoughts</a>
-      <a href="ideas.html" data-i18n="navIdeas">Ideas</a>
-      <a href="#projects" data-i18n="navProjects">Projects</a>
-    </nav>
-    <div class="controls"><button class="pill" id="langToggle" type="button">RU</button><button class="pill icon-pill" id="themeToggle" type="button">☾</button></div>
-  </header>
-
-  <main id="top">
-    <section class="hero section reveal">
-      <div class="hero-copy">
-        <p class="eyebrow" data-i18n="eyebrow">personal page · projects · living notes</p>
-        <h1 data-i18n="heroTitle">Who is NikPeg?</h1>
-        <p class="lead" data-i18n="heroLead">A curious builder, systems thinker, and practical romantic: trying to do important work beautifully, understand the world, and turn ideas into useful things.</p>
-        <div class="hero-actions">
-          <a class="btn primary" href="https://t.me/nikpeg" target="_blank" rel="noreferrer">Telegram</a>
-          <a class="btn secondary" href="https://vk.com/nikpeg" target="_blank" rel="noreferrer">VK</a>
-        </div>
-      </div>
-      <aside class="hero-card" aria-label="Identity card">
-        <div class="portrait-wrap"><img src="assets/nikpeg-portrait.jpg" alt="Portrait of NikPeg" class="portrait" /></div>
-        <div class="status-line"><span data-i18n="identityLabel">Identity</span><strong data-i18n="identityValue">effective gentleman</strong></div>
-        <div class="metric-grid">
-          <div><b>∞</b><span data-i18n="metricCuriosity">curiosity</span></div>
-          <div><b>1</b><span data-i18n="metricMission">mission</span></div>
-          <div><b>many</b><span data-i18n="metricProjects">projects</span></div>
-        </div>
-      </aside>
-    </section>
-
-    <section class="section split reveal" id="about">
-      <div><p class="eyebrow" data-i18n="aboutEyebrow">About</p><h2 data-i18n="aboutTitle">A person assembled from ambition, warmth, experiments, and unfinished tabs.</h2></div>
-      <div class="cards two">
-        <article class="card"><span class="card-icon">✦</span><h3 data-i18n="missionTitle">Mission</h3><p data-i18n="missionText">To be an effective gentleman: doing personally important things with quality, dignity, independence, fairness, and love for people.</p></article>
-        <article class="card"><span class="card-icon">⌁</span><h3 data-i18n="methodTitle">Method</h3><p data-i18n="methodText">Think clearly, build small systems, notice trends, ship prototypes, and keep enough playfulness to stay alive inside the process.</p></article>
-      </div>
-    </section>
-
-    <section class="section reveal" id="projects">
-      <div class="section-heading"><p class="eyebrow" data-i18n="projectsEyebrow">Projects</p><h2 data-i18n="projectsTitle">Pet projects and experiments will get their own landings here.</h2></div>
-      <div class="cards three">
-        <article class="card project-card"><span class="tag">AI · learning</span><h3>Edu</h3><p data-i18n="eduText">Education tools, payments, referrals, and useful automation for learning.</p><a href="#" data-i18n="comingSoon">Coming soon →</a></article>
-        <article class="card project-card"><span class="tag">writing · feedback</span><h3>Scribo</h3><p data-i18n="scriboText">A place for product story, feedback loops, and writing systems.</p><a href="#" data-i18n="comingSoon">Coming soon →</a></article>
-        <article class="card project-card"><span class="tag">bots · slides</span><h3>Slidebot</h3><p data-i18n="slidebotText">Presentation automation and bot experiments with practical value.</p><a href="#" data-i18n="comingSoon">Coming soon →</a></article>
-      </div>
-    </section>
-
-    <section class="section lab reveal">
-      <div class="glass-panel">
-        <p class="eyebrow" data-i18n="moreEyebrow">More rooms</p>
-        <h2 data-i18n="moreTitle">Thoughts and ideas live next door.</h2>
-        <p data-i18n="moreText">This site can grow into a cozy archive: essays, notes, experiments, project pages, and a public map of what NikPeg is becoming.</p>
-        <div class="hero-actions"><a class="btn secondary" href="thoughts.html" data-i18n="openThoughts">Open thoughts</a><a class="btn secondary" href="ideas.html" data-i18n="openIdeas">Open ideas</a></div>
-      </div>
-    </section>
-  </main>
-  <footer class="footer"><span data-i18n="footerText">Personal page prototype for NikPeg.</span><a href="https://github.com/NikPeg/personal-hub" target="_blank" rel="noreferrer">GitHub</a></footer>
-  <script src="script.js"></script>
+  <div id="root"></div>
+  <script type="module" src="/src/main.jsx"></script>
 </body>
 </html>
