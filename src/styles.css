@@ -214,3 +214,21 @@ button { font: inherit; }
 @media (max-width: 820px) {
   .home-index { grid-template-columns: 1fr; }
 }
+
+.brand-logo { width: 2.4rem; height: 2.4rem; display: block; filter: drop-shadow(0 12px 26px rgba(0,0,0,.28)); }
+.rotating-title { display: grid; gap: .18em; }
+.rotating-words { position: relative; display: block; min-height: 1em; overflow: hidden; }
+.rotating-words span { position: absolute; inset: 0 auto auto 0; opacity: 0; transform: translateY(80%) rotateX(-45deg); animation: rotateWords 10.5s cubic-bezier(.2,.8,.2,1) infinite; }
+.static-name { display: block; }
+.hero::after { content: "↓"; position: absolute; left: 50%; bottom: 1.8rem; transform: translateX(-50%); color: var(--accent); font-size: 2rem; animation: arrowFloat 1.8s ease-in-out infinite; opacity: .85; }
+.hero { position: relative; }
+@keyframes rotateWords {
+  0% { opacity: 0; transform: translateY(80%) rotateX(-45deg); filter: blur(8px); }
+  7%, 17% { opacity: 1; transform: translateY(0) rotateX(0); filter: blur(0); }
+  24%, 100% { opacity: 0; transform: translateY(-80%) rotateX(45deg); filter: blur(8px); }
+}
+@keyframes arrowFloat { 0%,100% { transform: translate(-50%, 0); } 50% { transform: translate(-50%, 9px); } }
+@media (max-width: 820px) {
+  .rotating-words { min-height: 1.08em; }
+  .hero::after { bottom: -1.2rem; }
+}

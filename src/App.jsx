@@ -16,7 +16,7 @@ function Header({ tab, go, lang, setLang, theme, setTheme, t }) {
     ['home', t.navHome], ['feed', t.navFeed], ['channels', t.navChannels], ['ideas', t.navIdeas], ['thoughts', t.navThoughts], ['projects', t.navProjects], ['photos', t.navPhotos]
   ];
   return <header className="site-header">
-    <button className="brand ghost" onClick={() => go('home')} aria-label={`${t.brandName} home`}><span className="brand-mark">N</span><span className="brand-text">{t.brandName}</span></button>
+    <button className="brand ghost" onClick={() => go('home')} aria-label={`${t.brandName} home`}><img className="brand-logo" src="/logo.svg" alt="" /><span className="brand-text">{t.brandName}</span></button>
     <nav className="nav" aria-label="Main navigation">
       {nav.map(([id, label]) => <button key={id} className={tab === id ? 'active' : ''} onClick={() => go(id)}>{label}</button>)}
     </nav>
@@ -28,7 +28,7 @@ function Hero({ t }) {
   return <section className="hero section reveal visible">
     <div className="hero-copy">
       <p className="eyebrow">{t.eyebrow}</p>
-      <h1>{t.heroTitle}</h1>
+      <h1 className="rotating-title"><span className="rotating-words">{t.heroPhrases.map((phrase, index) => <span key={phrase} style={{ animationDelay: `${index * 2.1}s` }}>{phrase}</span>)}</span><span className="static-name">{t.heroStaticName}</span></h1>
       <p className="lead">{t.heroLead}</p>
       <div className="hero-actions">
         <a className="btn primary" href="https://t.me/nikpeg" target="_blank" rel="noreferrer">Telegram</a>
@@ -75,20 +75,6 @@ function DetailModal({ item, onClose, t }) {
 }
 
 
-function HomeIndex({ t, go }) {
-  const items = [
-    ['feed', t.navFeed, t.feedLead],
-    ['channels', t.navChannels, t.channelsLead],
-    ['ideas', t.navIdeas, t.ideasLead],
-    ['thoughts', t.navThoughts, t.thoughtsLead],
-    ['projects', t.navProjects, t.projectsLead],
-    ['photos', t.navPhotos, t.photosLead]
-  ];
-  return <section className="section reveal visible">
-    <div className="section-heading feed-heading"><p className="eyebrow">{t.navHome}</p><h2>{t.homeIndexTitle}</h2></div>
-    <div className="cards home-index">{items.map(([id, title, lead]) => <button className="card open-card index-card" key={id} onClick={() => go(id)}><h3>{title}</h3><p>{lead}</p></button>)}</div>
-  </section>;
-}
 
 function Feed({ t, data, embedded = false, onOpen }) {
   return <section className={`section reveal visible ${embedded ? '' : 'page-hero'}`}>
@@ -168,7 +154,7 @@ export default function App() {
     <div className="aurora" aria-hidden="true"></div><div className="grain" aria-hidden="true"></div>
     <Header tab={tab} go={go} lang={lang} setLang={setLang} theme={theme} setTheme={setTheme} t={t} />
     <main>
-      {tab === 'home' && <><Hero t={t} /><HomeIndex t={t} go={go} /><Feed t={t} data={data} embedded onOpen={setSelected} /><Projects t={t} data={data} go={go} /></>}
+      {tab === 'home' && <><Hero t={t} /><Feed t={t} data={data} embedded onOpen={setSelected} /></>}
       {tab === 'feed' && <Feed t={t} data={data} onOpen={setSelected} />}
       {tab === 'channels' && <Channels t={t} data={data} />}
       {tab === 'ideas' && <Ideas t={t} data={data} onOpen={setSelected} />}
