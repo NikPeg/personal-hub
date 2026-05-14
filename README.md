@@ -30,9 +30,12 @@ The production artifact is `dist/`, served by Nginx on the server.
   - compare ideas in tables;
   - evaluate ideas across criteria such as usefulness, feasibility, market, effort, delight, and personal fit.
 - Turn posts into a beautiful content feed with real long-form entries.
+- Add social interactions later:
+  - comments under posts, ideas, and possibly photos;
+  - likes/reactions for posts, thoughts, and ideas.
 - Add dedicated project landing pages.
 - Possibly add a **Photos** tab later.
-- Add a persistence/API layer when votes, ratings, and comparisons need to survive across sessions.
+- Add a backend and persistence/API layer when votes, ratings, likes, comments, and comparisons need to survive across sessions.
 
 ## Deployment
 
