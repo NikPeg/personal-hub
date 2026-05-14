@@ -69,3 +69,54 @@ export const thoughts = [
     text: 'The best productivity system should feel like a good room: clear, warm, and hard to avoid.'
   }
 ];
+
+export const channels = [
+  {
+    id: 'juplane-telegram',
+    type: 'Telegram',
+    title: 'Jupiter Plane',
+    url: 'https://t.me/juplane',
+    descriptionEn: 'Author channel for public notes, project fragments, observations, and longer-running ideas.',
+    descriptionRu: 'Авторский канал для публичных заметок, фрагментов проектов, наблюдений и идей в развитии.'
+  },
+  {
+    id: 'jupiter-plane-vk',
+    type: 'VK',
+    title: 'Jupiter Plane',
+    url: 'https://vk.com/jupiter_plane',
+    descriptionEn: 'VK home for the Jupiter Plane stream and posts that should live outside Telegram too.',
+    descriptionRu: 'VK-дом для потока Jupiter Plane и постов, которым стоит жить не только в Telegram.'
+  },
+  {
+    id: 'meme-swaga',
+    type: 'Telegram',
+    title: 'meme swaga',
+    url: 'https://t.me/meme_swaga',
+    descriptionEn: 'Memes, mood, cultural noise, and lightweight chaos for when clean systems need a gremlin.',
+    descriptionRu: 'Мемы, настроение, культурный шум и лёгкий хаос — когда чистым системам нужен гремлин.'
+  },
+  {
+    id: 'github',
+    type: 'GitHub',
+    title: 'NikPeg',
+    url: 'https://github.com/NikPeg',
+    descriptionEn: 'Code, prototypes, repositories, experiments, and the technical trail behind projects.',
+    descriptionRu: 'Код, прототипы, репозитории, эксперименты и технический след проектов.'
+  },
+  {
+    id: 'linkedin',
+    type: 'LinkedIn',
+    title: 'NikPeg',
+    url: 'https://www.linkedin.com/in/nikpeg/',
+    descriptionEn: 'Professional profile: work context, public career signal, and serious-human mode.',
+    descriptionRu: 'Профессиональный профиль: рабочий контекст, публичный карьерный сигнал и режим серьёзного человека.'
+  },
+  {
+    id: 'vk-personal',
+    type: 'VK',
+    title: 'NikPeg',
+    url: 'https://vk.com/nikpeg',
+    descriptionEn: 'Personal VK page and another stable place to find NikPeg online.',
+    descriptionRu: 'Личная страница VK и ещё одно стабильное место, где можно найти NikPeg.'
+  }
+];

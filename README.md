@@ -1,6 +1,6 @@
 # personal-hub
 
-Cozy, smart personal website for NikPeg: posts, Telegram/VK links, pet project landings, thoughts, startup ideas, experiments, and a future life dashboard — hosted self-managed with smooth animations and one warm visual style.
+Cozy, smart personal website for NikPeg: feed, channels, Telegram/VK links, pet project landings, thoughts, startup ideas, experiments, and a future life dashboard — hosted self-managed with smooth animations and one warm visual style.
 
 ## Stack
 
@@ -16,10 +16,11 @@ The production artifact is `dist/`, served by Nginx on the server.
 
 ## Current sections
 
-- **Home** — identity hero, portrait, polished post feed, and project teasers.
-- **Posts** — a feed of better-shaped, public-facing notes and essays.
+- **Home** — identity hero, portrait, compact feed, and project teasers.
+- **Feed** — better-shaped, public-facing notes, essays, project fragments, and observations.
 - **Ideas** — mainly startup/product ideas; already structured for scores and upvotes.
 - **Thoughts** — raw, less polished thoughts that are not ready to become posts yet.
+- **Channels** — stable places where NikPeg writes or leaves public signals: Telegram, VK, GitHub, LinkedIn, and future sources.
 - **Projects** — pet projects and experiments that can later get their own landings.
 
 ## Roadmap / plans
@@ -29,7 +30,7 @@ The production artifact is `dist/`, served by Nginx on the server.
   - give each idea an overall score;
   - compare ideas in tables;
   - evaluate ideas across criteria such as usefulness, feasibility, market, effort, delight, and personal fit.
-- Turn posts into a beautiful content feed with real long-form entries.
+- Turn the feed into a beautiful stream with real long-form entries and compact reading-first UX.
 - Add social interactions later:
   - comments under posts, ideas, and possibly photos;
   - likes/reactions for posts, thoughts, and ideas.

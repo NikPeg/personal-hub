@@ -159,3 +159,19 @@ button { font: inherit; }
 .idea-meta { display: flex; gap: .65rem; flex-wrap: wrap; margin-top: 1rem; color: var(--muted); }
 .idea-meta span { padding: .45rem .6rem; border: 1px solid var(--line); border-radius: 999px; background: color-mix(in srgb, var(--card-strong) 70%, transparent); }
 .idea-meta b { color: var(--text); }
+
+.feed-heading { margin-bottom: 1rem; }
+.system-metrics b { font-family: Inter, system-ui, sans-serif; font-variant-numeric: tabular-nums; letter-spacing: -.06em; }
+.channel-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
+.channel-card { min-height: 190px; }
+.channel-card strong { color: var(--accent); }
+@media (max-width: 820px) {
+  .channel-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 820px) {
+  .site-header { flex-wrap: wrap; align-items: center; gap: .75rem; }
+  .nav { order: 3; width: 100%; display: flex; overflow-x: auto; padding-bottom: .15rem; scrollbar-width: none; }
+  .nav::-webkit-scrollbar { display: none; }
+  .nav button { flex: 0 0 auto; }
+}
