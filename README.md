@@ -17,11 +17,11 @@ The production artifact is `dist/`, served by Nginx on the server.
 ## Current sections
 
 - **Home** — identity hero, portrait, compact feed, and project teasers.
-- **Feed** — better-shaped, public-facing notes, essays, project fragments, and observations.
+- **Feed** — visual posts with title, text, and optional image carousels.
 - **Ideas** — mainly startup/product ideas; already structured for scores and upvotes.
 - **Thoughts** — raw, less polished thoughts that are not ready to become posts yet.
-- **Channels** — stable places where NikPeg writes or leaves public signals: Telegram, VK, GitHub, LinkedIn, and future sources.
-- **Projects** — pet projects and experiments in one place.
+- **Channels** — stable places where NikPeg writes, publishes code, and keeps public channels: Telegram, VK, GitHub, LinkedIn, and future sources.
+- **Projects** — selling-style landings for each project, e.g. `/scribo`, `/edu`, `/slidebot`.
 - **Photos** — a future room for NikPeg photos and visual notes.
 
 ## Roadmap / plans
@@ -31,7 +31,8 @@ The production artifact is `dist/`, served by Nginx on the server.
   - give each idea an overall score;
   - compare ideas in tables;
   - evaluate ideas across criteria such as usefulness, feasibility, market, effort, delight, and personal fit.
-- Turn the feed into a beautiful stream with real long-form entries and compact reading-first UX.
+- Expand the feed into polished posts with images, carousels, long text, and full-screen reading.
+- Give every project its own landing page with distinct positioning and style.
 - Add social interactions later:
   - comments under posts, ideas, and possibly photos;
   - likes/reactions for posts, thoughts, and ideas.

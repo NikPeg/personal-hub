@@ -3,14 +3,22 @@ import { content } from './content.js';
 import { dictionary } from './i18n.js';
 import './styles.css';
 
-function Header({ tab, setTab, lang, setLang, theme, setTheme, t }) {
+const pathToTab = (pathname) => {
+  const slug = pathname.replace(/^\//, '').replace(/\/$/, '');
+  if (!slug || slug === 'index.html') return 'home';
+  if (['feed', 'channels', 'ideas', 'thoughts', 'projects', 'photos'].includes(slug)) return slug;
+  if (['edu', 'scribo', 'slidebot'].includes(slug)) return `project:${slug}`;
+  return 'home';
+};
+
+function Header({ tab, go, lang, setLang, theme, setTheme, t }) {
   const nav = [
     ['home', t.navHome], ['feed', t.navFeed], ['channels', t.navChannels], ['ideas', t.navIdeas], ['thoughts', t.navThoughts], ['projects', t.navProjects], ['photos', t.navPhotos]
   ];
   return <header className="site-header">
-    <button className="brand ghost" onClick={() => setTab('home')} aria-label="NikPeg home"><span className="brand-mark">N</span><span className="brand-text">NikPeg</span></button>
+    <button className="brand ghost" onClick={() => go('home')} aria-label={`${t.brandName} home`}><span className="brand-mark">N</span><span className="brand-text">{t.brandName}</span></button>
     <nav className="nav" aria-label="Main navigation">
-      {nav.map(([id, label]) => <button key={id} className={tab === id ? 'active' : ''} onClick={() => setTab(id)}>{label}</button>)}
+      {nav.map(([id, label]) => <button key={id} className={tab === id ? 'active' : ''} onClick={() => go(id)}>{label}</button>)}
     </nav>
     <div className="controls"><button className="pill" onClick={() => setLang(lang === 'en' ? 'ru' : 'en')}>{lang === 'en' ? 'RU' : 'EN'}</button><button className="pill icon-pill" onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}>{theme === 'dark' ? '☾' : '☀'}</button></div>
   </header>;
@@ -28,9 +36,9 @@ function Hero({ t }) {
       </div>
     </div>
     <aside className="hero-card" aria-label="Identity card">
-      <div className="portrait-wrap"><img src="/assets/nikpeg-portrait.jpg" alt="Portrait of NikPeg" className="portrait" /></div>
+      <div className="portrait-wrap"><img src="/assets/nikpeg-portrait.jpg" alt={t.portraitAlt} className="portrait" /></div>
       <div className="status-line"><span>{t.identityLabel}</span><strong>{t.identityValue}</strong></div>
-      <div className="metric-grid system-metrics"><div><b>94</b><span>{t.metricRepos}</span></div><div><b>6</b><span>{t.metricChannels}</span></div><div><b>∞</b><span>{t.metricIdeas}</span></div></div>
+      <div className="metric-grid system-metrics"><div><b>94</b><span>{t.metricRepos}</span></div><div><b>99.95%</b><span>SLA</span></div><div><b>∞</b><span>SLO</span></div><div><b>p95</b><span>{t.metricCuriosity}</span></div></div>
     </aside>
   </section>;
 }
@@ -39,27 +47,54 @@ function PageHeading({ eyebrow, title, lead }) {
   return <div className="section-heading page-heading"><p className="eyebrow">{eyebrow}</p><h2>{title}</h2>{lead && <p className="lead">{lead}</p>}</div>;
 }
 
-function Feed({ t, data, embedded = false }) {
+function ImageCarousel({ images = [], title }) {
+  const [index, setIndex] = useState(0);
+  if (!images.length) return null;
+  const image = images[index];
+  return <div className="carousel">
+    <img src={image.src} alt={image.alt || title} />
+    {images.length > 1 && <div className="carousel-controls"><button onClick={() => setIndex((index - 1 + images.length) % images.length)}>←</button><span>{index + 1}/{images.length}</span><button onClick={() => setIndex((index + 1) % images.length)}>→</button></div>}
+  </div>;
+}
+
+function OpenCard({ item, children, onOpen, className = 'card' }) {
+  return <button className={`${className} open-card`} onClick={() => onOpen(item)}>{children}</button>;
+}
+
+function DetailModal({ item, onClose, t }) {
+  if (!item) return null;
+  return <div className="modal-backdrop" role="presentation" onClick={onClose}>
+    <article className="modal-card" role="dialog" aria-modal="true" aria-label={item.title} onClick={(event) => event.stopPropagation()}>
+      <button className="modal-close" onClick={onClose} aria-label={t.close}>×</button>
+      <span className="tag">{item.tag || item.type || t.note}</span>
+      <h2>{item.title}</h2>
+      <ImageCarousel images={item.images} title={item.title} />
+      <p>{item.fullText || item.text || item.description}</p>
+    </article>
+  </div>;
+}
+
+function Feed({ t, data, embedded = false, onOpen }) {
   return <section className={`section reveal visible ${embedded ? '' : 'page-hero'}`}>
     <div className="section-heading feed-heading"><p className="eyebrow">{t.feedEyebrow}</p>{!embedded && <><h2>{t.feedTitle}</h2><p className="lead">{t.feedLead}</p></>}</div>
-    <div className="post-feed">{data.posts.map(post => <article className="card post-card" key={post.id}><span className="tag">{t[post.status] ?? post.status} · {post.tag}</span><h3>{post.title}</h3><p>{post.text}</p></article>)}</div>
+    <div className="post-feed">{data.posts.map(post => <OpenCard className="card post-card" item={post} key={post.id} onOpen={onOpen}><span className="tag">{t[post.status] ?? post.status} · {post.tag}</span><h3>{post.title}</h3><p>{post.text}</p>{post.images?.length > 0 && <span className="media-count">{post.images.length} {t.images}</span>}</OpenCard>)}</div>
   </section>;
 }
 
-function Ideas({ t, data }) {
+function Ideas({ t, data, onOpen }) {
   const [sort, setSort] = useState('created');
   const sortedIdeas = useMemo(() => [...data.ideas].sort((a, b) => b[sort] - a[sort]), [data.ideas, sort]);
   return <section className="section page-hero reveal visible">
     <PageHeading eyebrow={t.ideasEyebrow} title={t.ideasTitle} lead={t.ideasLead} />
     <div className="toolbar"><span>{t.sortBy}</span><button className={sort === 'created' ? 'active' : ''} onClick={() => setSort('created')}>{t.recent}</button><button className={sort === 'upvotes' ? 'active' : ''} onClick={() => setSort('upvotes')}>{t.upvotes}</button></div>
-    <div className="cards three">{sortedIdeas.map(idea => <article className="card project-card" key={idea.id}><span className="tag">{idea.tag}</span><h3>{idea.title}</h3><p>{idea.text}</p></article>)}</div>
+    <div className="cards three">{sortedIdeas.map(idea => <OpenCard className="card project-card" item={idea} key={idea.id} onOpen={onOpen}><span className="tag">{idea.tag}</span><h3>{idea.title}</h3><p>{idea.text}</p></OpenCard>)}</div>
   </section>;
 }
 
-function Thoughts({ t, data }) {
+function Thoughts({ t, data, onOpen }) {
   return <section className="section page-hero reveal visible">
     <PageHeading eyebrow={t.thoughtsEyebrow} title={t.thoughtsTitle} lead={t.thoughtsLead} />
-    <div className="cards three">{data.thoughts.map(thought => <article className="card" key={thought.id}><span className="tag">{t.draft}</span><h3>{thought.title}</h3><p>{thought.text}</p></article>)}</div>
+    <div className="cards three">{data.thoughts.map(thought => <OpenCard className="card" item={thought} key={thought.id} onOpen={onOpen}><span className="tag">{t.draft}</span><h3>{thought.title}</h3><p>{thought.text}</p></OpenCard>)}</div>
   </section>;
 }
 
@@ -70,10 +105,20 @@ function Channels({ t, data }) {
   </section>;
 }
 
-function Projects({ t }) {
+function Projects({ t, data, go }) {
   return <section className="section page-hero reveal visible" id="projects">
     <PageHeading eyebrow={t.projectsEyebrow} title={t.projectsTitle} lead={t.projectsLead} />
-    <div className="cards three"><article className="card project-card"><span className="tag">AI · learning</span><h3>Edu</h3><p>{t.eduText}</p><a>{t.comingSoon}</a></article><article className="card project-card"><span className="tag">writing · feedback</span><h3>Scribo</h3><p>{t.scriboText}</p><a>{t.comingSoon}</a></article><article className="card project-card"><span className="tag">bots · slides</span><h3>Slidebot</h3><p>{t.slidebotText}</p><a>{t.comingSoon}</a></article></div>
+    <div className="cards three">{data.projects.map(project => <button className="card project-card open-card" key={project.id} onClick={() => go(`project:${project.slug}`)}><span className="tag">{project.tag}</span><h3>{project.title}</h3><p>{project.text}</p><strong>{t.openLanding}</strong></button>)}</div>
+  </section>;
+}
+
+function ProjectLanding({ t, data, slug, go }) {
+  const project = data.projects.find((item) => item.slug === slug) || data.projects[0];
+  return <section className="section page-hero reveal visible landing-page">
+    <p className="eyebrow">{project.tag}</p>
+    <h2>{project.title}</h2>
+    <p className="lead">{project.landingLead}</p>
+    <div className="glass-panel landing-panel"><p>{project.landingText}</p><div className="hero-actions"><button className="btn primary" onClick={() => go('projects')}>{t.backToProjects}</button><a className="btn secondary" href="https://t.me/nikpeg" target="_blank" rel="noreferrer">Telegram</a></div></div>
   </section>;
 }
 
@@ -85,29 +130,38 @@ function Photos({ t }) {
 }
 
 export default function App() {
-  const [tab, setTab] = useState('home');
+  const [tab, setTab] = useState(() => pathToTab(window.location.pathname));
+  const [selected, setSelected] = useState(null);
   const [theme, setThemeState] = useState(localStorage.getItem('theme') || 'dark');
   const [lang, setLangState] = useState(localStorage.getItem('lang') || 'en');
   const t = dictionary[lang];
   const data = content[lang];
 
+  function go(nextTab) {
+    setTab(nextTab);
+    setSelected(null);
+    const path = nextTab.startsWith('project:') ? `/${nextTab.split(':')[1]}` : nextTab === 'home' ? '/' : `/${nextTab}`;
+    window.history.pushState({}, '', path);
+  }
   function setTheme(value) { setThemeState(value); localStorage.setItem('theme', value); document.documentElement.dataset.theme = value; }
-  function setLang(value) { setLangState(value); localStorage.setItem('lang', value); document.documentElement.lang = value; document.title = value === 'en' ? 'Who is NikPeg?' : 'Кто такой NikPeg?'; }
+  function setLang(value) { setLangState(value); localStorage.setItem('lang', value); document.documentElement.lang = value; document.title = value === 'en' ? 'Who is NikPeg?' : 'Кто такой НикПег?'; }
   document.documentElement.dataset.theme = theme;
   document.documentElement.lang = lang;
 
   return <>
     <div className="aurora" aria-hidden="true"></div><div className="grain" aria-hidden="true"></div>
-    <Header tab={tab} setTab={setTab} lang={lang} setLang={setLang} theme={theme} setTheme={setTheme} t={t} />
+    <Header tab={tab} go={go} lang={lang} setLang={setLang} theme={theme} setTheme={setTheme} t={t} />
     <main>
-      {tab === 'home' && <><Hero t={t} /><Feed t={t} data={data} embedded /><Projects t={t} /></>}
-      {tab === 'feed' && <Feed t={t} data={data} />}
+      {tab === 'home' && <><Hero t={t} /><Feed t={t} data={data} embedded onOpen={setSelected} /><Projects t={t} data={data} go={go} /></>}
+      {tab === 'feed' && <Feed t={t} data={data} onOpen={setSelected} />}
       {tab === 'channels' && <Channels t={t} data={data} />}
-      {tab === 'ideas' && <Ideas t={t} data={data} />}
-      {tab === 'thoughts' && <Thoughts t={t} data={data} />}
-      {tab === 'projects' && <Projects t={t} />}
+      {tab === 'ideas' && <Ideas t={t} data={data} onOpen={setSelected} />}
+      {tab === 'thoughts' && <Thoughts t={t} data={data} onOpen={setSelected} />}
+      {tab === 'projects' && <Projects t={t} data={data} go={go} />}
       {tab === 'photos' && <Photos t={t} />}
+      {tab.startsWith('project:') && <ProjectLanding t={t} data={data} slug={tab.split(':')[1]} go={go} />}
     </main>
+    <DetailModal item={selected} onClose={() => setSelected(null)} t={t} />
     <footer className="footer"><span>{t.footerText}</span><a href="https://github.com/NikPeg/personal-hub" target="_blank" rel="noreferrer">GitHub</a></footer>
   </>;
 }
