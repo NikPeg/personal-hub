@@ -245,6 +245,6 @@ export default function App() {
       {tab.startsWith('project:') && <ProjectLanding t={t} data={data} slug={tab.split(':')[1]} go={go} />}
     </main>
     <DetailModal item={selected} onClose={() => setSelected(null)} t={t} />
-    <footer className="footer"><span>{t.footerText}</span><a href="https://github.com/NikPeg/personal-hub" target="_blank" rel="noreferrer">GitHub</a></footer>
+    <footer className="footer"><span>{t.footerText}</span><nav className="footer-links" aria-label={t.footerLinksLabel}><a href="https://t.me/nikpeg" target="_blank" rel="noreferrer">Telegram</a><a href="https://www.linkedin.com/in/nikpeg/" target="_blank" rel="noreferrer">LinkedIn</a><a href="https://github.com/NikPeg" target="_blank" rel="noreferrer">GitHub</a></nav></footer>
   </>;
 }

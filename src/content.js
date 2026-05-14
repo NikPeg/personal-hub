@@ -28,12 +28,12 @@ export const content = {
       { id: 'gentle-system', title: 'A gentle personal system', text: 'A productivity system should feel like a good room: clear, warm, and hard to avoid.', fullText: 'The best personal systems are not punishment machines. They make the next good action visible, almost inviting.' }
     ],
     channels: [
-      { id: 'juplane-telegram', type: 'Telegram', title: 'juplane', url: 'https://t.me/juplane', description: 'Trash channel, shitposting, memes, videos, and strangely deep lore.' },
-      { id: 'jupiter-plane-vk', type: 'VK', title: 'Jupiter Plane', url: 'https://vk.com/jupiter_plane', description: 'The VK version: best memes, selected posts, and VK Clips from the Jupiter Plane universe.' },
       { id: 'meme-swaga', type: 'Telegram', title: 'meme swaga', url: 'https://t.me/meme_swaga', description: 'Light, brightness, love of life, and aesthetic memes — a small feed for mood and sparkle.' },
-      { id: 'github', type: 'GitHub', title: 'NikPeg', url: 'https://github.com/NikPeg', description: 'Code, repositories, prototypes, and the technical trail behind projects.' },
       { id: 'linkedin', type: 'LinkedIn', title: 'NikPeg', url: 'https://www.linkedin.com/in/nikpeg/', description: 'Professional profile: work context, public credentials, and career history.' },
-      { id: 'vk-personal', type: 'VK', title: 'NikPeg', url: 'https://vk.com/nikpeg', description: 'Personal VK page and another stable place to find NikPeg online.' }
+      { id: 'github', type: 'GitHub', title: 'NikPeg', url: 'https://github.com/NikPeg', description: 'Code, repositories, prototypes, and the technical trail behind projects.' },
+      { id: 'vk-personal', type: 'VK', title: 'NikPeg', url: 'https://vk.com/nikpeg', description: 'Personal VK page and another stable place to find NikPeg online.' },
+      { id: 'juplane-telegram', type: 'Telegram', title: 'juplane', url: 'https://t.me/juplane', description: 'Trash channel, shitposting, memes, videos, and strangely deep lore.' },
+      { id: 'jupiter-plane-vk', type: 'VK', title: 'Jupiter Plane', url: 'https://vk.com/jupiter_plane', description: 'The VK version: best memes, selected posts, and VK Clips from the Jupiter Plane universe.' }
     ],
     projects: [
       { id: 'edu', slug: 'edu', tag: 'AI · learning', title: 'Edu', text: 'Education tools, payments, referrals, and useful automation for learning.', landingLead: 'Learning products deserve infrastructure that feels simple on the outside and powerful underneath.', landingText: 'Edu is a future landing for education tools: payments, referrals, learning automation, and experiments around making courses easier to run and easier to buy.' },
@@ -70,12 +70,12 @@ export const content = {
       { id: 'gentle-system', title: 'Мягкая личная система', text: 'Система продуктивности должна ощущаться как хорошая комната: ясно, тепло и сложно игнорировать.', fullText: 'Лучшие личные системы не наказывают. Они делают следующий хороший шаг видимым и почти естественным.' }
     ],
     channels: [
-      { id: 'juplane-telegram', type: 'Telegram', title: 'ЮС', url: 'https://t.me/juplane', description: 'Трэш-канал, щитпост, мемы, видео и внезапно глубокий лор.' },
-      { id: 'jupiter-plane-vk', type: 'VK', title: 'Юпитерский Самолёт', url: 'https://vk.com/jupiter_plane', description: 'VK-версия: лучшие мемы, отобранные посты и ВК Клипы из вселенной Юпитерского Самолёта.' },
       { id: 'meme-swaga', type: 'Telegram', title: 'meme swaga', url: 'https://t.me/meme_swaga', description: 'Свет, яркость, любовь к жизни и эстетишные мемы — маленькая лента для настроения.' },
-      { id: 'github', type: 'GitHub', title: 'НикПег', url: 'https://github.com/NikPeg', description: 'Код, репозитории, прототипы и технический след проектов.' },
       { id: 'linkedin', type: 'LinkedIn', title: 'НикПег', url: 'https://www.linkedin.com/in/nikpeg/', description: 'Профессиональный профиль: опыт, рабочий контекст и карьерная история.' },
-      { id: 'vk-personal', type: 'VK', title: 'НикПег', url: 'https://vk.com/nikpeg', description: 'Личная страница VK и ещё одно место, где можно найти НикПега.' }
+      { id: 'github', type: 'GitHub', title: 'НикПег', url: 'https://github.com/NikPeg', description: 'Код, репозитории, прототипы и технический след проектов.' },
+      { id: 'vk-personal', type: 'VK', title: 'НикПег', url: 'https://vk.com/nikpeg', description: 'Личная страница VK и ещё одно место, где можно найти НикПега.' },
+      { id: 'juplane-telegram', type: 'Telegram', title: 'ЮС', url: 'https://t.me/juplane', description: 'Трэш-канал, щитпост, мемы, видео и внезапно глубокий лор.' },
+      { id: 'jupiter-plane-vk', type: 'VK', title: 'Юпитерский Самолёт', url: 'https://vk.com/jupiter_plane', description: 'VK-версия: лучшие мемы, отобранные посты и ВК Клипы из вселенной Юпитерского Самолёта.' }
     ],
     projects: [
       { id: 'edu', slug: 'edu', tag: 'AI · обучение', title: 'Edu', text: 'Образовательные инструменты, оплаты, рефералки и полезная автоматизация обучения.', landingLead: 'Образовательным продуктам нужна инфраструктура, которая снаружи кажется простой, а внутри держит сложность.', landingText: 'Edu — будущий лендинг для образовательных инструментов: оплаты, рефералки, автоматизация обучения и эксперименты вокруг того, как сделать курсы проще в управлении и покупке.' },

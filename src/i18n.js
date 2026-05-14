@@ -17,7 +17,7 @@ export const dictionary = {
     projectsEyebrow: 'Projects', projectsTitle: 'Project landings', projectsLead: 'Each project is shaped as a small landing page: focused, visual, and clear about the value it wants to sell.',
     photosEyebrow: 'Photos', photosTitle: 'Photos', photosLead: 'A future room for portraits, places, work-in-progress moments, and visual notes. Nothing here yet — but the shelf is ready.',
     recent: 'recent', upvotes: 'upvotes', draft: 'draft', seed: 'seed', sortBy: 'Sort by', allTags: 'All', filterByTag: 'Filter by tag', loading: 'Loading thoughts…', loadingQuotes: 'Loading quotes…', showMore: 'Show more', open: 'Open →', openLanding: 'Open landing →', backToProjects: 'Back to projects', images: 'images', copy: 'Copy to clipboard', close: 'Close', note: 'note', nextChannels: 'Go to channels', nextProjects: 'Go to projects', nextIdeas: 'Go to ideas', nextThoughts: 'Go to thoughts', nextQuotes: 'Go to quotes', nextPhotos: 'Go to photos', nextHome: 'Back to home',
-    footerText: 'Personal hub of NikPeg.'
+    footerText: 'Personal hub of NikPeg.', footerLinksLabel: 'NikPeg links'
   },
   ru: {
     brandName: 'НикПег', navHome: 'Главная', navFeed: 'Лента', navChannels: 'Каналы', navIdeas: 'Идеи', navThoughts: 'Мысли', navQuotes: 'Цитаты', navProjects: 'Проекты', navPhotos: 'Фото',
@@ -37,6 +37,6 @@ export const dictionary = {
     projectsEyebrow: 'Проекты', projectsTitle: 'Лендинги проектов', projectsLead: 'Каждый проект — отдельная страница: с понятной подачей, своим стилем и акцентом на ценность.',
     photosEyebrow: 'Фото', photosTitle: 'Фотографии', photosLead: 'Здесь будут портреты, места, рабочие моменты и визуальные заметки. Пока пусто, но место уже готово.',
     recent: 'новизне', upvotes: 'апвоутам', draft: 'черновик', seed: 'зерно', sortBy: 'Сортировать по', allTags: 'Все', filterByTag: 'Тег', loading: 'Загружаю мысли…', loadingQuotes: 'Загружаю цитаты…', showMore: 'Показать ещё', open: 'Открыть →', openLanding: 'Открыть лендинг →', backToProjects: 'Назад к проектам', images: 'изображения', copy: 'Скопировать в буфер обмена', close: 'Закрыть', note: 'заметка', nextChannels: 'Перейти к каналам', nextProjects: 'Перейти к проектам', nextIdeas: 'Перейти к идеям', nextThoughts: 'Перейти к мыслям', nextQuotes: 'Перейти к цитатам', nextPhotos: 'Перейти к фото', nextHome: 'Вернуться на главную',
-    footerText: 'Личный хаб НикПега.'
+    footerText: 'Личный хаб НикПега.', footerLinksLabel: 'Ссылки НикПега'
   }
 };
