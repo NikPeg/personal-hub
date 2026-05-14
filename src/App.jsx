@@ -25,7 +25,7 @@ function Header({ tab, go, lang, setLang, theme, setTheme, t }) {
   </header>;
 }
 
-function Hero({ t }) {
+function Hero({ t, lang }) {
   return <section className="hero section reveal visible">
     <div className="hero-copy">
       <p className="eyebrow">{t.eyebrow}</p>
@@ -174,7 +174,7 @@ export default function App() {
     <div className="aurora" aria-hidden="true"></div><div className="grain" aria-hidden="true"></div>
     <Header tab={tab} go={go} lang={lang} setLang={setLang} theme={theme} setTheme={setTheme} t={t} />
     <main>
-      {tab === 'home' && <><Hero t={t} /><Feed t={t} data={data} embedded onOpen={setSelected} /></>}
+      {tab === 'home' && <><Hero t={t} lang={lang} /><Feed t={t} data={data} embedded onOpen={setSelected} /></>}
       {tab === 'feed' && <Feed t={t} data={data} onOpen={setSelected} />}
       {tab === 'channels' && <Channels t={t} data={data} />}
       {tab === 'ideas' && <Ideas t={t} data={data} onOpen={setSelected} />}
