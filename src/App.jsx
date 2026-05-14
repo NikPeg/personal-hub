@@ -104,7 +104,7 @@ function Thoughts({ t, lang, onOpen }) {
     setLoading(true);
     setTag('all');
     setVisibleCount(36);
-    loadThoughts(lang).then((items) => { if (active) { setThoughts(items); setLoading(false); } });
+    loadThoughts(lang).then((items) => { if (active) { setThoughts(items); setLoading(false); } }).catch(() => { if (active) { setThoughts([]); setLoading(false); } });
     return () => { active = false; };
   }, [lang]);
   const tags = useMemo(() => Array.from(new Set(thoughts.flatMap((thought) => thought.tags || []))).sort(), [thoughts]);
@@ -154,10 +154,10 @@ function Photos({ t }) {
 export default function App() {
   const [tab, setTab] = useState(() => pathToTab(window.location.pathname));
   const [selected, setSelected] = useState(null);
-  const [theme, setThemeState] = useState(localStorage.getItem('theme') || 'dark');
-  const [lang, setLangState] = useState(localStorage.getItem('lang') || 'en');
-  const t = dictionary[lang];
-  const data = content[lang];
+  const [theme, setThemeState] = useState(() => localStorage.getItem('theme') === 'light' ? 'light' : 'dark');
+  const [lang, setLangState] = useState(() => localStorage.getItem('lang') === 'ru' ? 'ru' : 'en');
+  const t = dictionary[lang] || dictionary.en;
+  const data = content[lang] || content.en;
 
   function go(nextTab) {
     setTab(nextTab);
