@@ -190,10 +190,11 @@ function ProjectLanding({ t, data, slug, go }) {
   </section>;
 }
 
-function Photos({ t }) {
+function Photos({ t, go }) {
   return <section className="section page-hero reveal visible">
     <PageHeading eyebrow={t.photosEyebrow} title={t.photosTitle} lead={t.photosLead} />
     <div className="glass-panel empty-room"><span>◌</span></div>
+    <NextLink label={t.nextHome} onClick={() => go('home')} />
   </section>;
 }
 
@@ -228,7 +229,7 @@ export default function App() {
   return <>
     <div className="aurora" aria-hidden="true"></div><div className="grain" aria-hidden="true"></div>
     <Header tab={tab} go={go} lang={lang} setLang={setLang} theme={theme} setTheme={setTheme} t={t} />
-    <main>
+    <main className="page-shell" key={tab}>
       {tab === 'home' && <><Hero t={t} lang={lang} /><Feed t={t} data={data} embedded onOpen={setSelected} go={go} nextLabel={t.nextChannels} /></>}
       {tab === 'feed' && <Feed t={t} data={data} onOpen={setSelected} go={go} nextLabel={t.nextChannels} />}
       {tab === 'channels' && <Channels t={t} data={data} go={go} />}
@@ -236,7 +237,7 @@ export default function App() {
       {tab === 'thoughts' && <ArchivePage t={t} lang={lang} onOpen={setSelected} go={go} kind="thoughts" />}
       {tab === 'quotes' && <ArchivePage t={t} lang={lang} onOpen={setSelected} go={go} kind="quotes" />}
       {tab === 'projects' && <Projects t={t} data={data} go={go} />}
-      {tab === 'photos' && <Photos t={t} />}
+      {tab === 'photos' && <Photos t={t} go={go} />}
       {tab.startsWith('project:') && <ProjectLanding t={t} data={data} slug={tab.split(':')[1]} go={go} />}
     </main>
     <DetailModal item={selected} onClose={() => setSelected(null)} t={t} />
