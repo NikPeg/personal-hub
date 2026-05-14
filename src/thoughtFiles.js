@@ -1,5 +1,7 @@
-const ruModules = import.meta.glob('../content/thoughts/ru/*.md', { query: '?raw', import: 'default', eager: true });
-const enModules = import.meta.glob('../content/thoughts/en/*.md', { query: '?raw', import: 'default', eager: true });
+const loaders = {
+  ru: import.meta.glob('../content/thoughts/ru/*.md', { query: '?raw', import: 'default' }),
+  en: import.meta.glob('../content/thoughts/en/*.md', { query: '?raw', import: 'default' })
+};
 
 function parseValue(value) {
   return value.replace(/^['"]|['"]$/g, '').trim();
@@ -30,24 +32,13 @@ function parseThought(raw, path) {
   const titleMatch = body.match(/^#\s+(.+)$/m);
   const title = titleMatch ? titleMatch[1].trim() : meta.id;
   const text = body.replace(/^#\s+.+\n?/, '').trim();
-  return {
-    ...meta,
-    title,
-    text,
-    fullText: text,
-    tag: meta.tags?.[0] || 'thought',
-    path
-  };
+  return { ...meta, title, text, fullText: text, tag: meta.tags?.[0] || 'thought', path };
 }
 
-function load(modules) {
-  return Object.entries(modules)
-    .map(([path, raw]) => parseThought(raw, path))
-    .filter(Boolean)
-    .sort((a, b) => Number(a.sourceIndex) - Number(b.sourceIndex));
+export async function loadThoughts(lang) {
+  const modules = loaders[lang] || loaders.en;
+  const entries = await Promise.all(
+    Object.entries(modules).map(async ([path, load]) => parseThought(await load(), path))
+  );
+  return entries.filter(Boolean).sort((a, b) => Number(a.sourceIndex) - Number(b.sourceIndex));
 }
-
-export const thoughtFiles = {
-  ru: load(ruModules),
-  en: load(enModules)
-};

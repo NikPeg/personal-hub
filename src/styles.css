@@ -276,3 +276,6 @@ html[data-theme="dark"] .modal-card { background: linear-gradient(145deg, rgba(2
 @media (max-width: 430px) {
   .ru-title .rotating-words { font-size: .68em; }
 }
+
+.loading-panel { color: var(--muted); font-weight: 800; }
+.load-more-wrap { display: flex; justify-content: center; margin-top: 1.5rem; }

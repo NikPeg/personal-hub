@@ -1,7 +1,7 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { content } from './content.js';
 import { dictionary } from './i18n.js';
-import { thoughtFiles } from './thoughtFiles.js';
+import { loadThoughts } from './thoughtFiles.js';
 import './styles.css';
 
 const pathToTab = (pathname) => {
@@ -94,14 +94,29 @@ function Ideas({ t, data, onOpen }) {
   </section>;
 }
 
-function Thoughts({ t, thoughts, onOpen }) {
+function Thoughts({ t, lang, onOpen }) {
   const [tag, setTag] = useState('all');
+  const [visibleCount, setVisibleCount] = useState(36);
+  const [thoughts, setThoughts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  useEffect(() => {
+    let active = true;
+    setLoading(true);
+    setTag('all');
+    setVisibleCount(36);
+    loadThoughts(lang).then((items) => { if (active) { setThoughts(items); setLoading(false); } });
+    return () => { active = false; };
+  }, [lang]);
   const tags = useMemo(() => Array.from(new Set(thoughts.flatMap((thought) => thought.tags || []))).sort(), [thoughts]);
-  const visibleThoughts = tag === 'all' ? thoughts : thoughts.filter((thought) => thought.tags?.includes(tag));
+  const filteredThoughts = tag === 'all' ? thoughts : thoughts.filter((thought) => thought.tags?.includes(tag));
+  const visibleThoughts = filteredThoughts.slice(0, visibleCount);
   return <section className="section page-hero reveal visible">
     <PageHeading eyebrow={t.thoughtsEyebrow} title={t.thoughtsTitle} lead={t.thoughtsLead} />
-    <div className="toolbar tag-toolbar"><span>{t.filterByTag}</span><button className={tag === 'all' ? 'active' : ''} onClick={() => setTag('all')}>{t.allTags}</button>{tags.map((item) => <button key={item} className={tag === item ? 'active' : ''} onClick={() => setTag(item)}>{item}</button>)}</div>
-    <div className="cards three">{visibleThoughts.map(thought => <OpenCard className="card" item={thought} key={thought.id} onOpen={onOpen}><span className="tag">{thought.tags?.join(' · ') || t.draft}</span><h3>{thought.title}</h3><p>{thought.text}</p></OpenCard>)}</div>
+    {loading ? <div className="glass-panel loading-panel">{t.loading}</div> : <>
+      <div className="toolbar tag-toolbar"><span>{t.filterByTag}</span><button className={tag === 'all' ? 'active' : ''} onClick={() => { setTag('all'); setVisibleCount(36); }}>{t.allTags}</button>{tags.map((item) => <button key={item} className={tag === item ? 'active' : ''} onClick={() => { setTag(item); setVisibleCount(36); }}>{item}</button>)}</div>
+      <div className="cards three">{visibleThoughts.map(thought => <OpenCard className="card" item={thought} key={thought.id} onOpen={onOpen}><span className="tag">{thought.tags?.join(' · ') || t.draft}</span><h3>{thought.title}</h3><p>{thought.text}</p></OpenCard>)}</div>
+      {visibleCount < filteredThoughts.length && <div className="load-more-wrap"><button className="btn secondary" onClick={() => setVisibleCount((count) => count + 36)}>{t.showMore}</button></div>}
+    </>}
   </section>;
 }
 
@@ -143,7 +158,6 @@ export default function App() {
   const [lang, setLangState] = useState(localStorage.getItem('lang') || 'en');
   const t = dictionary[lang];
   const data = content[lang];
-  const thoughts = thoughtFiles[lang];
 
   function go(nextTab) {
     setTab(nextTab);
@@ -164,7 +178,7 @@ export default function App() {
       {tab === 'feed' && <Feed t={t} data={data} onOpen={setSelected} />}
       {tab === 'channels' && <Channels t={t} data={data} />}
       {tab === 'ideas' && <Ideas t={t} data={data} onOpen={setSelected} />}
-      {tab === 'thoughts' && <Thoughts t={t} thoughts={thoughts} onOpen={setSelected} />}
+      {tab === 'thoughts' && <Thoughts t={t} lang={lang} onOpen={setSelected} />}
       {tab === 'projects' && <Projects t={t} data={data} go={go} />}
       {tab === 'photos' && <Photos t={t} />}
       {tab.startsWith('project:') && <ProjectLanding t={t} data={data} slug={tab.split(':')[1]} go={go} />}
