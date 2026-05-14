@@ -5,12 +5,12 @@ import './styles.css';
 
 function Header({ tab, setTab, lang, setLang, theme, setTheme, t }) {
   const nav = [
-    ['home', t.navHome], ['feed', t.navFeed], ['ideas', t.navIdeas], ['thoughts', t.navThoughts], ['channels', t.navChannels], ['projects', t.navProjects]
+    ['home', t.navHome], ['feed', t.navFeed], ['channels', t.navChannels], ['ideas', t.navIdeas], ['thoughts', t.navThoughts], ['projects', t.navProjects]
   ];
   return <header className="site-header">
     <button className="brand ghost" onClick={() => setTab('home')} aria-label="NikPeg home"><span className="brand-mark">N</span><span className="brand-text">NikPeg</span></button>
     <nav className="nav" aria-label="Main navigation">
-      {nav.map(([id, label]) => <button key={id} className={tab === id ? 'active' : ''} onClick={() => id === 'projects' ? document.querySelector('#projects')?.scrollIntoView({ behavior: 'smooth' }) : setTab(id)}>{label}</button>)}
+      {nav.map(([id, label]) => <button key={id} className={tab === id ? 'active' : ''} onClick={() => setTab(id)}>{label}</button>)}
     </nav>
     <div className="controls"><button className="pill" onClick={() => setLang(lang === 'en' ? 'ru' : 'en')}>{lang === 'en' ? 'RU' : 'EN'}</button><button className="pill icon-pill" onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}>{theme === 'dark' ? '☾' : '☀'}</button></div>
   </header>;
@@ -24,7 +24,7 @@ function Hero({ t, setTab }) {
       <p className="lead">{t.heroLead}</p>
       <div className="hero-actions">
         <a className="btn primary" href="https://t.me/nikpeg" target="_blank" rel="noreferrer">Telegram</a>
-        <button className="btn secondary" onClick={() => setTab('feed')}>{t.navFeed}</button>
+        <a className="btn secondary" href="https://nikpeg.github.io/docs/CV.pdf" target="_blank" rel="noreferrer">CV</a>
       </div>
     </div>
     <aside className="hero-card" aria-label="Identity card">
@@ -43,12 +43,12 @@ function Feed({ t, embedded = false }) {
 }
 
 function Ideas({ t }) {
-  const [sort, setSort] = useState('score');
+  const [sort, setSort] = useState('created');
   const sortedIdeas = useMemo(() => [...ideas].sort((a, b) => b[sort] - a[sort]), [sort]);
   return <section className="section page-hero reveal visible">
     <div className="section-heading"><p className="eyebrow">{t.ideasEyebrow}</p><h1>{t.ideasTitle}</h1><p className="lead">{t.ideasLead}</p></div>
-    <div className="toolbar"><span>{t.sortBy}</span><button className={sort === 'score' ? 'active' : ''} onClick={() => setSort('score')}>{t.score}</button><button className={sort === 'upvotes' ? 'active' : ''} onClick={() => setSort('upvotes')}>{t.upvotes}</button></div>
-    <div className="cards three">{sortedIdeas.map(idea => <article className="card project-card" key={idea.id}><span className="tag">{idea.tag}</span><h3>{idea.title}</h3><p>{idea.text}</p><div className="idea-meta"><span>{t.score}: <b>{idea.score}</b></span><span>{t.upvotes}: <b>{idea.upvotes}</b></span></div></article>)}</div>
+    <div className="toolbar"><span>{t.sortBy}</span><button className={sort === 'created' ? 'active' : ''} onClick={() => setSort('created')}>{t.recent}</button><button className={sort === 'upvotes' ? 'active' : ''} onClick={() => setSort('upvotes')}>{t.upvotes}</button></div>
+    <div className="cards three">{sortedIdeas.map(idea => <article className="card project-card" key={idea.id}><span className="tag">{idea.tag}</span><h3>{idea.title}</h3><p>{idea.text}</p></article>)}</div>
   </section>;
 }
 
@@ -88,8 +88,9 @@ export default function App() {
       {tab === 'home' && <><Hero t={t} setTab={setTab} /><Feed t={t} embedded /><Projects t={t} /><section className="section lab reveal visible"><div className="glass-panel"><p className="eyebrow">Soon</p><h2>{t.photosSoon}</h2></div></section></>}
       {tab === 'feed' && <Feed t={t} />}
       {tab === 'ideas' && <Ideas t={t} />}
-      {tab === 'thoughts' && <Thoughts t={t} />}
       {tab === 'channels' && <Channels t={t} lang={lang} />}
+      {tab === 'thoughts' && <Thoughts t={t} />}
+      {tab === 'projects' && <><section className="section page-hero reveal visible"><div className="section-heading"><p className="eyebrow">{t.projectsEyebrow}</p><h1>{t.projectsTitle}</h1></div></section><Projects t={t} /></>}
     </main>
     <footer className="footer"><span>{t.footerText}</span><a href="https://github.com/NikPeg/personal-hub" target="_blank" rel="noreferrer">GitHub</a></footer>
   </>;

@@ -28,27 +28,24 @@ export const ideas = [
     tag: 'AI',
     title: 'Personal command center',
     text: 'A private system that turns goals, tasks, notes, and dashboards into one calm interface.',
-    score: 92,
-    upvotes: 18,
-    criteria: { usefulness: 9, feasibility: 7, delight: 8 }
+    created: 3,
+    upvotes: 0
   },
   {
     id: 'better-tiny-communities',
     tag: 'social',
     title: 'Better tiny communities',
     text: 'Tools for small groups where people actually know each other and do things together.',
-    score: 81,
-    upvotes: 11,
-    criteria: { usefulness: 8, feasibility: 6, delight: 9 }
+    created: 2,
+    upvotes: 0
   },
   {
     id: 'soft-selling-bots',
     tag: 'automation',
     title: 'Bots that sell gently',
     text: 'Automation for creators and channels that helps monetize without becoming gross.',
-    score: 76,
-    upvotes: 9,
-    criteria: { usefulness: 8, feasibility: 8, delight: 6 }
+    created: 1,
+    upvotes: 0
   }
 ];
 

@@ -1,13 +1,13 @@
 export const dictionary = {
   en: {
-    navHome: 'Home', navFeed: 'Feed', navThoughts: 'Thoughts', navIdeas: 'Ideas', navChannels: 'Channels', navProjects: 'Projects',
+    navHome: 'Home', navFeed: 'Feed', navChannels: 'Channels', navThoughts: 'Thoughts', navIdeas: 'Ideas', navProjects: 'Projects',
     eyebrow: 'personal page · feed · ideas · living notes',
     heroTitle: 'Who is NikPeg?',
     heroLead: 'A curious builder, systems thinker, and practical romantic: trying to do important work beautifully, understand the world, and turn ideas into useful tools.',
     identityLabel: 'System profile', identityValue: 'effective gentleman',
     metricRepos: 'repos', metricChannels: 'channels', metricIdeas: 'ideas',
-    feedEyebrow: 'Feed', feedTitle: 'Start reading.', feedLead: 'A feed of shaped thoughts, public notes, essays, project fragments, and observations worth sharing.',
-    ideasEyebrow: 'Startup ideas', ideasTitle: 'Seeds for future useful tools.', ideasLead: 'A garden of startup and product ideas. Later: upvotes, scoring, sorting, comparison tables, and criteria-based decisions.',
+    feedEyebrow: 'Feed', feedTitle: 'Notes, fragments, and things worth returning to.', feedLead: 'A quieter stream of public notes, essays, project fragments, and observations — take whatever is useful for your own work.',
+    ideasEyebrow: 'Startup ideas', ideasTitle: 'Ideas that may become useful tools.', ideasLead: 'Startup and product sketches, written openly. Feel free to borrow, remix, or use them in your own work if something clicks.',
     thoughtsEyebrow: 'Thoughts', thoughtsTitle: 'Raw notes from a living mind.', thoughtsLead: 'Thoughts are lighter than posts: observations, principles, fragments, and drafts that are not fully shaped yet.',
     channelsEyebrow: 'Channels', channelsTitle: 'Where NikPeg writes and ships signals.', channelsLead: 'Stable places to read, follow, inspect code, or understand the public surface of the work. More sources may appear later.',
     projectsEyebrow: 'Projects', projectsTitle: 'Pet projects and experiments will get their own landings here.',
@@ -16,18 +16,18 @@ export const dictionary = {
     slidebotText: 'Presentation automation and bot experiments with practical value.',
     comingSoon: 'Coming soon →',
     photosSoon: 'Photos may become their own room later.',
-    score: 'score', upvotes: 'upvotes', draft: 'draft', seed: 'seed', sortBy: 'Sort by', open: 'Open →',
+    recent: 'recent', upvotes: 'upvotes', draft: 'draft', seed: 'seed', sortBy: 'Sort by', open: 'Open →',
     footerText: 'Personal hub prototype for NikPeg.'
   },
   ru: {
-    navHome: 'Главная', navFeed: 'Лента', navThoughts: 'Мысли', navIdeas: 'Идеи', navChannels: 'Каналы', navProjects: 'Проекты',
+    navHome: 'Главная', navFeed: 'Лента', navChannels: 'Каналы', navThoughts: 'Мысли', navIdeas: 'Идеи', navProjects: 'Проекты',
     eyebrow: 'личная страница · лента · идеи · живые заметки',
     heroTitle: 'Кто такой NikPeg?',
     heroLead: 'Любопытный создатель, системный мыслитель и практичный романтик: старается красиво делать важное, понимать мир и превращать идеи в полезные инструменты.',
     identityLabel: 'Профиль системы', identityValue: 'эффективный джентльмен',
     metricRepos: 'репозиториев', metricChannels: 'каналов', metricIdeas: 'идей',
-    feedEyebrow: 'Лента', feedTitle: 'Начните читать.', feedLead: 'Лента оформленных мыслей и публичных заметок: идеи, эссе, фрагменты проектов и наблюдения, которыми хочется делиться.',
-    ideasEyebrow: 'Стартап-идеи', ideasTitle: 'Семена будущих полезных инструментов.', ideasLead: 'Сад стартапных и продуктовых идей. Позже: апвоуты, оценки, сортировка, таблицы сравнения и решения по критериям.',
+    feedEyebrow: 'Лента', feedTitle: 'Заметки, фрагменты и вещи, к которым хочется вернуться.', feedLead: 'Спокойный поток публичных заметок, эссе, фрагментов проектов и наблюдений. Если что-то окажется полезным — свободно забирайте в свою работу.',
+    ideasEyebrow: 'Стартап-идеи', ideasTitle: 'Идеи, из которых могут вырасти полезные инструменты.', ideasLead: 'Наброски стартапов и продуктов в открытом виде. Если что-то откликается — свободно забирайте, переосмысляйте и используйте в своей работе.',
     thoughtsEyebrow: 'Мысли', thoughtsTitle: 'Сырые заметки живого ума.', thoughtsLead: 'Мысли легче постов: наблюдения, принципы, фрагменты и черновики, которые ещё недостаточно оформлены.',
     channelsEyebrow: 'Каналы', channelsTitle: 'Где NikPeg пишет и оставляет сигналы.', channelsLead: 'Стабильные места, где можно читать, следить, смотреть код или понять публичную поверхность работы. Позже источников может стать больше.',
     projectsEyebrow: 'Проекты', projectsTitle: 'Пет‑проекты и эксперименты получат здесь отдельные лендинги.',
@@ -36,7 +36,7 @@ export const dictionary = {
     slidebotText: 'Автоматизация презентаций и ботовые эксперименты с практической пользой.',
     comingSoon: 'Скоро →',
     photosSoon: 'Фотографии позже могут стать отдельной комнатой.',
-    score: 'оценка', upvotes: 'апвоуты', draft: 'черновик', seed: 'зерно', sortBy: 'Сортировать по', open: 'Открыть →',
+    recent: 'новизне', upvotes: 'апвоутам', draft: 'черновик', seed: 'зерно', sortBy: 'Сортировать по', open: 'Открыть →',
     footerText: 'Прототип личного хаба NikPeg.'
   }
 };
