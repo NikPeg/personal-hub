@@ -1,20 +1,20 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { content } from './content.js';
 import { dictionary } from './i18n.js';
-import { loadThoughts } from './thoughtFiles.js';
+import { loadArchive } from './archiveFiles.js';
 import './styles.css';
 
 const pathToTab = (pathname) => {
   const slug = pathname.replace(/^\//, '').replace(/\/$/, '');
   if (!slug || slug === 'index.html') return 'home';
-  if (['feed', 'channels', 'ideas', 'thoughts', 'projects', 'photos'].includes(slug)) return slug;
+  if (['feed', 'channels', 'ideas', 'thoughts', 'quotes', 'projects', 'photos'].includes(slug)) return slug;
   if (['edu', 'scribo', 'slidebot'].includes(slug)) return `project:${slug}`;
   return 'home';
 };
 
 function Header({ tab, go, lang, setLang, theme, setTheme, t }) {
   const nav = [
-    ['home', t.navHome], ['feed', t.navFeed], ['channels', t.navChannels], ['ideas', t.navIdeas], ['thoughts', t.navThoughts], ['projects', t.navProjects], ['photos', t.navPhotos]
+    ['home', t.navHome], ['feed', t.navFeed], ['channels', t.navChannels], ['ideas', t.navIdeas], ['thoughts', t.navThoughts], ['quotes', t.navQuotes], ['projects', t.navProjects], ['photos', t.navPhotos]
   ];
   return <header className="site-header">
     <button className="brand ghost" onClick={() => go('home')} aria-label={`${t.brandName} home`}><img className="brand-logo" src="/logo.svg" alt="" /><span className="brand-text">{t.brandName}</span></button>
@@ -65,7 +65,9 @@ function OpenCard({ item, children, onOpen, className = 'card' }) {
 function DetailModal({ item, onClose, t }) {
   const [copied, setCopied] = useState(false);
   if (!item) return null;
-  const copyText = [item.title, item.date, item.fullText || item.text || item.description, 'by NikPeg'].filter(Boolean).join('\n\n');
+  const body = item.fullText || item.text || item.description;
+  const credit = item.credit || (item.date ? `${item.date} by NikPeg` : 'by NikPeg');
+  const copyText = [item.title, body, credit].filter(Boolean).join('\n\n');
   async function copyToClipboard() {
     try {
       if (navigator.clipboard?.writeText) {
@@ -116,11 +118,11 @@ function Ideas({ t, data, onOpen }) {
   </section>;
 }
 
-function Thoughts({ t, lang, onOpen }) {
+function ArchivePage({ t, lang, onOpen, kind = 'thoughts' }) {
   const pageSize = 35;
   const [tag, setTag] = useState('all');
   const [visibleCount, setVisibleCount] = useState(pageSize);
-  const [thoughts, setThoughts] = useState([]);
+  const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
   const sentinelRef = useRef(null);
   useEffect(() => {
@@ -128,27 +130,27 @@ function Thoughts({ t, lang, onOpen }) {
     setLoading(true);
     setTag('all');
     setVisibleCount(pageSize);
-    loadThoughts(lang).then((items) => { if (active) { setThoughts(items); setLoading(false); } }).catch(() => { if (active) { setThoughts([]); setLoading(false); } });
+    loadArchive(kind, lang).then((loadedItems) => { if (active) { setItems(loadedItems); setLoading(false); } }).catch(() => { if (active) { setItems([]); setLoading(false); } });
     return () => { active = false; };
-  }, [lang]);
-  const tags = useMemo(() => Array.from(new Set(thoughts.flatMap((thought) => thought.tags || []))).sort(), [thoughts]);
-  const filteredThoughts = tag === 'all' ? thoughts : thoughts.filter((thought) => thought.tags?.includes(tag));
-  const sortedThoughts = useMemo(() => [...filteredThoughts].sort((a, b) => String(b.date || '').localeCompare(String(a.date || '')) || Number(b.sourceIndex || 0) - Number(a.sourceIndex || 0)), [filteredThoughts]);
-  const visibleThoughts = sortedThoughts.slice(0, visibleCount);
+  }, [kind, lang]);
+  const tags = useMemo(() => Array.from(new Set(items.flatMap((item) => item.tags || []))).sort(), [items]);
+  const filteredItems = tag === 'all' ? items : items.filter((item) => item.tags?.includes(tag));
+  const sortedItems = useMemo(() => [...filteredItems].sort((a, b) => String(b.date || '').localeCompare(String(a.date || '')) || Number(b.sourceIndex || 0) - Number(a.sourceIndex || 0)), [filteredItems]);
+  const visibleItems = sortedItems.slice(0, visibleCount);
   useEffect(() => {
-    if (loading || visibleCount >= sortedThoughts.length) return undefined;
+    if (loading || visibleCount >= sortedItems.length) return undefined;
     const observer = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting) setVisibleCount((count) => Math.min(count + pageSize, sortedThoughts.length));
+      if (entry.isIntersecting) setVisibleCount((count) => Math.min(count + pageSize, sortedItems.length));
     }, { rootMargin: '320px 0px' });
     const node = sentinelRef.current;
     if (node) observer.observe(node);
     return () => observer.disconnect();
-  }, [loading, visibleCount, sortedThoughts.length]);
+  }, [loading, visibleCount, sortedItems.length]);
   return <section className="section page-hero reveal visible">
-    <PageHeading eyebrow={t.thoughtsEyebrow} title={t.thoughtsTitle} lead={t.thoughtsLead} />
-    {loading ? <div className="glass-panel loading-panel">{t.loading}</div> : <>
+    <PageHeading eyebrow={kind === 'quotes' ? t.quotesEyebrow : t.thoughtsEyebrow} title={kind === 'quotes' ? t.quotesTitle : t.thoughtsTitle} lead={kind === 'quotes' ? t.quotesLead : t.thoughtsLead} />
+    {loading ? <div className="glass-panel loading-panel">{kind === 'quotes' ? t.loadingQuotes : t.loading}</div> : <>
       <div className="toolbar tag-toolbar"><span>{t.filterByTag}</span><button className={tag === 'all' ? 'active' : ''} onClick={() => { setTag('all'); setVisibleCount(pageSize); }}>{t.allTags}</button>{tags.map((item) => <button key={item} className={tag === item ? 'active' : ''} onClick={() => { setTag(item); setVisibleCount(pageSize); }}>{item}</button>)}</div>
-      <div className="thought-list">{visibleThoughts.map(thought => <OpenCard className="card thought-row" item={thought} key={thought.id} onOpen={onOpen}><div className="thought-row-top"><span className="tag">{thought.tags?.join(' · ') || t.draft}</span>{thought.date && <time className="thought-date">{thought.date}</time>}</div><h3>{thought.title}</h3><p>{thought.text}</p></OpenCard>)}</div>
+      <div className="thought-list">{visibleItems.map(item => <OpenCard className="card thought-row" item={item} key={item.id} onOpen={onOpen}><div className="thought-row-top"><span className="tag">{item.tags?.join(' · ') || t.draft}</span>{item.date && <time className="thought-date">{item.date}</time>}</div><h3>{item.title}</h3><p>{item.text}</p></OpenCard>)}</div>
       <div ref={sentinelRef} className="scroll-sentinel" aria-hidden="true" />
     </>}
   </section>;
@@ -193,6 +195,15 @@ export default function App() {
   const t = dictionary[lang] || dictionary.en;
   const data = content[lang] || content.en;
 
+  useEffect(() => {
+    const handlePopState = () => {
+      setTab(pathToTab(window.location.pathname));
+      setSelected(null);
+    };
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, []);
+
   function go(nextTab) {
     setTab(nextTab);
     setSelected(null);
@@ -212,7 +223,8 @@ export default function App() {
       {tab === 'feed' && <Feed t={t} data={data} onOpen={setSelected} />}
       {tab === 'channels' && <Channels t={t} data={data} />}
       {tab === 'ideas' && <Ideas t={t} data={data} onOpen={setSelected} />}
-      {tab === 'thoughts' && <Thoughts t={t} lang={lang} onOpen={setSelected} />}
+      {tab === 'thoughts' && <ArchivePage t={t} lang={lang} onOpen={setSelected} kind="thoughts" />}
+      {tab === 'quotes' && <ArchivePage t={t} lang={lang} onOpen={setSelected} kind="quotes" />}
       {tab === 'projects' && <Projects t={t} data={data} go={go} />}
       {tab === 'photos' && <Photos t={t} />}
       {tab.startsWith('project:') && <ProjectLanding t={t} data={data} slug={tab.split(':')[1]} go={go} />}

@@ -1,6 +1,6 @@
 export const dictionary = {
   en: {
-    brandName: 'NikPeg', navHome: 'Home', navFeed: 'Feed', navChannels: 'Channels', navIdeas: 'Ideas', navThoughts: 'Thoughts', navProjects: 'Projects', navPhotos: 'Photos',
+    brandName: 'NikPeg', navHome: 'Home', navFeed: 'Feed', navChannels: 'Channels', navIdeas: 'Ideas', navThoughts: 'Thoughts', navQuotes: 'Quotes', navProjects: 'Projects', navPhotos: 'Photos',
     eyebrow: 'personal page · feed · ideas · living notes',
     heroPhrases: ['Who is', 'What moves', 'What writes', 'What builds', 'What thinks'],
     heroStaticName: 'NikPeg',
@@ -12,14 +12,15 @@ export const dictionary = {
     feedEyebrow: 'Feed', feedTitle: 'Notes, fragments, and things worth returning to.', feedLead: 'A quieter stream of public notes, essays, project fragments, and observations — take whatever is useful for your own work.',
     ideasEyebrow: 'Ideas', ideasTitle: 'Ideas that may become useful tools.', ideasLead: 'Open sketches for products and startups. If an idea is useful, feel free to borrow it, remix it, or build from it.',
     thoughtsEyebrow: 'Thoughts', thoughtsTitle: 'Raw notes from a living mind.', thoughtsLead: 'Loose observations, principles, fragments, and drafts — not polished enough for the feed, but worth keeping in view.',
+    quotesEyebrow: 'Quotes', quotesTitle: 'Quotes worth keeping.', quotesLead: 'Fragments from authors, thinkers, books, talks, and other minds — with tags for later return.',
     channelsEyebrow: 'Channels', channelsTitle: 'Places where NikPeg writes.', channelsLead: 'Telegram, VK, GitHub, LinkedIn, and other stable corners of the internet where projects, notes, code, and mood live.',
     projectsEyebrow: 'Projects', projectsTitle: 'Project landings', projectsLead: 'Each project is shaped as a small landing page: focused, visual, and clear about the value it wants to sell.',
     photosEyebrow: 'Photos', photosTitle: 'Photos', photosLead: 'A future room for portraits, places, work-in-progress moments, and visual notes. Nothing here yet — but the shelf is ready.',
-    recent: 'recent', upvotes: 'upvotes', draft: 'draft', seed: 'seed', sortBy: 'Sort by', allTags: 'All', filterByTag: 'Filter by tag', loading: 'Loading thoughts…', showMore: 'Show more', open: 'Open →', openLanding: 'Open landing →', backToProjects: 'Back to projects', images: 'images', copy: 'Copy to clipboard', close: 'Close', note: 'note',
+    recent: 'recent', upvotes: 'upvotes', draft: 'draft', seed: 'seed', sortBy: 'Sort by', allTags: 'All', filterByTag: 'Filter by tag', loading: 'Loading thoughts…', loadingQuotes: 'Loading quotes…', showMore: 'Show more', open: 'Open →', openLanding: 'Open landing →', backToProjects: 'Back to projects', images: 'images', copy: 'Copy to clipboard', close: 'Close', note: 'note',
     footerText: 'Personal hub of NikPeg.'
   },
   ru: {
-    brandName: 'НикПег', navHome: 'Главная', navFeed: 'Лента', navChannels: 'Каналы', navIdeas: 'Идеи', navThoughts: 'Мысли', navProjects: 'Проекты', navPhotos: 'Фото',
+    brandName: 'НикПег', navHome: 'Главная', navFeed: 'Лента', navChannels: 'Каналы', navIdeas: 'Идеи', navThoughts: 'Мысли', navQuotes: 'Цитаты', navProjects: 'Проекты', navPhotos: 'Фото',
     eyebrow: 'личная страница · лента · идеи · живые заметки',
     heroPhrases: ['Кто такой', 'О чём думает', 'О чём пишет', 'Что делает', 'Куда движется'],
     heroStaticName: 'НикПег',
@@ -31,10 +32,11 @@ export const dictionary = {
     feedEyebrow: 'Лента', feedTitle: 'Заметки, фрагменты и вещи, к которым хочется вернуться.', feedLead: 'Спокойный поток публичных заметок, эссе, фрагментов проектов и наблюдений. Если идея окажется полезной — используйте её в своей жизни, работе или проектах.',
     ideasEyebrow: 'Идеи', ideasTitle: 'Идеи, из которых могут вырасти полезные инструменты.', ideasLead: 'Открытые наброски продуктов и сервисов. Если идея пригодится — берите, переосмысливайте и используйте в своей жизни, работе или проектах.',
     thoughtsEyebrow: 'Мысли', thoughtsTitle: 'Сырые заметки живого ума.', thoughtsLead: 'Наблюдения, принципы, фрагменты и черновики — ещё не лента, но уже достаточно важно, чтобы не потерять.',
+    quotesEyebrow: 'Цитаты', quotesTitle: 'Цитаты, к которым хочется вернуться.', quotesLead: 'Фрагменты авторов, мыслителей, книг, выступлений и чужих умов — тоже с тегами, чтобы потом находить.',
     channelsEyebrow: 'Каналы', channelsTitle: 'Где пишет НикПег.', channelsLead: 'Telegram, VK, GitHub, LinkedIn и другие устойчивые точки в интернете: тексты, код, проекты и настроение.',
     projectsEyebrow: 'Проекты', projectsTitle: 'Лендинги проектов', projectsLead: 'Каждый проект — отдельная страница: с понятной подачей, своим стилем и акцентом на ценность.',
     photosEyebrow: 'Фото', photosTitle: 'Фотографии', photosLead: 'Здесь будут портреты, места, рабочие моменты и визуальные заметки. Пока пусто, но место уже готово.',
-    recent: 'новизне', upvotes: 'апвоутам', draft: 'черновик', seed: 'зерно', sortBy: 'Сортировать по', allTags: 'Все', filterByTag: 'Тег', loading: 'Загружаю мысли…', showMore: 'Показать ещё', open: 'Открыть →', openLanding: 'Открыть лендинг →', backToProjects: 'Назад к проектам', images: 'изображения', copy: 'Скопировать в буфер обмена', close: 'Закрыть', note: 'заметка',
+    recent: 'новизне', upvotes: 'апвоутам', draft: 'черновик', seed: 'зерно', sortBy: 'Сортировать по', allTags: 'Все', filterByTag: 'Тег', loading: 'Загружаю мысли…', loadingQuotes: 'Загружаю цитаты…', showMore: 'Показать ещё', open: 'Открыть →', openLanding: 'Открыть лендинг →', backToProjects: 'Назад к проектам', images: 'изображения', copy: 'Скопировать в буфер обмена', close: 'Закрыть', note: 'заметка',
     footerText: 'Личный хаб НикПега.'
   }
 };
