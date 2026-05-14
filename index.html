@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Cozy, smart personal website for NikPeg: channels, projects, dashboard, experiments." />
+  <title>NikPeg — Personal Hub</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="aurora" aria-hidden="true"></div>
+  <div class="grain" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="NikPeg home">
+      <span class="brand-mark">N</span>
+      <span class="brand-text">NikPeg</span>
+    </a>
+    <nav class="nav" aria-label="Main navigation">
+      <a href="#projects" data-i18n="navProjects">Projects</a>
+      <a href="#channels" data-i18n="navChannels">Channels</a>
+      <a href="#lab" data-i18n="navLab">Lab</a>
+    </nav>
+    <div class="controls">
+      <button class="pill" id="langToggle" type="button" aria-label="Switch language">RU</button>
+      <button class="pill icon-pill" id="themeToggle" type="button" aria-label="Switch theme">☾</button>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero section reveal">
+      <div class="hero-copy">
+        <p class="eyebrow" data-i18n="eyebrow">Personal operating room · cozy lab · idea garden</p>
+        <h1 data-i18n="heroTitle">A warm little hub for projects, thoughts, and useful experiments.</h1>
+        <p class="lead" data-i18n="heroLead">NikPeg’s place on the internet: smart enough for work, soft enough for life, and ready to grow into pet-project landings.</p>
+        <div class="hero-actions">
+          <a class="btn primary" href="#projects" data-i18n="seeProjects">See projects</a>
+          <a class="btn secondary" href="#channels" data-i18n="findMe">Find me</a>
+        </div>
+      </div>
+      <aside class="hero-card" aria-label="Status card">
+        <div class="orb"></div>
+        <div class="status-line"><span data-i18n="statusLabel">Status</span><strong data-i18n="statusValue">prototype alive</strong></div>
+        <div class="metric-grid">
+          <div><b>2</b><span data-i18n="metricThemes">themes</span></div>
+          <div><b>2</b><span data-i18n="metricLangs">languages</span></div>
+          <div><b>∞</b><span data-i18n="metricIdeas">ideas</span></div>
+        </div>
+      </aside>
+    </section>
+
+    <section class="section split reveal" id="channels">
+      <div>
+        <p class="eyebrow" data-i18n="channelsEyebrow">Channels</p>
+        <h2 data-i18n="channelsTitle">The fastest ways to reach NikPeg.</h2>
+      </div>
+      <div class="cards two">
+        <a class="card link-card" href="https://t.me/NikPeg" target="_blank" rel="noreferrer">
+          <span class="card-icon">✈</span>
+          <h3>Telegram</h3>
+          <p data-i18n="telegramText">Short updates, quick messages, occasional sparks.</p>
+        </a>
+        <a class="card link-card" href="https://vk.com/NikPeg" target="_blank" rel="noreferrer">
+          <span class="card-icon">VK</span>
+          <h3>VK</h3>
+          <p data-i18n="vkText">Social profile and public traces of projects.</p>
+        </a>
+      </div>
+    </section>
+
+    <section class="section reveal" id="projects">
+      <div class="section-heading">
+        <p class="eyebrow" data-i18n="projectsEyebrow">Pet projects</p>
+        <h2 data-i18n="projectsTitle">Landing pages can live here under one visual system.</h2>
+      </div>
+      <div class="cards three">
+        <article class="card project-card">
+          <span class="tag">AI · learning</span>
+          <h3>Edu</h3>
+          <p data-i18n="eduText">A future landing for education tooling, payments, referrals, and experiments.</p>
+          <a href="#" data-i18n="comingSoon">Coming soon →</a>
+        </article>
+        <article class="card project-card">
+          <span class="tag">feedback · writing</span>
+          <h3>Scribo</h3>
+          <p data-i18n="scriboText">A compact space for product story, feedback collection, and launch notes.</p>
+          <a href="#" data-i18n="comingSoon">Coming soon →</a>
+        </article>
+        <article class="card project-card">
+          <span class="tag">bots · automation</span>
+          <h3>Slidebot</h3>
+          <p data-i18n="slidebotText">A landing for presentation automation and useful bot experiments.</p>
+          <a href="#" data-i18n="comingSoon">Coming soon →</a>
+        </article>
+      </div>
+    </section>
+
+    <section class="section lab reveal" id="lab">
+      <div class="glass-panel">
+        <p class="eyebrow" data-i18n="labEyebrow">Life dashboard</p>
+        <h2 data-i18n="labTitle">A place for goals, resources, notes, and personal systems.</h2>
+        <p data-i18n="labText">Next iterations can connect the existing life dashboard, add project pages, and turn this into a personal command center.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <span data-i18n="footerText">Built as a first cozy-smart prototype.</span>
+    <a href="https://github.com/NikPeg/personal-hub" target="_blank" rel="noreferrer">GitHub</a>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
