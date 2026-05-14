@@ -2,44 +2,60 @@ const root = document.documentElement;
 
 const dictionary = {
   en: {
-    navProjects: 'Projects', navChannels: 'Channels', navLab: 'Lab',
-    eyebrow: 'Personal operating room · cozy lab · idea garden',
-    heroTitle: 'A warm little hub for projects, thoughts, and useful experiments.',
-    heroLead: 'NikPeg’s place on the internet: smart enough for work, soft enough for life, and ready to grow into pet-project landings.',
-    seeProjects: 'See projects', findMe: 'Find me',
-    statusLabel: 'Status', statusValue: 'prototype alive',
-    metricThemes: 'themes', metricLangs: 'languages', metricIdeas: 'ideas',
-    channelsEyebrow: 'Channels', channelsTitle: 'The fastest ways to reach NikPeg.',
-    telegramText: 'Short updates, quick messages, occasional sparks.',
-    vkText: 'Social profile and public traces of projects.',
-    projectsEyebrow: 'Pet projects', projectsTitle: 'Landing pages can live here under one visual system.',
-    eduText: 'A future landing for education tooling, payments, referrals, and experiments.',
-    scriboText: 'A compact space for product story, feedback collection, and launch notes.',
-    slidebotText: 'A landing for presentation automation and useful bot experiments.',
+    navHome: 'Who', navThoughts: 'Thoughts', navIdeas: 'Ideas', navProjects: 'Projects',
+    eyebrow: 'personal page · projects · living notes',
+    heroTitle: 'Who is NikPeg?',
+    heroLead: 'A curious builder, systems thinker, and practical romantic: trying to do important work beautifully, understand the world, and turn ideas into useful things.',
+    identityLabel: 'Identity', identityValue: 'effective gentleman',
+    metricCuriosity: 'curiosity', metricMission: 'mission', metricProjects: 'projects',
+    aboutEyebrow: 'About', aboutTitle: 'A person assembled from ambition, warmth, experiments, and unfinished tabs.',
+    missionTitle: 'Mission', missionText: 'To be an effective gentleman: doing personally important things with quality, dignity, independence, fairness, and love for people.',
+    methodTitle: 'Method', methodText: 'Think clearly, build small systems, notice trends, ship prototypes, and keep enough playfulness to stay alive inside the process.',
+    projectsEyebrow: 'Projects', projectsTitle: 'Pet projects and experiments will get their own landings here.',
+    eduText: 'Education tools, payments, referrals, and useful automation for learning.',
+    scriboText: 'A place for product story, feedback loops, and writing systems.',
+    slidebotText: 'Presentation automation and bot experiments with practical value.',
     comingSoon: 'Coming soon →',
-    labEyebrow: 'Life dashboard', labTitle: 'A place for goals, resources, notes, and personal systems.',
-    labText: 'Next iterations can connect the existing life dashboard, add project pages, and turn this into a personal command center.',
-    footerText: 'Built as a first cozy-smart prototype.'
+    moreEyebrow: 'More rooms', moreTitle: 'Thoughts and ideas live next door.',
+    moreText: 'This site can grow into a cozy archive: essays, notes, experiments, project pages, and a public map of what NikPeg is becoming.',
+    openThoughts: 'Open thoughts', openIdeas: 'Open ideas',
+    thoughtsEyebrow: 'Thoughts', thoughtsTitle: 'Notes from a living mind.', thoughtsLead: 'Short observations, essays, principles, and things worth returning to. For now: beautiful placeholders; later: real text.',
+    draftTag: 'draft', thoughtOneTitle: 'How to do important work', thoughtOneText: 'A note about quality, dignity, and choosing tasks that actually matter.',
+    thoughtTwoTitle: 'Trends are tools', thoughtTwoText: 'Understanding the world is useful only when it changes what you build or how you act.',
+    thoughtThreeTitle: 'A gentle personal system', thoughtThreeText: 'The best productivity system should feel like a good room: clear, warm, and hard to avoid.',
+    ideasEyebrow: 'Ideas', ideasTitle: 'Seeds for future useful things.', ideasLead: 'A garden of project starts: some practical, some weird, some waiting for the right weekend and enough tea.',
+    ideaOneTitle: 'Personal command center', ideaOneText: 'A private system that turns goals, tasks, notes, and dashboards into one calm interface.',
+    ideaTwoTitle: 'Better tiny communities', ideaTwoText: 'Tools for small groups where people actually know each other and do things together.',
+    ideaThreeTitle: 'Bots that sell gently', ideaThreeText: 'Automation for creators and channels that helps monetize without becoming gross.',
+    footerText: 'Personal page prototype for NikPeg.'
   },
   ru: {
-    navProjects: 'Проекты', navChannels: 'Каналы', navLab: 'Лаборатория',
-    eyebrow: 'Личная операционная · уютная лаборатория · сад идей',
-    heroTitle: 'Тёплый хаб для проектов, мыслей и полезных экспериментов.',
-    heroLead: 'Место NikPeg в интернете: достаточно умное для работы, достаточно мягкое для жизни и готовое вырасти в лендинги пет‑проектов.',
-    seeProjects: 'Смотреть проекты', findMe: 'Найти меня',
-    statusLabel: 'Статус', statusValue: 'прототип жив',
-    metricThemes: 'темы', metricLangs: 'языка', metricIdeas: 'идей',
-    channelsEyebrow: 'Каналы', channelsTitle: 'Самые быстрые способы найти NikPeg.',
-    telegramText: 'Короткие апдейты, быстрые сообщения, иногда искры.',
-    vkText: 'Социальный профиль и публичные следы проектов.',
-    projectsEyebrow: 'Пет‑проекты', projectsTitle: 'Лендинги могут жить здесь в единой визуальной системе.',
-    eduText: 'Будущий лендинг для образовательных инструментов, оплат, рефералок и экспериментов.',
-    scriboText: 'Компактное место для истории продукта, сбора фидбэка и заметок о запуске.',
-    slidebotText: 'Лендинг для автоматизации презентаций и полезных ботовых экспериментов.',
+    navHome: 'Кто', navThoughts: 'Мысли', navIdeas: 'Идеи', navProjects: 'Проекты',
+    eyebrow: 'личная страница · проекты · живые заметки',
+    heroTitle: 'Кто такой NikPeg?',
+    heroLead: 'Любопытный создатель, системный мыслитель и практичный романтик: старается красиво делать важное, понимать мир и превращать идеи в полезные штуки.',
+    identityLabel: 'Идентичность', identityValue: 'эффективный джентльмен',
+    metricCuriosity: 'любопытства', metricMission: 'миссия', metricProjects: 'проектов',
+    aboutEyebrow: 'О себе', aboutTitle: 'Человек, собранный из амбиций, тепла, экспериментов и незакрытых вкладок.',
+    missionTitle: 'Миссия', missionText: 'Быть эффективным джентльменом: качественно делать важные для себя задачи — с достоинством, независимостью, справедливостью и любовью к людям.',
+    methodTitle: 'Метод', methodText: 'Ясно думать, строить маленькие системы, замечать тренды, выпускать прототипы и оставлять достаточно игры, чтобы не высохнуть внутри процесса.',
+    projectsEyebrow: 'Проекты', projectsTitle: 'Пет‑проекты и эксперименты получат здесь отдельные лендинги.',
+    eduText: 'Образовательные инструменты, оплаты, рефералки и полезная автоматизация обучения.',
+    scriboText: 'Место для истории продукта, фидбэк‑лупов и письменных систем.',
+    slidebotText: 'Автоматизация презентаций и ботовые эксперименты с практической пользой.',
     comingSoon: 'Скоро →',
-    labEyebrow: 'Жизненный дашборд', labTitle: 'Место для целей, ресурсов, заметок и личных систем.',
-    labText: 'В следующих итерациях можно подключить существующий life dashboard, добавить страницы проектов и превратить сайт в личный командный центр.',
-    footerText: 'Собрано как первый уютно‑умный прототип.'
+    moreEyebrow: 'Ещё комнаты', moreTitle: 'Мысли и идеи живут по соседству.',
+    moreText: 'Сайт может вырасти в уютный архив: эссе, заметки, эксперименты, страницы проектов и публичную карту того, кем становится NikPeg.',
+    openThoughts: 'Открыть мысли', openIdeas: 'Открыть идеи',
+    thoughtsEyebrow: 'Мысли', thoughtsTitle: 'Заметки живого ума.', thoughtsLead: 'Короткие наблюдения, эссе, принципы и вещи, к которым стоит возвращаться. Пока — красивые заготовки; позже — настоящий текст.',
+    draftTag: 'черновик', thoughtOneTitle: 'Как делать важную работу', thoughtOneText: 'Заметка о качестве, достоинстве и выборе задач, которые правда имеют значение.',
+    thoughtTwoTitle: 'Тренды — это инструменты', thoughtTwoText: 'Понимание мира полезно только тогда, когда меняет то, что ты строишь, или то, как действуешь.',
+    thoughtThreeTitle: 'Мягкая личная система', thoughtThreeText: 'Лучшая система продуктивности должна ощущаться как хорошая комната: ясно, тепло и сложно игнорировать.',
+    ideasEyebrow: 'Идеи', ideasTitle: 'Семена будущих полезных вещей.', ideasLead: 'Сад проектных зародышей: часть практичные, часть странные, часть ждут правильных выходных и достаточного количества чая.',
+    ideaOneTitle: 'Личный командный центр', ideaOneText: 'Приватная система, которая собирает цели, задачи, заметки и дашборды в один спокойный интерфейс.',
+    ideaTwoTitle: 'Лучшие маленькие комьюнити', ideaTwoText: 'Инструменты для небольших групп, где люди правда знают друг друга и что-то делают вместе.',
+    ideaThreeTitle: 'Боты, которые продают мягко', ideaThreeText: 'Автоматизация для авторов и каналов, которая помогает монетизироваться без кринжа.',
+    footerText: 'Прототип личной страницы NikPeg.'
   }
 };
 
@@ -54,7 +70,7 @@ const langToggle = document.querySelector('#langToggle');
 function applyTheme(theme) {
   root.dataset.theme = theme;
   localStorage.setItem('theme', theme);
-  themeToggle.textContent = theme === 'dark' ? '☾' : '☀';
+  if (themeToggle) themeToggle.textContent = theme === 'dark' ? '☾' : '☀';
 }
 
 function applyLang(lang) {
@@ -64,15 +80,18 @@ function applyLang(lang) {
     const key = node.dataset.i18n;
     if (dictionary[lang][key]) node.textContent = dictionary[lang][key];
   });
-  langToggle.textContent = lang === 'en' ? 'RU' : 'EN';
-  document.title = lang === 'en' ? 'NikPeg — Personal Hub' : 'NikPeg — личный хаб';
+  if (langToggle) langToggle.textContent = lang === 'en' ? 'RU' : 'EN';
+  const page = location.pathname.split('/').pop();
+  if (page === 'thoughts.html') document.title = lang === 'en' ? 'NikPeg — Thoughts' : 'NikPeg — мысли';
+  else if (page === 'ideas.html') document.title = lang === 'en' ? 'NikPeg — Ideas' : 'NikPeg — идеи';
+  else document.title = lang === 'en' ? 'Who is NikPeg?' : 'Кто такой NikPeg?';
 }
 
 applyTheme(savedTheme);
 applyLang(savedLang);
 
-themeToggle.addEventListener('click', () => applyTheme(root.dataset.theme === 'dark' ? 'light' : 'dark'));
-langToggle.addEventListener('click', () => applyLang(root.lang === 'en' ? 'ru' : 'en'));
+themeToggle?.addEventListener('click', () => applyTheme(root.dataset.theme === 'dark' ? 'light' : 'dark'));
+langToggle?.addEventListener('click', () => applyLang(root.lang === 'en' ? 'ru' : 'en'));
 
 const observer = new IntersectionObserver((entries) => {
   entries.forEach((entry) => {
