@@ -2,8 +2,9 @@ import fs from 'node:fs';
 import path from 'node:path';
 
 const MAX_TAGS = Number(process.argv[2] || 35);
+const archives = (process.argv[3] || 'thoughts,ideas').split(',').map((item) => item.trim()).filter(Boolean);
 const langs = ['ru', 'en'];
-const roots = langs.map((lang) => [`content/thoughts/${lang}`, `public/thoughts/${lang}.json`, lang]);
+const roots = archives.flatMap((archive) => langs.map((lang) => [`content/${archive}/${lang}`, `public/${archive}/${lang}.json`, lang, archive]));
 
 function readMarkdown(file) {
   return fs.readFileSync(file, 'utf8');
@@ -26,7 +27,11 @@ function setTagsInMarkdown(text, tags) {
   return text.replace(/tags:\n(?:\s+-\s+.*\n?)+/, `${block}\n`);
 }
 
-for (const [mdDir, jsonPath, lang] of roots) {
+for (const [mdDir, jsonPath, lang, archive] of roots) {
+  if (!fs.existsSync(mdDir) || !fs.existsSync(jsonPath)) {
+    console.warn(`Skipping ${archive}/${lang}: missing ${mdDir} or ${jsonPath}`);
+    continue;
+  }
   const files = fs.readdirSync(mdDir).filter((name) => name.endsWith('.md')).map((name) => path.join(mdDir, name));
   const counts = new Map();
   for (const file of files) {
@@ -55,6 +60,6 @@ for (const [mdDir, jsonPath, lang] of roots) {
     if ((item.tags || []).join('\0') !== tags.join('\0')) changedJson += 1;
   }
   fs.writeFileSync(jsonPath, JSON.stringify(items, null, 0));
-  console.log(`\n${lang}: kept ${top.length}/${counts.size} tags, markdown changed: ${changedFiles}`);
+  console.log(`\n${archive}/${lang}: kept ${top.length}/${counts.size} tags, markdown changed: ${changedFiles}`);
   console.table([...counts.entries()].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0])).slice(0, Math.max(MAX_TAGS, 35)).map(([tag, count], index) => ({ rank: index + 1, tag, count, kept: keep.has(tag) })));
 }

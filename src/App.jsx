@@ -113,19 +113,13 @@ function Feed({ t, data, embedded = false, onOpen, go, nextLabel }) {
   </section>;
 }
 
-function Ideas({ t, data, onOpen, go }) {
-  const [sort, setSort] = useState('created');
-  const sortedIdeas = useMemo(() => [...data.ideas].sort((a, b) => b[sort] - a[sort]), [data.ideas, sort]);
-  return <section className="section page-hero reveal visible">
-    <PageHeading eyebrow={t.ideasEyebrow} title={t.ideasTitle} lead={t.ideasLead} />
-    <div className="toolbar"><span>{t.sortBy}</span><button className={sort === 'created' ? 'active' : ''} onClick={() => setSort('created')}>{t.recent}</button><button className={sort === 'upvotes' ? 'active' : ''} onClick={() => setSort('upvotes')}>{t.upvotes}</button></div>
-    <div className="cards three">{sortedIdeas.map(idea => <OpenCard className="card project-card" item={idea} key={idea.id} onOpen={onOpen}><span className="tag">{idea.tag}</span><h3>{idea.title}</h3><p>{idea.text}</p></OpenCard>)}</div>
-    <NextLink label={t.nextThoughts} onClick={() => go('thoughts')} />
-  </section>;
-}
-
 function ArchivePage({ t, lang, onOpen, go, kind = 'thoughts' }) {
-  const pageSize = 35;
+  const pageSize = 20;
+  const archiveLabels = kind === 'ideas'
+    ? { eyebrow: t.ideasEyebrow, title: t.ideasTitle, lead: t.ideasLead, loading: t.loading, next: t.nextThoughts, nextTab: 'thoughts' }
+    : kind === 'quotes'
+      ? { eyebrow: t.quotesEyebrow, title: t.quotesTitle, lead: t.quotesLead, loading: t.loadingQuotes, next: t.nextPhotos, nextTab: 'photos' }
+      : { eyebrow: t.thoughtsEyebrow, title: t.thoughtsTitle, lead: t.thoughtsLead, loading: t.loading, next: t.nextQuotes, nextTab: 'quotes' }; 
   const [tag, setTag] = useState('all');
   const [visibleCount, setVisibleCount] = useState(pageSize);
   const [items, setItems] = useState([]);
@@ -153,13 +147,12 @@ function ArchivePage({ t, lang, onOpen, go, kind = 'thoughts' }) {
     return () => observer.disconnect();
   }, [loading, visibleCount, sortedItems.length]);
   return <section className="section page-hero reveal visible">
-    <PageHeading eyebrow={kind === 'quotes' ? t.quotesEyebrow : t.thoughtsEyebrow} title={kind === 'quotes' ? t.quotesTitle : t.thoughtsTitle} lead={kind === 'quotes' ? t.quotesLead : t.thoughtsLead} />
-    {loading ? <div className="glass-panel loading-panel">{kind === 'quotes' ? t.loadingQuotes : t.loading}</div> : <>
+    <PageHeading eyebrow={archiveLabels.eyebrow} title={archiveLabels.title} lead={archiveLabels.lead} />
+    {loading ? <div className="glass-panel loading-panel">{archiveLabels.loading}</div> : <>
       <div className="toolbar tag-toolbar"><span>{t.filterByTag}</span><button className={tag === 'all' ? 'active' : ''} onClick={() => { setTag('all'); setVisibleCount(pageSize); }}>{t.allTags}</button>{tags.map((item) => <button key={item} className={tag === item ? 'active' : ''} onClick={() => { setTag(item); setVisibleCount(pageSize); }}>{item}</button>)}</div>
       <div className="thought-list">{visibleItems.map(item => <OpenCard className="card thought-row" item={item} key={item.id} onOpen={onOpen}><div className="thought-row-top"><span className="tag">{item.tags?.join(' · ') || t.draft}</span>{item.date && <time className="thought-date">{item.date}</time>}</div><h3>{item.title}</h3><p>{item.text}</p></OpenCard>)}</div>
       <div ref={sentinelRef} className="scroll-sentinel" aria-hidden="true" />
-      {kind === 'thoughts' && <NextLink label={t.nextQuotes} onClick={() => go('quotes')} />}
-      {kind === 'quotes' && <NextLink label={t.nextPhotos} onClick={() => go('photos')} />}
+      {archiveLabels.next && <NextLink label={archiveLabels.next} onClick={() => go(archiveLabels.nextTab)} />}
     </>}
   </section>;
 }
@@ -237,7 +230,7 @@ export default function App() {
       {tab === 'home' && <><Hero t={t} lang={lang} /><Feed t={t} data={data} embedded onOpen={setSelected} go={go} nextLabel={t.nextChannels} /></>}
       {tab === 'feed' && <Feed t={t} data={data} onOpen={setSelected} go={go} nextLabel={t.nextChannels} />}
       {tab === 'channels' && <Channels t={t} data={data} go={go} />}
-      {tab === 'ideas' && <Ideas t={t} data={data} onOpen={setSelected} go={go} />}
+      {tab === 'ideas' && <ArchivePage t={t} lang={lang} onOpen={setSelected} go={go} kind="ideas" />}
       {tab === 'thoughts' && <ArchivePage t={t} lang={lang} onOpen={setSelected} go={go} kind="thoughts" />}
       {tab === 'quotes' && <ArchivePage t={t} lang={lang} onOpen={setSelected} go={go} kind="quotes" />}
       {tab === 'projects' && <Projects t={t} data={data} go={go} />}
