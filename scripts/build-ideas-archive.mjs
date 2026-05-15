@@ -125,11 +125,6 @@ function titleFrom(text, fallback) {
   return first.replace(/^[#\-–—\s]+/, '').slice(0, 86).trim() || fallback;
 }
 
-function summaryFrom(text, max = 260) {
-  const one = text.replace(/\n+/g, ' ').replace(/\s+/g, ' ').trim();
-  return one.length > max ? `${one.slice(0, max - 1).trim()}…` : one;
-}
-
 function tagsFor(text, lang) {
   const found = [];
   for (const [en, ru, patterns] of tagPairs) {
@@ -200,8 +195,8 @@ for (const item of parsed) {
   const filename = `${item.id}.md`;
   fs.writeFileSync(path.join(outRoots.ru, filename), markdown({ id: item.id, date: item.date, tags: item.ruTags, sourceIndex: item.sourceIndex, title: item.ruTitle, body: item.ruBody }));
   fs.writeFileSync(path.join(outRoots.en, filename), markdown({ id: item.id, date: item.date, tags: item.enTags, sourceIndex: item.sourceIndex, title: item.enTitle, body: item.enBody }));
-  json.ru.push({ tags: item.ruTags, id: item.id, date: item.date, sourceIndex: item.sourceIndex, title: item.ruTitle, text: summaryFrom(item.ruBody), fullText: item.ruBody, tag: item.ruTags[0] });
-  json.en.push({ tags: item.enTags, id: item.id, date: item.date, sourceIndex: item.sourceIndex, title: item.enTitle, text: summaryFrom(item.enBody), fullText: item.enBody, tag: item.enTags[0] });
+  json.ru.push({ tags: item.ruTags, id: item.id, date: item.date, sourceIndex: item.sourceIndex, title: item.ruTitle, text: item.ruBody, fullText: item.ruBody, tag: item.ruTags[0] });
+  json.en.push({ tags: item.enTags, id: item.id, date: item.date, sourceIndex: item.sourceIndex, title: item.enTitle, text: item.enBody, fullText: item.enBody, tag: item.enTags[0] });
 }
 
 for (const [lang, file] of Object.entries(publicRoots)) {
