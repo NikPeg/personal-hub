@@ -94,7 +94,7 @@ function DetailModal({ item, onClose, t }) {
   }
   return <div className="modal-backdrop" role="presentation" onClick={onClose}>
     <article className="modal-card" role="dialog" aria-modal="true" aria-label={item.title} onClick={(event) => event.stopPropagation()}>
-      <div className="modal-tools"><button className="copy-button" onClick={copyToClipboard} aria-label={t.copy}>{copied ? '✓' : '⧉'}</button><button className="modal-close" onClick={onClose} aria-label={t.close}>×</button></div>
+      <div className="modal-tools"><button className="copy-button" onClick={copyToClipboard} aria-label={t.copy}>{copied ? '✓' : '⧉'}</button>{item.telegramUrl && <a className="copy-button telegram-button" href={item.telegramUrl} target="_blank" rel="noreferrer" aria-label="Telegram post" onClick={(event) => event.stopPropagation()}><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21.7 3.4 18.4 20c-.2 1-.8 1.2-1.6.8l-5-3.7-2.4 2.3c-.3.3-.5.5-1 .5l.4-5.1 9.3-8.4c.4-.4-.1-.6-.6-.2L6 13.4 1 11.8c-1-.3-1-1 .2-1.5L20.1 3c.9-.3 1.7.2 1.6.4Z" /></svg></a>}<button className="modal-close" onClick={onClose} aria-label={t.close}>×</button></div>
       <div className="modal-meta"><span className="tag">{item.tags?.join(' · ') || item.tag || item.type || t.note}</span>{item.date && <time>{item.date}</time>}</div>
       <h2>{item.title}</h2>
       <ImageCarousel images={item.images} title={item.title} />
@@ -108,7 +108,7 @@ function DetailModal({ item, onClose, t }) {
 function Feed({ t, data, embedded = false, onOpen, go, nextLabel }) {
   return <section className={`section reveal visible ${embedded ? '' : 'page-hero'}`}>
     <div className="section-heading feed-heading"><p className="eyebrow">{t.feedEyebrow}</p>{!embedded && <><h2>{t.feedTitle}</h2><p className="lead">{t.feedLead}</p></>}</div>
-    <div className="post-feed">{data.posts.map(post => <OpenCard className="card post-card" item={post} key={post.id} onOpen={onOpen}><span className="tag">{t[post.status] ?? post.status} · {post.tag}</span><h3>{post.title}</h3><p>{post.text}</p>{post.images?.length > 0 && <span className="media-count">{post.images.length} {t.images}</span>}</OpenCard>)}</div>
+    <div className="post-feed">{data.posts.map(post => <OpenCard className="card post-card" item={post} key={post.id} onOpen={onOpen}><span className="tag">{t[post.status] ?? post.status} · {post.tag}</span>{post.images?.[0] && <img className="post-card-image" src={post.images[0].src} alt={post.images[0].alt || post.title} />}<h3>{post.title}</h3><p>{post.text}</p>{post.images?.length > 0 && <span className="media-count">{post.images.length} {t.images}</span>}</OpenCard>)}</div>
     {go && nextLabel && <NextLink label={nextLabel} onClick={() => go('channels')} />}
   </section>;
 }
