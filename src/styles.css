@@ -181,6 +181,7 @@ button { font: inherit; }
 
 .open-card { width: 100%; text-align: left; color: inherit; font: inherit; cursor: pointer; }
 .post-card-image { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; border-radius: 1.15rem; border: 1px solid var(--line); margin: .85rem 0 .9rem; display: block; }
+.post-card p { max-width: 78ch; white-space: pre-line; }
 .metric-grid { grid-template-columns: repeat(4,1fr); }
 .status-line { align-items: center; }
 .status-line strong { white-space: nowrap; font-size: .98rem; }
