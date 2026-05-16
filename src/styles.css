@@ -180,7 +180,6 @@ button { font: inherit; }
 .empty-room { min-height: 260px; display: grid; place-items: center; color: var(--accent); font-size: clamp(4rem, 16vw, 9rem); opacity: .85; }
 
 .open-card { width: 100%; text-align: left; color: inherit; font: inherit; cursor: pointer; }
-.media-count { display: inline-flex; margin-top: .8rem; color: var(--accent); font-weight: 800; font-size: .85rem; }
 .post-card-image { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; border-radius: 1.15rem; border: 1px solid var(--line); margin: .85rem 0 .9rem; display: block; }
 .metric-grid { grid-template-columns: repeat(4,1fr); }
 .status-line { align-items: center; }

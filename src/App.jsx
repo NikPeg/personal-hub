@@ -108,7 +108,7 @@ function DetailModal({ item, onClose, t }) {
 function Feed({ t, data, embedded = false, onOpen, go, nextLabel }) {
   return <section className={`section reveal visible ${embedded ? '' : 'page-hero'}`}>
     <div className="section-heading feed-heading"><p className="eyebrow">{t.feedEyebrow}</p>{!embedded && <><h2>{t.feedTitle}</h2><p className="lead">{t.feedLead}</p></>}</div>
-    <div className="post-feed">{data.posts.map(post => <OpenCard className="card post-card" item={post} key={post.id} onOpen={onOpen}><span className="tag">{t[post.status] ?? post.status} · {post.tag}</span>{post.images?.[0] && <img className="post-card-image" src={post.images[0].src} alt={post.images[0].alt || post.title} />}<h3>{post.title}</h3><p>{post.text}</p>{post.images?.length > 0 && <span className="media-count">{post.images.length} {t.images}</span>}</OpenCard>)}</div>
+    <div className="post-feed">{data.posts.map(post => <OpenCard className="card post-card" item={post} key={post.id} onOpen={onOpen}><span className="tag">{t[post.status] ?? post.status} · {post.tag}</span>{post.images?.[0] && <img className="post-card-image" src={post.images[0].src} alt={post.images[0].alt || post.title} />}<h3>{post.title}</h3><p>{post.text}</p></OpenCard>)}</div>
     {go && nextLabel && <NextLink label={nextLabel} onClick={() => go('channels')} />}
   </section>;
 }

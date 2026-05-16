@@ -5,21 +5,6 @@ export const content = {
         id: 'seeing-beauty-instead-of-the-log', tag: 'essay', title: 'It is easy to see the log in someone’s eye. Try seeing the beauty', status: 'published', date: '2026-05-15', telegramUrl: 'https://t.me/nikpeg_dramas/3', images: [{ src: '/assets/posts/seeing-beauty-chart.jpg', alt: 'A chart with sharp rises, drops, and noise' }],
         text: 'I love charts. There is something mysterious about them: the line twitches, drops, bounces back, freezes, then starts crawling upward again.',
         fullText: 'It is easy to see the log in someone’s eye. Try seeing the beauty.\n\nI love charts. There is something mysterious about them: the line twitches, drops, bounces back, freezes, then starts crawling upward again. You look at it and it feels less like an answer than a trace of something alive.\n\nAt the same time, charts often look broken and unclear. Even when a system is stable, the line is almost never straight. There is always noise, outliers, strange drops, sharp peaks, stretches where everything was going well and then suddenly stopped.\n\nThe laziest reaction is to point at the dip.\n\nThis is bad.\nThis is a mistake.\nHere is the speck.\nHere is the log.\n\nBut a chart cannot be read from one point. One point says almost nothing without what came before it and what happened after. A drop can be the beginning of a rebuild. A peak can be accidental. A plateau can be a period of gathering strength. A leap can be the result of a long series of attempts that looked like standing still until they finally worked.\n\nA person is not revealed by one unfortunate phrase, one breakdown, one weak day, or one beautiful achievement. The trajectory is far more interesting.\n\nWhere they fell and still came back.\nWhere they repeated a mistake and then learned how to avoid it.\nWhere they could not move for a long time, but kept trying.\nWhere they became a little more honest, calmer, stronger, more attentive.\nWhere they grew beyond themselves not through a dramatic jump, but through a series of small changes that are almost invisible at a short distance.\n\nBeauty is often not in the perfect line. It is not there at all.\n\nBeauty is in the dynamics. In the fact that a person is not forever fixed at the worst point of their chart. In the fact that they can change, pull themselves together, reconsider themselves, learn, recover, try again.\n\nAnd if you look more closely, behind the noise and the dips you can see not a breakdown, but movement.\n\nAnd movement is one of the strongest reasons to admire a person.'
-      },
-      {
-        id: 'effective-gentleman', tag: 'identity', title: 'Effective gentleman', status: 'draft', images: [],
-        text: 'A note about quality, dignity, independence, fairness, and love for people — the operating system behind NikPeg projects.',
-        fullText: 'A longer post will live here: title, text, and optionally a swipeable image carousel. The point is not just to store thoughts, but to make each public note feel intentionally designed.'
-      },
-      {
-        id: 'personal-command-center', tag: 'systems', title: 'Personal command center', status: 'seed', images: [],
-        text: 'A calm interface for goals, notes, dashboards, and assistants — a way to make life feel less scattered.',
-        fullText: 'The future post format supports image carousels, longer text, and a full-screen reading mode. This card is a placeholder for that editorial layer.'
-      },
-      {
-        id: 'soft-selling-bots', tag: 'automation', title: 'Bots that sell gently', status: 'seed', images: [],
-        text: 'Automation for creators and channels that helps monetize without turning everything into a funnel.',
-        fullText: 'A post can be text-only or visual. Later it can become a polished piece with screenshots, diagrams, or mood images.'
       }
     ],
     ideas: [
@@ -52,21 +37,6 @@ export const content = {
         id: 'seeing-beauty-instead-of-the-log', tag: 'эссе', title: 'Легко видеть бревно в глазу, попробуй увидеть красоту', status: 'published', date: '2026-05-15', telegramUrl: 'https://t.me/nikpeg_dramas/3', images: [{ src: '/assets/posts/seeing-beauty-chart.jpg', alt: 'График с резкими взлётами, падениями и шумом' }],
         text: 'Я люблю графики. В них есть что-то загадочное: линия дергается, проваливается, отскакивает, замирает, снова ползёт вверх.',
         fullText: 'Легко видеть бревно в глазу, попробуй увидеть красоту.\n\nЯ люблю графики. В них есть что-то загадочное: линия дергается, проваливается, отскакивает, замирает, снова ползёт вверх. Смотришь — и будто видишь не ответ, а след чего-то живого.\n\nПри этом графики часто выглядят сломанными и непонятными. Даже когда система стабильна, линия почти никогда не бывает прямой. Всегда есть шум, выбросы, странные просадки, резкие пики, участки, где всё шло хорошо, а потом внезапно перестало.\n\nСамая ленивая реакция — ткнуть пальцем в провал.\n\nВот здесь плохо.\nВот тут ошибка.\nВот тут соринка.\nВот это бревно.\n\nНо график нельзя читать по одной точке. Одна точка почти ничего не говорит без того, что было до неё и что случилось после. Провал может быть началом перестройки. Пик — случайностью. Плато — накоплением сил. Рывок — результатом длинной серии попыток, которые до этого выглядели как топтание на месте.\n\nЧеловек раскрывается не в одной своей неудачной фразе, не в одном срыве, не в одном слабом дне и не в одном красивом достижении. Гораздо интереснее смотреть на траекторию.\n\nГде он падал и всё равно возвращался.\nГде повторял ошибку, а потом научился обходить её.\nГде долго не мог сдвинуться, но продолжал пробовать.\nГде стал чуть честнее, спокойнее, сильнее, внимательнее.\nГде вырос над собой не эффектным скачком, а серией маленьких изменений, которые на коротком отрезке почти не видны.\n\nКрасота часто не в идеальной линии. Её там вообще нет.\n\nКрасота — в динамике. В том, что человек не зафиксирован навсегда в худшей точке своего графика. В том, что он способен меняться, собираться, пересматривать себя, учиться, восстанавливаться, пробовать снова.\n\nИ если смотреть внимательнее, за шумом и провалами можно увидеть не поломку, а движение.\n\nА движение — одна из самых сильных причин восхищаться человеком.'
-      },
-      {
-        id: 'effective-gentleman', tag: 'идентичность', title: 'Эффективный джентльмен', status: 'draft', images: [],
-        text: 'Заметка о качестве, достоинстве, независимости, справедливости и любви к людям — внутренней логике проектов НикПега.',
-        fullText: 'Здесь будет полноценный пост: заголовок, текст и, если нужно, карусель изображений. Лента задумана не как склад заметок, а как место для красиво оформленных публикаций.'
-      },
-      {
-        id: 'personal-command-center', tag: 'системы', title: 'Личный командный центр', status: 'seed', images: [],
-        text: 'Спокойный интерфейс для целей, заметок, задач, дашбордов и ассистентов — чтобы жизнь меньше распадалась на вкладки.',
-        fullText: 'Формат поста уже поддерживает длинный текст, полноэкранное открытие и будущую карусель картинок. Потом сюда можно будет добавлять схемы, скриншоты и иллюстрации.'
-      },
-      {
-        id: 'soft-selling-bots', tag: 'автоматизация', title: 'Боты, которые продают мягко', status: 'seed', images: [],
-        text: 'Автоматизация для авторов и небольших проектов: помогать, продавать и не превращать всё вокруг в воронку.',
-        fullText: 'Пост может быть только текстовым или визуальным: с картинками, схемами, скриншотами и любым количеством контекста.'
       }
     ],
     ideas: [
