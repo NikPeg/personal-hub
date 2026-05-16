@@ -180,7 +180,7 @@ button { font: inherit; }
 .empty-room { min-height: 260px; display: grid; place-items: center; color: var(--accent); font-size: clamp(4rem, 16vw, 9rem); opacity: .85; }
 
 .open-card { width: 100%; text-align: left; color: inherit; font: inherit; cursor: pointer; }
-.post-card-image { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; border-radius: 1.15rem; border: 1px solid var(--line); margin: .85rem 0 .9rem; display: block; }
+.post-card-image { width: 50%; min-width: 280px; max-width: 100%; height: auto; object-fit: contain; border-radius: 1.15rem; border: 1px solid var(--line); margin: .85rem auto .9rem; display: block; }
 .post-card p { max-width: 78ch; white-space: pre-line; }
 .metric-grid { grid-template-columns: repeat(4,1fr); }
 .status-line { align-items: center; }
@@ -190,8 +190,8 @@ button { font: inherit; }
 .modal-card h2 { margin: 1rem 0; font-size: clamp(2rem, 6vw, 4.6rem); }
 .modal-card p { color: var(--muted); font-size: clamp(1.05rem, 2vw, 1.25rem); line-height: 1.75; white-space: pre-line; }
 .modal-close { position: sticky; top: 0; float: right; width: 2.5rem; height: 2.5rem; border: 1px solid var(--line); border-radius: 999px; background: var(--card); color: var(--text); cursor: pointer; font-size: 1.4rem; }
-.carousel { margin: 1rem 0 1.4rem; overflow: hidden; border-radius: 1.4rem; border: 1px solid var(--line); background: var(--card); }
-.carousel img { width: 100%; max-height: 60vh; object-fit: cover; display: block; }
+.carousel { width: 50%; min-width: 280px; max-width: 100%; margin: 1rem auto 1.4rem; overflow: hidden; border-radius: 1.4rem; border: 1px solid var(--line); background: var(--card); }
+.carousel img { width: 100%; height: auto; max-height: 60vh; object-fit: contain; display: block; }
 .carousel-controls { display: flex; justify-content: space-between; align-items: center; padding: .7rem; color: var(--muted); }
 .carousel-controls button { border: 1px solid var(--line); border-radius: 999px; background: var(--card); color: var(--text); padding: .4rem .7rem; cursor: pointer; }
 .landing-page h2 { font-size: clamp(3rem, 9vw, 8rem); }
