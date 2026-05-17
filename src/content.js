@@ -28,6 +28,7 @@ export const content = {
       { id: 'gentle-system', title: 'A gentle personal system', text: 'A productivity system should feel like a good room: clear, warm, and hard to avoid.', fullText: 'The best personal systems are not punishment machines. They make the next good action visible, almost inviting.' }
     ],
     channels: [
+      { id: 'nikpeg-dramas', type: 'Telegram', title: 'NikPeg Dramas', url: 'https://t.me/nikpeg_dramas', description: 'A personal feed of posts and essays about self-management, culture, markets, memes, and the way ideas turn into readable stories.' },
       { id: 'meme-swaga', type: 'Telegram', title: 'meme swaga', url: 'https://t.me/meme_swaga', description: 'Light, brightness, love of life, and aesthetic memes — a small feed for mood and sparkle.' },
       { id: 'linkedin', type: 'LinkedIn', title: 'NikPeg', url: 'https://www.linkedin.com/in/nikpeg/', description: 'Professional profile: work context, public credentials, and career history.' },
       { id: 'github', type: 'GitHub', title: 'NikPeg', url: 'https://github.com/NikPeg', description: 'Code, repositories, prototypes, and the technical trail behind projects.' },
@@ -70,6 +71,7 @@ export const content = {
       { id: 'gentle-system', title: 'Мягкая личная система', text: 'Система продуктивности должна ощущаться как хорошая комната: ясно, тепло и сложно игнорировать.', fullText: 'Лучшие личные системы не наказывают. Они делают следующий хороший шаг видимым и почти естественным.' }
     ],
     channels: [
+      { id: 'nikpeg-dramas', type: 'Telegram', title: 'NikPeg Dramas', url: 'https://t.me/nikpeg_dramas', description: 'Личная лента постов и эссе про самоуправление, культуру, рынки, мемы и то, как идеи превращаются в внятные истории.' },
       { id: 'meme-swaga', type: 'Telegram', title: 'meme swaga', url: 'https://t.me/meme_swaga', description: 'Свет, яркость, любовь к жизни и эстетишные мемы — маленькая лента для настроения.' },
       { id: 'linkedin', type: 'LinkedIn', title: 'НикПег', url: 'https://www.linkedin.com/in/nikpeg/', description: 'Профессиональный профиль: опыт, рабочий контекст и карьерная история.' },
       { id: 'github', type: 'GitHub', title: 'НикПег', url: 'https://github.com/NikPeg', description: 'Код, репозитории, прототипы и технический след проектов.' },
