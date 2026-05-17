@@ -57,8 +57,8 @@ function ImageCarousel({ images = [], title }) {
   if (!images.length) return null;
   const image = images[index];
   return <div className="carousel">
-    <img src={image.src} alt={image.alt || title} />
-    {images.length > 1 && <div className="carousel-controls"><button onClick={() => setIndex((index - 1 + images.length) % images.length)}>←</button><span>{index + 1}/{images.length}</span><button onClick={() => setIndex((index + 1) % images.length)}>→</button></div>}
+    <img key={image.src} src={image.src} alt={image.alt || title} />
+    {images.length > 1 && <div className="carousel-controls"><button onClick={() => setIndex((current) => (current - 1 + images.length) % images.length)}>←</button><span>{index + 1}/{images.length}</span><button onClick={() => setIndex((current) => (current + 1) % images.length)}>→</button></div>}
   </div>;
 }
 
