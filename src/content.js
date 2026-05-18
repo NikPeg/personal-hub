@@ -2,6 +2,16 @@ export const content = {
   en: {
     posts: [
       {
+        id: 'advertising-as-new-feudal-aesthetic', tag: 'essay', title: 'Advertising as a New Feudal Aesthetic', status: 'published', date: '2026-05-18', telegramUrl: 'https://t.me/nikpeg_dramas/24', images: [
+          { src: '/assets/posts/advertising-feudal-aesthetic-1.jpg', alt: 'Visual note for an essay about advertising and branded realities' },
+          { src: '/assets/posts/advertising-feudal-aesthetic-2.jpg', alt: 'Visual note about brand aesthetics and atmosphere' },
+          { src: '/assets/posts/advertising-feudal-aesthetic-3.jpg', alt: 'Visual note about soft power in advertising' },
+          { src: '/assets/posts/advertising-feudal-aesthetic-4.jpg', alt: 'Visual note about products as entrances into worlds' }
+        ],
+        text: 'Advertising looks less and less like an announcement and more like an invitation into someone else’s reality.',
+        fullText: 'Advertising looks less and less like an announcement and more like an invitation into someone else’s reality.\n\nA brand no longer says: buy our coffee, sneakers, or subscription. It says: here is a world where you are more collected, more beautiful, calmer, smarter, freer. The product becomes an entry ticket.\n\nThis is no longer competition between products. It is competition between atmospheres. Some companies sell speed, others comfort, others status, and others the feeling of control over life.\n\nThere is a feudal logic in this. Every major brand has its own small domain: language, colors, rituals, coats of arms, and the vassal loyalty of its audience. A person does not simply buy a thing; they recognize the jurisdiction of an aesthetic.\n\nThe strongest advertising now does not interrupt life, but frames it. It makes interfaces smooth, stores photogenic, packaging pleasant, subscriptions almost invisible, and choices morally convenient.\n\nThe power here is soft, which is why it is effective. No one forces you. You are given a beautiful corridor that feels pleasant to walk through. At some point you no longer want to leave it, because outside everything looks worse, rougher, and more chaotic. As if you drove outside the Moscow Ring Road for the first time in a year.\n\nThe winners will not be those who are cheaper or more technological. The winners will be those who know how to produce the feeling of a life a person wants to enter. Value is born less and less in the product itself, and more and more in the world around it.\n\nSo the advertising of the future is not a banner. It is a reality you want to enter and do not want to leave. The winner is not the one who shouts louder, but the one whose reality people want to stay in.'
+      },
+      {
         id: 'self-management-by-the-right-feeling', tag: 'essay', title: 'Manage yourself not through discipline, but through the right feeling', status: 'published', date: '2026-05-17', telegramUrl: 'https://t.me/nikpeg_dramas/19', images: [
           { src: '/assets/posts/self-management-feeling-1.jpg', alt: 'Notebook page with a handwritten self-management note' },
           { src: '/assets/posts/self-management-feeling-2.jpg', alt: 'Notebook page with handwritten thoughts about motivation' },
@@ -44,6 +54,16 @@ export const content = {
   },
   ru: {
     posts: [
+      {
+        id: 'advertising-as-new-feudal-aesthetic', tag: 'эссе', title: 'Реклама как новая феодальная эстетика', status: 'published', date: '2026-05-18', telegramUrl: 'https://t.me/nikpeg_dramas/24', images: [
+          { src: '/assets/posts/advertising-feudal-aesthetic-1.jpg', alt: 'Визуальная заметка к эссе о рекламе и брендовых реальностях' },
+          { src: '/assets/posts/advertising-feudal-aesthetic-2.jpg', alt: 'Визуальная заметка об эстетике брендов и атмосферах' },
+          { src: '/assets/posts/advertising-feudal-aesthetic-3.jpg', alt: 'Визуальная заметка о мягкой власти рекламы' },
+          { src: '/assets/posts/advertising-feudal-aesthetic-4.jpg', alt: 'Визуальная заметка о продуктах как входе в чужие миры' }
+        ],
+        text: 'Реклама всё меньше похожа на объявление и всё больше — на приглашение в чью-то реальность.',
+        fullText: 'Реклама всё меньше похожа на объявление и всё больше — на приглашение в чью-то реальность.\n\nБренд больше не говорит: купи наш кофе, кроссовки или подписку. Он говорит: вот мир, где ты собраннее, красивее, спокойнее, умнее, свободнее. Товар становится входным билетом.\n\nЭто уже не конкуренция продуктов. Это конкуренция атмосфер. Одни компании продают скорость, другие уют, третьи статус, четвёртые — чувство контроля над жизнью.\n\nВ этом есть феодальная логика. У каждого большого бренда — свой маленький домен: язык, цвета, ритуалы, гербы, вассальная верность аудитории. Человек не просто покупает вещь, он признаёт юрисдикцию эстетики.\n\nСамая сильная реклама теперь не перебивает жизнь, а оформляет её. Она делает интерфейсы гладкими, магазины фотогеничными, упаковку приятной, подписку почти незаметной, а выбор морально удобным.\n\nВласть здесь мягкая, потому и эффективная. Тебя не заставляют. Тебе дают красивый коридор, по которому приятно идти. В какой-то момент выходить из него уже не хочется, потому что снаружи всё выглядит хуже, грубее и хаотичнее. Словно выехал за МКАД впервые за год.\n\nПобеждать будут не те, у кого дешевле или технологичнее. Побеждать будут те, кто умеет производить ощущение жизни, в которой человек хочет оказаться. Ценность всё чаще рождается не в продукте, а в мире вокруг него.\n\nПоэтому реклама будущего — это не баннер. Это реальность, в которую хочется зайти и не хочется выходить. Побеждает не тот, кто громче кричит, а тот, в чьей реальности людям хочется оставаться.'
+      },
       {
         id: 'self-management-by-the-right-feeling', tag: 'эссе', title: 'Управлять собой надо не дисциплиной, а правильным чувством', status: 'published', date: '2026-05-17', telegramUrl: 'https://t.me/nikpeg_dramas/19', images: [
           { src: '/assets/posts/self-management-feeling-1.jpg', alt: 'Страница блокнота с рукописной заметкой о самоуправлении' },
