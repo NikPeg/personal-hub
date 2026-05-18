@@ -4,6 +4,28 @@ import { dictionary } from './i18n.js';
 import { loadArchive } from './archiveFiles.js';
 import './styles.css';
 
+const preloadedImages = new Set();
+
+function preloadImage(src) {
+  if (!src || preloadedImages.has(src) || typeof Image === 'undefined') return Promise.resolve();
+  return new Promise((resolve) => {
+    const image = new Image();
+    image.decoding = 'async';
+    image.onload = () => {
+      preloadedImages.add(src);
+      resolve();
+    };
+    image.onerror = resolve;
+    image.src = src;
+  });
+}
+
+function preloadImages(sources) {
+  sources.filter(Boolean).forEach((src) => {
+    preloadImage(src);
+  });
+}
+
 const pathToTab = (pathname) => {
   const slug = pathname.replace(/^\//, '').replace(/\/$/, '');
   if (!slug || slug === 'index.html') return 'home';
@@ -26,6 +48,10 @@ function Header({ tab, go, lang, setLang, theme, setTheme, t }) {
 }
 
 function Hero({ t, lang }) {
+  const scrollToFeed = () => {
+    document.querySelector('.post-feed .post-card')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
+
   return <section className="hero section reveal visible">
     <div className="hero-copy">
       {t.eyebrow && <p className="eyebrow">{t.eyebrow}</p>}
@@ -41,6 +67,7 @@ function Hero({ t, lang }) {
       <div className="status-line"><span>{t.identityLabel}</span><strong>{t.identityValue}</strong></div>
       <div className="metric-grid system-metrics"><div><b>94</b><span>{t.metricRepos}</span></div><div><b>99.95%</b><span>SLO</span></div><div><b>∞</b><span>{t.metricIdeas}</span></div></div>
     </aside>
+    <button className="hero-scroll" type="button" onClick={scrollToFeed} aria-label="Scroll to latest post">↓</button>
   </section>;
 }
 
@@ -52,18 +79,65 @@ function NextLink({ label, onClick }) {
   return <div className="next-section-wrap"><button className="next-section-card" onClick={onClick}><span>{label}</span><strong>→</strong></button></div>;
 }
 
-function ImageCarousel({ images = [], title }) {
+function ImageCarousel({ images = [], title, eager = false, preloadNeighbors = false }) {
   const [index, setIndex] = useState(0);
+  const [pendingIndex, setPendingIndex] = useState(null);
+  const navigationRef = useRef(0);
+
+  useEffect(() => {
+    setIndex(0);
+    setPendingIndex(null);
+  }, [images]);
+
+  useEffect(() => {
+    if (!preloadNeighbors || !images.length) return;
+    const current = images[index];
+    const next = images[(index + 1) % images.length];
+    const previous = images[(index - 1 + images.length) % images.length];
+    preloadImages([current?.src, next?.src, previous?.src]);
+  }, [images, index, preloadNeighbors]);
+
   if (!images.length) return null;
   const image = images[index];
-  return <div className="carousel">
-    <img key={image.src} src={image.src} alt={image.alt || title} />
-    {images.length > 1 && <div className="carousel-controls"><button onClick={() => setIndex((current) => (current - 1 + images.length) % images.length)}>←</button><span>{index + 1}/{images.length}</span><button onClick={() => setIndex((current) => (current + 1) % images.length)}>→</button></div>}
+  const navigate = (event, step) => {
+    event.stopPropagation();
+    const baseIndex = pendingIndex ?? index;
+    const nextIndex = (baseIndex + step + images.length) % images.length;
+    const requestId = navigationRef.current + 1;
+    navigationRef.current = requestId;
+    setPendingIndex(nextIndex);
+    preloadImage(images[nextIndex]?.src).then(() => {
+      if (navigationRef.current !== requestId) return;
+      setIndex(nextIndex);
+      setPendingIndex(null);
+      const neighborIndex = (nextIndex + step + images.length) % images.length;
+      preloadImage(images[neighborIndex]?.src);
+    });
+  };
+  const previous = (event) => navigate(event, -1);
+  const next = (event) => navigate(event, 1);
+  return <div className={`carousel ${pendingIndex !== null ? 'is-loading-next' : ''}`}>
+    <img src={image.src} alt={image.alt || title} loading={eager ? 'eager' : 'lazy'} decoding="async" />
+    {images.length > 1 && <>
+      <button className="carousel-arrow carousel-arrow-left" type="button" onClick={previous} aria-label="Previous image">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 18-6-6 6-6" /></svg>
+      </button>
+      <button className="carousel-arrow carousel-arrow-right" type="button" onClick={next} aria-label="Next image">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 6 6 6-6 6" /></svg>
+      </button>
+    </>}
   </div>;
 }
 
 function OpenCard({ item, children, onOpen, className = 'card' }) {
-  return <button className={`${className} open-card`} onClick={() => onOpen(item)}>{children}</button>;
+  const open = () => onOpen(item);
+  const handleKeyDown = (event) => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      open();
+    }
+  };
+  return <div className={`${className} open-card`} role="button" tabIndex={0} onClick={open} onKeyDown={handleKeyDown}>{children}</div>;
 }
 
 function DetailModal({ item, onClose, t }) {
@@ -97,7 +171,7 @@ function DetailModal({ item, onClose, t }) {
       <div className="modal-tools"><button className="copy-button" onClick={copyToClipboard} aria-label={t.copy}>{copied ? '✓' : '⧉'}</button>{item.telegramUrl && <a className="copy-button telegram-button" href={item.telegramUrl} target="_blank" rel="noreferrer" aria-label="Telegram post" onClick={(event) => event.stopPropagation()}><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21.7 3.4 18.4 20c-.2 1-.8 1.2-1.6.8l-5-3.7-2.4 2.3c-.3.3-.5.5-1 .5l.4-5.1 9.3-8.4c.4-.4-.1-.6-.6-.2L6 13.4 1 11.8c-1-.3-1-1 .2-1.5L20.1 3c.9-.3 1.7.2 1.6.4Z" /></svg></a>}<button className="modal-close" onClick={onClose} aria-label={t.close}>×</button></div>
       <div className="modal-meta"><span className="tag">{item.tags?.join(' · ') || item.tag || item.type || t.note}</span>{item.date && <time>{item.date}</time>}</div>
       <h2>{item.title}</h2>
-      <ImageCarousel images={item.images} title={item.title} />
+      <ImageCarousel images={item.images} title={item.title} eager preloadNeighbors />
       <p>{item.fullText || item.text || item.description}</p>
     </article>
   </div>;
@@ -106,9 +180,16 @@ function DetailModal({ item, onClose, t }) {
 
 
 function Feed({ t, data, embedded = false, onOpen, go, nextLabel }) {
+  useEffect(() => {
+    const firstPostImages = data.posts
+      .slice(0, 10)
+      .flatMap((post) => post.images?.map((image) => image.src) || []);
+    preloadImages(firstPostImages);
+  }, [data.posts]);
+
   return <section className={`section reveal visible ${embedded ? '' : 'page-hero'}`}>
     <div className="section-heading feed-heading"><p className="eyebrow">{t.feedEyebrow}</p>{!embedded && <><h2>{t.feedTitle}</h2><p className="lead">{t.feedLead}</p><a className="btn primary feed-subscribe" href="https://t.me/nikpeg_dramas" target="_blank" rel="noreferrer" aria-label={t.feedSubscribe}><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21.7 3.4 18.4 20c-.2 1-.8 1.2-1.6.8l-5-3.7-2.4 2.3c-.3.3-.5.5-1 .5l.4-5.1 9.3-8.4c.4-.4-.1-.6-.6-.2L6 13.4 1 11.8c-1-.3-1-1 .2-1.5L20.1 3c.9-.3 1.7.2 1.6.4Z" /></svg><span>{t.feedSubscribe}</span></a></>}</div>
-    <div className="post-feed">{data.posts.map(post => <OpenCard className="card post-card" item={post} key={post.id} onOpen={onOpen}><span className="tag">{t[post.status] ?? post.status} · {post.tag}</span>{post.images?.[0] && <img className="post-card-image" src={post.images[0].src} alt={post.images[0].alt || post.title} />}<h3>{post.title}</h3><p>{post.fullText || post.text}</p></OpenCard>)}</div>
+    <div className="post-feed">{data.posts.map((post, postIndex) => <OpenCard className="card post-card" item={post} key={post.id} onOpen={onOpen}><span className="tag">{t[post.status] ?? post.status} · {post.tag}</span><ImageCarousel images={post.images} title={post.title} eager={postIndex < 10} preloadNeighbors={postIndex < 10} /><h3>{post.title}</h3><p>{post.fullText || post.text}</p></OpenCard>)}</div>
     {go && nextLabel && <NextLink label={nextLabel} onClick={() => go('channels')} />}
   </section>;
 }

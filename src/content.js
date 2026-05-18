@@ -3,9 +3,9 @@ export const content = {
     posts: [
       {
         id: 'advertising-as-new-feudal-aesthetic', tag: 'essay', title: 'Advertising as a New Feudal Aesthetic', status: 'published', date: '2026-05-18', telegramUrl: 'https://t.me/nikpeg_dramas/24', images: [
-          { src: '/assets/posts/advertising-feudal-aesthetic-1.jpg', alt: 'Visual note for an essay about advertising and branded realities' },
-          { src: '/assets/posts/advertising-feudal-aesthetic-2.jpg', alt: 'Visual note about brand aesthetics and atmosphere' },
           { src: '/assets/posts/advertising-feudal-aesthetic-3.jpg', alt: 'Visual note about soft power in advertising' },
+          { src: '/assets/posts/advertising-feudal-aesthetic-2.jpg', alt: 'Visual note about brand aesthetics and atmosphere' },
+          { src: '/assets/posts/advertising-feudal-aesthetic-1.jpg', alt: 'Visual note for an essay about advertising and branded realities' },
           { src: '/assets/posts/advertising-feudal-aesthetic-4.jpg', alt: 'Visual note about products as entrances into worlds' }
         ],
         text: 'Advertising looks less and less like an announcement and more like an invitation into someone else’s reality.',
@@ -56,9 +56,9 @@ export const content = {
     posts: [
       {
         id: 'advertising-as-new-feudal-aesthetic', tag: 'эссе', title: 'Реклама как новая феодальная эстетика', status: 'published', date: '2026-05-18', telegramUrl: 'https://t.me/nikpeg_dramas/24', images: [
-          { src: '/assets/posts/advertising-feudal-aesthetic-1.jpg', alt: 'Визуальная заметка к эссе о рекламе и брендовых реальностях' },
-          { src: '/assets/posts/advertising-feudal-aesthetic-2.jpg', alt: 'Визуальная заметка об эстетике брендов и атмосферах' },
           { src: '/assets/posts/advertising-feudal-aesthetic-3.jpg', alt: 'Визуальная заметка о мягкой власти рекламы' },
+          { src: '/assets/posts/advertising-feudal-aesthetic-2.jpg', alt: 'Визуальная заметка об эстетике брендов и атмосферах' },
+          { src: '/assets/posts/advertising-feudal-aesthetic-1.jpg', alt: 'Визуальная заметка к эссе о рекламе и брендовых реальностях' },
           { src: '/assets/posts/advertising-feudal-aesthetic-4.jpg', alt: 'Визуальная заметка о продуктах как входе в чужие миры' }
         ],
         text: 'Реклама всё меньше похожа на объявление и всё больше — на приглашение в чью-то реальность.',
