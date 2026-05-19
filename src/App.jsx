@@ -140,12 +140,29 @@ function OpenCard({ item, children, onOpen, className = 'card' }) {
   return <div className={`${className} open-card`} role="button" tabIndex={0} onClick={open} onKeyDown={handleKeyDown}>{children}</div>;
 }
 
+function QuoteCredit({ item }) {
+  return <div className="quote-credit">
+    {item.author && <span>{item.author}</span>}
+    {item.source && <cite>{item.source}</cite>}
+  </div>;
+}
+
+function QuoteCard({ item, onOpen }) {
+  return <OpenCard className="card quote-row" item={item} key={item.id} onOpen={onOpen}>
+    <div className="quote-row-top"><span className="tag">{item.tags?.join(' · ')}</span>{item.date && <time className="thought-date">{item.date}</time>}</div>
+    <blockquote>{item.quote || item.fullText || item.text}</blockquote>
+    <QuoteCredit item={item} />
+  </OpenCard>;
+}
+
 function DetailModal({ item, onClose, t }) {
   const [copied, setCopied] = useState(false);
   if (!item) return null;
-  const body = item.fullText || item.text || item.description;
+  const isQuote = item.type === 'quote' || Boolean(item.quote);
+  const body = item.quote || item.fullText || item.text || item.description;
   const credit = item.credit || (item.date ? `${item.date} by NikPeg` : 'by NikPeg');
-  const copyText = [item.title, body, credit].filter(Boolean).join('\n\n');
+  const quoteCredit = isQuote ? [item.author, item.source].filter(Boolean).join(', ') : credit;
+  const copyText = [isQuote ? body : item.title, isQuote ? quoteCredit : body, isQuote ? null : credit].filter(Boolean).join('\n\n');
   async function copyToClipboard() {
     try {
       if (navigator.clipboard?.writeText) {
@@ -167,12 +184,17 @@ function DetailModal({ item, onClose, t }) {
     }
   }
   return <div className="modal-backdrop" role="presentation" onClick={onClose}>
-    <article className="modal-card" role="dialog" aria-modal="true" aria-label={item.title} onClick={(event) => event.stopPropagation()}>
+    <article className={`modal-card ${isQuote ? 'quote-modal' : ''}`} role="dialog" aria-modal="true" aria-label={isQuote ? body.slice(0, 80) : item.title} onClick={(event) => event.stopPropagation()}>
       <div className="modal-tools"><button className="copy-button" onClick={copyToClipboard} aria-label={t.copy}>{copied ? '✓' : '⧉'}</button>{item.telegramUrl && <a className="copy-button telegram-button" href={item.telegramUrl} target="_blank" rel="noreferrer" aria-label="Telegram post" onClick={(event) => event.stopPropagation()}><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21.7 3.4 18.4 20c-.2 1-.8 1.2-1.6.8l-5-3.7-2.4 2.3c-.3.3-.5.5-1 .5l.4-5.1 9.3-8.4c.4-.4-.1-.6-.6-.2L6 13.4 1 11.8c-1-.3-1-1 .2-1.5L20.1 3c.9-.3 1.7.2 1.6.4Z" /></svg></a>}<button className="modal-close" onClick={onClose} aria-label={t.close}>×</button></div>
       <div className="modal-meta"><span className="tag">{item.tags?.join(' · ') || item.tag || item.type || t.note}</span>{item.date && <time>{item.date}</time>}</div>
-      <h2>{item.title}</h2>
-      <ImageCarousel images={item.images} title={item.title} eager preloadNeighbors />
-      <p>{item.fullText || item.text || item.description}</p>
+      {isQuote ? <>
+        <blockquote>{body}</blockquote>
+        <QuoteCredit item={item} />
+      </> : <>
+        <h2>{item.title}</h2>
+        <ImageCarousel images={item.images} title={item.title} eager preloadNeighbors />
+        <p>{item.fullText || item.text || item.description}</p>
+      </>}
     </article>
   </div>;
 }
@@ -180,6 +202,15 @@ function DetailModal({ item, onClose, t }) {
 
 
 function Feed({ t, data, embedded = false, onOpen, go, nextLabel }) {
+  const pageSize = 10;
+  const [visibleCount, setVisibleCount] = useState(pageSize);
+  const sentinelRef = useRef(null);
+  const visiblePosts = data.posts.slice(0, visibleCount);
+
+  useEffect(() => {
+    setVisibleCount(pageSize);
+  }, [data.posts]);
+
   useEffect(() => {
     const firstPostImages = data.posts
       .slice(0, 10)
@@ -187,15 +218,26 @@ function Feed({ t, data, embedded = false, onOpen, go, nextLabel }) {
     preloadImages(firstPostImages);
   }, [data.posts]);
 
+  useEffect(() => {
+    if (visibleCount >= data.posts.length) return undefined;
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) setVisibleCount((count) => Math.min(count + pageSize, data.posts.length));
+    }, { rootMargin: '320px 0px' });
+    const node = sentinelRef.current;
+    if (node) observer.observe(node);
+    return () => observer.disconnect();
+  }, [visibleCount, data.posts.length]);
+
   return <section className={`section reveal visible ${embedded ? '' : 'page-hero'}`}>
     <div className="section-heading feed-heading"><p className="eyebrow">{t.feedEyebrow}</p>{!embedded && <><h2>{t.feedTitle}</h2><p className="lead">{t.feedLead}</p><a className="btn primary feed-subscribe" href="https://t.me/nikpeg_dramas" target="_blank" rel="noreferrer" aria-label={t.feedSubscribe}><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21.7 3.4 18.4 20c-.2 1-.8 1.2-1.6.8l-5-3.7-2.4 2.3c-.3.3-.5.5-1 .5l.4-5.1 9.3-8.4c.4-.4-.1-.6-.6-.2L6 13.4 1 11.8c-1-.3-1-1 .2-1.5L20.1 3c.9-.3 1.7.2 1.6.4Z" /></svg><span>{t.feedSubscribe}</span></a></>}</div>
-    <div className="post-feed">{data.posts.map((post, postIndex) => <OpenCard className="card post-card" item={post} key={post.id} onOpen={onOpen}><span className="tag">{t[post.status] ?? post.status} · {post.tag}</span><ImageCarousel images={post.images} title={post.title} eager={postIndex < 10} preloadNeighbors={postIndex < 10} /><h3>{post.title}</h3><p>{post.fullText || post.text}</p></OpenCard>)}</div>
+    <div className="post-feed">{visiblePosts.map((post, postIndex) => <OpenCard className="card post-card" item={post} key={post.id} onOpen={onOpen}><span className="tag">{t[post.status] ?? post.status} · {post.tag}</span><ImageCarousel images={post.images} title={post.title} eager={postIndex < 10} preloadNeighbors={postIndex < 10} /><h3>{post.title}</h3><p>{post.fullText || post.text}</p></OpenCard>)}</div>
+    <div ref={sentinelRef} className="scroll-sentinel" aria-hidden="true" />
     {go && nextLabel && <NextLink label={nextLabel} onClick={() => go('channels')} />}
   </section>;
 }
 
 function ArchivePage({ t, lang, onOpen, go, kind = 'thoughts' }) {
-  const pageSize = 20;
+  const pageSize = 10;
   const archiveLabels = kind === 'ideas'
     ? { eyebrow: t.ideasEyebrow, title: t.ideasTitle, lead: t.ideasLead, loading: t.loading, next: t.nextThoughts, nextTab: 'thoughts' }
     : kind === 'quotes'
@@ -231,7 +273,9 @@ function ArchivePage({ t, lang, onOpen, go, kind = 'thoughts' }) {
     <PageHeading eyebrow={archiveLabels.eyebrow} title={archiveLabels.title} lead={archiveLabels.lead} />
     {loading ? <div className="glass-panel loading-panel">{archiveLabels.loading}</div> : <>
       <div className="toolbar tag-toolbar"><span>{t.filterByTag}</span><button className={tag === 'all' ? 'active' : ''} onClick={() => { setTag('all'); setVisibleCount(pageSize); }}>{t.allTags}</button>{tags.map((item) => <button key={item} className={tag === item ? 'active' : ''} onClick={() => { setTag(item); setVisibleCount(pageSize); }}>{item}</button>)}</div>
-      <div className="thought-list">{visibleItems.map(item => <OpenCard className="card thought-row" item={item} key={item.id} onOpen={onOpen}><div className="thought-row-top"><span className="tag">{item.tags?.join(' · ') || t.draft}</span>{item.date && <time className="thought-date">{item.date}</time>}</div><h3>{item.title}</h3><p>{item.fullText || item.text}</p></OpenCard>)}</div>
+      <div className={kind === 'quotes' ? 'quote-list' : 'thought-list'}>{visibleItems.map(item => kind === 'quotes'
+        ? <QuoteCard item={item} key={item.id} onOpen={onOpen} />
+        : <OpenCard className="card thought-row" item={item} key={item.id} onOpen={onOpen}><div className="thought-row-top"><span className="tag">{item.tags?.join(' · ') || t.draft}</span>{item.date && <time className="thought-date">{item.date}</time>}</div><h3>{item.title}</h3><p>{item.fullText || item.text}</p></OpenCard>)}</div>
       <div ref={sentinelRef} className="scroll-sentinel" aria-hidden="true" />
       {archiveLabels.next && <NextLink label={archiveLabels.next} onClick={() => go(archiveLabels.nextTab)} />}
     </>}
@@ -239,17 +283,57 @@ function ArchivePage({ t, lang, onOpen, go, kind = 'thoughts' }) {
 }
 
 function Channels({ t, data, go }) {
+  const pageSize = 10;
+  const [visibleCount, setVisibleCount] = useState(pageSize);
+  const sentinelRef = useRef(null);
+  const visibleChannels = data.channels.slice(0, visibleCount);
+
+  useEffect(() => {
+    setVisibleCount(pageSize);
+  }, [data.channels]);
+
+  useEffect(() => {
+    if (visibleCount >= data.channels.length) return undefined;
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) setVisibleCount((count) => Math.min(count + pageSize, data.channels.length));
+    }, { rootMargin: '320px 0px' });
+    const node = sentinelRef.current;
+    if (node) observer.observe(node);
+    return () => observer.disconnect();
+  }, [visibleCount, data.channels.length]);
+
   return <section className="section page-hero reveal visible">
     <PageHeading eyebrow={t.channelsEyebrow} title={t.channelsTitle} lead={t.channelsLead} />
-    <div className="cards channel-grid">{data.channels.map(channel => <a className="card channel-card" key={channel.id} href={channel.url} target="_blank" rel="noreferrer"><span className="tag">{channel.type}</span><h3>{channel.title}</h3><p>{channel.description}</p><strong>{t.open}</strong></a>)}</div>
+    <div className="cards channel-grid">{visibleChannels.map(channel => <a className="card channel-card" key={channel.id} href={channel.url} target="_blank" rel="noreferrer"><span className="tag">{channel.type}</span><h3>{channel.title}</h3><p>{channel.description}</p><strong>{t.open}</strong></a>)}</div>
+    <div ref={sentinelRef} className="scroll-sentinel" aria-hidden="true" />
     <NextLink label={t.nextProjects} onClick={() => go('projects')} />
   </section>;
 }
 
 function Projects({ t, data, go }) {
+  const pageSize = 10;
+  const [visibleCount, setVisibleCount] = useState(pageSize);
+  const sentinelRef = useRef(null);
+  const visibleProjects = data.projects.slice(0, visibleCount);
+
+  useEffect(() => {
+    setVisibleCount(pageSize);
+  }, [data.projects]);
+
+  useEffect(() => {
+    if (visibleCount >= data.projects.length) return undefined;
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) setVisibleCount((count) => Math.min(count + pageSize, data.projects.length));
+    }, { rootMargin: '320px 0px' });
+    const node = sentinelRef.current;
+    if (node) observer.observe(node);
+    return () => observer.disconnect();
+  }, [visibleCount, data.projects.length]);
+
   return <section className="section page-hero reveal visible" id="projects">
     <PageHeading eyebrow={t.projectsEyebrow} title={t.projectsTitle} lead={t.projectsLead} />
-    <div className="cards three">{data.projects.map(project => <button className="card project-card open-card" key={project.id} onClick={() => go(`project:${project.slug}`)}><span className="tag">{project.tag}</span><h3>{project.title}</h3><p>{project.text}</p><strong>{t.openLanding}</strong></button>)}</div>
+    <div className="cards three">{visibleProjects.map(project => <button className="card project-card open-card" key={project.id} onClick={() => go(`project:${project.slug}`)}><span className="tag">{project.tag}</span><h3>{project.title}</h3><p>{project.text}</p><strong>{t.openLanding}</strong></button>)}</div>
+    <div ref={sentinelRef} className="scroll-sentinel" aria-hidden="true" />
     <NextLink label={t.nextIdeas} onClick={() => go('ideas')} />
   </section>;
 }

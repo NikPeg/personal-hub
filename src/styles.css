@@ -350,9 +350,25 @@ html[data-theme="light"] .modal-card {
 .tag-toolbar { align-items: center; }
 .tag-toolbar > span { display: inline-flex; align-items: center; align-self: stretch; line-height: 1; }
 .scroll-sentinel { height: 1px; }
+.quote-list { display: grid; grid-template-columns: 1fr; gap: 1rem; }
+.quote-row { min-height: 0; display: grid; gap: .9rem; padding: clamp(1.2rem, 3vw, 1.8rem); border-left: .22rem solid color-mix(in srgb, var(--accent) 70%, transparent); }
+.quote-row-top { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+.quote-row blockquote, .quote-modal blockquote { margin: 0; color: var(--text); white-space: pre-line; }
+.quote-row blockquote { max-width: 78ch; font-family: "Playfair Display", serif; font-size: clamp(1.35rem, 2.3vw, 2.05rem); line-height: 1.32; letter-spacing: 0; }
+.quote-credit { display: flex; gap: .65rem; align-items: center; flex-wrap: wrap; color: var(--muted); font-weight: 800; }
+.quote-credit span::before { content: "— "; color: var(--accent); }
+.quote-credit cite { font-style: normal; color: color-mix(in srgb, var(--muted) 82%, var(--accent3) 18%); }
+.quote-credit cite::before { content: "Источник: "; color: var(--accent3); }
+.quote-modal { width: min(780px, 100%); padding: clamp(1.8rem, 5vw, 3.4rem); }
+.quote-modal .modal-meta { margin-bottom: clamp(1.5rem, 4vw, 2.6rem); }
+.quote-modal blockquote { position: relative; padding-left: clamp(1rem, 3vw, 1.8rem); font-family: "Playfair Display", serif; font-size: clamp(1.75rem, 4.6vw, 3.7rem); line-height: 1.16; letter-spacing: 0; }
+.quote-modal blockquote::before { content: "“"; position: absolute; left: 0; top: -.22em; color: var(--accent); font-size: 1.35em; line-height: 1; }
+.quote-modal .quote-credit { margin-top: clamp(1.4rem, 4vw, 2.4rem); font-size: clamp(.98rem, 1.7vw, 1.15rem); }
 @media (max-width: 560px) {
   .thought-row-top { align-items: flex-start; flex-direction: column; gap: .45rem; }
   .thought-row .tag { max-width: 100%; }
+  .quote-row-top { align-items: flex-start; flex-direction: column; gap: .45rem; }
+  .quote-modal blockquote { padding-left: .9rem; }
 }
 
 .next-section-wrap { display: flex; justify-content: center; margin-top: clamp(2rem, 5vw, 4rem); }
