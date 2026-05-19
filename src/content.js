@@ -40,7 +40,7 @@ export const content = {
     channelSections: [
       {
         id: 'contact',
-        title: 'Contact NikPeg',
+        title: 'Direct contacts',
         items: [
           { id: 'telegram-personal', type: 'Telegram', title: '@nikpeg', url: 'https://t.me/nikpeg', description: 'The fastest direct way to write to NikPeg.' },
           { id: 'vk-personal', type: 'VK', title: 'vk.com/nikpeg', url: 'https://vk.com/nikpeg', description: 'Personal VK page and another stable place to reach NikPeg.' },
@@ -57,18 +57,11 @@ export const content = {
         ]
       },
       {
-        id: 'lists',
-        title: 'Wishes and books',
+        id: 'shelves',
+        title: 'Personal shelves and profiles',
         items: [
           { id: 'ohmywishes', type: 'Wishlist', title: 'OhMyWishes', url: 'https://ohmywishes.com/users/nikpegf2', description: 'A separate wishlist page.' },
-          { id: 'goodreads', type: 'Books', title: 'Goodreads', url: 'https://www.goodreads.com/friend/i?invite_token=NGViZWE5ZmItNzFiZi00NTM0LTgyMWEtNzA3NWU1MTc1MGJm', description: 'Favorite books, current reading, and books NikPeg wants to read.' }
-        ]
-      },
-      {
-        id: 'secondary',
-        title: 'Less frequently updated',
-        muted: true,
-        items: [
+          { id: 'goodreads', type: 'Books', title: 'Goodreads', url: 'https://www.goodreads.com/friend/i?invite_token=NGViZWE5ZmItNzFiZi00NTM0LTgyMWEtNzA3NWU1MTc1MGJm', description: 'Favorite books, current reading, and books NikPeg wants to read.' },
           { id: 'linkedin', type: 'LinkedIn', title: 'NikPeg', url: 'https://www.linkedin.com/in/nikpeg/', description: 'Professional profile, kept less actively up to date.' },
           { id: 'github', type: 'GitHub', title: 'NikPeg', url: 'https://github.com/NikPeg', description: 'Code, repositories, prototypes, and technical traces of projects.' }
         ]
@@ -121,7 +114,7 @@ export const content = {
     channelSections: [
       {
         id: 'contact',
-        title: 'Как связаться с НикПегом',
+        title: 'Прямые контакты',
         items: [
           { id: 'telegram-personal', type: 'Telegram', title: '@nikpeg', url: 'https://t.me/nikpeg', description: 'Самый быстрый прямой способ написать НикПегу.' },
           { id: 'vk-personal', type: 'VK', title: 'vk.com/nikpeg', url: 'https://vk.com/nikpeg', description: 'Личная страница VK и ещё одна стабильная точка связи.' },
@@ -138,18 +131,11 @@ export const content = {
         ]
       },
       {
-        id: 'lists',
-        title: 'Вишлист и книги',
+        id: 'shelves',
+        title: 'Личные полки и профили',
         items: [
           { id: 'ohmywishes', type: 'Вишлист', title: 'OhMyWishes', url: 'https://ohmywishes.com/users/nikpegf2', description: 'Отдельная страница с желаниями.' },
-          { id: 'goodreads', type: 'Книги', title: 'Goodreads', url: 'https://www.goodreads.com/friend/i?invite_token=NGViZWE5ZmItNzFiZi00NTM0LTgyMWEtNzA3NWU1MTc1MGJm', description: 'Любимые книги, что НикПег читает сейчас и что хочет прочитать.' }
-        ]
-      },
-      {
-        id: 'secondary',
-        title: 'Менее актуальное',
-        muted: true,
-        items: [
+          { id: 'goodreads', type: 'Книги', title: 'Goodreads', url: 'https://www.goodreads.com/friend/i?invite_token=NGViZWE5ZmItNzFiZi00NTM0LTgyMWEtNzA3NWU1MTc1MGJm', description: 'Любимые книги, что НикПег читает сейчас и что хочет прочитать.' },
           { id: 'linkedin', type: 'LinkedIn', title: 'НикПег', url: 'https://www.linkedin.com/in/nikpeg/', description: 'Профессиональный профиль, обновляется не очень активно.' },
           { id: 'github', type: 'GitHub', title: 'НикПег', url: 'https://github.com/NikPeg', description: 'Код, репозитории, прототипы и технический след проектов.' }
         ]
