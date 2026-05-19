@@ -1,6 +1,5 @@
 ---
 id: "quote-073"
-date: "2026-05"
 tags:
   - culture
   - art

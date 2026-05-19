@@ -1,6 +1,5 @@
 ---
 id: "quote-030"
-date: "2026-05"
 tags:
   - psychology
   - philosophy

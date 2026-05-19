@@ -1,6 +1,5 @@
 ---
 id: "quote-028"
-date: "2026-05"
 tags:
   - relationships
   - history

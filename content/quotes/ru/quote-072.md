@@ -1,6 +1,5 @@
 ---
 id: "quote-072"
-date: "2026-05"
 tags:
   - общество
 sourceIndex: 72

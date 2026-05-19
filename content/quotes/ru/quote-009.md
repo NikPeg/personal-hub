@@ -1,6 +1,5 @@
 ---
 id: "quote-009"
-date: "2026-05"
 tags:
   - технологии
 sourceIndex: 9

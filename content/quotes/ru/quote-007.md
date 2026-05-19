@@ -1,6 +1,5 @@
 ---
 id: "quote-007"
-date: "2026-05"
 tags:
   - искусство
 sourceIndex: 7

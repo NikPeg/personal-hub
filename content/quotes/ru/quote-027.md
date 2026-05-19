@@ -1,6 +1,5 @@
 ---
 id: "quote-027"
-date: "2026-05"
 tags:
   - отношения
 sourceIndex: 27

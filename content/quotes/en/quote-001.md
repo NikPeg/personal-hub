@@ -1,6 +1,5 @@
 ---
 id: "quote-001"
-date: "2026-05"
 tags:
   - philosophy
 sourceIndex: 1

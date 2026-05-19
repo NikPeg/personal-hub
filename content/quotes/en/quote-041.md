@@ -1,6 +1,5 @@
 ---
 id: "quote-041"
-date: "2026-05"
 tags:
   - philosophy
   - ethics

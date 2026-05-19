@@ -1,6 +1,5 @@
 ---
 id: "quote-060"
-date: "2026-05"
 tags:
   - philosophy
   - society

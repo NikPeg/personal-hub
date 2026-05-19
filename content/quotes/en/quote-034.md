@@ -1,6 +1,5 @@
 ---
 id: "quote-034"
-date: "2026-05"
 tags:
   - technology
   - psychology

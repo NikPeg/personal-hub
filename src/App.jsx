@@ -149,7 +149,7 @@ function QuoteCredit({ item }) {
 
 function QuoteCard({ item, onOpen }) {
   return <OpenCard className="card quote-row" item={item} key={item.id} onOpen={onOpen}>
-    <div className="quote-row-top"><span className="tag">{item.tags?.join(' · ')}</span>{item.date && <time className="thought-date">{item.date}</time>}</div>
+    <div className="quote-row-top"><span className="tag">{item.tags?.join(' · ')}</span></div>
     <blockquote>{item.quote || item.fullText || item.text}</blockquote>
     <QuoteCredit item={item} />
   </OpenCard>;
@@ -192,7 +192,7 @@ function DetailModal({ item, onClose, t }) {
   return <div className="modal-backdrop" role="presentation" onClick={onClose}>
     <article className={`modal-card ${isQuote ? 'quote-modal' : ''} ${quoteLengthClass}`} role="dialog" aria-modal="true" aria-label={isQuote ? body.slice(0, 80) : item.title} onClick={(event) => event.stopPropagation()}>
       <div className="modal-tools"><button className="copy-button" onClick={copyToClipboard} aria-label={t.copy}>{copied ? '✓' : '⧉'}</button>{item.telegramUrl && <a className="copy-button telegram-button" href={item.telegramUrl} target="_blank" rel="noreferrer" aria-label="Telegram post" onClick={(event) => event.stopPropagation()}><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21.7 3.4 18.4 20c-.2 1-.8 1.2-1.6.8l-5-3.7-2.4 2.3c-.3.3-.5.5-1 .5l.4-5.1 9.3-8.4c.4-.4-.1-.6-.6-.2L6 13.4 1 11.8c-1-.3-1-1 .2-1.5L20.1 3c.9-.3 1.7.2 1.6.4Z" /></svg></a>}<button className="modal-close" onClick={onClose} aria-label={t.close}>×</button></div>
-      <div className="modal-meta"><span className="tag">{item.tags?.join(' · ') || item.tag || item.type || t.note}</span>{item.date && <time>{item.date}</time>}</div>
+      <div className="modal-meta"><span className="tag">{item.tags?.join(' · ') || item.tag || item.type || t.note}</span>{!isQuote && item.date && <time>{item.date}</time>}</div>
       {isQuote ? <>
         <blockquote>{body}</blockquote>
         <QuoteCredit item={item} />

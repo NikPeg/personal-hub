@@ -1,6 +1,5 @@
 ---
 id: "quote-069"
-date: "2026-05"
 tags:
   - relationships
 sourceIndex: 69

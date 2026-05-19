@@ -1,6 +1,5 @@
 ---
 id: "quote-008"
-date: "2026-05"
 tags:
   - работа
 sourceIndex: 8

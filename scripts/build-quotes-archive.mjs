@@ -13,8 +13,6 @@ const publicRoots = {
 const translationsPath = 'raw/quotes-translations-en.json';
 const translationCache = fs.existsSync(translationsPath) ? JSON.parse(fs.readFileSync(translationsPath, 'utf8')) : {};
 
-const quoteDate = '2026-05';
-
 const knownAttribution = {
   'quote-003': { author: 'Билл Бласс', source: '' },
   'quote-009': { author: 'преподаватель ПИ', source: '' },
@@ -270,13 +268,12 @@ function parseQuotes(raw) {
   }).filter((item) => item.body);
 }
 
-function markdown({ id, date, tags, sourceIndex, title, quote, author, source }) {
+function markdown({ id, tags, sourceIndex, title, quote, author, source }) {
   const tagBlock = tags.map((tag) => '  - ' + tag).join('\n');
   const authorLine = author ? 'author: ' + yamlString(author) + '\n' : '';
   const sourceLine = source ? 'source: ' + yamlString(source) + '\n' : '';
   return '---\n'
     + 'id: ' + yamlString(id) + '\n'
-    + 'date: ' + yamlString(date) + '\n'
     + 'tags:\n' + tagBlock + '\n'
     + 'sourceIndex: ' + sourceIndex + '\n'
     + authorLine
@@ -295,7 +292,6 @@ const parsed = parseQuotes(fs.readFileSync(rawPath, 'utf8')).map((item, index) =
   return {
     type: 'quote',
     id,
-    date: quoteDate,
     sourceIndex,
     title,
     quote: meta.quote,
@@ -337,7 +333,6 @@ for (const item of parsed) {
   const filename = item.id + '.md';
   fs.writeFileSync(path.join(outRoots.ru, filename), markdown({
     id: item.id,
-    date: item.date,
     tags: item.tags,
     sourceIndex: item.sourceIndex,
     title: item.title,
@@ -350,7 +345,6 @@ for (const item of parsed) {
 
   fs.writeFileSync(path.join(outRoots.en, filename), markdown({
     id: enItem.id,
-    date: enItem.date,
     tags: enItem.tags,
     sourceIndex: enItem.sourceIndex,
     title: enItem.title,

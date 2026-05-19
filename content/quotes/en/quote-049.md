@@ -1,6 +1,5 @@
 ---
 id: "quote-049"
-date: "2026-05"
 tags:
   - work
 sourceIndex: 49

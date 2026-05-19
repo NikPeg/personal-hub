@@ -1,6 +1,5 @@
 ---
 id: "quote-039"
-date: "2026-05"
 tags:
   - society
   - work

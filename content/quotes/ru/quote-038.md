@@ -1,6 +1,5 @@
 ---
 id: "quote-038"
-date: "2026-05"
 tags:
   - этика
 sourceIndex: 38

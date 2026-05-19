@@ -1,6 +1,5 @@
 ---
 id: "quote-058"
-date: "2026-05"
 tags:
   - psychology
   - work

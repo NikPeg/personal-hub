@@ -1,6 +1,5 @@
 ---
 id: "quote-046"
-date: "2026-05"
 tags:
   - society
   - relationships

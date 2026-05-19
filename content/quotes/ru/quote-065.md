@@ -1,6 +1,5 @@
 ---
 id: "quote-065"
-date: "2026-05"
 tags:
   - культура
 sourceIndex: 65

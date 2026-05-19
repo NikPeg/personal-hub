@@ -1,6 +1,5 @@
 ---
 id: "quote-053"
-date: "2026-05"
 tags:
   - culture
   - work

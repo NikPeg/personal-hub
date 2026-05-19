@@ -1,6 +1,5 @@
 ---
 id: "quote-017"
-date: "2026-05"
 tags:
   - psychology
 sourceIndex: 17

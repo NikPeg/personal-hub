@@ -1,6 +1,5 @@
 ---
 id: "quote-037"
-date: "2026-05"
 tags:
   - философия
 sourceIndex: 37
