@@ -37,14 +37,42 @@ export const content = {
       { id: 'trends-are-tools', title: 'Trends are tools', text: 'Understanding the world is useful only when it changes what you build or how you act.', fullText: 'A trend is not a personality. It is a tool: useful when it sharpens a decision, dangerous when it replaces one.' },
       { id: 'gentle-system', title: 'A gentle personal system', text: 'A productivity system should feel like a good room: clear, warm, and hard to avoid.', fullText: 'The best personal systems are not punishment machines. They make the next good action visible, almost inviting.' }
     ],
-    channels: [
-      { id: 'nikpeg-dramas', type: 'Telegram', title: 'NikPeg Dramas', url: 'https://t.me/nikpeg_dramas', description: 'A personal feed of posts and essays about self-management, culture, markets, memes, and the way ideas turn into readable stories.' },
-      { id: 'meme-swaga', type: 'Telegram', title: 'meme swaga', url: 'https://t.me/meme_swaga', description: 'Light, brightness, love of life, and aesthetic memes — a small feed for mood and sparkle.' },
-      { id: 'linkedin', type: 'LinkedIn', title: 'NikPeg', url: 'https://www.linkedin.com/in/nikpeg/', description: 'Professional profile: work context, public credentials, and career history.' },
-      { id: 'github', type: 'GitHub', title: 'NikPeg', url: 'https://github.com/NikPeg', description: 'Code, repositories, prototypes, and the technical trail behind projects.' },
-      { id: 'vk-personal', type: 'VK', title: 'NikPeg', url: 'https://vk.com/nikpeg', description: 'Personal VK page and another stable place to find NikPeg online.' },
-      { id: 'juplane-telegram', type: 'Telegram', title: 'juplane', url: 'https://t.me/juplane', description: 'Trash channel, shitposting, memes, videos, and strangely deep lore.' },
-      { id: 'jupiter-plane-vk', type: 'VK', title: 'Jupiter Plane', url: 'https://vk.com/jupiter_plane', description: 'The VK version: best memes, selected posts, and VK Clips from the Jupiter Plane universe.' }
+    channelSections: [
+      {
+        id: 'contact',
+        title: 'Contact NikPeg',
+        items: [
+          { id: 'telegram-personal', type: 'Telegram', title: '@nikpeg', url: 'https://t.me/nikpeg', description: 'The fastest direct way to write to NikPeg.' },
+          { id: 'vk-personal', type: 'VK', title: 'vk.com/nikpeg', url: 'https://vk.com/nikpeg', description: 'Personal VK page and another stable place to reach NikPeg.' },
+          { id: 'email', type: 'Email', title: 'peganov.nik@gmail.com', url: 'mailto:peganov.nik@gmail.com', description: 'Email for longer, calmer messages and formal context.' }
+        ]
+      },
+      {
+        id: 'writing',
+        title: 'Where I write',
+        items: [
+          { id: 'nikpeg-dramas', type: 'Telegram', title: 'NikPeg Dramas', url: 'https://t.me/nikpeg_dramas', description: 'A personal feed of posts and essays about self-management, culture, markets, memes, and readable ideas.' },
+          { id: 'meme-swaga', type: 'Telegram', title: 'meme swaga', url: 'https://t.me/meme_swaga', description: 'Light, brightness, love of life, and aesthetic memes — a small feed for mood and sparkle.' },
+          { id: 'juplane-telegram', type: 'Telegram', title: 'Jupiter Plane', url: 'https://t.me/juplane', description: 'Trash channel, shitposting, memes, videos, and strangely deep lore.' }
+        ]
+      },
+      {
+        id: 'lists',
+        title: 'Wishes and books',
+        items: [
+          { id: 'ohmywishes', type: 'Wishlist', title: 'OhMyWishes', url: 'https://ohmywishes.com/users/nikpegf2', description: 'A separate wishlist page.' },
+          { id: 'goodreads', type: 'Books', title: 'Goodreads', url: 'https://www.goodreads.com/friend/i?invite_token=NGViZWE5ZmItNzFiZi00NTM0LTgyMWEtNzA3NWU1MTc1MGJm', description: 'Favorite books, current reading, and books NikPeg wants to read.' }
+        ]
+      },
+      {
+        id: 'secondary',
+        title: 'Less frequently updated',
+        muted: true,
+        items: [
+          { id: 'linkedin', type: 'LinkedIn', title: 'NikPeg', url: 'https://www.linkedin.com/in/nikpeg/', description: 'Professional profile, kept less actively up to date.' },
+          { id: 'github', type: 'GitHub', title: 'NikPeg', url: 'https://github.com/NikPeg', description: 'Code, repositories, prototypes, and technical traces of projects.' }
+        ]
+      }
     ],
     projects: [
       { id: 'edu', slug: 'edu', tag: 'AI · learning', title: 'Edu', text: 'Education tools, payments, referrals, and useful automation for learning.', landingLead: 'Learning products deserve infrastructure that feels simple on the outside and powerful underneath.', landingText: 'Edu is a future landing for education tools: payments, referrals, learning automation, and experiments around making courses easier to run and easier to buy.' },
@@ -90,14 +118,42 @@ export const content = {
       { id: 'trends-are-tools', title: 'Тренды — это инструменты', text: 'Понимание мира полезно только тогда, когда меняет то, что ты строишь, или то, как действуешь.', fullText: 'Тренд — не личность и не вера. Это инструмент: полезный, когда помогает принять решение, и опасный, когда заменяет его.' },
       { id: 'gentle-system', title: 'Мягкая личная система', text: 'Система продуктивности должна ощущаться как хорошая комната: ясно, тепло и сложно игнорировать.', fullText: 'Лучшие личные системы не наказывают. Они делают следующий хороший шаг видимым и почти естественным.' }
     ],
-    channels: [
-      { id: 'nikpeg-dramas', type: 'Telegram', title: 'NikPeg Dramas', url: 'https://t.me/nikpeg_dramas', description: 'Спокойный поток публичных заметок, эссе, проектных набросков и наблюдений. Если идея окажется полезной — используйте её в своей жизни, работе или проектах.' },
-      { id: 'meme-swaga', type: 'Telegram', title: 'meme swaga', url: 'https://t.me/meme_swaga', description: 'Свет, яркость, любовь к жизни и эстетишные мемы — маленькая лента для настроения.' },
-      { id: 'linkedin', type: 'LinkedIn', title: 'НикПег', url: 'https://www.linkedin.com/in/nikpeg/', description: 'Профессиональный профиль: опыт, рабочий контекст и карьерная история.' },
-      { id: 'github', type: 'GitHub', title: 'НикПег', url: 'https://github.com/NikPeg', description: 'Код, репозитории, прототипы и технический след проектов.' },
-      { id: 'vk-personal', type: 'VK', title: 'НикПег', url: 'https://vk.com/nikpeg', description: 'Личная страница VK и ещё одно место, где можно найти НикПега.' },
-      { id: 'juplane-telegram', type: 'Telegram', title: 'ЮС', url: 'https://t.me/juplane', description: 'Трэш-канал, щитпост, мемы, видео и внезапно глубокий лор.' },
-      { id: 'jupiter-plane-vk', type: 'VK', title: 'Юпитерский Самолёт', url: 'https://vk.com/jupiter_plane', description: 'VK-версия: лучшие мемы, отобранные посты и ВК Клипы из вселенной Юпитерского Самолёта.' }
+    channelSections: [
+      {
+        id: 'contact',
+        title: 'Как связаться с НикПегом',
+        items: [
+          { id: 'telegram-personal', type: 'Telegram', title: '@nikpeg', url: 'https://t.me/nikpeg', description: 'Самый быстрый прямой способ написать НикПегу.' },
+          { id: 'vk-personal', type: 'VK', title: 'vk.com/nikpeg', url: 'https://vk.com/nikpeg', description: 'Личная страница VK и ещё одна стабильная точка связи.' },
+          { id: 'email', type: 'Почта', title: 'peganov.nik@gmail.com', url: 'mailto:peganov.nik@gmail.com', description: 'Для длинных, спокойных и более формальных сообщений.' }
+        ]
+      },
+      {
+        id: 'writing',
+        title: 'Куда я пишу',
+        items: [
+          { id: 'nikpeg-dramas', type: 'Telegram', title: 'NikPeg Dramas', url: 'https://t.me/nikpeg_dramas', description: 'Публичные заметки, эссе, проектные наброски и наблюдения.' },
+          { id: 'meme-swaga', type: 'Telegram', title: 'meme swaga', url: 'https://t.me/meme_swaga', description: 'Свет, яркость, любовь к жизни и эстетишные мемы — маленькая лента для настроения.' },
+          { id: 'juplane-telegram', type: 'Telegram', title: 'ЮС', url: 'https://t.me/juplane', description: 'Трэш-канал, щитпост, мемы, видео и внезапно глубокий лор.' }
+        ]
+      },
+      {
+        id: 'lists',
+        title: 'Вишлист и книги',
+        items: [
+          { id: 'ohmywishes', type: 'Вишлист', title: 'OhMyWishes', url: 'https://ohmywishes.com/users/nikpegf2', description: 'Отдельная страница с желаниями.' },
+          { id: 'goodreads', type: 'Книги', title: 'Goodreads', url: 'https://www.goodreads.com/friend/i?invite_token=NGViZWE5ZmItNzFiZi00NTM0LTgyMWEtNzA3NWU1MTc1MGJm', description: 'Любимые книги, что НикПег читает сейчас и что хочет прочитать.' }
+        ]
+      },
+      {
+        id: 'secondary',
+        title: 'Менее актуальное',
+        muted: true,
+        items: [
+          { id: 'linkedin', type: 'LinkedIn', title: 'НикПег', url: 'https://www.linkedin.com/in/nikpeg/', description: 'Профессиональный профиль, обновляется не очень активно.' },
+          { id: 'github', type: 'GitHub', title: 'НикПег', url: 'https://github.com/NikPeg', description: 'Код, репозитории, прототипы и технический след проектов.' }
+        ]
+      }
     ],
     projects: [
       { id: 'edu', slug: 'edu', tag: 'AI · обучение', title: 'Edu', text: 'Образовательные инструменты, оплаты, рефералки и полезная автоматизация обучения.', landingLead: 'Образовательным продуктам нужна инфраструктура, которая снаружи кажется простой, а внутри держит сложность.', landingText: 'Edu — будущий лендинг для образовательных инструментов: оплаты, рефералки, автоматизация обучения и эксперименты вокруг того, как сделать курсы проще в управлении и покупке.' },

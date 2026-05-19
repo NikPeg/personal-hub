@@ -289,29 +289,14 @@ function ArchivePage({ t, lang, onOpen, go, kind = 'thoughts' }) {
 }
 
 function Channels({ t, data, go }) {
-  const pageSize = 10;
-  const [visibleCount, setVisibleCount] = useState(pageSize);
-  const sentinelRef = useRef(null);
-  const visibleChannels = data.channels.slice(0, visibleCount);
-
-  useEffect(() => {
-    setVisibleCount(pageSize);
-  }, [data.channels]);
-
-  useEffect(() => {
-    if (visibleCount >= data.channels.length) return undefined;
-    const observer = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting) setVisibleCount((count) => Math.min(count + pageSize, data.channels.length));
-    }, { rootMargin: '320px 0px' });
-    const node = sentinelRef.current;
-    if (node) observer.observe(node);
-    return () => observer.disconnect();
-  }, [visibleCount, data.channels.length]);
+  const sections = data.channelSections || [{ id: 'links', title: t.channelsTitle, items: data.channels || [] }];
 
   return <section className="section page-hero reveal visible">
     <PageHeading eyebrow={t.channelsEyebrow} title={t.channelsTitle} lead={t.channelsLead} />
-    <div className="cards channel-grid">{visibleChannels.map(channel => <a className="card channel-card" key={channel.id} href={channel.url} target="_blank" rel="noreferrer"><span className="tag">{channel.type}</span><h3>{channel.title}</h3><p>{channel.description}</p><strong>{t.open}</strong></a>)}</div>
-    <div ref={sentinelRef} className="scroll-sentinel" aria-hidden="true" />
+    <div className="channel-sections">{sections.map(section => <section className={`channel-section ${section.muted ? 'muted-channel-section' : ''}`} key={section.id}>
+      <h3>{section.title}</h3>
+      <div className="cards channel-grid">{section.items.map(channel => <a className="card channel-card" key={channel.id} href={channel.url} target="_blank" rel="noreferrer"><span className="tag">{channel.type}</span><h3>{channel.title}</h3><p>{channel.description}</p><strong>{t.open}</strong></a>)}</div>
+    </section>)}</div>
     <NextLink label={t.nextProjects} onClick={() => go('projects')} />
   </section>;
 }
