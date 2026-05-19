@@ -2,9 +2,9 @@
 id: "quote-017"
 date: "2026-05"
 tags:
-  - психология
+  - psychology
 sourceIndex: 17
-author: "Мартин Лютер"
+author: "Martin Luther"
 ---
 
-„Мы не можем запретить птицам пролетать над нашей головой, но мы не позволим им садиться нам на голову и вить на ней свои гнезда. Подобно этому мы не можем запретить дурным мыслям иногда приходить к нам в голову, но мы должны не позволять им гнездиться в нашем мозгу.“.
+"We cannot stop birds from flying over our heads, but we cannot stop them from landing on our heads and building their nests on it. Likewise, we cannot stop bad thoughts from sometimes entering our minds, but we must not allow them to nest in our brains."

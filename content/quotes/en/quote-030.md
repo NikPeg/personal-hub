@@ -2,12 +2,12 @@
 id: "quote-030"
 date: "2026-05"
 tags:
-  - психология
-  - философия
-  - отношения
+  - psychology
+  - philosophy
+  - relationships
 sourceIndex: 30
-author: "Маргарет Митчелл"
-source: "Унесённые ветром"
+author: "Margaret Mitchell"
+source: "Gone with the Wind"
 ---
 
-Вы так жестоки к тем, кто любит вас, Скарлетт. Вы принимаете любовь и держите ее как хлыст над головой человека.
+You are so cruel to those who love you, Scarlett. You accept love and hold it like a whip over a person's head.

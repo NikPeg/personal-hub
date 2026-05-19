@@ -2,12 +2,12 @@
 id: "quote-032"
 date: "2026-05"
 tags:
-  - общество
-  - работа
-  - экономика
+  - society
+  - work
+  - economics
 sourceIndex: 32
-author: "Маргарет Митчелл"
-source: "Унесённые ветром"
+author: "Margaret Mitchell"
+source: "Gone with the Wind"
 ---
 
-На крушении цивилизации можно заработать ничуть не меньше, чем на создании ее.
+You can earn no less from the collapse of civilization than from creating it.

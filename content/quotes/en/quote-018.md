@@ -2,10 +2,10 @@
 id: "quote-018"
 date: "2026-05"
 tags:
-  - философия
+  - philosophy
 sourceIndex: 18
-author: "Фрэнк Герберт"
-source: "Дюна"
+author: "Frank Herbert"
+source: "Dune"
 ---
 
-Перед человеком, способным принимать правильные решения, лежит вся вселенная. А неуверенных в себе кроликов надо найти и загнать в норы. Как иначе контролировать и разводить их?
+The person who can make the right decisions has the entire universe before him. And rabbits who are unsure of themselves need to be found and driven into holes. How else to control and breed them?

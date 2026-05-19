@@ -2,11 +2,11 @@
 id: "quote-068"
 date: "2026-05"
 tags:
-  - философия
-  - культура
+  - philosophy
+  - culture
 sourceIndex: 68
-author: "Макс Фрай"
-source: "Кофейная книга"
+author: "Max Frei"
+source: "The Coffee Book"
 ---
 
-А кофе у нас дорогой... Каждая чашка стоит хорошей истории. Но, кажется, вам обоим наше гостеприимство по карману? Вы же знаете много хороших историй, верно? Имейте в виду, каждая история хочет стать рассказана, как всякое семечко хочет прорасти. Когда человек носит в себе слишком много нерассказанных историй, он начинает сутулиться, голова его ноет по утрам, а сны начинают повторяться...
+And our coffee is expensive... Every cup is worth a good story. But it seems you both can afford our hospitality? You know a lot of good stories, right? Keep in mind, every story wants to be told, just like every seed wants to sprout. When a person carries too many untold stories within himself, he begins to slouch, his head aches in the morning, and his dreams begin to repeat themselves...

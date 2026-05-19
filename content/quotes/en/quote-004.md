@@ -2,7 +2,7 @@
 id: "quote-004"
 date: "2026-05"
 tags:
-  - культура
+  - culture
 sourceIndex: 4
 author: "Hubert de Givenchy"
 ---

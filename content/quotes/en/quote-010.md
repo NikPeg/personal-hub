@@ -2,9 +2,9 @@
 id: "quote-010"
 date: "2026-05"
 tags:
-  - культура
+  - culture
 sourceIndex: 10
-author: "Жиль Делез"
+author: "Gilles Deleuze"
 ---
 
-Именно языку надлежит одновременно и устанавливать пределы, и преступать их.
+It is language that must both set limits and transgress them.

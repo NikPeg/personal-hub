@@ -2,10 +2,10 @@
 id: "quote-038"
 date: "2026-05"
 tags:
-  - этика
+  - ethics
 sourceIndex: 38
-author: "Достоевский"
-source: "Братья Карамазовы"
+author: "Dostoevsky"
+source: "Brothers Karamazov"
 ---
 
-Ведь невозможно же, думаю, чтобы черти меня крючьями позабыли стащить к себе, когда я помру. Ну вот и думаю: крючья? А откуда они у них? Из чего? Железные? Где же их куют? Фабрика, что ли, у них какая там есть? Ведь там в монастыре иноки, наверно, полагают, что в аде, например, есть потолок. А я вот готов поверить в ад только чтобы без потолка; выходит оно как будто деликатнее, просвещеннее, по-лютерански то есть. А в сущности ведь не все ли равно: с потолком или без потолка? Ведь вот вопрос-то проклятый в чем заключается! Ну, а коли нет потолка, стало быть, нет и крючьев. А коли нет крючьев, стало быть, и все побоку, значит, опять невероятно: кто же меня тогда крючьями-то потащит, потому что если уж меня не потащат, то что ж тогда будет, где же правда на свете?
+After all, it’s impossible, I think, that the devils would forget to drag me with their hooks to themselves when I die. Well, I’m thinking: hooks? Where did they get them from? From what? Iron? Where are they forged? What kind of factory do they have there? After all, there in the monastery the monks probably believe that in hell, for example, there is a ceiling. But I’m ready to believe in hell just to have no ceiling; it seems to come out more delicate, more enlightened, Lutheran that is. But in essence, does it really matter: with a ceiling or without a ceiling? After all, that’s the damned question! Well, if there is no ceiling, then there are no hooks. And if there are no hooks, then everything is left to chance, which means again it’s incredible: who will then drag me with hooks, because if they don’t drag me, then what will happen, where is the truth in the world?

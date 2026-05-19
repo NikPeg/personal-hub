@@ -2,10 +2,10 @@
 id: "quote-013"
 date: "2026-05"
 tags:
-  - культура
+  - culture
 sourceIndex: 13
-author: "Макс Фрай"
-source: "Простые волшебные вещи"
+author: "Max Frei"
+source: "Simple Magic Things"
 ---
 
-Тебе никогда не приходило в голову, что прежде, чем начинать меня ждать, нужно договориться со мной о встрече?
+Has it ever occurred to you that before you start waiting for me, you need to make an appointment with me?

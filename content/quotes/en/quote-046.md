@@ -2,12 +2,12 @@
 id: "quote-046"
 date: "2026-05"
 tags:
-  - общество
-  - отношения
+  - society
+  - relationships
 sourceIndex: 46
-author: "Никола Юн"
-source: "Весь этот мир"
+author: "Nicola Yoon"
+source: "Everything, Everything"
 ---
 
-— Друзья не целуются, Олли.
-— Очень хорошие друзья могут.
+- Friends don't kiss, Ollie.
+- Very good friends can.

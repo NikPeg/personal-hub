@@ -2,9 +2,9 @@
 id: "quote-007"
 date: "2026-05"
 tags:
-  - искусство
+  - art
 sourceIndex: 7
-author: "Чак Паланик"
+author: "Chuck Palahniuk"
 ---
 
-Никто из вас не отличается красотой и уникальностью снежинки.
+None of you have the beauty and uniqueness of a snowflake.

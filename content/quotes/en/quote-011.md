@@ -2,7 +2,7 @@
 id: "quote-011"
 date: "2026-05"
 tags:
-  - психология
+  - psychology
 sourceIndex: 11
 source: "Anna Karenina"
 ---

@@ -2,9 +2,9 @@
 id: "quote-043"
 date: "2026-05"
 tags:
-  - культура
+  - culture
 sourceIndex: 43
-author: "А."
+author: "A."
 ---
 
-У тебя лицо вечного девственника и трезвенника.
+You have the face of an eternal virgin and teetotaler.

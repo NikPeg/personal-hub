@@ -2,11 +2,11 @@
 id: "quote-031"
 date: "2026-05"
 tags:
-  - философия
-  - искусство
-  - общество
+  - philosophy
+  - art
+  - society
 sourceIndex: 31
-author: "Стивен Кинг"
+author: "Stephen King"
 ---
 
-В жизни конфликты разрешаются совсем не так, как это бывает в кино. В жизни они вообще не разрешаются, а просто тянутся и тянутся, пока тихо не исчерпываются сами собой… Они просто-напросто высыхают, как грязные лужи на солнце.
+In life, conflicts are resolved completely differently than in the movies. In life they are not resolved at all, but simply drag on and drag on until they quietly exhaust themselves... They simply dry up, like dirty puddles in the sun.

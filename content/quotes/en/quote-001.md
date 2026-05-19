@@ -2,7 +2,7 @@
 id: "quote-001"
 date: "2026-05"
 tags:
-  - философия
+  - philosophy
 sourceIndex: 1
 author: "Dmitry Likhachev"
 ---

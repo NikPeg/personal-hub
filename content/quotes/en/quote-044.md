@@ -2,9 +2,9 @@
 id: "quote-044"
 date: "2026-05"
 tags:
-  - культура
+  - culture
 sourceIndex: 44
-author: "А."
+author: "A."
 ---
 
-У меня есть привычка к сосанию.
+I have a sucking habit.

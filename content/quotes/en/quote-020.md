@@ -2,7 +2,7 @@
 id: "quote-020"
 date: "2026-05"
 tags:
-  - отношения
+  - relationships
 sourceIndex: 20
 author: "Woody Allen"
 ---

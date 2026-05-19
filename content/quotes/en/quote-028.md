@@ -2,10 +2,10 @@
 id: "quote-028"
 date: "2026-05"
 tags:
-  - отношения
-  - история
+  - relationships
+  - history
 sourceIndex: 28
-source: "Из воспоминаний декабристов"
+source: "From the memories of the Decembrists"
 ---
 
-Но тут приехала жена и испортила всю каторгу...
+But then my wife arrived and ruined the whole hard labor...

@@ -2,11 +2,11 @@
 id: "quote-073"
 date: "2026-05"
 tags:
-  - культура
-  - искусство
+  - culture
+  - art
 sourceIndex: 73
-author: "Юлий Ким"
-source: "Песня Остапа Бендера из фильма «12 стульев»"
+author: "Yuliy Kim"
+source: "Ostap Bender's song from the movie \"12 Chairs\""
 ---
 
-Замрите, ангелы, смотрите: я играю. Моих грехов разбор оставьте до поры, Вы оцените красоту игры!
+Freeze, angels, look: I'm playing. Leave the analysis of my sins for the time being, you will appreciate the beauty of the game!

@@ -2,11 +2,11 @@
 id: "quote-041"
 date: "2026-05"
 tags:
-  - философия
-  - этика
+  - philosophy
+  - ethics
 sourceIndex: 41
-author: "Фаулз"
-source: "Волхв"
+author: "Fowles"
+source: "Magus"
 ---
 
-...перед лицом неведомого в человеке дробится мораль...
+...in the face of the unknown, morality is fragmented in a person...

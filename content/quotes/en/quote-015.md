@@ -2,9 +2,9 @@
 id: "quote-015"
 date: "2026-05"
 tags:
-  - общество
+  - society
 sourceIndex: 15
-author: "Ален де Бенуа"
+author: "Alain de Benoit"
 ---
 
-Антирасизм стал зеркальным отражением расистского мира. Один из пороков современного антирасизма заключается в том, что он по-расистски обращается с теми, кого обвиняет в расизме.
+Anti-racism has become the mirror image of a racist world. One of the flaws of modern anti-racism is that it treats those it accuses of racism in a racist manner.

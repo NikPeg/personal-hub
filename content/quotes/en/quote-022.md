@@ -2,11 +2,11 @@
 id: "quote-022"
 date: "2026-05"
 tags:
-  - общество
-  - отношения
+  - society
+  - relationships
 sourceIndex: 22
-author: "Митчел Маргарет"
-source: "Унесенные ветром"
+author: "Margaret Mitchell"
+source: "Gone with the Wind"
 ---
 
-Мужчины, как ни странно, придают почему-то огромное значение поцелуям. И очень часто после одного поцелуя совершенно теряют голову, влюбляются и, если вести себя умно и больше ничего им не позволять, начинают вытворять такое, что на них бывает забавно смотреть.
+Men, oddly enough, for some reason attach great importance to kisses. And very often, after one kiss, they completely lose their heads, fall in love, and, if you behave smartly and don’t allow them anything else, they begin to do things that make them funny to watch.

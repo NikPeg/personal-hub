@@ -2,10 +2,10 @@
 id: "quote-049"
 date: "2026-05"
 tags:
-  - работа
+  - work
 sourceIndex: 49
-author: "Айн Рэнд"
-source: "Атлант расправил плечи"
+author: "Ayn Rand"
+source: "Atlas Shrugged"
 ---
 
-Цель любой идеи – одурачить тех, кто недостаточно умён, чтобы думать.
+The purpose of any idea is to fool those who are not smart enough to think.

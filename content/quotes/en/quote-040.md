@@ -2,10 +2,10 @@
 id: "quote-040"
 date: "2026-05"
 tags:
-  - культура
+  - culture
 sourceIndex: 40
-author: "Фаулз"
-source: "Волхв"
+author: "Fowles"
+source: "Magus"
 ---
 
-Utram bibis? Aquam an undam? Чем утоляешь жажду? Водой или волною?
+Utram bibis? Aquam an undam? How do you quench your thirst? Water or wave?

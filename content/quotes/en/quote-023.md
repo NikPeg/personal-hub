@@ -2,9 +2,9 @@
 id: "quote-023"
 date: "2026-05"
 tags:
-  - культура
+  - culture
 sourceIndex: 23
-author: "Максим Горький"
+author: "Maxim Gorky"
 ---
 
-Да не о том думай, что спросили, а о том — для чего? Догадаешься — для чего, тогда и поймешь, как надо ответить.
+Don’t think about what they asked, but about why? If you guess why, then you will understand how to answer.

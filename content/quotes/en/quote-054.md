@@ -2,10 +2,10 @@
 id: "quote-054"
 date: "2026-05"
 tags:
-  - культура
+  - culture
 sourceIndex: 54
-author: "Макс Фрай"
-source: "Чужак"
+author: "Max Frei"
+source: "Stranger"
 ---
 
-Зачем – неверная формулировка. Если речь идёт о создании нового мира. Все по-настоящему интересные вещи существуют по ту сторону причинно-следственных связей.
+Why is the wording incorrect. If we are talking about creating a new world. All the truly interesting things exist on the other side of cause and effect.

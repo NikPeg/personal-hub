@@ -2,9 +2,9 @@
 id: "quote-062"
 date: "2026-05"
 tags:
-  - общество
+  - society
 sourceIndex: 62
-author: "П."
+author: "P."
 ---
 
-Ты больше ребёнок, чем женщина.
+You are more a child than a woman.

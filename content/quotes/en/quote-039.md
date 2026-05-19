@@ -2,12 +2,12 @@
 id: "quote-039"
 date: "2026-05"
 tags:
-  - общество
-  - работа
-  - экономика
+  - society
+  - work
+  - economics
 sourceIndex: 39
-author: "Айн Рэнд"
-source: "Атлант расправил плечи"
+author: "Ayn Rand"
+source: "Atlas Shrugged"
 ---
 
-Мистер Уард, и за что же эти грязные ублюдки так ненавидят нас? Ах да, за девиз «Бизнес — прежде всего». Ну что ж, бизнес — прежде всего, мистер Уард!
+Mr. Ward, why do these dirty bastards hate us so much? Oh yes, for the motto “Business First”. Well, business comes first, Mr. Ward!

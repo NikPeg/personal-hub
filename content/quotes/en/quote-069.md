@@ -2,7 +2,7 @@
 id: "quote-069"
 date: "2026-05"
 tags:
-  - отношения
+  - relationships
 sourceIndex: 69
 author: "P."
 ---

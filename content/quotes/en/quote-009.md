@@ -2,9 +2,9 @@
 id: "quote-009"
 date: "2026-05"
 tags:
-  - технологии
+  - technology
 sourceIndex: 9
-author: "преподаватель ПИ"
+author: "PI teacher"
 ---
 
-Запас нулей и единиц в этом мире не ограничен.
+The supply of zeros and ones in this world is unlimited.

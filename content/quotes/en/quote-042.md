@@ -2,9 +2,9 @@
 id: "quote-042"
 date: "2026-05"
 tags:
-  - культура
+  - culture
 sourceIndex: 42
-author: "А."
+author: "A."
 ---
 
-Трезвость это круто.
+Sobriety is cool.

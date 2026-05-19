@@ -2,8 +2,8 @@
 id: "quote-016"
 date: "2026-05"
 tags:
-  - культура
+  - culture
 sourceIndex: 16
 ---
 
-Если я попрошу назвать мне все, что ты любишь в этом мире, сколько попыток тебе понадобится, чтобы наконец назвать себя?
+If I ask you to name everything you love in this world, how many attempts will it take you to finally name yourself?

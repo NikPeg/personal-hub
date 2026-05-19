@@ -2,13 +2,13 @@
 id: "quote-067"
 date: "2026-05"
 tags:
-  - психология
-  - философия
-  - культура
+  - psychology
+  - philosophy
+  - culture
 sourceIndex: 67
-author: "Пастернак"
-source: "Доктор Живаго"
+author: "Boris Pasternak"
+source: "Doctor Zhivago"
 ---
 
-- Можно пользоваться словами: культура, эпохи. Но их понимают так по-разному. Ввиду сбивчивости их смысла не будем прибегать к ним. Заменим их другими выражениями.
-Я сказала бы, что человек состоит из двух частей. Из бога и работы. Развитие человеческого духа распадается на огромной продолжительности отдельные работы. Они осуществлялись поколениями и следовали одна за другой. Такою работою был Египет, такою работой была Греция, такой работой было библейское богопознание пророков. Такая, последняя по времени, ничем другим пока не смененная, всем современным вдохновением совершаемая работа - христианство.
+- You can use the words: culture, eras. But they are understood so differently. Due to the confusion of their meaning, we will not resort to them. Let's replace them with other expressions.
+I would say that a person consists of two parts. From God and work. The development of the human spirit is divided into individual works of enormous duration. They were carried out over generations and followed one after another. Such work was Egypt, such work was Greece, such work was the biblical knowledge of God by the prophets. This, the latest in time, not yet replaced by anything else, work carried out by all modern inspiration is Christianity.

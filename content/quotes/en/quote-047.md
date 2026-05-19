@@ -2,12 +2,12 @@
 id: "quote-047"
 date: "2026-05"
 tags:
-  - психология
-  - философия
-  - культура
+  - psychology
+  - philosophy
+  - culture
 sourceIndex: 47
-author: "Айн Рэнд"
-source: "Атлант расправил плечи"
+author: "Ayn Rand"
+source: "Atlas Shrugged"
 ---
 
-Скажите мне, что человека считает сексуальным и привлекательным, и я раскрою вам всю его жизненную философию. Покажите мне женщину, с которой он спит, и я расскажу вам о его самооценке.
+Tell me what a person finds sexy and attractive, and I will tell you his entire philosophy of life. Show me the woman he sleeps with and I'll tell you about his self-esteem.

@@ -2,9 +2,9 @@
 id: "quote-005"
 date: "2026-05"
 tags:
-  - культура
+  - culture
 sourceIndex: 5
-author: "Ницше"
+author: "Nietzsche"
 ---
 
-Культура — это лишь тоненькая яблочная кожура над раскаленным хаосом.
+Culture is just a thin apple peel over the hot chaos.

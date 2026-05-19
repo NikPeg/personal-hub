@@ -2,11 +2,11 @@
 id: "quote-019"
 date: "2026-05"
 tags:
-  - психология
-  - этика
+  - psychology
+  - ethics
 sourceIndex: 19
-author: "Дюна"
-source: "Фрэнк Герберт"
+author: "Dune"
+source: "Frank Herbert"
 ---
 
-Вина начинается с ощущения неудачи.
+Guilt begins with a feeling of failure.

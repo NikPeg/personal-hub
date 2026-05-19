@@ -2,9 +2,9 @@
 id: "quote-008"
 date: "2026-05"
 tags:
-  - работа
+  - work
 sourceIndex: 8
-author: "Артем Евсеев"
+author: "Artem Evseev"
 ---
 
-Если вы за долгое время не стали знамениты хотя бы в узких кругах, значит, вы делаете что-то не так.
+If you have not become famous at least in narrow circles for a long time, then you are doing something wrong.

@@ -2,11 +2,11 @@
 id: "quote-060"
 date: "2026-05"
 tags:
-  - философия
-  - общество
-  - этика
+  - philosophy
+  - society
+  - ethics
 sourceIndex: 60
-author: "Макс Фрай"
+author: "Max Frei"
 ---
 
-Справедливость как таковая вообще не является одним из непреложных законов вселенной: это понятие - всего лишь порождение великой потаенной мечты каждого человека получить хоть какую-то награду за свои истинные и мнимые достоинства, не оцененные ближними...
+Justice as such is not at all one of the immutable laws of the universe: this concept is just a product of the great secret dream of every person to receive at least some kind of reward for his true and imaginary merits, not appreciated by his neighbors...

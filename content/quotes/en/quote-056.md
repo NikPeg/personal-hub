@@ -2,11 +2,11 @@
 id: "quote-056"
 date: "2026-05"
 tags:
-  - философия
-  - культура
-  - искусство
+  - philosophy
+  - culture
+  - art
 sourceIndex: 56
-author: "Макс Фрай"
+author: "Max Frei"
 ---
 
-Вообще-то с точки зрения нормального человека я совершенно безнравственный тип. Откровенно говоря, я никогда не испытывал какого-то особого отвращения к предателям, поскольку прекрасно понимал: всё дело в том, что одни люди живут всерьёз, а другие играют в увлекательную игру под названием жизнь, на ходу изобретая и меняя правила. И первые придумали кучу нелестных слов для определения действий вторых, как правило, неудобных и опасных для окружающих, только и всего...
+Actually, from the point of view of a normal person, I am a completely immoral type. Frankly speaking, I never felt any particular disgust for traitors, because I understood perfectly well: the whole point is that some people live seriously, while others play an exciting game called life, inventing and changing the rules as they go. And the former came up with a bunch of unflattering words to define the actions of the latter, which, as a rule, were inconvenient and dangerous for others, that’s all...

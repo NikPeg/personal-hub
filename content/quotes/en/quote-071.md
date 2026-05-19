@@ -2,9 +2,9 @@
 id: "quote-071"
 date: "2026-05"
 tags:
-  - культура
+  - culture
 sourceIndex: 71
-author: "В."
+author: "V."
 ---
 
-Мы слишком редко встречаемся, чтобы так надолго расставаться.
+We meet too rarely to be apart for so long.

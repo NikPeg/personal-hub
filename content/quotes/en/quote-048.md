@@ -2,10 +2,10 @@
 id: "quote-048"
 date: "2026-05"
 tags:
-  - философия
+  - philosophy
 sourceIndex: 48
-author: "Эрих Мария Ремарк"
-source: "Триумфальная арка"
+author: "Erich Maria Remarque"
+source: "Arc de Triomphe"
 ---
 
-Что может дать один человек другому, кроме капли тепла? И что может быть больше этого...
+What can one person give to another except a drop of warmth? And what could be more than this...

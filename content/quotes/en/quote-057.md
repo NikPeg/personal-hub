@@ -2,10 +2,10 @@
 id: "quote-057"
 date: "2026-05"
 tags:
-  - культура
-  - этика
+  - culture
+  - ethics
 sourceIndex: 57
-author: "Макс Фрай"
+author: "Max Frei"
 ---
 
-В Ордене Потяённой Травы бытовало мнение, что ложь разрушительно сказывается на магической силе. А если всегда говорить правду, со временем, твои слова могут приобрести силу колдовских заклинаний.
+In the Order of the Drawn Grass, there was an opinion that lies have a destructive effect on magical power. And if you always tell the truth, over time, your words can acquire the power of witchcraft spells.

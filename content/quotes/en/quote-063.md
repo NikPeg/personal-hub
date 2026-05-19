@@ -2,10 +2,10 @@
 id: "quote-063"
 date: "2026-05"
 tags:
-  - культура
-  - искусство
+  - culture
+  - art
 sourceIndex: 63
-author: "Дюран"
+author: "Duran"
 ---
 
-Читать Набокова — все равно что смотреть на сварку. Кого бы ты ни читал после него, перед глазами будут стоять меткие сравнения и выдержанный стиль классика, заслоняя собой отныне пресный язык других авторов.
+Reading Nabokov is like watching welding. No matter who you read after him, the apt comparisons and consistent style of the classic will stand before your eyes, henceforth overshadowing the insipid language of other authors.

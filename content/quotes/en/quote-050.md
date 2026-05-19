@@ -2,13 +2,13 @@
 id: "quote-050"
 date: "2026-05"
 tags:
-  - психология
-  - философия
-  - отношения
+  - psychology
+  - philosophy
+  - relationships
 sourceIndex: 50
-author: "Айн Рэнд"
-source: "Атлант расправил плечи"
+author: "Ayn Rand"
+source: "Atlas Shrugged"
 ---
 
-Теперь Дагни ясно видела, что за человек восстал против шести тысяч других темной весенней ночью и почему они боялись его; понимала, что это стало началом и сутью всего, что произошло с миром за эти прошедшие двенадцать лет; понимала, что это было гораздо важнее гениального двигателя, – понимала под звуки размеренного мужского голоса, произносящего, будто в напоминание самому себе с неизбывной страстностью:
-– Клянусь своей жизнью... и любовью к ней... что никогда не буду жить для кого-то другого... и не попрошу кого-то другого... жить... для меня.
+Now Dagny saw clearly what kind of man stood up against six thousand others on a dark spring night and why they were afraid of him; understood that this was the beginning and essence of everything that had happened to the world over the past twelve years; I understood that this was much more important than a brilliant engine - I understood it under the sounds of a measured male voice, pronouncing, as if to remind myself with inescapable passion:
+– I swear on my life... and the love for it... that I will never live for someone else... and I will not ask someone else... to live... for me.

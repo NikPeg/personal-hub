@@ -2,7 +2,7 @@
 id: "quote-003"
 date: "2026-05"
 tags:
-  - культура
+  - culture
 sourceIndex: 3
 author: "Bill Blass"
 ---

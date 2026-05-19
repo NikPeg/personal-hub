@@ -2,9 +2,9 @@
 id: "quote-025"
 date: "2026-05"
 tags:
-  - культура
+  - culture
 sourceIndex: 25
-author: "Ларошфуко"
+author: "La Rochefoucauld"
 ---
 
-Кто слишком усерден в малом, тот обычно становится неспособным к великому.
+He who is too zealous in small things usually becomes incapable of great things.

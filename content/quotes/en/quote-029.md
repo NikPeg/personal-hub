@@ -2,12 +2,12 @@
 id: "quote-029"
 date: "2026-05"
 tags:
-  - психология
-  - философия
-  - работа
+  - psychology
+  - philosophy
+  - work
 sourceIndex: 29
-author: "Т. Драйзер"
-source: "Финансист"
+author: "T. Dreiser"
+source: "Financier"
 ---
 
-Самое безнадежное дело на свете — пытаться точно определить характер человека. Каждая личность — клубок противоречий, а тем более личность одаренная.
+The most hopeless thing in the world is to try to accurately determine the character of a person. Each personality is a tangle of contradictions, and even more so a gifted personality.

@@ -2,7 +2,7 @@
 id: "quote-024"
 date: "2026-05"
 tags:
-  - работа
+  - work
 sourceIndex: 24
 author: "Andrei Konchalovsky"
 ---

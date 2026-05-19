@@ -2,9 +2,9 @@
 id: "quote-006"
 date: "2026-05"
 tags:
-  - искусство
+  - art
 sourceIndex: 6
-author: "Адольф Гитлер"
+author: "Adolf Hitler"
 ---
 
-Каждый художник, который изображает небо зелёным, а траву голубой, должен быть подвергнут стерилизации.
+Every artist who depicts the sky as green and the grass as blue must be sterilized.

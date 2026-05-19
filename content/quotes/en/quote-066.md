@@ -2,11 +2,11 @@
 id: "quote-066"
 date: "2026-05"
 tags:
-  - философия
-  - общество
+  - philosophy
+  - society
 sourceIndex: 66
-author: "Харуки Мураками"
+author: "Haruki Murakami"
 ---
 
-Способен ли один человек до конца понять другого?
-Мы можем потратить массу времени и усилий, пытаясь узнать другого человека, а как близко удается нам в результате подобраться к его сущности? Мы убеждаем себя, что разбираемся в людях, но известно ли нам о них что-нибудь поистине важное?
+Is one person able to fully understand another?
+We can spend a lot of time and effort trying to get to know another person, but how close do we get to their essence? We convince ourselves that we understand people, but do we know anything truly important about them?

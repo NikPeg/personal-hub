@@ -2,11 +2,11 @@
 id: "quote-064"
 date: "2026-05"
 tags:
-  - философия
-  - искусство
+  - philosophy
+  - art
 sourceIndex: 64
-author: "Набоков"
-source: "Камера обскура"
+author: "Nabokov"
+source: "Camera obscura"
 ---
 
-Оттого он никак не мог понять в себе острое пристрастие к Магде. Он старался его обьяснить физическими свойствами Магды, чем-то таким в запахе кожи, в температуре тела, в особом строении глазного райка, в особенной эпителии губ. Но все это было не совсем так. Взаимная их страсть была основана на глубоком родстве их душ – даром что Горн был талантливым художником, космополитом, игроком…
+That is why he could not understand his acute passion for Magda. He tried to explain it by the physical properties of Magda, something in the smell of the skin, in the body temperature, in the special structure of the eye region, in the special epithelium of the lips. But all this was not entirely true. Their mutual passion was based on the deep kinship of their souls - even though Gorn was a talented artist, cosmopolitan, player...

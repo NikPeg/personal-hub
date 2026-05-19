@@ -2,10 +2,10 @@
 id: "quote-033"
 date: "2026-05"
 tags:
-  - психология
+  - psychology
 sourceIndex: 33
-author: "Фёдор Достоевский"
-source: "Униженные и оскорблённые"
+author: "Fyodor Dostoevsky"
+source: "Humiliated and Insulted"
 ---
 
-Надо как-то выстрадать вновь наше будущее счастье. Купить его какими-нибудь новыми муками. Страданием всё очищается.
+We must somehow suffer again for our future happiness. Buy it with some new torments. Through suffering everything is purified.

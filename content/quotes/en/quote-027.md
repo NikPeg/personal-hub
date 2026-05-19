@@ -2,9 +2,9 @@
 id: "quote-027"
 date: "2026-05"
 tags:
-  - отношения
+  - relationships
 sourceIndex: 27
-author: "Владислав Вишневский"
+author: "Vladislav Vishnevsky"
 ---
 
-Настоящий джентельмен никогда не откажет даме, если она согласна.
+A real gentleman will never refuse a lady if she agrees.

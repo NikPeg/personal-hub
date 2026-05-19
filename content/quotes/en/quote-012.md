@@ -2,8 +2,8 @@
 id: "quote-012"
 date: "2026-05"
 tags:
-  - культура
+  - culture
 sourceIndex: 12
 ---
 
-Ставьте перед собой большие цели. По ним проще попасть.
+Set big goals for yourself. They're easier to hit.

@@ -2,12 +2,12 @@
 id: "quote-053"
 date: "2026-05"
 tags:
-  - культура
-  - работа
-  - наука
+  - culture
+  - work
+  - science
 sourceIndex: 53
-author: "Станислав Лем"
-source: "ГОЛЕМ XIV"
+author: "Stanislav Lem"
+source: "GOLEM XIV"
 ---
 
-Вам, антропологам, известно уже, что культуры можно создавать без счета и бессчетное множество их было создано; любая из них подчиняется логике своей структуры, а не своих авторов: изобретение по-своему лепит изобретателей, а те об этом не знают, а когда узнают, оно теряет над ними абсолютную власть и они замечают зияние.
+You anthropologists already know that cultures can be created without counting, and countless numbers of them have been created; any of them obeys the logic of its structure, and not of its authors: an invention molds inventors in its own way, but they do not know about it, and when they find out, it loses absolute power over them and they notice the gap.

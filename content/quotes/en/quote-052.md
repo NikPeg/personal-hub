@@ -2,10 +2,10 @@
 id: "quote-052"
 date: "2026-05"
 tags:
-  - работа
+  - work
 sourceIndex: 52
-author: "Роберт Хайнлайн"
-source: "Кукловоды"
+author: "Robert Heinlein"
+source: "Puppeteers"
 ---
 
-Удача – это ярлык, который посредстванность ставит на достижениях гения.
+Luck is the label that mediocrity places on the achievements of genius.

@@ -2,10 +2,10 @@
 id: "quote-061"
 date: "2026-05"
 tags:
-  - культура
+  - culture
 sourceIndex: 61
-author: "Макс Фрай"
-source: "Наваждения"
+author: "Max Frei"
+source: "Obsessions"
 ---
 
-Все мы рождаемся и умираем с одной и той же невысказанной просьбой на губах: «Любите меня, пожалуйста, как можно сильнее!». В отчаянных поисках этой дурацкой, несбыточной любви к себе мы проходим мимо великолепных вещей, которые вполне могли бы сбыться. В том числе мимо настоящих чудес. Но нам не до них, мы слишком заняты поиском тех, кто нас оценит и полюбит…
+We are all born and die with the same unspoken request on our lips: “Please love me as much as possible!” In our desperate search for this stupid, unrealistic self-love, we pass by magnificent things that could very well come true. Including real miracles. But we have no time for them, we are too busy looking for those who will appreciate and love us...

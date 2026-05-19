@@ -2,10 +2,10 @@
 id: "quote-051"
 date: "2026-05"
 tags:
-  - культура
+  - culture
 sourceIndex: 51
-author: "Эрих Мария Ремарк"
-source: "Возлюби ближнего своего"
+author: "Erich Maria Remarque"
+source: "Love Thy Neighbor"
 ---
 
-Хорошая память – основа дружбы и гибель любви.
+A good memory is the basis of friendship and the death of love.

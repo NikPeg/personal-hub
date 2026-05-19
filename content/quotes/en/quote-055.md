@@ -2,12 +2,12 @@
 id: "quote-055"
 date: "2026-05"
 tags:
-  - технологии
-  - философия
-  - наука
+  - technology
+  - philosophy
+  - science
 sourceIndex: 55
-author: "Макс Фрай"
-source: "Болтливый мертвец"
+author: "Max Frei"
+source: "The Chattering Dead Man"
 ---
 
-По моему глубокому убеждению, умным можно считать человека, способного видеть вещи такими, какие они есть. Анализировать и сопоставлять факты, выявлять закономерности, принимать во внимание, постоянно обрабатывать новые данные и с известной вероятностью прогнозировать развитие того или иного события. <...> Сообразительным я называю того, кто способен быстро сориентироваться в каждой конкретной ситуации и обратить её в свою пользу. О хитрости же свидетельствует в первую очередь умение временно дезориентировать окружающих, помешать им разобраться в истинных мотивах твоего поведения.
+In my deep conviction, a person who is able to see things as they are can be considered smart. Analyze and compare facts, identify patterns, take into account, constantly process new data and, with a known probability, predict the development of a particular event. <...> I call someone smart who is able to quickly navigate each specific situation and turn it to their advantage. Cunning is evidenced, first of all, by the ability to temporarily disorient others and prevent them from understanding the true motives of your behavior.

@@ -2,11 +2,11 @@
 id: "quote-021"
 date: "2026-05"
 tags:
-  - психология
-  - этика
+  - psychology
+  - ethics
 sourceIndex: 21
-author: "Митчел Маргарет"
-source: "Унесенные ветром"
+author: "Margaret Mitchell"
+source: "Gone with the Wind"
 ---
 
-А мне дайте резвую лошадь, стакан хорошего вина, порядочную девушку, за которой можно приволокнуться, и не очень порядочную, с которой можно поразвлечься, и забирайте себе вашу Европу, нужна она мне очень…
+But give me a fast horse, a glass of good wine, a decent girl with whom I can drag myself, and a not so decent one with whom I can have fun, and take your Europe for yourself, I really need it...

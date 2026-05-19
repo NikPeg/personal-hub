@@ -10,6 +10,8 @@ const publicRoots = {
   ru: 'public/quotes/ru.json',
   en: 'public/quotes/en.json',
 };
+const translationsPath = 'raw/quotes-translations-en.json';
+const translationCache = fs.existsSync(translationsPath) ? JSON.parse(fs.readFileSync(translationsPath, 'utf8')) : {};
 
 const quoteDate = '2026-05';
 
@@ -64,18 +66,18 @@ const englishOverrides = {
 };
 
 const tagPairs = [
-  ['технологии', [/нейро|\bии\b|ai|алгоритм|данн|компьют|цифр|нол[ейя]|единиц/i]],
-  ['психология', [/чувств|эмоц|желан|любов|страх|вина|стыд|счаст|ревност|самооцен|личност|мысл/i]],
-  ['философия', [/жизн|смерт|морал|смысл|бог|душ|истин|справедлив|вселенн|человек/i]],
-  ['культура', [/культур|язык|слов|книг|читает|песня|фильм|спектакль|литератур/i]],
-  ['искусство', [/худож|красот|стиль|роман|кино|театр|игра|набоков|пастернак/i]],
-  ['общество', [/обще|люд|мужчин|женщин|друз|начальств|цивилизац|расизм/i]],
-  ['отношения', [/любов|друз|брак|поцелу|жен[аы]|дам[аеуы]|скарлетт|секс/i]],
-  ['работа', [/работ|дел[оа]|достижен|цель|бизнес|имидж|начальств|подчин/i]],
-  ['экономика', [/бизнес|заработ|капитал|рынок|цивилизац/i]],
-  ['этика', [/морал|справедлив|зло|добро|вина|обман|правд|жесток/i]],
-  ['история', [/египет|греци|пётр|декабрист|цивилизац|эпох/i]],
-  ['наука', [/антрополог|математ|логик|факт|закономерн|прогноз/i]],
+  ['technology', 'технологии', [/нейро|\bии\b|ai|алгоритм|данн|компьют|цифр|нол[ейя]|единиц/i]],
+  ['psychology', 'психология', [/чувств|эмоц|желан|любов|страх|вина|стыд|счаст|ревност|самооцен|личност|мысл/i]],
+  ['philosophy', 'философия', [/жизн|смерт|морал|смысл|бог|душ|истин|справедлив|вселенн|человек/i]],
+  ['culture', 'культура', [/культур|язык|слов|книг|читает|песня|фильм|спектакль|литератур/i]],
+  ['art', 'искусство', [/худож|красот|стиль|роман|кино|театр|игра|набоков|пастернак/i]],
+  ['society', 'общество', [/обще|люд|мужчин|женщин|друз|начальств|цивилизац|расизм/i]],
+  ['relationships', 'отношения', [/любов|друз|брак|поцелу|жен[аы]|дам[аеуы]|скарлетт|секс/i]],
+  ['work', 'работа', [/работ|дел[оа]|достижен|цель|бизнес|имидж|начальств|подчин/i]],
+  ['economics', 'экономика', [/бизнес|заработ|капитал|рынок|цивилизац/i]],
+  ['ethics', 'этика', [/морал|справедлив|зло|добро|вина|обман|правд|жесток/i]],
+  ['history', 'история', [/египет|греци|пётр|декабрист|цивилизац|эпох/i]],
+  ['science', 'наука', [/антрополог|математ|логик|факт|закономерн|прогноз/i]],
 ];
 
 function anonymize(text) {
@@ -113,12 +115,12 @@ function titleFrom(text, fallback) {
     .trim() || fallback;
 }
 
-function tagsFor(text) {
+function tagsFor(text, lang = 'ru') {
   const found = [];
-  for (const [tag, patterns] of tagPairs) {
-    if (patterns.some((re) => re.test(text))) found.push(tag);
+  for (const [en, ru, patterns] of tagPairs) {
+    if (patterns.some((re) => re.test(text))) found.push(lang === 'ru' ? ru : en);
   }
-  return found.length ? found.slice(0, 3) : ['культура'];
+  return found.length ? found.slice(0, 3) : [lang === 'ru' ? 'культура' : 'culture'];
 }
 
 function normalizeLine(line) {
@@ -146,6 +148,22 @@ function ensureTerminalPunctuation(text) {
   if (/[.!?…][»”\"❞]?$/.test(trimmed)) return trimmed;
   if (/[»”\"❞]$/.test(trimmed)) return trimmed.replace(/([»”\"❞])$/, '.$1');
   return trimmed + '.';
+}
+
+function normalizeEnglishCredit(text) {
+  const replacements = new Map([
+    ['Max Fry', 'Max Frei'],
+    ['Mitchell Margaret', 'Margaret Mitchell'],
+    ['Parsnip', 'Boris Pasternak'],
+    ['IN.', 'V.'],
+    ['Coffee book', 'The Coffee Book'],
+    ['Simple magical things', 'Simple Magic Things'],
+    ['Humiliated and insulted', 'Humiliated and Insulted'],
+    ['This whole world', 'Everything, Everything'],
+    ['Love your neighbor', 'Love Thy Neighbor'],
+    ['Chatty Dead', 'The Chattering Dead Man'],
+  ]);
+  return replacements.get(text) || text;
 }
 
 function splitPersonAndSource(line) {
@@ -291,10 +309,12 @@ const parsed = parseQuotes(fs.readFileSync(rawPath, 'utf8')).map((item, index) =
 });
 
 function asEnglishItem(item) {
+  const cached = translationCache[item.id] || {};
   const override = englishOverrides[item.id] || {};
-  const quote = ensureTerminalPunctuation(override.quote || item.quote);
-  const author = override.author ?? item.author;
-  const source = override.source ?? item.source;
+  const quote = ensureTerminalPunctuation(override.quote || cached.quote || item.quote);
+  const author = normalizeEnglishCredit(override.author ?? cached.author ?? item.author);
+  const source = normalizeEnglishCredit(override.source ?? cached.source ?? item.source);
+  const tags = tagsFor([item.quote, item.author, item.source].filter(Boolean).join('\n'), 'en');
   return {
     ...item,
     title: titleFrom(quote, item.title),
@@ -303,6 +323,8 @@ function asEnglishItem(item) {
     fullText: quote,
     author,
     source,
+    tags,
+    tag: tags[0],
   };
 }
 

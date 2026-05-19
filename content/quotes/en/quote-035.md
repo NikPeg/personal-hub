@@ -2,10 +2,10 @@
 id: "quote-035"
 date: "2026-05"
 tags:
-  - философия
-  - культура
+  - philosophy
+  - culture
 sourceIndex: 35
-author: "Иосиф Бродский"
+author: "Joseph Brodsky"
 ---
 
-Человек – это то, что он читает.
+A person is what he reads.

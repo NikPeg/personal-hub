@@ -2,11 +2,11 @@
 id: "quote-036"
 date: "2026-05"
 tags:
-  - искусство
-  - отношения
+  - art
+  - relationships
 sourceIndex: 36
-author: "Сережа"
-source: "парень Маргариты Симушкиной"
+author: "Seryozha"
+source: "boyfriend of Margarita Simushkina"
 ---
 
-«Лучше всего брак скрепляется наркотической или алкогольной зависимостью. Или ребёнком. Но он дороже.»
+“A marriage is best cemented by drug or alcohol addiction. Or a child. But it’s more expensive.”

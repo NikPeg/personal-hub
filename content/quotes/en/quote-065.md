@@ -2,9 +2,9 @@
 id: "quote-065"
 date: "2026-05"
 tags:
-  - культура
+  - culture
 sourceIndex: 65
-author: "Сэмюэл Батлер"
+author: "Samuel Butler"
 ---
 
-Иметь свое собственное мнение можно лишь в том случае, если знаешь, как его опровергнуть.
+You can only have your own opinion if you know how to refute it.

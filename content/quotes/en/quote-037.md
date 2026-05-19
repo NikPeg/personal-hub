@@ -2,9 +2,9 @@
 id: "quote-037"
 date: "2026-05"
 tags:
-  - философия
+  - philosophy
 sourceIndex: 37
-author: "Эммануил Кант"
+author: "Emmanuel Kant"
 ---
 
-Если бы когда-нибудь за наше воспитание взялось существо высшего порядка, тогда действительно увидели бы, что может выйти из человека.
+If someday a being of a higher order took over our education, then we would really see what can come out of a person.
