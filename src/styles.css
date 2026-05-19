@@ -364,11 +364,20 @@ html[data-theme="light"] .modal-card {
 .quote-modal blockquote { position: relative; padding-left: clamp(1rem, 3vw, 1.8rem); font-family: "Playfair Display", serif; font-size: clamp(1.75rem, 4.6vw, 3.7rem); line-height: 1.16; letter-spacing: 0; }
 .quote-modal blockquote::before { content: "“"; position: absolute; left: 0; top: -.22em; color: var(--accent); font-size: 1.35em; line-height: 1; }
 .quote-modal .quote-credit { margin-top: clamp(1.4rem, 4vw, 2.4rem); font-size: clamp(.98rem, 1.7vw, 1.15rem); }
+.quote-modal-medium { width: min(840px, 100%); }
+.quote-modal-medium blockquote { font-size: clamp(1.45rem, 3.3vw, 2.55rem); line-height: 1.24; }
+.quote-modal-long, .quote-modal-xl { width: min(1040px, 100%); padding: clamp(1.35rem, 3vw, 2.25rem); }
+.quote-modal-long .modal-meta, .quote-modal-xl .modal-meta { margin-bottom: clamp(1rem, 2.4vw, 1.6rem); }
+.quote-modal-long blockquote, .quote-modal-xl blockquote { font-size: clamp(1.12rem, 2vw, 1.75rem); line-height: 1.42; padding-left: clamp(.85rem, 2vw, 1.35rem); }
+.quote-modal-xl blockquote { font-size: clamp(1rem, 1.55vw, 1.35rem); line-height: 1.52; font-family: inherit; }
+.quote-modal-long .quote-credit, .quote-modal-xl .quote-credit { margin-top: clamp(1rem, 2.4vw, 1.5rem); font-size: clamp(.9rem, 1.3vw, 1.02rem); }
 @media (max-width: 560px) {
   .thought-row-top { align-items: flex-start; flex-direction: column; gap: .45rem; }
   .thought-row .tag { max-width: 100%; }
   .quote-row-top { align-items: flex-start; flex-direction: column; gap: .45rem; }
+  .quote-modal { padding: 1.2rem; max-height: 88vh; }
   .quote-modal blockquote { padding-left: .9rem; }
+  .quote-modal-long blockquote, .quote-modal-xl blockquote { font-size: 1rem; line-height: 1.48; }
 }
 
 .next-section-wrap { display: flex; justify-content: center; margin-top: clamp(2rem, 5vw, 4rem); }
