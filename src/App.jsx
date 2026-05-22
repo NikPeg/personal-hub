@@ -30,7 +30,7 @@ const pathToTab = (pathname) => {
   const slug = pathname.replace(/^\//, '').replace(/\/$/, '');
   if (!slug || slug === 'index.html') return 'home';
   if (['feed', 'channels', 'ideas', 'thoughts', 'quotes', 'projects', 'photos'].includes(slug)) return slug;
-  if (['edu', 'scribo', 'slidebot'].includes(slug)) return `project:${slug}`;
+  if (['startup-fantasy', 'edu', 'scribo', 'slidebot'].includes(slug)) return `project:${slug}`;
   return 'home';
 };
 
@@ -302,35 +302,202 @@ function Channels({ t, data, go }) {
 }
 
 function Projects({ t, data, go }) {
-  const pageSize = 10;
-  const [visibleCount, setVisibleCount] = useState(pageSize);
-  const sentinelRef = useRef(null);
-  const visibleProjects = data.projects.slice(0, visibleCount);
-
-  useEffect(() => {
-    setVisibleCount(pageSize);
-  }, [data.projects]);
-
-  useEffect(() => {
-    if (visibleCount >= data.projects.length) return undefined;
-    const observer = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting) setVisibleCount((count) => Math.min(count + pageSize, data.projects.length));
-    }, { rootMargin: '320px 0px' });
-    const node = sentinelRef.current;
-    if (node) observer.observe(node);
-    return () => observer.disconnect();
-  }, [visibleCount, data.projects.length]);
-
-  return <section className="section page-hero reveal visible" id="projects">
+  return <section className="section page-hero reveal visible projects-index">
     <PageHeading eyebrow={t.projectsEyebrow} title={t.projectsTitle} lead={t.projectsLead} />
-    <div className="cards three">{visibleProjects.map(project => <button className="card project-card open-card" key={project.id} onClick={() => go(`project:${project.slug}`)}><span className="tag">{project.tag}</span><h3>{project.title}</h3><p>{project.text}</p><strong>{t.openLanding}</strong></button>)}</div>
-    <div ref={sentinelRef} className="scroll-sentinel" aria-hidden="true" />
+    <div className="cards three project-index-grid">{data.projects.map((project) => <button className="card project-card" key={project.id} onClick={() => go(`project:${project.slug}`)}>
+      <span className="tag">{project.tag}</span>
+      <h3>{project.title}</h3>
+      <p>{project.text}</p>
+      <strong>{t.openLanding}</strong>
+    </button>)}</div>
     <NextLink label={t.nextIdeas} onClick={() => go('ideas')} />
+  </section>;
+}
+
+function StartupFantasyLanding({ t }) {
+  const isRu = t.brandName === 'НикПег';
+  const copy = isRu ? {
+    eyebrow: 'Fantasy Startup League',
+    title: 'Фэнтези-лига стартапов',
+    lead: 'Собери портфель стартапов на сезон, управляй виртуальными миллионами и покажи, как ты на самом деле думаешь о рынках, основателях и риске.',
+    cta: 'Запросить ранний доступ',
+    secondary: 'Посмотреть интерфейс',
+    f1Title: 'Что такое F1 Fantasy Game?',
+    f1Text: 'В Formula 1 Fantasy болельщики получают ограниченный бюджет, выбирают пилотов и команды на гонку или сезон, а потом набирают очки за реальные результаты: позиции, обгоны, квалификацию, штрафы и стратегические решения. Это превращает просмотр гонок в управленческую игру: важно не просто любить фаворита, а собрать состав, который принесет максимум очков при ограничениях.',
+    bridgeTitle: 'Та же механика, но для венчурного рынка',
+    bridgeText: 'Вместо пилотов — стартапы. Вместо гоночного уикенда — годовой сезон. Вместо реальных денег — одинаковый виртуальный капитал, чтобы стратегия была видна без финансового шума.',
+    phoneTitle: 'Draft Room',
+    webTitle: 'Portfolio Terminal',
+    score: 'Счет сезона',
+    budget: 'Кэш',
+    rank: 'Место',
+    nav: ['Портфель', 'Маркет', 'Новости'],
+    valuation: 'Оценка портфеля',
+    pnl: 'Доходность',
+    committed: 'Инвестировано',
+    cashLabel: 'Свободный кэш',
+    draftAction: 'Купить',
+    newsTitle: 'Стартап-новости недели',
+    news: [
+      ['Orbital Kitchens', 'поднял $48M Series B после запуска робо-кухонь в Сингапуре', '+420 pts'],
+      ['Quiet Ledger', 'получил SOC 2 и подписал трех банковских клиентов', '+185 pts'],
+      ['Neural Forge', 'потерял CTO, рынок режет мультипликатор AI-infra', '-96 pts']
+    ],
+    companies: [
+      ['Neural Forge', 'AI infra', '$182M', '+24%', 'Купить'],
+      ['Quiet Ledger', 'B2B fintech', '$74M', '+11%', 'Держать'],
+      ['Cell Harbor', 'Bio tools', '$39M', '+7%', 'Купить'],
+      ['Orbital Kitchens', 'Robotics', '$128M', '+31%', 'Следить']
+    ],
+    thesis: 'Тезис',
+    thesisText: 'AI-инфраструктура и скучные B2B-рынки дадут больше очков, чем потребительский хайп.',
+    mechanicsTitle: 'Как это работает',
+    mechanics: ['Каждый игрок получает одинаковый виртуальный капитал.', 'На старте сезона он покупает доли в стартапах из общего рынка.', 'Очки начисляются за раунды, рост выручки, найм, запуски, публичные сигналы и выживаемость.', 'Таблица лидеров показывает не только результат, но и стиль мышления игрока.'],
+    modelsTitle: 'Игра быстро вскрывает инвестиционные характеры',
+    models: ['Хайп-хантеры покупают громкие имена.', 'Операторские игроки ставят на основателей и скорость исполнения.', 'Скучные капиталисты собирают B2B, инфраструктуру и низкий гламур.', 'Максималисты идут all-in, а портфельные игроки спорят с риском через диверсификацию.'],
+    footer: 'Публичная игра с фейковыми деньгами иногда честнее раскрывает убеждения, чем серьезные разговоры о стратегии.',
+    finalLead: 'Хочешь попасть в первый сезон, собрать портфель и спорить с рынком без риска для настоящих денег?'
+  } : {
+    eyebrow: 'Fantasy Startup League',
+    title: 'Fantasy Startup League',
+    lead: 'Build a startup portfolio for the season, manage virtual millions, and reveal how you actually think about markets, founders, and risk.',
+    cta: 'Request early access',
+    secondary: 'View interface',
+    f1Title: 'What is F1 Fantasy Game?',
+    f1Text: 'In Formula 1 Fantasy, fans get a limited budget, pick drivers and teams for a race or season, and score points from real results: positions, overtakes, qualifying, penalties, and strategic calls. It turns watching races into a management game: the goal is not just to like the favorite, but to build the roster that scores best under constraints.',
+    bridgeTitle: 'The same mechanic, rebuilt for venture',
+    bridgeText: 'Drivers become startups. A race weekend becomes a yearly season. Real money becomes equal virtual capital, so strategy is visible without financial noise.',
+    phoneTitle: 'Draft Room',
+    webTitle: 'Portfolio Terminal',
+    score: 'Season score',
+    budget: 'Cash',
+    rank: 'Rank',
+    nav: ['Portfolio', 'Market', 'News'],
+    valuation: 'Portfolio value',
+    pnl: 'Return',
+    committed: 'Committed',
+    cashLabel: 'Available cash',
+    draftAction: 'Draft',
+    newsTitle: 'Startup news this week',
+    news: [
+      ['Orbital Kitchens', 'raised a $48M Series B after launching robot kitchens in Singapore', '+420 pts'],
+      ['Quiet Ledger', 'cleared SOC 2 and signed three banking customers', '+185 pts'],
+      ['Neural Forge', 'lost its CTO, AI-infra multiples compress', '-96 pts']
+    ],
+    companies: [
+      ['Neural Forge', 'AI infra', '$182M', '+24%', 'BUY'],
+      ['Quiet Ledger', 'B2B fintech', '$74M', '+11%', 'HOLD'],
+      ['Cell Harbor', 'Bio tools', '$39M', '+7%', 'BUY'],
+      ['Orbital Kitchens', 'Robotics', '$128M', '+31%', 'WATCH']
+    ],
+    thesis: 'Thesis',
+    thesisText: 'AI infrastructure and boring B2B markets will outscore consumer hype.',
+    mechanicsTitle: 'How it works',
+    mechanics: ['Every player receives the same virtual capital.', 'At the season start, they buy startup stakes from a shared market.', 'Points come from rounds, revenue growth, hiring, launches, public signals, and survival.', 'Leaderboards show not only performance, but each player’s thinking style.'],
+    modelsTitle: 'The game reveals investing personalities fast',
+    models: ['Hype hunters buy loud names.', 'Operator players bet on founders and execution speed.', 'Boring capitalists collect B2B, infrastructure, and low-glamour markets.', 'Maximalists go all-in, while portfolio players argue with risk through diversification.'],
+    footer: 'A public game with fake money can reveal beliefs more honestly than serious strategy talk.',
+    finalLead: 'Want to join the first season, build a portfolio, and argue with the market without risking real money?'
+  };
+
+  return <section className="startup-fantasy-page reveal visible" id="projects">
+    <div className="startup-fantasy-hero">
+      <div className="startup-fantasy-copy">
+        <p className="startup-kicker">{copy.eyebrow}</p>
+        <h1>{copy.title}</h1>
+        <p>{copy.lead}</p>
+        <div className="startup-actions">
+          <a className="startup-btn primary" href="https://t.me/nikpeg" target="_blank" rel="noreferrer">{copy.cta}</a>
+          <a className="startup-btn secondary" href="#fantasy-interface">{copy.secondary}</a>
+        </div>
+      </div>
+      <div className="startup-hero-board" aria-label={copy.webTitle}>
+        <div className="league-ticket">
+          <span>SEASON 2026</span>
+          <strong>$10.0M BANKROLL</strong>
+        </div>
+        <div className="league-market-card">
+          <div><span>{copy.valuation}</span><strong>$13.8M</strong></div>
+          <div><span>{copy.pnl}</span><strong>+38.4%</strong></div>
+          <div><span>{copy.committed}</span><strong>$8.7M</strong></div>
+        </div>
+        <div className="league-line-chart" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        <div className="league-orbit" aria-hidden="true"><span>AI</span><span>B2B</span><span>Bio</span><span>Fin</span></div>
+        <div className="league-score-card">
+          <small>{copy.score}</small>
+          <strong>18,420</strong>
+          <span>+14.8% / week · #128 global</span>
+        </div>
+      </div>
+    </div>
+
+    <div className="startup-explain-grid">
+      <article>
+        <span className="startup-label">01</span>
+        <h2>{copy.f1Title}</h2>
+        <p>{copy.f1Text}</p>
+      </article>
+      <article>
+        <span className="startup-label">02</span>
+        <h2>{copy.bridgeTitle}</h2>
+        <p>{copy.bridgeText}</p>
+      </article>
+    </div>
+
+    <div className="startup-product" id="fantasy-interface">
+      <div className="phone-mockup" aria-label={copy.phoneTitle}>
+        <div className="phone-speaker"></div>
+        <div className="phone-screen">
+          <div className="phone-status"><span>9:41</span><span>5G 86%</span></div>
+          <div className="phone-top"><span>{copy.phoneTitle}</span><strong>$10.0M</strong></div>
+          <div className="mobile-chart" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
+          <div className="startup-card hot"><span>01</span><strong>Neural Forge</strong><em>AI infra · $2.4M ticket · +24%</em></div>
+          <div className="startup-card"><span>02</span><strong>Quiet Ledger</strong><em>B2B fintech · $1.8M ticket · +11%</em></div>
+          <div className="startup-card"><span>03</span><strong>Cell Harbor</strong><em>Bio tools · $1.5M ticket · +7%</em></div>
+          <div className="phone-order"><span>{copy.cashLabel}</span><strong>$1.3M</strong><button type="button">{copy.draftAction}</button></div>
+        </div>
+      </div>
+      <div className="desktop-mockup" aria-label={copy.webTitle}>
+        <div className="desktop-top"><span></span><span></span><span></span><strong>{copy.webTitle}</strong></div>
+        <div className="desktop-nav">{copy.nav.map((item) => <span key={item}>{item}</span>)}</div>
+        <div className="dashboard-grid">
+          <div className="dash-card score"><small>{copy.score}</small><strong>18,420</strong><span>Top 4%</span></div>
+          <div className="dash-card"><small>{copy.valuation}</small><strong>$13.8M</strong><span>+38.4%</span></div>
+          <div className="dash-card"><small>{copy.budget}</small><strong>$1.3M</strong><span>available</span></div>
+          <div className="dash-chart"><i></i><i></i><i></i><i></i><i></i><i></i><b>$10M</b><b>$13.8M</b></div>
+          <div className="dash-thesis"><small>{copy.thesis}</small><p>{copy.thesisText}</p></div>
+          <div className="portfolio-table">{copy.companies.map((company) => <div key={company[0]}><strong>{company[0]}</strong><span>{company[1]}</span><b>{company[2]}</b><em>{company[3]}</em><small>{company[4]}</small></div>)}</div>
+        </div>
+      </div>
+    </div>
+
+    <div className="startup-news">
+      <h2>{copy.newsTitle}</h2>
+      <div>{copy.news.map((item) => <article key={item[0]}><strong>{item[0]}</strong><p>{item[1]}</p><span>{item[2]}</span></article>)}</div>
+    </div>
+
+    <div className="startup-detail-grid">
+      <article>
+        <h2>{copy.mechanicsTitle}</h2>
+        <ul>{copy.mechanics.map((item) => <li key={item}>{item}</li>)}</ul>
+      </article>
+      <article>
+        <h2>{copy.modelsTitle}</h2>
+        <ul>{copy.models.map((item) => <li key={item}>{item}</li>)}</ul>
+      </article>
+    </div>
+
+    <div className="startup-closing">
+      <p>{copy.footer}</p>
+      <span>{copy.finalLead}</span>
+      <a className="startup-btn dark" href="https://t.me/nikpeg" target="_blank" rel="noreferrer">{copy.cta}</a>
+    </div>
   </section>;
 }
 
 function ProjectLanding({ t, data, slug, go }) {
   const project = data.projects.find((item) => item.slug === slug) || data.projects[0];
+  if (project.slug === 'startup-fantasy') return <StartupFantasyLanding t={t} />;
   return <section className="section page-hero reveal visible landing-page">
     <p className="eyebrow">{project.tag}</p>
     <h2>{project.title}</h2>
