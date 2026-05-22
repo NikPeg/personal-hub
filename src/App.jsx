@@ -322,10 +322,10 @@ function StartupFantasyLanding({ t }) {
     lead: 'Собери портфель стартапов на сезон, управляй виртуальными миллионами и покажи, как ты на самом деле думаешь о рынках, основателях и риске.',
     cta: 'Запросить ранний доступ',
     secondary: 'Посмотреть интерфейс',
-    f1Title: 'Что такое F1 Fantasy Game?',
-    f1Text: 'В Formula 1 Fantasy болельщики получают ограниченный бюджет, выбирают пилотов и команды на гонку или сезон, а потом набирают очки за реальные результаты: позиции, обгоны, квалификацию, штрафы и стратегические решения. Это превращает просмотр гонок в управленческую игру: важно не просто любить фаворита, а собрать состав, который принесет максимум очков при ограничениях.',
+    f1Title: 'Жанр: фэнтези-спорт',
+    f1Text: 'В фэнтези-спорте участники получают бюджет и выбирают реальных игроков или команды — а очки считаются из настоящих результатов. Цель не в том, чтобы болеть за любимца, а в том, чтобы при ограничениях собрать состав, который принесёт максимум очков. Так просмотр любого соревнования превращается в управленческую игру.',
     bridgeTitle: 'Та же механика, но для венчурного рынка',
-    bridgeText: 'Вместо пилотов — стартапы. Вместо гоночного уикенда — годовой сезон. Вместо реальных денег — одинаковый виртуальный капитал, чтобы стратегия была видна без финансового шума.',
+    bridgeText: 'Стартапы вместо спортсменов, год на рынке вместо соревновательного сезона. Виртуальный капитал у всех одинаковый — так стратегия видна отдельно от кошелька.',
     phoneTitle: 'Draft Room',
     webTitle: 'Portfolio Terminal',
     score: 'Счет сезона',
@@ -353,20 +353,20 @@ function StartupFantasyLanding({ t }) {
     thesisText: 'AI-инфраструктура и скучные B2B-рынки дадут больше очков, чем потребительский хайп.',
     mechanicsTitle: 'Как это работает',
     mechanics: ['Каждый игрок получает одинаковый виртуальный капитал.', 'На старте сезона он покупает доли в стартапах из общего рынка.', 'Очки начисляются за раунды, рост выручки, найм, запуски, публичные сигналы и выживаемость.', 'Таблица лидеров показывает не только результат, но и стиль мышления игрока.'],
-    modelsTitle: 'Игра быстро вскрывает инвестиционные характеры',
-    models: ['Хайп-хантеры покупают громкие имена.', 'Операторские игроки ставят на основателей и скорость исполнения.', 'Скучные капиталисты собирают B2B, инфраструктуру и низкий гламур.', 'Максималисты идут all-in, а портфельные игроки спорят с риском через диверсификацию.'],
-    footer: 'Публичная игра с фейковыми деньгами иногда честнее раскрывает убеждения, чем серьезные разговоры о стратегии.',
-    finalLead: 'Хочешь попасть в первый сезон, собрать портфель и спорить с рынком без риска для настоящих денег?'
+    modelsTitle: 'Портфель многое говорит о человеке',
+    models: ['Одни берут самое громкое — раунды, медиа, хайп.', 'Другие смотрят на основателей и скорость исполнения.', 'Третьи собирают скучное: B2B, инфраструктуру, всё что работает без шума.', 'Четвёртые идут all-in на одну ставку, пятые спорят с риском через диверсификацию.'],
+    footer: 'Публичная игра с фейковыми деньгами иногда честнее раскрывает убеждения, чем серьёзные разговоры о стратегии.',
+    finalLead: 'Первый сезон будет небольшим. Если интересно — напиши.'
   } : {
     eyebrow: 'Fantasy Startup League',
     title: 'Fantasy Startup League',
     lead: 'Build a startup portfolio for the season, manage virtual millions, and reveal how you actually think about markets, founders, and risk.',
     cta: 'Request early access',
     secondary: 'View interface',
-    f1Title: 'What is F1 Fantasy Game?',
-    f1Text: 'In Formula 1 Fantasy, fans get a limited budget, pick drivers and teams for a race or season, and score points from real results: positions, overtakes, qualifying, penalties, and strategic calls. It turns watching races into a management game: the goal is not just to like the favorite, but to build the roster that scores best under constraints.',
+    f1Title: 'The genre: fantasy sport',
+    f1Text: 'In fantasy sport, participants get a budget and pick real players or teams — then score points from actual results. The goal is not to root for a favorite but to build the roster that scores best under constraints. Watching the competition becomes a management problem.',
     bridgeTitle: 'The same mechanic, rebuilt for venture',
-    bridgeText: 'Drivers become startups. A race weekend becomes a yearly season. Real money becomes equal virtual capital, so strategy is visible without financial noise.',
+    bridgeText: 'Startups replace athletes, a market year replaces the competitive season. Every player starts with the same virtual capital — so strategy shows separately from resources.',
     phoneTitle: 'Draft Room',
     webTitle: 'Portfolio Terminal',
     score: 'Season score',
@@ -394,10 +394,10 @@ function StartupFantasyLanding({ t }) {
     thesisText: 'AI infrastructure and boring B2B markets will outscore consumer hype.',
     mechanicsTitle: 'How it works',
     mechanics: ['Every player receives the same virtual capital.', 'At the season start, they buy startup stakes from a shared market.', 'Points come from rounds, revenue growth, hiring, launches, public signals, and survival.', 'Leaderboards show not only performance, but each player’s thinking style.'],
-    modelsTitle: 'The game reveals investing personalities fast',
-    models: ['Hype hunters buy loud names.', 'Operator players bet on founders and execution speed.', 'Boring capitalists collect B2B, infrastructure, and low-glamour markets.', 'Maximalists go all-in, while portfolio players argue with risk through diversification.'],
+    modelsTitle: 'Your portfolio reveals how you think',
+    models: ['Some pick the loudest names: big rounds, media, hype.', 'Others look at founders and execution speed.', 'Some collect the boring stuff: B2B, infrastructure, everything that works without noise.', 'One player goes all-in on a single bet. Another argues with uncertainty through diversification.'],
     footer: 'A public game with fake money can reveal beliefs more honestly than serious strategy talk.',
-    finalLead: 'Want to join the first season, build a portfolio, and argue with the market without risking real money?'
+    finalLead: 'The first season will be small. If this sounds interesting — reach out.'
   };
 
   return <section className="startup-fantasy-page reveal visible" id="projects">
