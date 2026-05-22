@@ -519,9 +519,9 @@ html[data-theme="light"] .modal-card {
 .startup-btn.dark {
   width: fit-content;
   margin-top: 1.3rem;
-  background: #d9ff57;
-  color: #10130f;
-  box-shadow: 0 0 36px rgba(217,255,87,.4), 0 14px 40px rgba(217,255,87,.22);
+  background: #10130f;
+  color: #f4f8e8;
+  box-shadow: 0 8px 32px rgba(0,0,0,.42), inset 0 2px 0 rgba(255,255,255,.06);
 }
 
 .startup-hero-board {
@@ -735,25 +735,57 @@ html[data-theme="light"] .modal-card {
   width: min(360px, 100%);
   min-height: 670px;
   justify-self: center;
-  border-radius: 2.2rem;
-  padding: .75rem;
+  border-radius: 2.8rem;
+  padding: .9rem;
+  box-shadow: 0 26px 90px rgba(0,0,0,.34),
+              inset 0 0 0 1px rgba(255,255,255,.08),
+              inset 0 1px 0 rgba(255,255,255,.13);
 }
 
 .phone-speaker {
-  width: 5.5rem;
-  height: .36rem;
-  margin: .35rem auto .8rem;
+  width: 5.2rem;
+  height: 1.5rem;
+  margin: .4rem auto .75rem;
   border-radius: 999px;
-  background: rgba(244, 248, 232, .25);
+  background: #050705;
+  box-shadow: inset 0 1px 4px rgba(0,0,0,.9), 0 1px 0 rgba(255,255,255,.06);
+  position: relative;
+}
+
+.phone-speaker::after {
+  content: "";
+  position: absolute;
+  right: .6rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: .56rem;
+  height: .56rem;
+  border-radius: 50%;
+  background: #0d1827;
+  box-shadow: 0 0 5px rgba(80,140,255,.4);
 }
 
 .phone-screen {
+  position: relative;
   min-height: 620px;
   padding: 1rem;
-  border-radius: 1.55rem;
+  border-radius: 2rem;
   background:
     linear-gradient(180deg, rgba(217,255,87,.2), transparent 34%),
     #111712;
+  overflow: hidden;
+}
+
+.phone-screen::after {
+  content: "";
+  position: absolute;
+  bottom: .7rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 3.8rem;
+  height: .26rem;
+  border-radius: 999px;
+  background: rgba(244,248,232,.3);
 }
 
 .phone-top {
@@ -1405,10 +1437,9 @@ html[data-theme="light"] .startup-fantasy-page .phone-order span {
 }
 
 .startup-btn.dark {
-  background: var(--league-accent);
-  color: var(--league-ink);
-  box-shadow: 0 0 40px color-mix(in srgb, var(--league-accent) 50%, transparent),
-              0 14px 40px color-mix(in srgb, var(--league-accent) 26%, transparent);
+  background: var(--league-ink);
+  color: var(--league-text);
+  box-shadow: 0 8px 32px rgba(0,0,0,.42), 0 2px 0 rgba(255,255,255,.06) inset;
 }
 
 .startup-hero-board,

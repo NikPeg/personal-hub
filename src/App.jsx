@@ -489,7 +489,6 @@ function StartupFantasyLanding({ t }) {
 
     <div className="startup-closing">
       <p>{copy.footer}</p>
-      <span>{copy.finalLead}</span>
       <a className="startup-btn dark" href="https://t.me/nikpeg" target="_blank" rel="noreferrer">{copy.cta}</a>
     </div>
   </section>;
