@@ -422,7 +422,7 @@ function StartupFantasyLanding({ t }) {
           <div><span>{copy.committed}</span><strong>$8.7M</strong></div>
         </div>
         <div className="league-line-chart" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
-        <div className="league-orbit" aria-hidden="true"><span>AI</span><span>B2B</span><span>Bio</span><span>Fin</span></div>
+        <div className="league-orbit" aria-hidden="true"><span>AI</span><span>B2B</span><span>Bio</span><span>Fin</span><span>EdTech</span></div>
         <div className="league-score-card">
           <small>{copy.score}</small>
           <strong>18,420</strong>
