@@ -355,7 +355,7 @@ function StartupFantasyLanding({ t }) {
     mechanics: ['Каждый игрок получает одинаковый виртуальный капитал.', 'На старте сезона он покупает доли в стартапах из общего рынка.', 'Очки начисляются за раунды, рост выручки, найм, запуски, публичные сигналы и выживаемость.', 'Таблица лидеров показывает не только результат, но и стиль мышления игрока.'],
     modelsTitle: 'Портфель многое говорит о человеке',
     models: ['Одни берут самое громкое — раунды, медиа, хайп.', 'Другие смотрят на основателей и скорость исполнения.', 'Третьи собирают скучное: B2B, инфраструктуру, всё что работает без шума.', 'Четвёртые идут all-in на одну ставку, пятые спорят с риском через диверсификацию.'],
-    footer: 'Публичная игра с фейковыми деньгами иногда честнее раскрывает убеждения, чем серьёзные разговоры о стратегии.',
+    footer: 'Способ проверить своё понимание рынка — без настоящего капитала, но с настоящими стартапами.',
     finalLead: 'Монополия взлетела, потому что попала в нужный нерв — людям хотелось чувствовать себя инвесторами, пусть и виртуально. Fantasy Startup League — та же история, только рынок теперь венчурный.'
   } : {
     eyebrow: 'Fantasy Startup League',
@@ -396,7 +396,7 @@ function StartupFantasyLanding({ t }) {
     mechanics: ['Every player receives the same virtual capital.', 'At the season start, they buy startup stakes from a shared market.', 'Points come from rounds, revenue growth, hiring, launches, public signals, and survival.', 'Leaderboards show not only performance, but each player’s thinking style.'],
     modelsTitle: 'Your portfolio reveals how you think',
     models: ['Some pick the loudest names: big rounds, media, hype.', 'Others look at founders and execution speed.', 'Some collect the boring stuff: B2B, infrastructure, everything that works without noise.', 'One player goes all-in on a single bet. Another argues with uncertainty through diversification.'],
-    footer: 'A public game with fake money can reveal beliefs more honestly than serious strategy talk.',
+    footer: 'A way to test how well you read the market — without real capital, with real startups.',
     finalLead: 'Monopoly took off because it hit the right nerve — people wanted to feel like investors, even virtually. Fantasy Startup League is the same idea, but the market is venture.'
   };
 
