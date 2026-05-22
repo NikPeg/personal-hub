@@ -1260,6 +1260,7 @@ html[data-theme="light"] .modal-card {
 
   .league-orbit {
     inset: 5.5rem 1rem 7.7rem;
+    --orbit-r: 5.2rem;
   }
 
   .league-orbit span {
@@ -1267,12 +1268,6 @@ html[data-theme="light"] .modal-card {
     height: 3.65rem;
     font-size: .82rem;
   }
-
-  .league-orbit span:nth-child(1) { transform: translate(-5rem, -4rem); }
-  .league-orbit span:nth-child(2) { transform: translate(5.2rem, -2.2rem); }
-  .league-orbit span:nth-child(3) { transform: translate(-4.5rem, 4.8rem); }
-  .league-orbit span:nth-child(4) { transform: translate(5rem, 4.7rem); }
-  .league-orbit span:nth-child(5) { transform: translate(0.5rem, -5.5rem); }
 
   .startup-explain-grid,
   .startup-detail-grid,
@@ -1620,7 +1615,7 @@ html[data-theme="light"] .startup-fantasy-page .phone-order span {
   height: min(18rem, 48%);
   border-color: color-mix(in srgb, var(--league-accent) 34%, transparent);
   background: radial-gradient(circle, color-mix(in srgb, var(--league-accent-2) 12%, transparent), transparent 62%);
-  animation: leagueOrbitSpin 36s linear infinite;
+  --orbit-r: 7rem;
   pointer-events: none;
 }
 
@@ -1636,19 +1631,14 @@ html[data-theme="light"] .startup-fantasy-page .phone-order span {
   background: var(--league-text);
   color: var(--league-ink);
   box-shadow: 0 18px 50px var(--league-shadow);
-  animation: leagueCounterSpin 36s linear infinite, leagueNodePulse 2.8s ease-in-out infinite;
+  animation: leagueSpanOrbit 36s linear infinite, leagueNodePulse 2.8s ease-in-out infinite;
 }
 
-.league-orbit span:nth-child(1) { transform: translate(-6.5rem, -3.9rem); background: var(--league-accent); }
-.league-orbit span:nth-child(2) { transform: translate(6.2rem, -2.3rem); background: var(--league-accent-2); }
-.league-orbit span:nth-child(3) { transform: translate(-5.1rem, 4.8rem); background: var(--league-text); color: var(--league-card); }
-.league-orbit span:nth-child(4) { transform: translate(6.5rem, 4.6rem); background: var(--league-accent-3); }
-.league-orbit span:nth-child(5) { transform: translate(0.5rem, -6.8rem); background: #c084fc; color: #10130f; }
-
-.league-orbit span:nth-child(2) { animation-delay: 0s, -.5s; }
-.league-orbit span:nth-child(3) { animation-delay: 0s, -1s; }
-.league-orbit span:nth-child(4) { animation-delay: 0s, -1.5s; }
-.league-orbit span:nth-child(5) { animation-delay: 0s, -2s; }
+.league-orbit span:nth-child(1) { background: var(--league-accent); }
+.league-orbit span:nth-child(2) { background: var(--league-accent-2); animation-delay: -7.2s, -.5s; }
+.league-orbit span:nth-child(3) { background: var(--league-text); color: var(--league-card); animation-delay: -14.4s, -1s; }
+.league-orbit span:nth-child(4) { background: var(--league-accent-3); animation-delay: -21.6s, -1.5s; }
+.league-orbit span:nth-child(5) { background: #c084fc; color: #10130f; animation-delay: -28.8s, -2s; }
 
 .league-line-chart {
   overflow: hidden;
@@ -1683,9 +1673,9 @@ html[data-theme="light"] .startup-fantasy-page .phone-order span {
   to { transform: rotate(360deg); }
 }
 
-@keyframes leagueCounterSpin {
-  from { rotate: 0deg; }
-  to { rotate: -360deg; }
+@keyframes leagueSpanOrbit {
+  from { transform: rotate(0deg) translateX(var(--orbit-r, 7rem)) rotate(0deg); }
+  to   { transform: rotate(360deg) translateX(var(--orbit-r, 7rem)) rotate(-360deg); }
 }
 
 @keyframes leagueNodePulse {
