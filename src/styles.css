@@ -519,8 +519,9 @@ html[data-theme="light"] .modal-card {
 .startup-btn.dark {
   width: fit-content;
   margin-top: 1.3rem;
-  background: #10130f;
-  color: #f4f8e8;
+  background: #d9ff57;
+  color: #10130f;
+  box-shadow: 0 0 36px rgba(217,255,87,.4), 0 14px 40px rgba(217,255,87,.22);
 }
 
 .startup-hero-board {
@@ -564,43 +565,29 @@ html[data-theme="light"] .modal-card {
   font-size: 1.1rem;
 }
 
-.league-orbit {
+.league-sectors {
   position: absolute;
-  inset: 5.8rem 2rem 8rem;
+  right: 1rem;
+  top: 10rem;
   display: grid;
-  place-items: center;
-  border: 1px dashed rgba(217, 255, 87, .28);
-  border-radius: 50%;
+  grid-template-columns: 1fr 1fr;
+  gap: .4rem;
+  pointer-events: none;
 }
 
-.league-orbit::before,
-.league-orbit::after {
-  content: "";
-  position: absolute;
-  border: 1px dashed rgba(50, 225, 170, .2);
-  border-radius: 50%;
-}
-
-.league-orbit::before { inset: 13%; }
-.league-orbit::after { inset: 28%; }
-
-.league-orbit span {
-  position: absolute;
-  width: 4.8rem;
-  height: 4.8rem;
-  display: grid;
-  place-items: center;
-  border-radius: 50%;
-  background: #f4f8e8;
+.league-sectors span {
+  padding: .35rem .7rem;
+  border-radius: 100px;
+  font-size: .7rem;
+  font-weight: 900;
+  text-align: center;
   color: #10130f;
-  font-weight: 950;
-  box-shadow: 0 18px 50px rgba(0,0,0,.28);
 }
 
-.league-orbit span:nth-child(1) { transform: translate(-9rem, -5.4rem); background: #d9ff57; }
-.league-orbit span:nth-child(2) { transform: translate(8.4rem, -3.2rem); background: #32e1aa; }
-.league-orbit span:nth-child(3) { transform: translate(-7rem, 6.2rem); background: #f4f8e8; }
-.league-orbit span:nth-child(4) { transform: translate(8.8rem, 6.4rem); background: #ff7a4f; }
+.league-sectors span:nth-child(1) { background: #d9ff57; }
+.league-sectors span:nth-child(2) { background: #32e1aa; }
+.league-sectors span:nth-child(3) { background: #f4f8e8; }
+.league-sectors span:nth-child(4) { background: #ff7a4f; }
 
 .league-score-card {
   position: absolute;
@@ -884,8 +871,8 @@ html[data-theme="light"] .modal-card {
   min-height: 2.55rem;
   border: 0;
   border-radius: .55rem;
-  background: #10130f;
-  color: #f4f8e8;
+  background: #d9ff57;
+  color: #10130f;
   font-weight: 950;
   cursor: pointer;
 }
@@ -972,6 +959,11 @@ html[data-theme="light"] .modal-card {
 
 .dash-card.score {
   background: #f4f8e8;
+  color: #10130f;
+}
+
+.dash-card.score small,
+.dash-card.score strong {
   color: #10130f;
 }
 
@@ -1338,6 +1330,8 @@ html[data-theme="light"] .startup-fantasy-page {
 /* In light mode the inverted cards have a dark background — text must be light */
 html[data-theme="light"] .startup-fantasy-page .league-score-card strong,
 html[data-theme="light"] .startup-fantasy-page .league-score-card small,
+html[data-theme="light"] .startup-fantasy-page .dash-card.score strong,
+html[data-theme="light"] .startup-fantasy-page .dash-card.score small,
 html[data-theme="light"] .startup-fantasy-page .phone-order strong,
 html[data-theme="light"] .startup-fantasy-page .phone-order span {
   color: var(--league-card);
@@ -1411,9 +1405,10 @@ html[data-theme="light"] .startup-fantasy-page .phone-order span {
 }
 
 .startup-btn.dark {
-  background: var(--league-ink);
-  color: #f4f8e8;
-  box-shadow: 0 18px 50px color-mix(in srgb, var(--league-accent-2) 20%, transparent);
+  background: var(--league-accent);
+  color: var(--league-ink);
+  box-shadow: 0 0 40px color-mix(in srgb, var(--league-accent) 50%, transparent),
+              0 14px 40px color-mix(in srgb, var(--league-accent) 26%, transparent);
 }
 
 .startup-hero-board,
@@ -1494,6 +1489,11 @@ html[data-theme="light"] .startup-fantasy-page .phone-order span {
   color: var(--league-ink);
 }
 
+.dash-card.score small,
+.dash-card.score strong {
+  color: var(--league-ink);
+}
+
 .league-score-card span {
   color: color-mix(in srgb, var(--league-accent-2) 70%, var(--league-ink));
 }
@@ -1535,8 +1535,8 @@ html[data-theme="light"] .startup-fantasy-page .phone-order span {
 }
 
 .phone-order button {
-  background: var(--league-ink);
-  color: #f4f8e8;
+  background: var(--league-accent);
+  color: var(--league-ink);
 }
 
 .desktop-top,
@@ -1567,40 +1567,15 @@ html[data-theme="light"] .startup-fantasy-page .phone-order span {
 .dash-chart i:nth-child(6) { animation-delay: .6s; }
 .league-line-chart i:nth-child(7) { animation-delay: .72s; }
 
-.league-orbit {
-  z-index: 1;
-  inset: 15.6rem 2.4rem 10.9rem auto;
-  width: min(18rem, 48%);
-  height: min(18rem, 48%);
-  border-color: color-mix(in srgb, var(--league-accent) 34%, transparent);
-  background: radial-gradient(circle, color-mix(in srgb, var(--league-accent-2) 12%, transparent), transparent 62%);
-  animation: leagueOrbitSpin 18s linear infinite;
-  pointer-events: none;
-}
-
-.league-orbit::before,
-.league-orbit::after {
-  border-color: color-mix(in srgb, var(--league-accent-2) 24%, transparent);
-}
-
-.league-orbit::before { animation: leagueOrbitSpin 12s linear infinite reverse; }
-.league-orbit::after { animation: leagueOrbitSpin 9s linear infinite; }
-
-.league-orbit span {
-  background: var(--league-text);
+.league-sectors span {
   color: var(--league-ink);
-  box-shadow: 0 18px 50px var(--league-shadow);
-  animation: leagueCounterSpin 18s linear infinite, leagueNodePulse 2.8s ease-in-out infinite;
+  box-shadow: 0 8px 24px var(--league-shadow);
 }
 
-.league-orbit span:nth-child(1) { transform: translate(-6.5rem, -3.9rem); background: var(--league-accent); }
-.league-orbit span:nth-child(2) { transform: translate(6.2rem, -2.3rem); background: var(--league-accent-2); }
-.league-orbit span:nth-child(3) { transform: translate(-5.1rem, 4.8rem); background: var(--league-text); }
-.league-orbit span:nth-child(4) { transform: translate(6.5rem, 4.6rem); background: var(--league-accent-3); }
-
-.league-orbit span:nth-child(2) { animation-delay: -.5s; }
-.league-orbit span:nth-child(3) { animation-delay: -1s; }
-.league-orbit span:nth-child(4) { animation-delay: -1.5s; }
+.league-sectors span:nth-child(1) { background: var(--league-accent); }
+.league-sectors span:nth-child(2) { background: var(--league-accent-2); }
+.league-sectors span:nth-child(3) { background: var(--league-text); color: var(--league-card); }
+.league-sectors span:nth-child(4) { background: var(--league-accent-3); }
 
 .league-line-chart {
   overflow: hidden;
