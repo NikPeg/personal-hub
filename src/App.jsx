@@ -319,7 +319,7 @@ function StartupFantasyLanding({ t }) {
   const copy = isRu ? {
     eyebrow: 'Fantasy Startup League',
     title: 'Фэнтези-лига стартапов',
-    lead: 'Собери портфель стартапов на сезон, управляй виртуальными миллионами и покажи, как ты на самом деле думаешь о рынках, основателях и риске.',
+    lead: 'Читаешь про стартапы, думаешь «я бы вложился» — но миллионов нет, да и не хочется рисковать. $10M виртуального капитала, реальные стартапы, годовой сезон. К концу видно, насколько хорошо ты чувствуешь рынок.',
     cta: 'Запросить ранний доступ',
     secondary: 'Посмотреть интерфейс',
     f1Title: 'Жанр: фэнтези-спорт',
@@ -356,11 +356,11 @@ function StartupFantasyLanding({ t }) {
     modelsTitle: 'Портфель многое говорит о человеке',
     models: ['Одни берут самое громкое — раунды, медиа, хайп.', 'Другие смотрят на основателей и скорость исполнения.', 'Третьи собирают скучное: B2B, инфраструктуру, всё что работает без шума.', 'Четвёртые идут all-in на одну ставку, пятые спорят с риском через диверсификацию.'],
     footer: 'Публичная игра с фейковыми деньгами иногда честнее раскрывает убеждения, чем серьёзные разговоры о стратегии.',
-    finalLead: 'Первый сезон будет небольшим. Если интересно — напиши.'
+    finalLead: 'Монополия взлетела, потому что попала в нужный нерв — людям хотелось чувствовать себя инвесторами, пусть и виртуально. Fantasy Startup League — та же история, только рынок теперь венчурный.'
   } : {
     eyebrow: 'Fantasy Startup League',
     title: 'Fantasy Startup League',
-    lead: 'Build a startup portfolio for the season, manage virtual millions, and reveal how you actually think about markets, founders, and risk.',
+    lead: 'You read about startups, think «I\'d invest» — but no millions, no desire to risk them. $10M virtual capital, real startups, a full season. By the end, you\'ll know how well you actually read the market.',
     cta: 'Request early access',
     secondary: 'View interface',
     f1Title: 'The genre: fantasy sport',
@@ -397,7 +397,7 @@ function StartupFantasyLanding({ t }) {
     modelsTitle: 'Your portfolio reveals how you think',
     models: ['Some pick the loudest names: big rounds, media, hype.', 'Others look at founders and execution speed.', 'Some collect the boring stuff: B2B, infrastructure, everything that works without noise.', 'One player goes all-in on a single bet. Another argues with uncertainty through diversification.'],
     footer: 'A public game with fake money can reveal beliefs more honestly than serious strategy talk.',
-    finalLead: 'The first season will be small. If this sounds interesting — reach out.'
+    finalLead: 'Monopoly took off because it hit the right nerve — people wanted to feel like investors, even virtually. Fantasy Startup League is the same idea, but the market is venture.'
   };
 
   return <section className="startup-fantasy-page reveal visible" id="projects">
