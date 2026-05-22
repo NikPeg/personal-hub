@@ -1438,7 +1438,7 @@ html[data-theme="light"] .startup-fantasy-page .phone-order span {
 
 .startup-btn.dark {
   background: var(--league-ink);
-  color: var(--league-text);
+  color: #f4f8e8;
   box-shadow: 0 8px 32px rgba(0,0,0,.42), 0 2px 0 rgba(255,255,255,.06) inset;
 }
 
