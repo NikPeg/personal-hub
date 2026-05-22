@@ -30,7 +30,7 @@ const pathToTab = (pathname) => {
   const slug = pathname.replace(/^\//, '').replace(/\/$/, '');
   if (!slug || slug === 'index.html') return 'home';
   if (['feed', 'channels', 'ideas', 'thoughts', 'quotes', 'projects', 'photos'].includes(slug)) return slug;
-  if (['startup-fantasy', 'edu', 'scribo', 'slidebot'].includes(slug)) return `project:${slug}`;
+  if (slug === 'startup-fantasy') return 'project:startup-fantasy';
   return 'home';
 };
 
