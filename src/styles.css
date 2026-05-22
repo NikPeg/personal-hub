@@ -1335,6 +1335,12 @@ html[data-theme="light"] .startup-fantasy-page {
     linear-gradient(135deg, var(--league-bg-a), var(--league-bg-b) 48%, var(--league-bg-c));
 }
 
+/* In light mode the inverted cards have a dark background — strong text must be light */
+html[data-theme="light"] .startup-fantasy-page .league-score-card strong,
+html[data-theme="light"] .startup-fantasy-page .phone-order strong {
+  color: var(--league-card);
+}
+
 .startup-fantasy-copy,
 .startup-hero-board,
 .phone-mockup,

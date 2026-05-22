@@ -535,6 +535,14 @@ export default function App() {
     window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
   }, [tab]);
 
+  useEffect(() => {
+    if (tab === 'project:startup-fantasy') {
+      document.title = lang === 'ru' ? 'Фэнтези-лига стартапов' : 'Fantasy Startup League';
+    } else {
+      document.title = lang === 'en' ? 'Who is NikPeg?' : 'Кто такой НикПег?';
+    }
+  }, [tab, lang]);
+
   function go(nextTab) {
     setTab(nextTab);
     setSelected(null);
@@ -542,7 +550,7 @@ export default function App() {
     window.history.pushState({}, '', path);
   }
   function setTheme(value) { setThemeState(value); localStorage.setItem('theme', value); document.documentElement.dataset.theme = value; }
-  function setLang(value) { setLangState(value); localStorage.setItem('lang', value); document.documentElement.lang = value; document.title = value === 'en' ? 'Who is NikPeg?' : 'Кто такой НикПег?'; }
+  function setLang(value) { setLangState(value); localStorage.setItem('lang', value); document.documentElement.lang = value; }
   document.documentElement.dataset.theme = theme;
   document.documentElement.lang = lang;
 
