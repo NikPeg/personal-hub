@@ -2,6 +2,16 @@ export const content = {
   en: {
     posts: [
       {
+        id: 'yellow-shirt', tag: 'essay', title: 'Yellow Shirt', status: 'published', date: '2026-05-26', telegramUrl: 'https://t.me/nikpeg_dramas/37', images: [
+          { src: '/assets/posts/yellow-shirt-1.jpg', alt: 'Yellow shirt' },
+          { src: '/assets/posts/yellow-shirt-2.jpg', alt: 'Yellow shirt' },
+          { src: '/assets/posts/yellow-shirt-3.jpg', alt: 'Yellow shirt' },
+          { src: '/assets/posts/yellow-shirt-4.jpg', alt: 'Yellow shirt' }
+        ],
+        text: 'You are not just working as a developer — you are playing the role of a person who works as a developer.',
+        fullText: 'You are not just working as a developer — you are playing the role of a person who works as a developer. You wear certain t-shirts, drink certain coffee, look slightly tired at people who do not understand the difference between front-end and back-end. This is not pretending. This is the genre you exist in.\n\nShe says before the first date: wear something yellow. Does not explain why. And you already want to keep talking — because she just added a scene to your day. Now there is a mystery, there is anticipation, there is a moment that will be remembered later. The yellow shirt became a prop.\n\nGetting fired is not just losing a job, it is a turning point. Moving is not logistics, it is a new chapter. A strange decision that cannot be explained rationally — is almost always explained narratively: you feel that your story requires exactly this move.\n\nThis is not self-deception and not a way to paint yourself as a hero. Plot is about how experience becomes experience at all. Without it, events fall apart into a list of dates and weigh nothing.\n\nI think this changes how you make decisions. Not only "what is more profitable" or "what is right" — but also "where does this lead."'
+      },
+      {
         id: 'fantasy-startup-league-idea', tag: 'project', title: 'Fantasy Startup League', status: 'published', date: '2026-05-22', telegramUrl: 'https://t.me/nikpeg_dramas/36',
         text: 'You watch startups, read the news, think "I would have invested" — but there are no millions, and you do not want to take on real risk.',
         fullText: 'You watch startups, read the news, think "I would have invested" — but there are no millions, and you do not want to take on real risk.\n\nIn the middle of the Great Depression, Americans dreamed of owning property but had no money. That is when Monopoly appeared. Parker Brothers rejected it for 52 design flaws, but the game took off anyway — it hit the right nerve. People wanted to feel like owners, even if only in a board game.\n\nRight now venture works the same way: the market is interesting but closed. You cannot enter it without serious capital, and foreign markets are now out of reach for Russian investors.\n\nThere is a genre called fantasy sports. You take a virtual budget, assemble a team from real athletes, and watch how much you would have made based on their results. No risk, but you test yourself as an expert. It is enormously popular in sports — and nothing like it exists for venture yet.\n\nFantasy Startup League is that thing. Every player starts with the same budget — ten million game dollars — and builds a portfolio of startups. Then the season begins: startups raise rounds, hire people, launch products — or die. By the end of the year you can see how well you read the market — without risking real money.\n\nThere is no product yet, only an idea. Want to build it?'
@@ -79,6 +89,16 @@ export const content = {
   },
   ru: {
     posts: [
+      {
+        id: 'yellow-shirt', tag: 'эссе', title: 'Жёлтая рубашка', status: 'published', date: '2026-05-26', telegramUrl: 'https://t.me/nikpeg_dramas/37', images: [
+          { src: '/assets/posts/yellow-shirt-1.jpg', alt: 'Жёлтая рубашка' },
+          { src: '/assets/posts/yellow-shirt-2.jpg', alt: 'Жёлтая рубашка' },
+          { src: '/assets/posts/yellow-shirt-3.jpg', alt: 'Жёлтая рубашка' },
+          { src: '/assets/posts/yellow-shirt-4.jpg', alt: 'Жёлтая рубашка' }
+        ],
+        text: 'Ты не просто работаешь разработчиком — ты отыгрываешь роль человека, который работает разработчиком.',
+        fullText: 'Ты не просто работаешь разработчиком — ты отыгрываешь роль человека, который работает разработчиком. Носишь определённые футболки, пьёшь определённый кофе, немного устало смотришь на тех, кто не понимает разницы между фронтом и бэком. Это не притворство. Это жанр, в котором ты существуешь.\n\nОна говорит перед первым свиданием: надень что-нибудь жёлтое. Не объясняет зачем. И ты уже хочешь общаться дальше — потому что она только что добавила в твой день сцену. Теперь есть тайна, есть ожидание, есть момент, который будет потом вспоминаться. Жёлтая рубашка стала реквизитом.\n\nУвольнение — не просто потеря работы, а поворотный момент. Переезд — не логистика, а новая глава. Странное решение, которое невозможно объяснить рационально — почти всегда объясняется сюжетно: ты чувствуешь, что твоя история требует именно этого хода.\n\nЭто не самообман и не способ нарисовать из себя героя. Сюжет — это про то, как опыт вообще становится опытом. Без него события рассыпаются в набор дат и ничего не весят.\n\nМне кажется, это меняет то, как принимаешь решения. Не только «что выгоднее» или «что правильнее» — но и «куда это ведёт».'
+      },
       {
         id: 'fantasy-startup-league-idea', tag: 'проект', title: 'Fantasy Startup League', status: 'published', date: '2026-05-22', telegramUrl: 'https://t.me/nikpeg_dramas/36',
         text: 'Смотришь на стартапы, читаешь новости, думаешь «я бы вложился» — но миллионов нет, да и не хочется рисковать.',
