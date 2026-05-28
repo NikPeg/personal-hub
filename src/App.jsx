@@ -670,7 +670,7 @@ function EmpathyAiLanding({ t }) {
         <button className="empathy-stats-arrow" onClick={() => { setStatsIdx((statsIdx - 1 + 2) % 2); setStatsManual(true); }} aria-label="Previous">&#8249;</button>
         <div className="empathy-stats-row">
           {c.statsPages[statsIdx].map((s, i) => (
-            <div key={i} className={'empathy-stat' + (s.accent2 ? ' empathy-stat-grant' : '')}>
+            <div key={`${statsIdx}-${i}`} style={{'--ci': i}} className={'empathy-stat' + (s.accent2 ? ' empathy-stat-grant' : '')}>
               <strong>{s.val}</strong><span>{s.label}</span>
             </div>
           ))}
@@ -883,6 +883,7 @@ export default function App() {
   return <>
     <div className="aurora" aria-hidden="true"></div><div className="grain" aria-hidden="true"></div>
     {!tab.startsWith('project:') && <Header tab={tab} go={go} lang={lang} setLang={setLang} theme={theme} setTheme={setTheme} t={t} />}
+    {tab.startsWith('project:') && <div className="floating-controls"><button className="pill" onClick={() => setLang(lang === 'en' ? 'ru' : 'en')}>{lang === 'en' ? 'RU' : 'EN'}</button><button className="pill icon-pill" onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}>{theme === 'dark' ? '☾' : '☀'}</button></div>}
     <main className="page-shell" key={tab}>
       {tab === 'home' && <><Hero t={t} lang={lang} /><Feed t={t} data={data} embedded onOpen={setSelected} go={go} nextLabel={t.nextChannels} /></>}
       {tab === 'feed' && <Feed t={t} data={data} onOpen={setSelected} go={go} nextLabel={t.nextChannels} />}
