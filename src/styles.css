@@ -1787,6 +1787,14 @@ html[data-theme="light"] .empathy-ai-page {
   margin: 0 0 2rem;
 }
 
+.empathy-hero-actions,
+.empathy-closing-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .85rem;
+  margin-top: 2rem;
+}
+
 .empathy-btn {
   display: inline-flex;
   align-items: center;
@@ -1797,16 +1805,92 @@ html[data-theme="light"] .empathy-ai-page {
   font-weight: 700;
   font-size: .95rem;
   text-decoration: none;
-  transition: opacity .2s, transform .2s;
+  transition: opacity .2s, transform .2s, box-shadow .2s;
   box-shadow: 0 8px 32px var(--ea-shadow);
+  position: relative;
+  overflow: hidden;
 }
-.empathy-btn:hover { opacity: .88; transform: translateY(-1px); }
+.empathy-btn:hover { opacity: .9; transform: translateY(-2px); box-shadow: 0 14px 40px var(--ea-shadow); }
 
-.empathy-phone-wrap { display: flex; justify-content: center; }
+/* shimmer sweep */
+.empathy-btn.shimmer {
+  background: linear-gradient(90deg, var(--ea-accent), var(--ea-accent2), var(--ea-accent));
+  background-size: 200%;
+  animation: eaBtnGrad 3s linear infinite;
+}
+.empathy-btn.shimmer::before {
+  content: "";
+  position: absolute;
+  top: 0; left: -120%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.28), transparent);
+  transform: skewX(-18deg);
+  animation: eaBtnSweep 2.6s ease-in-out infinite 1.2s;
+}
+@keyframes eaBtnGrad {
+  0% { background-position: 0%; }
+  100% { background-position: 200%; }
+}
+@keyframes eaBtnSweep {
+  0%, 25% { left: -120%; }
+  65%, 100% { left: 160%; }
+}
+
+/* outline variant */
+.empathy-btn.outline {
+  background: transparent;
+  color: var(--ea-accent);
+  border: 1.5px solid var(--ea-border);
+  box-shadow: none;
+  animation: none;
+}
+.empathy-btn.outline::before { display: none; }
+.empathy-btn.outline:hover { background: color-mix(in srgb, var(--ea-accent) 10%, transparent); border-color: var(--ea-accent); }
+
+/* BG ORB */
+.empathy-bg-orb {
+  position: fixed;
+  top: -20vh; left: 50%;
+  transform: translateX(-50%);
+  width: 80vw; height: 80vw;
+  border-radius: 50%;
+  background: radial-gradient(circle, color-mix(in srgb, var(--ea-accent) 9%, transparent), transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+  animation: eaOrbFloat 8s ease-in-out infinite alternate;
+}
+@keyframes eaOrbFloat {
+  from { transform: translateX(-50%) scale(1); opacity: .8; }
+  to   { transform: translateX(-50%) scale(1.15); opacity: 1; }
+}
+
+.empathy-hero { position: relative; z-index: 1; }
+
+.empathy-phone-wrap { display: flex; justify-content: center; position: relative; }
+
+.empathy-phone-glow {
+  position: absolute;
+  inset: -3rem;
+  border-radius: 50%;
+  background: radial-gradient(circle, color-mix(in srgb, var(--ea-accent) 18%, transparent), transparent 70%);
+  animation: eaGlow 4s ease-in-out infinite alternate;
+  pointer-events: none;
+  z-index: -1;
+}
+@keyframes eaGlow {
+  from { opacity: .5; transform: scale(.9); }
+  to   { opacity: 1;  transform: scale(1.08); }
+}
 
 .empathy-mockup {
   background: var(--ea-surf) !important;
   border-color: var(--ea-border) !important;
+  animation: eaMockupFloat 6s ease-in-out infinite;
+}
+@keyframes eaMockupFloat {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-8px); }
 }
 
 .empathy-screen {
@@ -1829,16 +1913,12 @@ html[data-theme="light"] .empathy-ai-page {
   margin-bottom: .75rem;
 }
 
-.empathy-avatar {
+.empathy-avatar-img {
   width: 2.2rem; height: 2.2rem;
   border-radius: 50%;
-  background: linear-gradient(135deg, var(--ea-accent), var(--ea-accent2));
-  color: #0c0a14;
-  font-weight: 900;
-  font-size: .85rem;
-  display: grid;
-  place-items: center;
+  object-fit: cover;
   flex-shrink: 0;
+  border: 1.5px solid var(--ea-border);
 }
 
 .empathy-chat-meta strong { display: block; font-size: .78rem; font-weight: 700; color: var(--ea-text); }
@@ -1864,9 +1944,14 @@ html[data-theme="light"] .empathy-ai-page {
   opacity: 0;
   animation: eaMsgIn .4s ease-out forwards;
 }
-.empathy-msg.bot  { align-self: flex-start; background: var(--ea-surf); color: var(--ea-text); border-bottom-left-radius: .25rem; animation-delay: .2s; }
-.empathy-msg.user { align-self: flex-end; background: var(--ea-accent); color: #0c0a14; font-weight: 600; border-bottom-right-radius: .25rem; animation-delay: 1s; }
-.empathy-msg.bot:nth-child(3) { animation-delay: 1.8s; }
+.empathy-msg.bot  { align-self: flex-start; background: var(--ea-surf); color: var(--ea-text); border-bottom-left-radius: .25rem; }
+.empathy-msg.user { align-self: flex-end; background: var(--ea-accent); color: #0c0a14; font-weight: 600; border-bottom-right-radius: .25rem; }
+.empathy-msg:nth-child(1) { animation-delay: .2s; }
+.empathy-msg:nth-child(2) { animation-delay: .8s; }
+.empathy-msg:nth-child(3) { animation-delay: 1.4s; }
+.empathy-msg:nth-child(4) { animation-delay: 2s; }
+.empathy-msg:nth-child(5) { animation-delay: 2.6s; }
+.empathy-msg:nth-child(6) { animation-delay: 3.2s; }
 
 .empathy-typing {
   align-self: flex-start;
@@ -1877,7 +1962,7 @@ html[data-theme="light"] .empathy-ai-page {
   border-radius: 1.1rem;
   border-bottom-left-radius: .25rem;
   opacity: 0;
-  animation: eaMsgIn .4s 2.5s ease-out forwards;
+  animation: eaMsgIn .4s 3.8s ease-out forwards;
 }
 .empathy-typing span { width: .32rem; height: .32rem; border-radius: 50%; background: var(--ea-muted); animation: eaTyping 1.2s ease-in-out infinite; }
 .empathy-typing span:nth-child(2) { animation-delay: .2s; }
@@ -1917,6 +2002,19 @@ html[data-theme="light"] .empathy-ai-page {
   border: 1px solid var(--ea-border);
   border-radius: 1.5rem;
   padding: 2rem;
+  transition: transform .3s, box-shadow .3s, border-color .3s;
+  animation: eaCardRise .6s ease-out both;
+}
+.empathy-features article:nth-child(2) { animation-delay: .1s; }
+.empathy-features article:nth-child(3) { animation-delay: .2s; }
+.empathy-features article:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 60px var(--ea-shadow);
+  border-color: color-mix(in srgb, var(--ea-accent) 40%, transparent);
+}
+@keyframes eaCardRise {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
 .empathy-feat-num {
@@ -1941,14 +2039,13 @@ html[data-theme="light"] .empathy-ai-page {
   gap: 3rem;
   align-items: center;
   max-width: 1200px;
+  width: calc(100% - 8rem);
   margin: 0 auto 5rem;
   padding: 3rem 4rem;
   background: var(--ea-surf);
   border: 1px solid var(--ea-border);
   border-radius: 2rem;
 }
-
-html[data-theme="light"] .empathy-reminders-block { margin-left: 4rem; margin-right: 4rem; }
 
 .empathy-reminders-block h2 { font-size: clamp(1.4rem, 2.8vw, 2rem); font-weight: 800; margin: 0 0 .9rem; }
 .empathy-reminders-block p  { color: var(--ea-muted); line-height: 1.75; font-size: .95rem; margin: 0; }
@@ -1967,9 +2064,62 @@ html[data-theme="light"] .empathy-reminders-block { margin-left: 4rem; margin-ri
   animation-delay: calc(var(--i, 0) * .25s);
 }
 
+/* ROADMAP */
+.empathy-roadmap {
+  max-width: 1200px;
+  margin: 0 auto 5rem;
+  padding: 0 4rem;
+}
+
+.empathy-roadmap > .empathy-kicker { margin-bottom: .5rem; }
+.empathy-roadmap h2 { font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 800; margin: 0 0 2.5rem; }
+
+.empathy-road-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
+}
+
+.empathy-road-card {
+  background: var(--ea-surf);
+  border: 1px solid var(--ea-border);
+  border-radius: 1.5rem;
+  padding: 1.75rem;
+  transition: transform .3s, box-shadow .3s, border-color .3s;
+  animation: eaCardRise .6s ease-out both;
+}
+.empathy-road-card:nth-child(2) { animation-delay: .1s; }
+.empathy-road-card:nth-child(3) { animation-delay: .2s; }
+.empathy-road-card:nth-child(4) { animation-delay: .3s; }
+.empathy-road-card.active {
+  border-color: color-mix(in srgb, var(--ea-accent) 55%, transparent);
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--ea-accent) 18%, transparent), 0 20px 50px var(--ea-shadow);
+}
+.empathy-road-card:hover { transform: translateY(-4px); box-shadow: 0 18px 50px var(--ea-shadow); border-color: color-mix(in srgb, var(--ea-accent) 30%, transparent); }
+
+.road-phase {
+  display: inline-block;
+  font-size: .68rem;
+  font-weight: 700;
+  letter-spacing: .08em;
+  color: var(--ea-muted);
+  background: var(--ea-card);
+  padding: .22rem .65rem;
+  border-radius: 999px;
+  margin-bottom: .9rem;
+}
+.empathy-road-card.active .road-phase {
+  color: var(--ea-accent);
+  background: color-mix(in srgb, var(--ea-accent) 16%, transparent);
+}
+
+.empathy-road-card h3 { font-size: 1rem; font-weight: 750; margin: 0 0 .55rem; color: var(--ea-text); }
+.empathy-road-card p  { font-size: .84rem; line-height: 1.7; color: var(--ea-muted); margin: 0; }
+
 /* CLOSING */
 .empathy-closing { text-align: center; padding: 4rem 4rem 7rem; max-width: 1200px; margin: 0 auto; }
-.empathy-closing p { font-size: clamp(1.1rem, 2.5vw, 1.6rem); color: var(--ea-muted); margin: 0 auto 2.5rem; max-width: 52ch; line-height: 1.6; }
+.empathy-closing p { font-size: clamp(1.1rem, 2.5vw, 1.6rem); color: var(--ea-muted); margin: 0 auto 0; max-width: 52ch; line-height: 1.6; }
+.empathy-closing-actions { justify-content: center; margin-top: 2.5rem; }
 
 /* KEYFRAMES */
 @keyframes eaMsgIn    { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
@@ -1980,10 +2130,17 @@ html[data-theme="light"] .empathy-reminders-block { margin-left: 4rem; margin-ri
 /* MOBILE */
 @media (max-width: 900px) {
   .empathy-hero { grid-template-columns: 1fr; padding: 4rem 1.5rem 2rem; gap: 2.5rem; }
+  .empathy-hero-actions { flex-direction: column; align-items: flex-start; }
   .empathy-stats-row { grid-template-columns: repeat(2, 1fr); padding: 0 1.5rem; margin-bottom: 3rem; }
   .empathy-features { grid-template-columns: 1fr; padding: 0 1.5rem; }
-  .empathy-reminders-block { grid-template-columns: 1fr; margin: 0 1.5rem 3rem; padding: 2rem; gap: 2rem; }
+  .empathy-reminders-block { grid-template-columns: 1fr; width: calc(100% - 3rem); margin: 0 auto 3rem; padding: 2rem; gap: 2rem; }
+  .empathy-roadmap { padding: 0 1.5rem; }
+  .empathy-road-grid { grid-template-columns: repeat(2, 1fr); }
   .empathy-closing { padding: 3rem 1.5rem 5rem; }
+  .empathy-closing-actions { flex-direction: column; align-items: center; }
+}
+@media (max-width: 500px) {
+  .empathy-road-grid { grid-template-columns: 1fr; }
 }
 
 @media (prefers-reduced-motion: reduce) {

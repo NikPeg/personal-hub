@@ -502,6 +502,7 @@ function EmpathyAiLanding({ t }) {
     title: 'Пишет первым.',
     lead: 'Не ждёт, пока ты напишешь. Сам спрашивает — помнит, что ты рассказывал. 118 активных пользователей. Прошли в следующий этап гранта «Студенческий стартап».',
     cta: 'Попробовать в Telegram',
+    ctaContact: 'Обсудить проект',
     s1: '118', s1l: 'активных\nпользователей',
     s2: '6', s2l: 'типов\nнапоминаний',
     s3: '24 / 7', s3l: 'доступен\nбез очередей',
@@ -514,13 +515,25 @@ function EmpathyAiLanding({ t }) {
     m1: 'Привет! Как прошёл понедельник? Ты говорил, что начинаешь новый проект 👀',
     m2: 'Всё хорошо, спасибо что спросил',
     m3: 'Рад слышать! Расскажи — что за проект?',
+    m4: 'Делаю AI-бот для психологической поддержки',
+    m5: 'Это важная тема 🧠 Что делает его особенным?',
+    m6: 'Сам пишет первым — не ждёт, пока напишут ему',
     notifySub: 'написал вам · только что',
+    roadEyebrow: 'Планы',
+    roadTitle: 'Куда движемся',
+    road: [
+      { phase: '✦ Сейчас', title: 'Telegram-бот', desc: '118 активных пользователей. Проактивные напоминания, память разговоров, групповые чаты, реферальная система.', active: true },
+      { phase: '→ Следующий шаг', title: 'Веб-версия', desc: 'Полноценный веб-интерфейс с историей диалогов, настройками и визуальной аналитикой настроения на основе NLP.', active: false },
+      { phase: '→ Мобильные', title: 'Android и iOS', desc: 'Нативные приложения с push-уведомлениями, голосовыми сообщениями и офлайн-режимом.', active: false },
+      { phase: '→ Интеграции', title: 'Сервисы психологов', desc: 'Партнёрство с платформами поиска психологов. NLP-графики настроения и уровня стресса в долгосроке.', active: false },
+    ],
     footer: 'Психологическая поддержка, которая не ждёт, пока ты попросишь.',
   } : {
     eyebrow: 'Edya · AI Psychologist',
     title: 'It writes first.',
     lead: 'Doesn\'t wait for you to start. Checks in on its own — remembers what you\'ve shared. 118 active users. Reached the next round of the "Student Startup" grant.',
     cta: 'Try on Telegram',
+    ctaContact: 'Discuss the project',
     s1: '118', s1l: 'active\nusers',
     s2: '6', s2l: 'reminder\ntypes',
     s3: '24 / 7', s3l: 'available\nno waitlist',
@@ -532,26 +545,42 @@ function EmpathyAiLanding({ t }) {
     rems: ['Interests', 'Plans', 'Check-in', 'Compliments', 'Humor', 'Situational'],
     m1: 'Hey! How was Monday? You mentioned starting a new project 👀',
     m2: 'Good, thanks for asking!',
-    m3: 'Glad to hear! Tell me more — what is the project?',
+    m3: 'Glad to hear! What is the project?',
+    m4: 'Building an AI bot for psychological support',
+    m5: 'That\'s important work 🧠 What makes it different?',
+    m6: 'It writes first — doesn\'t wait for the user to start',
     notifySub: 'messaged you · just now',
+    roadEyebrow: 'Roadmap',
+    roadTitle: 'Where we\'re headed',
+    road: [
+      { phase: '✦ Now', title: 'Telegram bot', desc: '118 active users. Proactive reminders, conversation memory, group chats, referral system.', active: true },
+      { phase: '→ Next', title: 'Web version', desc: 'Full web interface with conversation history, settings, and NLP-based mood analytics over time.', active: false },
+      { phase: '→ Mobile', title: 'Android & iOS', desc: 'Native apps with push notifications, voice messages, and offline mode.', active: false },
+      { phase: '→ Integrations', title: 'Psychology services', desc: 'Partnerships with therapist-finding platforms. NLP mood and stress graphs for long-term wellbeing tracking.', active: false },
+    ],
     footer: 'Psychological support that doesn\'t wait for you to ask.',
   };
 
   return <section className="empathy-ai-page reveal visible">
+    <div className="empathy-bg-orb" aria-hidden="true"></div>
     <div className="empathy-hero">
       <div className="empathy-copy">
         <p className="empathy-kicker">{c.eyebrow}</p>
         <h1>{c.title}</h1>
         <p className="empathy-lead">{c.lead}</p>
-        <a className="empathy-btn" href="https://t.me/kindness365bot" target="_blank" rel="noreferrer">{c.cta}</a>
+        <div className="empathy-hero-actions">
+          <a className="empathy-btn shimmer" href="https://t.me/kindness365bot" target="_blank" rel="noreferrer">{c.cta}</a>
+          <a className="empathy-btn outline" href="https://t.me/nikpeg" target="_blank" rel="noreferrer">{c.ctaContact}</a>
+        </div>
       </div>
       <div className="empathy-phone-wrap">
+        <div className="empathy-phone-glow" aria-hidden="true"></div>
         <div className="phone-mockup empathy-mockup">
           <div className="phone-speaker"></div>
           <div className="phone-screen empathy-screen">
             <div className="phone-status"><span>9:41</span><span>5G 91%</span></div>
             <div className="empathy-chat-header">
-              <div className="empathy-avatar">Э</div>
+              <img src="/assets/empathy-ai/edya-logo.jpg" alt="Эдя" className="empathy-avatar-img" />
               <div className="empathy-chat-meta"><strong>Эдя</strong><span>{c.notifySub}</span></div>
               <div className="empathy-dot" aria-hidden="true"></div>
             </div>
@@ -559,6 +588,9 @@ function EmpathyAiLanding({ t }) {
               <div className="empathy-msg bot">{c.m1}</div>
               <div className="empathy-msg user">{c.m2}</div>
               <div className="empathy-msg bot">{c.m3}</div>
+              <div className="empathy-msg user">{c.m4}</div>
+              <div className="empathy-msg bot">{c.m5}</div>
+              <div className="empathy-msg user">{c.m6}</div>
               <div className="empathy-typing" aria-hidden="true"><span></span><span></span><span></span></div>
             </div>
           </div>
@@ -601,9 +633,26 @@ function EmpathyAiLanding({ t }) {
       </div>
     </div>
 
+    <div className="empathy-roadmap">
+      <p className="empathy-kicker">{c.roadEyebrow}</p>
+      <h2>{c.roadTitle}</h2>
+      <div className="empathy-road-grid">
+        {c.road.map((item) => (
+          <div key={item.title} className={'empathy-road-card' + (item.active ? ' active' : '')}>
+            <span className="road-phase">{item.phase}</span>
+            <h3>{item.title}</h3>
+            <p>{item.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+
     <div className="empathy-closing">
       <p>{c.footer}</p>
-      <a className="empathy-btn" href="https://t.me/kindness365bot" target="_blank" rel="noreferrer">{c.cta}</a>
+      <div className="empathy-closing-actions">
+        <a className="empathy-btn shimmer" href="https://t.me/kindness365bot" target="_blank" rel="noreferrer">{c.cta}</a>
+        <a className="empathy-btn outline" href="https://t.me/nikpeg" target="_blank" rel="noreferrer">{c.ctaContact}</a>
+      </div>
     </div>
   </section>;
 }
