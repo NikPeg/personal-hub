@@ -1773,6 +1773,7 @@ html[data-theme="light"] .empathy-ai-page {
   font-weight: 950;
   line-height: 1;
   margin: 0 0 1.4rem;
+  padding-bottom: .18em; /* room for descenders (р, у…) */
   background: linear-gradient(135deg, var(--ea-text) 50%, var(--ea-accent));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -1946,12 +1947,36 @@ html[data-theme="light"] .empathy-ai-page {
 }
 .empathy-msg.bot  { align-self: flex-start; background: var(--ea-surf); color: var(--ea-text); border-bottom-left-radius: .25rem; }
 .empathy-msg.user { align-self: flex-end; background: var(--ea-accent); color: #0c0a14; font-weight: 600; border-bottom-right-radius: .25rem; }
-.empathy-msg:nth-child(1) { animation-delay: .5s; }
-.empathy-msg:nth-child(2) { animation-delay: 3.5s; }
-.empathy-msg:nth-child(3) { animation-delay: 6.5s; }
-.empathy-msg:nth-child(4) { animation-delay: 9.5s; }
-.empathy-msg:nth-child(5) { animation-delay: 12.5s; }
-.empathy-msg:nth-child(6) { animation-delay: 15.5s; }
+/* message delays are now inline styles in JSX */
+
+/* typing window: appears then disappears to reveal bot message */
+.empathy-typing-window {
+  overflow: hidden;
+  height: 0;
+  animation: eaTypingWin var(--tw-dur, 2.5s) var(--tw-delay, 0s) ease-in-out both;
+}
+@keyframes eaTypingWin {
+  0%        { height: 0; opacity: 0; }
+  12%, 86%  { height: 2rem; opacity: 1; }
+  100%      { height: 0; opacity: 0; }
+}
+
+.empathy-typing-inner {
+  display: flex;
+  gap: .22rem;
+  padding: .55rem .8rem;
+  background: var(--ea-surf);
+  border-radius: 1.1rem;
+  border-bottom-left-radius: .25rem;
+}
+.empathy-typing-inner span {
+  width: .32rem; height: .32rem;
+  border-radius: 50%;
+  background: var(--ea-muted);
+  animation: eaTyping 1.2s ease-in-out infinite;
+}
+.empathy-typing-inner span:nth-child(2) { animation-delay: .2s; }
+.empathy-typing-inner span:nth-child(3) { animation-delay: .4s; }
 
 .empathy-typing {
   align-self: flex-start;

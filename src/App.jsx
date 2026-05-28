@@ -503,7 +503,7 @@ function EmpathyAiLanding({ t }) {
   const [reviewManual, setReviewManual] = useState(false);
   useEffect(() => {
     if (statsManual) return;
-    const timer = setInterval(() => setStatsIdx(i => (i + 1) % 2), 3000);
+    const timer = setInterval(() => setStatsIdx(i => (i + 1) % 2), 5000);
     return () => clearInterval(timer);
   }, [statsManual]);
   useEffect(() => {
@@ -571,7 +571,7 @@ function EmpathyAiLanding({ t }) {
     footer: 'Психологическая поддержка, которая не ждёт, пока ты попросишь.',
   } : {
     eyebrow: 'Edya · AI Psychologist',
-    title: 'It writes first.',
+    title: 'He writes first.',
     lead: 'Doesn\'t wait for you to start. Reaches out on its own — and remembers everything you\'ve shared. The project reached the next round of the "Student Startup" grant.',
     cta: 'Try on Telegram',
     ctaContact: 'Discuss the project',
@@ -652,12 +652,14 @@ function EmpathyAiLanding({ t }) {
               <div className="empathy-dot" aria-hidden="true"></div>
             </div>
             <div className="empathy-messages">
-              <div className="empathy-msg bot">{c.m1}</div>
-              <div className="empathy-msg user">{c.m2}</div>
-              <div className="empathy-msg bot">{c.m3}</div>
-              <div className="empathy-msg user">{c.m4}</div>
-              <div className="empathy-msg bot">{c.m5}</div>
-              <div className="empathy-msg user">{c.m6}</div>
+              <div className="empathy-msg bot" style={{animationDelay:'.5s'}}>{c.m1}</div>
+              <div className="empathy-msg user" style={{animationDelay:'3.5s'}}>{c.m2}</div>
+              <div className="empathy-typing-window" style={{'--tw-delay':'4s','--tw-dur':'2.2s'}} aria-hidden="true"><div className="empathy-typing-inner"><span></span><span></span><span></span></div></div>
+              <div className="empathy-msg bot" style={{animationDelay:'6.5s'}}>{c.m3}</div>
+              <div className="empathy-msg user" style={{animationDelay:'9.5s'}}>{c.m4}</div>
+              <div className="empathy-typing-window" style={{'--tw-delay':'10s','--tw-dur':'2.2s'}} aria-hidden="true"><div className="empathy-typing-inner"><span></span><span></span><span></span></div></div>
+              <div className="empathy-msg bot" style={{animationDelay:'12.5s'}}>{c.m5}</div>
+              <div className="empathy-msg user" style={{animationDelay:'15.5s'}}>{c.m6}</div>
               <div className="empathy-typing" aria-hidden="true"><span></span><span></span><span></span></div>
             </div>
           </div>
