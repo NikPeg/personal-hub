@@ -1951,6 +1951,7 @@ html[data-theme="light"] .empathy-ai-page {
 
 /* typing window: appears then disappears to reveal bot message */
 .empathy-typing-window {
+  align-self: flex-start;
   overflow: hidden;
   height: 0;
   animation: eaTypingWin var(--tw-dur, 2.5s) var(--tw-delay, 0s) ease-in-out both;
