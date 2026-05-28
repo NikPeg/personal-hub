@@ -31,6 +31,7 @@ const pathToTab = (pathname) => {
   if (!slug || slug === 'index.html') return 'home';
   if (['feed', 'channels', 'ideas', 'thoughts', 'quotes', 'projects', 'photos'].includes(slug)) return slug;
   if (slug === 'startup-fantasy') return 'project:startup-fantasy';
+  if (slug === 'empathy-ai') return 'project:empathy-ai';
   return 'home';
 };
 
@@ -494,9 +495,123 @@ function StartupFantasyLanding({ t }) {
   </section>;
 }
 
+function EmpathyAiLanding({ t }) {
+  const isRu = t.brandName === 'НикПег';
+  const c = isRu ? {
+    eyebrow: 'Эдя · ИИ-психолог',
+    title: 'Пишет первым.',
+    lead: 'Не ждёт, пока ты напишешь. Сам спрашивает — помнит, что ты рассказывал. 118 активных пользователей. Прошли в следующий этап гранта «Студенческий стартап».',
+    cta: 'Попробовать в Telegram',
+    s1: '118', s1l: 'активных\nпользователей',
+    s2: '6', s2l: 'типов\nнапоминаний',
+    s3: '24 / 7', s3l: 'доступен\nбез очередей',
+    s4: 'Грант', s4l: '«Студенческий\nстартап»',
+    f1t: 'Пишет первым', f1d: 'Большинство ботов ждут. Эдя сам пишет — о планах, интересах, как прошёл день. LLM генерирует каждое напоминание с учётом истории разговоров.',
+    f2t: 'Помнит разговоры', f2d: 'Хранит историю. Если в понедельник ты рассказал о новом проекте, во вторник Эдя спросит, как всё прошло.',
+    f3t: 'Анонимно и 24/7', f3d: 'Никаких записей, очередей, стигматизации. Работает в личных и групповых чатах в Telegram.',
+    rt: '6 типов напоминаний', rd: 'Каждое сообщение — уникальный запрос к LLM. Интересы, планы, комплименты, юмор, ситуативное, «как дела» — ни одно не выглядит шаблонным.',
+    rems: ['Интересы', 'Планы', 'Как дела', 'Комплименты', 'Юмор', 'Ситуативное'],
+    m1: 'Привет! Как прошёл понедельник? Ты говорил, что начинаешь новый проект 👀',
+    m2: 'Всё хорошо, спасибо что спросил',
+    m3: 'Рад слышать! Расскажи — что за проект?',
+    notifySub: 'написал вам · только что',
+    footer: 'Психологическая поддержка, которая не ждёт, пока ты попросишь.',
+  } : {
+    eyebrow: 'Edya · AI Psychologist',
+    title: 'It writes first.',
+    lead: 'Doesn\'t wait for you to start. Checks in on its own — remembers what you\'ve shared. 118 active users. Reached the next round of the "Student Startup" grant.',
+    cta: 'Try on Telegram',
+    s1: '118', s1l: 'active\nusers',
+    s2: '6', s2l: 'reminder\ntypes',
+    s3: '24 / 7', s3l: 'available\nno waitlist',
+    s4: 'Grant', s4l: '"Student\nStartup"',
+    f1t: 'Writes first', f1d: 'Most bots wait. Edya reaches out on its own — about plans, interests, how the day went. LLM generates each reminder using conversation history.',
+    f2t: 'Remembers conversations', f2d: 'Stores history. If you mentioned a new project on Monday, it will ask how it went on Tuesday.',
+    f3t: 'Anonymous and 24/7', f3d: 'No registration, no waitlist, no stigma. Works in personal and group Telegram chats.',
+    rt: '6 reminder types', rd: 'Every message is a unique LLM request. Interests, plans, compliments, humor, situational, check-ins — none looks like a template.',
+    rems: ['Interests', 'Plans', 'Check-in', 'Compliments', 'Humor', 'Situational'],
+    m1: 'Hey! How was Monday? You mentioned starting a new project 👀',
+    m2: 'Good, thanks for asking!',
+    m3: 'Glad to hear! Tell me more — what is the project?',
+    notifySub: 'messaged you · just now',
+    footer: 'Psychological support that doesn\'t wait for you to ask.',
+  };
+
+  return <section className="empathy-ai-page reveal visible">
+    <div className="empathy-hero">
+      <div className="empathy-copy">
+        <p className="empathy-kicker">{c.eyebrow}</p>
+        <h1>{c.title}</h1>
+        <p className="empathy-lead">{c.lead}</p>
+        <a className="empathy-btn" href="https://t.me/kindness365bot" target="_blank" rel="noreferrer">{c.cta}</a>
+      </div>
+      <div className="empathy-phone-wrap">
+        <div className="phone-mockup empathy-mockup">
+          <div className="phone-speaker"></div>
+          <div className="phone-screen empathy-screen">
+            <div className="phone-status"><span>9:41</span><span>5G 91%</span></div>
+            <div className="empathy-chat-header">
+              <div className="empathy-avatar">Э</div>
+              <div className="empathy-chat-meta"><strong>Эдя</strong><span>{c.notifySub}</span></div>
+              <div className="empathy-dot" aria-hidden="true"></div>
+            </div>
+            <div className="empathy-messages">
+              <div className="empathy-msg bot">{c.m1}</div>
+              <div className="empathy-msg user">{c.m2}</div>
+              <div className="empathy-msg bot">{c.m3}</div>
+              <div className="empathy-typing" aria-hidden="true"><span></span><span></span><span></span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div className="empathy-stats-row">
+      <div className="empathy-stat"><strong>{c.s1}</strong><span>{c.s1l}</span></div>
+      <div className="empathy-stat"><strong>{c.s2}</strong><span>{c.s2l}</span></div>
+      <div className="empathy-stat"><strong>{c.s3}</strong><span>{c.s3l}</span></div>
+      <div className="empathy-stat empathy-stat-grant"><strong>{c.s4}</strong><span>{c.s4l}</span></div>
+    </div>
+
+    <div className="empathy-features">
+      <article>
+        <span className="empathy-feat-num">01</span>
+        <h2>{c.f1t}</h2>
+        <p>{c.f1d}</p>
+      </article>
+      <article>
+        <span className="empathy-feat-num">02</span>
+        <h2>{c.f2t}</h2>
+        <p>{c.f2d}</p>
+      </article>
+      <article>
+        <span className="empathy-feat-num">03</span>
+        <h2>{c.f3t}</h2>
+        <p>{c.f3d}</p>
+      </article>
+    </div>
+
+    <div className="empathy-reminders-block">
+      <div>
+        <h2>{c.rt}</h2>
+        <p>{c.rd}</p>
+      </div>
+      <div className="empathy-pills">
+        {c.rems.map((r, i) => <span key={r} style={{'--i': i}}>{r}</span>)}
+      </div>
+    </div>
+
+    <div className="empathy-closing">
+      <p>{c.footer}</p>
+      <a className="empathy-btn" href="https://t.me/kindness365bot" target="_blank" rel="noreferrer">{c.cta}</a>
+    </div>
+  </section>;
+}
+
 function ProjectLanding({ t, data, slug, go }) {
   const project = data.projects.find((item) => item.slug === slug) || data.projects[0];
   if (project.slug === 'startup-fantasy') return <StartupFantasyLanding t={t} />;
+  if (project.slug === 'empathy-ai') return <EmpathyAiLanding t={t} />;
   return <section className="section page-hero reveal visible landing-page">
     <p className="eyebrow">{project.tag}</p>
     <h2>{project.title}</h2>
@@ -537,6 +652,8 @@ export default function App() {
   useEffect(() => {
     if (tab === 'project:startup-fantasy') {
       document.title = lang === 'ru' ? 'Фэнтези-лига стартапов' : 'Fantasy Startup League';
+    } else if (tab === 'project:empathy-ai') {
+      document.title = lang === 'ru' ? 'Эдя — ИИ-психолог' : 'Edya — AI Psychologist';
     } else {
       document.title = lang === 'en' ? 'Who is NikPeg?' : 'Кто такой НикПег?';
     }

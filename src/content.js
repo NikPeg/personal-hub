@@ -84,6 +84,7 @@ export const content = {
       }
     ],
     projects: [
+      { id: 'empathy-ai', slug: 'empathy-ai', tag: 'AI · psychology', title: 'Edya — AI Psychologist', text: 'A Telegram bot that writes first. Proactive reminders, conversation memory, 118 active users, grant finalist.', landingLead: 'Psychological support that does not wait for you to ask.', landingText: '' },
       { id: 'startup-fantasy', slug: 'startup-fantasy', tag: 'game · venture', title: 'Fantasy Startup League', text: 'A fantasy sports mechanic for startups: virtual millions, real startup news, portfolio rankings, and investor-style scoring.', landingLead: 'Build a venture portfolio for the season and compete on strategy, timing, and taste.', landingText: 'Fantasy Startup League turns venture watching into a playable market: draft startups, react to news, manage virtual capital, and climb the leaderboard.' }
     ]
   },
@@ -172,6 +173,7 @@ export const content = {
       }
     ],
     projects: [
+      { id: 'empathy-ai', slug: 'empathy-ai', tag: 'AI · психология', title: 'Эдя — ИИ-психолог', text: 'Телеграм-бот, который пишет первым. Проактивные напоминания, память разговоров, 118 активных пользователей, финалист гранта.', landingLead: 'Психологическая поддержка, которая не ждёт, пока ты попросишь.', landingText: '' },
       { id: 'startup-fantasy', slug: 'startup-fantasy', tag: 'игра · венчур', title: 'Фэнтези-лига стартапов', text: 'Фэнтези-механика для стартапов: виртуальные миллионы, новости компаний, рейтинги портфелей и очки за инвестиционное мышление.', landingLead: 'Собери венчурный портфель на сезон и соревнуйся стратегией, таймингом и вкусом.', landingText: 'Фэнтези-лига стартапов превращает наблюдение за венчуром в игровую рыночную систему: драфти стартапы, реагируй на новости, управляй виртуальным капиталом и поднимайся в лидерборде.' }
     ]
   }
