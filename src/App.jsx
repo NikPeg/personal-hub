@@ -497,12 +497,20 @@ function StartupFantasyLanding({ t }) {
 
 function EmpathyAiLanding({ t }) {
   const isRu = t.brandName === 'НикПег';
+  const [statsIdx, setStatsIdx] = useState(0);
+  const [statsManual, setStatsManual] = useState(false);
   const [reviewIdx, setReviewIdx] = useState(0);
-  const reviewCount = isRu ? 5 : 5;
+  const [reviewManual, setReviewManual] = useState(false);
   useEffect(() => {
-    const timer = setInterval(() => setReviewIdx(i => (i + 1) % reviewCount), 5000);
+    if (statsManual) return;
+    const timer = setInterval(() => setStatsIdx(i => (i + 1) % 2), 3000);
     return () => clearInterval(timer);
-  }, [reviewCount]);
+  }, [statsManual]);
+  useEffect(() => {
+    if (reviewManual) return;
+    const timer = setInterval(() => setReviewIdx(i => (i + 1) % 5), 7000);
+    return () => clearInterval(timer);
+  }, [reviewManual]);
 
   const c = isRu ? {
     eyebrow: 'Эдя · ИИ-психолог',
@@ -510,10 +518,27 @@ function EmpathyAiLanding({ t }) {
     lead: 'Не ждёт, пока напишешь. Сам выходит на связь — и помнит всё, о чём говорили. Проект прошёл в следующий этап гранта «Студенческий стартап».',
     cta: 'Попробовать в Telegram',
     ctaContact: 'Обсудить проект',
-    s1: '382', s1l: 'пользователей\nзарегистрировалось',
-    s2: '14K+', s2l: 'сообщений\nобработано',
-    s3: '24 / 7', s3l: 'доступен\nбез очередей',
-    s4: 'Грант', s4l: '«Студенческий\nстартап»',
+    statsPages: [
+      [
+        { val: '382',   label: 'пользователей\nзарегистрировалось' },
+        { val: '14K+',  label: 'сообщений\nобработано' },
+        { val: '24 / 7',label: 'доступен\nбез очередей' },
+        { val: 'Грант', label: '«Студенческий\nстартап»', accent2: true },
+      ],
+      [
+        { val: '118',  label: 'активных\nпользователей' },
+        { val: '37',   label: 'сообщений\nв среднем' },
+        { val: '12',   label: 'дней подряд —\nрекорд активности' },
+        { val: '340',  label: 'сообщений\nза один день' },
+      ],
+    ],
+    webEyebrow: 'Скоро · Веб-версия',
+    webTitle: 'Отследи, как меняется твоё состояние',
+    webPeriod: 'Дек 2024 — Май 2025',
+    webUser: 'Азамат',
+    webMoodLabel: 'Настроение',
+    webStressLabel: 'Уровень стресса',
+    webMonths: ['Дек', 'Янв', 'Фев', 'Мар', 'Апр', 'Май'],
     f1t: 'Пишет первым', f1d: 'Большинство ботов ждут. Эдя сам пишет — о планах, интересах, как прошёл день. LLM генерирует каждое напоминание с учётом истории разговоров.',
     f2t: 'Помнит разговоры', f2d: 'Хранит историю. Если в понедельник ты рассказал о новом проекте, во вторник Эдя спросит, как всё прошло.',
     f3t: 'Анонимно и 24/7', f3d: 'Никаких записей, очередей, стигматизации. Работает в личных и групповых чатах в Telegram.',
@@ -526,7 +551,6 @@ function EmpathyAiLanding({ t }) {
     m5: 'Это важная тема 🧠 Что делает его особенным?',
     m6: 'Сам пишет первым — не ждёт, пока напишут ему',
     notifySub: 'написал вам · только что',
-    insightText: 'За всё время пользователи отправили 14 094 сообщений — в среднем 37 на человека. Самый активный написал 500 раз за 12 дней; рекорд одного дня — 339 сообщений.',
     reviewsEyebrow: 'Отзывы',
     reviewsTitle: 'Что говорят пользователи',
     reviews: [
@@ -542,7 +566,7 @@ function EmpathyAiLanding({ t }) {
       { phase: '✦ Сейчас', title: 'Telegram-бот', desc: '382 зарегистрированных пользователя, 118 активных. Проактивные напоминания, память разговоров, групповые чаты, реферальная система.', active: true },
       { phase: '→ Следующий шаг', title: 'Веб-версия', desc: 'Полноценный веб-интерфейс с историей диалогов, настройками и визуальной аналитикой настроения на основе NLP.', active: false },
       { phase: '→ Мобильные', title: 'Android и iOS', desc: 'Нативные приложения с push-уведомлениями, голосовыми сообщениями и офлайн-режимом.', active: false },
-      { phase: '→ Интеграции', title: 'Сервисы психологов', desc: 'Партнёрство с платформами поиска психологов. NLP-графики настроения и уровня стресса в долгосроке.', active: false },
+      { phase: '→ Интеграции', title: 'Сервисы психологов', desc: 'Когда бот замечает, что человеку нужна живая поддержка — проактивно предлагает подходящего специалиста прямо в чате. Партнёрство с платформами поиска психологов.', active: false },
     ],
     footer: 'Психологическая поддержка, которая не ждёт, пока ты попросишь.',
   } : {
@@ -551,10 +575,27 @@ function EmpathyAiLanding({ t }) {
     lead: 'Doesn\'t wait for you to start. Reaches out on its own — and remembers everything you\'ve shared. The project reached the next round of the "Student Startup" grant.',
     cta: 'Try on Telegram',
     ctaContact: 'Discuss the project',
-    s1: '382', s1l: 'users\nregistered',
-    s2: '14K+', s2l: 'messages\nprocessed',
-    s3: '24 / 7', s3l: 'available\nno waitlist',
-    s4: 'Grant', s4l: '"Student\nStartup"',
+    statsPages: [
+      [
+        { val: '382',   label: 'users\nregistered' },
+        { val: '14K+',  label: 'messages\nprocessed' },
+        { val: '24 / 7',label: 'always\navailable' },
+        { val: 'Grant', label: '"Student\nStartup"', accent2: true },
+      ],
+      [
+        { val: '118',  label: 'active\nusers' },
+        { val: '37',   label: 'avg messages\nper user' },
+        { val: '12',   label: 'day streak —\nactivity record' },
+        { val: '340',  label: 'messages\nin one day' },
+      ],
+    ],
+    webEyebrow: 'Coming soon · Web version',
+    webTitle: 'Track how you feel over time',
+    webPeriod: 'Dec 2024 — May 2025',
+    webUser: 'Azamat',
+    webMoodLabel: 'Mood',
+    webStressLabel: 'Stress level',
+    webMonths: ['Dec', 'Jan', 'Feb', 'Mar', 'Apr', 'May'],
     f1t: 'Writes first', f1d: 'Most bots wait. Edya reaches out on its own — about plans, interests, how the day went. LLM generates each reminder using conversation history.',
     f2t: 'Remembers conversations', f2d: 'Stores history. If you mentioned a new project on Monday, it will ask how it went on Tuesday.',
     f3t: 'Anonymous and 24/7', f3d: 'No registration, no waitlist, no stigma. Works in personal and group Telegram chats.',
@@ -567,7 +608,6 @@ function EmpathyAiLanding({ t }) {
     m5: 'That\'s important work 🧠 What makes it different?',
     m6: 'It writes first — doesn\'t wait for the user to start',
     notifySub: 'messaged you · just now',
-    insightText: 'Users have sent 14 094 messages in total — 37 on average per person. Most engaged: 500 messages over 12 days; single-day record: 339 messages.',
     reviewsEyebrow: 'Reviews',
     reviewsTitle: 'What users say',
     reviews: [
@@ -583,7 +623,7 @@ function EmpathyAiLanding({ t }) {
       { phase: '✦ Now', title: 'Telegram bot', desc: '382 registered users, 118 active. Proactive reminders, conversation memory, group chats, referral system.', active: true },
       { phase: '→ Next', title: 'Web version', desc: 'Full web interface with conversation history, settings, and NLP-based mood analytics over time.', active: false },
       { phase: '→ Mobile', title: 'Android & iOS', desc: 'Native apps with push notifications, voice messages, and offline mode.', active: false },
-      { phase: '→ Integrations', title: 'Psychology services', desc: 'Partnerships with therapist-finding platforms. NLP mood and stress graphs for long-term wellbeing tracking.', active: false },
+      { phase: '→ Integrations', title: 'Psychology services', desc: 'When the bot senses someone needs live support — it proactively suggests a matched therapist right in the chat. Partnership with therapist-finding platforms.', active: false },
     ],
     footer: 'Psychological support that doesn\'t wait for you to ask.',
   };
@@ -625,16 +665,21 @@ function EmpathyAiLanding({ t }) {
       </div>
     </div>
 
-    <div className="empathy-stats-row">
-      <div className="empathy-stat"><strong>{c.s1}</strong><span>{c.s1l}</span></div>
-      <div className="empathy-stat"><strong>{c.s2}</strong><span>{c.s2l}</span></div>
-      <div className="empathy-stat"><strong>{c.s3}</strong><span>{c.s3l}</span></div>
-      <div className="empathy-stat empathy-stat-grant"><strong>{c.s4}</strong><span>{c.s4l}</span></div>
-    </div>
-
-    <div className="empathy-insight-bar">
-      <span className="empathy-insight-icon" aria-hidden="true">💬</span>
-      <p>{c.insightText}</p>
+    <div className="empathy-stats-outer">
+      <div className="empathy-stats-carousel">
+        <button className="empathy-stats-arrow" onClick={() => { setStatsIdx((statsIdx - 1 + 2) % 2); setStatsManual(true); }} aria-label="Previous">&#8249;</button>
+        <div className="empathy-stats-row">
+          {c.statsPages[statsIdx].map((s, i) => (
+            <div key={i} className={'empathy-stat' + (s.accent2 ? ' empathy-stat-grant' : '')}>
+              <strong>{s.val}</strong><span>{s.label}</span>
+            </div>
+          ))}
+        </div>
+        <button className="empathy-stats-arrow" onClick={() => { setStatsIdx((statsIdx + 1) % 2); setStatsManual(true); }} aria-label="Next">&#8250;</button>
+      </div>
+      <div className="empathy-stats-dots">
+        {[0, 1].map(i => <button key={i} className={'empathy-stats-dot' + (i === statsIdx ? ' active' : '')} onClick={() => { setStatsIdx(i); setStatsManual(true); }} aria-label={`Stats ${i + 1}`} />)}
+      </div>
     </div>
 
     <div className="empathy-features">
@@ -679,11 +724,75 @@ function EmpathyAiLanding({ t }) {
       </div>
     </div>
 
+    <div className="empathy-web-preview">
+      <p className="empathy-kicker">{c.webEyebrow}</p>
+      <h2>{c.webTitle}</h2>
+      <div className="empathy-web-mockup">
+        <div className="ewm-chrome">
+          <div className="ewm-dots"><span/><span/><span/></div>
+          <div className="ewm-url">app.edya.ai · {isRu ? 'Аналитика' : 'Analytics'}</div>
+        </div>
+        <div className="ewm-body">
+          <div className="ewm-sidebar">
+            <img src="/assets/empathy-ai/edya-logo.jpg" alt="Эдя" className="ewm-logo" />
+            <div className="ewm-sidebar-nav">
+              <span className="active">📊</span>
+              <span>💬</span>
+              <span>⚙️</span>
+            </div>
+            <div className="ewm-sidebar-user">{c.webUser[0]}</div>
+          </div>
+          <div className="ewm-content">
+            <div className="ewm-content-header">
+              <strong>{isRu ? 'Динамика состояния' : 'Wellbeing dynamics'}</strong>
+              <span>{c.webPeriod}</span>
+            </div>
+            <div className="ewm-charts">
+              <div className="ewm-chart-block">
+                <div className="ewm-chart-meta">
+                  <span>{c.webMoodLabel}</span>
+                  <div><strong>78 / 100</strong><span className="ewm-delta pos">↑ +28</span></div>
+                </div>
+                <svg className="ewm-svg" viewBox="0 0 300 72" preserveAspectRatio="none" aria-hidden="true">
+                  <defs>
+                    <linearGradient id="ea-mood-g" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0%" stopColor="#c084fc" stopOpacity="0.32"/>
+                      <stop offset="100%" stopColor="#c084fc" stopOpacity="0"/>
+                    </linearGradient>
+                  </defs>
+                  <path d="M0,54 40,51 80,47 120,42 160,35 200,28 240,22 300,16 L300,72 0,72Z" fill="url(#ea-mood-g)"/>
+                  <polyline points="0,54 40,51 80,47 120,42 160,35 200,28 240,22 300,16" fill="none" stroke="#c084fc" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+                <div className="ewm-x-axis">{c.webMonths.map(m => <span key={m}>{m}</span>)}</div>
+              </div>
+              <div className="ewm-chart-block">
+                <div className="ewm-chart-meta">
+                  <span>{c.webStressLabel}</span>
+                  <div><strong>34 / 100</strong><span className="ewm-delta neg">↓ −34</span></div>
+                </div>
+                <svg className="ewm-svg" viewBox="0 0 300 72" preserveAspectRatio="none" aria-hidden="true">
+                  <defs>
+                    <linearGradient id="ea-stress-g" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0%" stopColor="#f87171" stopOpacity="0.28"/>
+                      <stop offset="100%" stopColor="#f87171" stopOpacity="0"/>
+                    </linearGradient>
+                  </defs>
+                  <path d="M0,18 40,22 80,28 120,35 160,42 200,50 240,56 300,62 L300,72 0,72Z" fill="url(#ea-stress-g)"/>
+                  <polyline points="0,18 40,22 80,28 120,35 160,42 200,50 240,56 300,62" fill="none" stroke="#f87171" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+                <div className="ewm-x-axis">{c.webMonths.map(m => <span key={m}>{m}</span>)}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <div className="empathy-reviews">
       <p className="empathy-kicker">{c.reviewsEyebrow}</p>
       <h2>{c.reviewsTitle}</h2>
       <div className="empathy-review-stage">
-        <button className="empathy-review-arrow" onClick={() => setReviewIdx((reviewIdx - 1 + c.reviews.length) % c.reviews.length)} aria-label="Previous">&#8249;</button>
+        <button className="empathy-review-arrow" onClick={() => { setReviewIdx((reviewIdx - 1 + c.reviews.length) % c.reviews.length); setReviewManual(true); }} aria-label="Previous">&#8249;</button>
         <div className="empathy-review-card" key={reviewIdx}>
           <div className="empathy-review-stars" aria-hidden="true">★★★★★</div>
           <p>«{c.reviews[reviewIdx].text}»</p>
@@ -692,10 +801,10 @@ function EmpathyAiLanding({ t }) {
             {c.reviews[reviewIdx].role && <span>· {c.reviews[reviewIdx].role}</span>}
           </div>
         </div>
-        <button className="empathy-review-arrow" onClick={() => setReviewIdx((reviewIdx + 1) % c.reviews.length)} aria-label="Next">&#8250;</button>
+        <button className="empathy-review-arrow" onClick={() => { setReviewIdx((reviewIdx + 1) % c.reviews.length); setReviewManual(true); }} aria-label="Next">&#8250;</button>
       </div>
       <div className="empathy-review-dots">
-        {c.reviews.map((_, i) => <button key={i} className={'empathy-review-dot' + (i === reviewIdx ? ' active' : '')} onClick={() => setReviewIdx(i)} aria-label={`Отзыв ${i + 1}`} />)}
+        {c.reviews.map((_, i) => <button key={i} className={'empathy-review-dot' + (i === reviewIdx ? ' active' : '')} onClick={() => { setReviewIdx(i); setReviewManual(true); }} aria-label={`Отзыв ${i + 1}`} />)}
       </div>
     </div>
 
