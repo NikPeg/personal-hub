@@ -497,14 +497,21 @@ function StartupFantasyLanding({ t }) {
 
 function EmpathyAiLanding({ t }) {
   const isRu = t.brandName === 'НикПег';
+  const [reviewIdx, setReviewIdx] = useState(0);
+  const reviewCount = isRu ? 5 : 5;
+  useEffect(() => {
+    const timer = setInterval(() => setReviewIdx(i => (i + 1) % reviewCount), 5000);
+    return () => clearInterval(timer);
+  }, [reviewCount]);
+
   const c = isRu ? {
     eyebrow: 'Эдя · ИИ-психолог',
     title: 'Пишет первым.',
-    lead: 'Не ждёт, пока ты напишешь. Сам спрашивает — помнит, что ты рассказывал. 118 активных пользователей. Прошли в следующий этап гранта «Студенческий стартап».',
+    lead: 'Не ждёт, пока напишешь. Сам выходит на связь — и помнит всё, о чём говорили. Проект прошёл в следующий этап гранта «Студенческий стартап».',
     cta: 'Попробовать в Telegram',
     ctaContact: 'Обсудить проект',
-    s1: '118', s1l: 'активных\nпользователей',
-    s2: '6', s2l: 'типов\nнапоминаний',
+    s1: '382', s1l: 'пользователей\nзарегистрировалось',
+    s2: '14K+', s2l: 'сообщений\nобработано',
     s3: '24 / 7', s3l: 'доступен\nбез очередей',
     s4: 'Грант', s4l: '«Студенческий\nстартап»',
     f1t: 'Пишет первым', f1d: 'Большинство ботов ждут. Эдя сам пишет — о планах, интересах, как прошёл день. LLM генерирует каждое напоминание с учётом истории разговоров.',
@@ -519,10 +526,20 @@ function EmpathyAiLanding({ t }) {
     m5: 'Это важная тема 🧠 Что делает его особенным?',
     m6: 'Сам пишет первым — не ждёт, пока напишут ему',
     notifySub: 'написал вам · только что',
+    insightText: 'За всё время пользователи отправили 14 094 сообщений — в среднем 37 на человека. Самый активный написал 500 раз за 12 дней; рекорд одного дня — 339 сообщений.',
+    reviewsEyebrow: 'Отзывы',
+    reviewsTitle: 'Что говорят пользователи',
+    reviews: [
+      { text: 'Не ожидал, что буду открываться боту — но Эдя умеет задавать именно те вопросы, которые нужны. Уже месяц пишу каждый день.', name: 'Азамат', role: 'студент' },
+      { text: 'Была сложная неделя. Эдя написал сам — я даже не планировал открывать телеграм. Просто поговорил с ним и стало легче.', name: 'анонимно', role: '' },
+      { text: 'Нравится, что он помнит. Рассказала про конфликт с подругой — через два дня спросил, как всё разрешилось.', name: 'Варя', role: '' },
+      { text: 'Скептически относился к таким вещам, но тут работает. Наверное, потому что не навязывает советы — просто слушает и спрашивает.', name: 'Дмитрий', role: '' },
+      { text: 'Начала разговор в 3 ночи, когда было совсем плохо. Он ответил сразу, без осуждения. Это много значит.', name: 'анонимно', role: '' },
+    ],
     roadEyebrow: 'Планы',
     roadTitle: 'Куда движемся',
     road: [
-      { phase: '✦ Сейчас', title: 'Telegram-бот', desc: '118 активных пользователей. Проактивные напоминания, память разговоров, групповые чаты, реферальная система.', active: true },
+      { phase: '✦ Сейчас', title: 'Telegram-бот', desc: '382 зарегистрированных пользователя, 118 активных. Проактивные напоминания, память разговоров, групповые чаты, реферальная система.', active: true },
       { phase: '→ Следующий шаг', title: 'Веб-версия', desc: 'Полноценный веб-интерфейс с историей диалогов, настройками и визуальной аналитикой настроения на основе NLP.', active: false },
       { phase: '→ Мобильные', title: 'Android и iOS', desc: 'Нативные приложения с push-уведомлениями, голосовыми сообщениями и офлайн-режимом.', active: false },
       { phase: '→ Интеграции', title: 'Сервисы психологов', desc: 'Партнёрство с платформами поиска психологов. NLP-графики настроения и уровня стресса в долгосроке.', active: false },
@@ -531,11 +548,11 @@ function EmpathyAiLanding({ t }) {
   } : {
     eyebrow: 'Edya · AI Psychologist',
     title: 'It writes first.',
-    lead: 'Doesn\'t wait for you to start. Checks in on its own — remembers what you\'ve shared. 118 active users. Reached the next round of the "Student Startup" grant.',
+    lead: 'Doesn\'t wait for you to start. Reaches out on its own — and remembers everything you\'ve shared. The project reached the next round of the "Student Startup" grant.',
     cta: 'Try on Telegram',
     ctaContact: 'Discuss the project',
-    s1: '118', s1l: 'active\nusers',
-    s2: '6', s2l: 'reminder\ntypes',
+    s1: '382', s1l: 'users\nregistered',
+    s2: '14K+', s2l: 'messages\nprocessed',
     s3: '24 / 7', s3l: 'available\nno waitlist',
     s4: 'Grant', s4l: '"Student\nStartup"',
     f1t: 'Writes first', f1d: 'Most bots wait. Edya reaches out on its own — about plans, interests, how the day went. LLM generates each reminder using conversation history.',
@@ -550,10 +567,20 @@ function EmpathyAiLanding({ t }) {
     m5: 'That\'s important work 🧠 What makes it different?',
     m6: 'It writes first — doesn\'t wait for the user to start',
     notifySub: 'messaged you · just now',
+    insightText: 'Users have sent 14 094 messages in total — 37 on average per person. Most engaged: 500 messages over 12 days; single-day record: 339 messages.',
+    reviewsEyebrow: 'Reviews',
+    reviewsTitle: 'What users say',
+    reviews: [
+      { text: 'Didn\'t expect to open up to a bot — but Edya asks exactly the right questions. Been messaging every day for a month.', name: 'Azamat', role: 'student' },
+      { text: 'Had a rough week. Edya messaged me before I even thought to open Telegram. Just talked it through and felt better.', name: 'anonymous', role: '' },
+      { text: 'I like that it remembers. Told it about a conflict with a friend — two days later it asked how things resolved.', name: 'Varya', role: '' },
+      { text: 'Was skeptical about this kind of thing, but it works. Probably because it doesn\'t push advice — just listens and asks.', name: 'Dmitry', role: '' },
+      { text: 'Started a conversation at 3am when things were really hard. It responded right away, without judgment. That means a lot.', name: 'anonymous', role: '' },
+    ],
     roadEyebrow: 'Roadmap',
     roadTitle: 'Where we\'re headed',
     road: [
-      { phase: '✦ Now', title: 'Telegram bot', desc: '118 active users. Proactive reminders, conversation memory, group chats, referral system.', active: true },
+      { phase: '✦ Now', title: 'Telegram bot', desc: '382 registered users, 118 active. Proactive reminders, conversation memory, group chats, referral system.', active: true },
       { phase: '→ Next', title: 'Web version', desc: 'Full web interface with conversation history, settings, and NLP-based mood analytics over time.', active: false },
       { phase: '→ Mobile', title: 'Android & iOS', desc: 'Native apps with push notifications, voice messages, and offline mode.', active: false },
       { phase: '→ Integrations', title: 'Psychology services', desc: 'Partnerships with therapist-finding platforms. NLP mood and stress graphs for long-term wellbeing tracking.', active: false },
@@ -605,6 +632,11 @@ function EmpathyAiLanding({ t }) {
       <div className="empathy-stat empathy-stat-grant"><strong>{c.s4}</strong><span>{c.s4l}</span></div>
     </div>
 
+    <div className="empathy-insight-bar">
+      <span className="empathy-insight-icon" aria-hidden="true">💬</span>
+      <p>{c.insightText}</p>
+    </div>
+
     <div className="empathy-features">
       <article>
         <span className="empathy-feat-num">01</span>
@@ -644,6 +676,26 @@ function EmpathyAiLanding({ t }) {
             <p>{item.desc}</p>
           </div>
         ))}
+      </div>
+    </div>
+
+    <div className="empathy-reviews">
+      <p className="empathy-kicker">{c.reviewsEyebrow}</p>
+      <h2>{c.reviewsTitle}</h2>
+      <div className="empathy-review-stage">
+        <button className="empathy-review-arrow" onClick={() => setReviewIdx((reviewIdx - 1 + c.reviews.length) % c.reviews.length)} aria-label="Previous">&#8249;</button>
+        <div className="empathy-review-card" key={reviewIdx}>
+          <div className="empathy-review-stars" aria-hidden="true">★★★★★</div>
+          <p>«{c.reviews[reviewIdx].text}»</p>
+          <div className="empathy-review-author">
+            <strong>{c.reviews[reviewIdx].name}</strong>
+            {c.reviews[reviewIdx].role && <span>· {c.reviews[reviewIdx].role}</span>}
+          </div>
+        </div>
+        <button className="empathy-review-arrow" onClick={() => setReviewIdx((reviewIdx + 1) % c.reviews.length)} aria-label="Next">&#8250;</button>
+      </div>
+      <div className="empathy-review-dots">
+        {c.reviews.map((_, i) => <button key={i} className={'empathy-review-dot' + (i === reviewIdx ? ' active' : '')} onClick={() => setReviewIdx(i)} aria-label={`Отзыв ${i + 1}`} />)}
       </div>
     </div>
 
@@ -721,7 +773,7 @@ export default function App() {
 
   return <>
     <div className="aurora" aria-hidden="true"></div><div className="grain" aria-hidden="true"></div>
-    <Header tab={tab} go={go} lang={lang} setLang={setLang} theme={theme} setTheme={setTheme} t={t} />
+    {!tab.startsWith('project:') && <Header tab={tab} go={go} lang={lang} setLang={setLang} theme={theme} setTheme={setTheme} t={t} />}
     <main className="page-shell" key={tab}>
       {tab === 'home' && <><Hero t={t} lang={lang} /><Feed t={t} data={data} embedded onOpen={setSelected} go={go} nextLabel={t.nextChannels} /></>}
       {tab === 'feed' && <Feed t={t} data={data} onOpen={setSelected} go={go} nextLabel={t.nextChannels} />}
@@ -734,6 +786,6 @@ export default function App() {
       {tab.startsWith('project:') && <ProjectLanding t={t} data={data} slug={tab.split(':')[1]} go={go} />}
     </main>
     <DetailModal item={selected} onClose={() => setSelected(null)} t={t} />
-    <footer className="footer"><span>{t.footerText}</span><nav className="footer-links" aria-label={t.footerLinksLabel}><a href="https://t.me/nikpeg" target="_blank" rel="noreferrer">Telegram</a><a href="https://www.linkedin.com/in/nikpeg/" target="_blank" rel="noreferrer">LinkedIn</a><a href="https://github.com/NikPeg" target="_blank" rel="noreferrer">GitHub</a></nav></footer>
+    <footer className="footer"><button className="ghost footer-brand" onClick={() => go('home')}>{t.footerText}</button><nav className="footer-links" aria-label={t.footerLinksLabel}><a href="https://t.me/nikpeg" target="_blank" rel="noreferrer">Telegram</a><a href="https://www.linkedin.com/in/nikpeg/" target="_blank" rel="noreferrer">LinkedIn</a><a href="https://github.com/NikPeg" target="_blank" rel="noreferrer">GitHub</a></nav></footer>
   </>;
 }

@@ -2151,3 +2151,169 @@ html[data-theme="light"] .empathy-ai-page {
     transition: none !important;
   }
 }
+
+/* ── Footer brand link ─────────────────────────────────────────────────────── */
+.footer-brand {
+  color: var(--muted);
+  cursor: pointer;
+  transition: color .2s;
+  font: inherit;
+  text-align: left;
+}
+.footer-brand:hover { color: var(--accent); }
+
+/* ── Empathy: insight bar ──────────────────────────────────────────────────── */
+.empathy-insight-bar {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  max-width: 1200px;
+  margin: -1.5rem auto 4rem;
+  padding: 0 4rem;
+}
+
+.empathy-insight-bar > p {
+  flex: 1;
+  margin: 0;
+  padding: 1rem 1.5rem;
+  background: color-mix(in srgb, var(--ea-accent) 7%, var(--ea-surf));
+  border: 1px solid var(--ea-border);
+  border-left: 3px solid var(--ea-accent);
+  border-radius: .75rem;
+  font-size: .85rem;
+  line-height: 1.65;
+  color: var(--ea-muted);
+}
+
+.empathy-insight-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.4rem;
+  height: 2.4rem;
+  flex-shrink: 0;
+  font-size: 1.1rem;
+  background: color-mix(in srgb, var(--ea-accent) 12%, var(--ea-surf));
+  border: 1px solid var(--ea-border);
+  border-radius: .65rem;
+  margin-top: 0;
+  align-self: center;
+}
+
+/* ── Empathy: testimonials carousel ───────────────────────────────────────── */
+.empathy-reviews {
+  max-width: 1200px;
+  margin: 0 auto 5rem;
+  padding: 0 4rem;
+  text-align: center;
+}
+
+.empathy-reviews > .empathy-kicker { margin-bottom: .5rem; }
+.empathy-reviews h2 {
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  font-weight: 800;
+  margin: 0 0 2.5rem;
+  color: var(--ea-text);
+}
+
+.empathy-review-stage {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.empathy-review-card {
+  flex: 1;
+  background: var(--ea-surf);
+  border: 1px solid var(--ea-border);
+  border-radius: 1.5rem;
+  padding: 2.5rem 2.5rem 2rem;
+  animation: eaMsgIn .35s ease-out both;
+  text-align: left;
+  position: relative;
+}
+.empathy-review-card::before {
+  content: '\201C';
+  position: absolute;
+  top: .8rem; left: 1.6rem;
+  font-family: 'Playfair Display', serif;
+  font-size: 5rem;
+  line-height: 1;
+  color: color-mix(in srgb, var(--ea-accent) 20%, transparent);
+  pointer-events: none;
+}
+
+.empathy-review-stars {
+  color: var(--ea-accent);
+  font-size: 1rem;
+  letter-spacing: .18em;
+  margin-bottom: 1rem;
+}
+
+.empathy-review-card > p {
+  font-size: clamp(.95rem, 1.8vw, 1.08rem);
+  line-height: 1.8;
+  color: var(--ea-text);
+  margin: 0 0 1.5rem;
+  font-style: italic;
+}
+
+.empathy-review-author {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+}
+.empathy-review-author strong { font-weight: 700; color: var(--ea-accent); }
+.empathy-review-author span   { color: var(--ea-muted); font-size: .85rem; }
+
+.empathy-review-arrow {
+  width: 3rem; height: 3rem;
+  border-radius: 50%;
+  border: 1.5px solid var(--ea-border);
+  background: var(--ea-surf);
+  color: var(--ea-accent);
+  font-size: 1.8rem;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: background .2s, border-color .2s, transform .2s;
+}
+.empathy-review-arrow:hover {
+  background: color-mix(in srgb, var(--ea-accent) 14%, var(--ea-surf));
+  border-color: var(--ea-accent);
+  transform: scale(1.08);
+}
+
+.empathy-review-dots {
+  display: flex;
+  justify-content: center;
+  gap: .55rem;
+}
+
+.empathy-review-dot {
+  width: .45rem; height: .45rem;
+  border-radius: 50%;
+  border: 0;
+  background: var(--ea-border);
+  cursor: pointer;
+  padding: 0;
+  transition: background .25s, transform .25s, width .25s;
+}
+.empathy-review-dot.active {
+  background: var(--ea-accent);
+  transform: scale(1.25);
+  width: 1.2rem;
+  border-radius: 999px;
+}
+
+@media (max-width: 900px) {
+  .empathy-insight-bar { padding: 0 1.5rem; margin-bottom: 3rem; }
+  .empathy-reviews { padding: 0 1.5rem; }
+  .empathy-review-stage { gap: .75rem; }
+  .empathy-review-card { padding: 2rem 1.5rem 1.5rem; }
+  .empathy-review-arrow { width: 2.4rem; height: 2.4rem; font-size: 1.4rem; }
+}
