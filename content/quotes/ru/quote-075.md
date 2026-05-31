@@ -6,4 +6,4 @@ sourceIndex: 75
 source: "надпись на торте"
 ---
 
-You are a limited edition.
+Ты — лимитированная серия.
