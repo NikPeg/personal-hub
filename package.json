@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "vite --host 0.0.0.0",
     "build": "vite build",
-    "preview": "vite preview --host 0.0.0.0"
+    "preview": "vite preview --host 0.0.0.0",
+    "build:archives": "node scripts/build-quotes-archive.mjs && node scripts/build-ideas-archive.mjs && node scripts/build-thoughts-archive.mjs"
   },
   "dependencies": {
     "@vitejs/plugin-react": "latest",

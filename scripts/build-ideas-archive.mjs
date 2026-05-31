@@ -167,12 +167,6 @@ function roughTranslate(text) {
   return `Draft English translation (offline):\n\n${out}`;
 }
 
-function emptyDir(dir) {
-  fs.mkdirSync(dir, { recursive: true });
-  for (const name of fs.readdirSync(dir)) {
-    if (name.endsWith('.md')) fs.unlinkSync(path.join(dir, name));
-  }
-}
 
 const raw = fs.readFileSync(rawPath, 'utf8');
 const parsed = parseEntries(raw).map((entry, index) => {
@@ -188,20 +182,64 @@ const parsed = parseEntries(raw).map((entry, index) => {
   return { id, date: entry.date, sourceIndex, ruBody, ruTitle, enBody, enTitle, ruTags, enTags };
 });
 
-for (const dir of Object.values(outRoots)) emptyDir(dir);
-const json = { ru: [], en: [] };
+// Ensure output dirs exist — never delete existing files
+for (const dir of Object.values(outRoots)) fs.mkdirSync(dir, { recursive: true });
 
+// Write .md from raw only for files that don't already exist
 for (const item of parsed) {
   const filename = `${item.id}.md`;
-  fs.writeFileSync(path.join(outRoots.ru, filename), markdown({ id: item.id, date: item.date, tags: item.ruTags, sourceIndex: item.sourceIndex, title: item.ruTitle, body: item.ruBody }));
-  fs.writeFileSync(path.join(outRoots.en, filename), markdown({ id: item.id, date: item.date, tags: item.enTags, sourceIndex: item.sourceIndex, title: item.enTitle, body: item.enBody }));
-  json.ru.push({ tags: item.ruTags, id: item.id, date: item.date, sourceIndex: item.sourceIndex, title: item.ruTitle, text: item.ruBody, fullText: item.ruBody, tag: item.ruTags[0] });
-  json.en.push({ tags: item.enTags, id: item.id, date: item.date, sourceIndex: item.sourceIndex, title: item.enTitle, text: item.enBody, fullText: item.enBody, tag: item.enTags[0] });
+  const ruPath = path.join(outRoots.ru, filename);
+  const enPath = path.join(outRoots.en, filename);
+
+  if (!fs.existsSync(ruPath)) {
+    fs.writeFileSync(ruPath, markdown({ id: item.id, date: item.date, tags: item.ruTags, sourceIndex: item.sourceIndex, title: item.ruTitle, body: item.ruBody }));
+  }
+  if (!fs.existsSync(enPath)) {
+    fs.writeFileSync(enPath, markdown({ id: item.id, date: item.date, tags: item.enTags, sourceIndex: item.sourceIndex, title: item.enTitle, body: item.enBody }));
+  }
+}
+
+// Parse an idea .md file into a JSON item
+function parseMd(text, lang) {
+  const m = text.match(/^---\n([\s\S]*?)\n---\n?([\s\S]*)$/);
+  if (!m) return null;
+  const fm = m[1];
+  const rawBody = m[2].trim();
+  const id = (fm.match(/^id:\s*"([^"]+)"/m) || [])[1] || '';
+  const date = (fm.match(/^date:\s*"([^"]+)"/m) || [])[1] || '';
+  const sourceIndex = Number((fm.match(/^sourceIndex:\s*(\d+)/m) || [])[1] || 0);
+  const tags = [...fm.matchAll(/^\s+-\s+(.+)$/gm)].map(t => t[1].trim());
+  if (!id) return null;
+  const h1 = rawBody.match(/^#\s+(.+)$/m);
+  const title = h1 ? h1[1].trim() : titleFrom(rawBody, id);
+  const body = rawBody.replace(/^#[^\n]*\n?/, '').trim();
+  const fallbackTag = lang === 'ru' ? 'общество' : 'society';
+  return {
+    tags: tags.length ? tags : [fallbackTag],
+    id, date, sourceIndex,
+    title, text: body, fullText: body,
+    tag: tags[0] || fallbackTag,
+  };
+}
+
+// Build JSON from ALL .md files (raw-generated + manually added), sorted ASC by sourceIndex
+function buildJson(dir, lang) {
+  return fs.readdirSync(dir)
+    .filter(f => f.endsWith('.md'))
+    .map(f => parseMd(fs.readFileSync(path.join(dir, f), 'utf8'), lang))
+    .filter(Boolean)
+    .sort((a, b) => {
+      if (!a.sourceIndex && !b.sourceIndex) return (b.date || '').localeCompare(a.date || '');
+      if (!a.sourceIndex) return 1;
+      if (!b.sourceIndex) return -1;
+      return a.sourceIndex - b.sourceIndex;
+    });
 }
 
 for (const [lang, file] of Object.entries(publicRoots)) {
   fs.mkdirSync(path.dirname(file), { recursive: true });
-  fs.writeFileSync(file, JSON.stringify(json[lang], null, 0));
+  fs.writeFileSync(file, JSON.stringify(buildJson(outRoots[lang], lang), null, 0));
 }
 
-console.log(`Built ${parsed.length} ideas into content/ideas/{ru,en} and public/ideas/{ru,en}.json`);
+const total = fs.readdirSync(outRoots.ru).filter(f => f.endsWith('.md')).length;
+console.log(`Built ${total} ideas into content/ideas/{ru,en} and public/ideas/{ru,en}.json (${parsed.length} from raw, ${total - parsed.length} added manually)`);

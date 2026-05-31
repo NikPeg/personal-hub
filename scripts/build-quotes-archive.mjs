@@ -94,12 +94,6 @@ function anonymize(text) {
     .replace(/\bПолину\b/g, 'П.');
 }
 
-function emptyDir(dir) {
-  fs.mkdirSync(dir, { recursive: true });
-  for (const name of fs.readdirSync(dir)) {
-    if (name.endsWith('.md')) fs.unlinkSync(path.join(dir, name));
-  }
-}
 
 function yamlString(value) {
   return JSON.stringify(value);
@@ -328,45 +322,61 @@ function asEnglishItem(item) {
   };
 }
 
-for (const dir of Object.values(outRoots)) emptyDir(dir);
+// Ensure output dirs exist — never delete existing files
+for (const dir of Object.values(outRoots)) fs.mkdirSync(dir, { recursive: true });
 
-const ruJson = [];
-const enJson = [];
-
+// Write .md from raw only for files that don't already exist
 for (const item of parsed) {
   const filename = item.id + '.md';
-  fs.writeFileSync(path.join(outRoots.ru, filename), markdown({
-    id: item.id,
-    tags: item.tags,
-    sourceIndex: item.sourceIndex,
-    title: item.title,
-    quote: item.quote,
-    author: item.author,
-    source: item.source,
-  }));
+  const ruPath = path.join(outRoots.ru, filename);
+  const enPath = path.join(outRoots.en, filename);
 
-  const enItem = asEnglishItem(item);
+  if (!fs.existsSync(ruPath)) {
+    fs.writeFileSync(ruPath, markdown({ id: item.id, tags: item.tags, sourceIndex: item.sourceIndex, title: item.title, quote: item.quote, author: item.author, source: item.source }));
+  }
 
-  fs.writeFileSync(path.join(outRoots.en, filename), markdown({
-    id: enItem.id,
-    tags: enItem.tags,
-    sourceIndex: enItem.sourceIndex,
-    title: enItem.title,
-    quote: enItem.quote,
-    author: enItem.author,
-    source: enItem.source,
-  }));
-
-  ruJson.push(item);
-  enJson.push(enItem);
+  if (!fs.existsSync(enPath)) {
+    const enItem = asEnglishItem(item);
+    fs.writeFileSync(enPath, markdown({ id: enItem.id, tags: enItem.tags, sourceIndex: enItem.sourceIndex, title: enItem.title, quote: enItem.quote, author: enItem.author, source: enItem.source }));
+  }
 }
 
-ruJson.sort((a, b) => b.sourceIndex - a.sourceIndex);
-enJson.sort((a, b) => b.sourceIndex - a.sourceIndex);
+// Parse a quote .md file into a JSON item
+function parseMd(text, lang) {
+  const m = text.match(/^---\n([\s\S]*?)\n---\n?([\s\S]*)$/);
+  if (!m) return null;
+  const fm = m[1];
+  const body = m[2].trim();
+  const id = (fm.match(/^id:\s*"([^"]+)"/m) || [])[1] || '';
+  const sourceIndex = Number((fm.match(/^sourceIndex:\s*(\d+)/m) || [])[1] || 0);
+  const author = (fm.match(/^author:\s*"([^"]+)"/m) || [])[1] || '';
+  const source = (fm.match(/^source:\s*"([^"]+)"/m) || [])[1] || '';
+  const tags = [...fm.matchAll(/^\s+-\s+(.+)$/gm)].map(t => t[1].trim());
+  if (!id) return null;
+  const fallbackTag = lang === 'ru' ? 'культура' : 'culture';
+  return {
+    type: 'quote', id, sourceIndex,
+    title: titleFrom(body, id),
+    quote: body, text: body, fullText: body,
+    author, source,
+    tags: tags.length ? tags : [fallbackTag],
+    tag: tags[0] || fallbackTag,
+  };
+}
+
+// Build JSON from ALL .md files in a directory (raw-generated + manually added)
+function buildJson(dir, lang) {
+  return fs.readdirSync(dir)
+    .filter(f => f.endsWith('.md'))
+    .map(f => parseMd(fs.readFileSync(path.join(dir, f), 'utf8'), lang))
+    .filter(Boolean)
+    .sort((a, b) => b.sourceIndex - a.sourceIndex);
+}
 
 for (const [lang, file] of Object.entries(publicRoots)) {
   fs.mkdirSync(path.dirname(file), { recursive: true });
-  fs.writeFileSync(file, JSON.stringify(lang === "ru" ? ruJson : enJson, null, 0));
+  fs.writeFileSync(file, JSON.stringify(buildJson(outRoots[lang], lang), null, 0));
 }
 
-console.log('Built ' + parsed.length + ' quotes into content/quotes/{ru,en} and public/quotes/{ru,en}.json');
+const total = fs.readdirSync(outRoots.ru).filter(f => f.endsWith('.md')).length;
+console.log(`Built ${total} quotes into content/quotes/{ru,en} and public/quotes/{ru,en}.json (${parsed.length} from raw, ${total - parsed.length} added manually)`);
