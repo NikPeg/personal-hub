@@ -61,6 +61,10 @@ const englishOverrides = {
     quote: '- Why do you want to go to a party like that?\n- The same reason people black out drink. There\'s nothing more fun than almost dying.',
     source: 'Krapopolis (https://www.wcostream.tv/krapopolis-season-2-episode-19-mazed-and-kingfused)',
   },
+  'quote-074': {
+    quote: 'Sow an action and you reap a habit; sow a habit and you reap a character; sow a character and you reap a destiny.',
+    author: 'William Makepeace Thackeray',
+  },
 };
 
 const tagPairs = [
