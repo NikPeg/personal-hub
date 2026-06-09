@@ -2,6 +2,21 @@ export const content = {
   en: {
     posts: [
       {
+        id: 'codefest', tag: 'essay', title: 'CodeFest: on metrics, football teams, and ML vs alerts', status: 'published', date: '2026-06-08', telegramUrl: 'https://t.me/nikpeg_dramas/44',
+        images: [
+          { src: '/assets/posts/codefest-1.jpg', alt: 'CodeFest' },
+          { src: '/assets/posts/codefest-2.jpg', alt: 'CodeFest' },
+          { src: '/assets/posts/codefest-3.jpg', alt: 'CodeFest' },
+          { src: '/assets/posts/codefest-4.jpg', alt: 'CodeFest' },
+          { src: '/assets/posts/codefest-5.jpg', alt: 'CodeFest' },
+          { src: '/assets/posts/codefest-6.jpg', alt: 'CodeFest' },
+          { src: '/assets/posts/codefest-7.jpg', alt: 'CodeFest' },
+          { src: '/assets/posts/codefest-8.jpg', alt: 'CodeFest' },
+        ],
+        text: 'When the talks run out of seats and people are standing along the walls, you know the conference has grown. That\'s what the sixteenth CodeFest was for me.',
+        fullText: 'When the talks run out of seats and people are standing along the walls, you know the conference has grown. That\'s what the sixteenth CodeFest was for me.\n\nThe organisation shows real growth. Far more company booths — and now they\'re about interaction, not leaflets. You can touch things, play, build something, talk to engineers for real. Merch stepped up too: drip coffee, an instant-noodle point, and glasses of brine (Siberia is Siberia). Yandex and T-Bank skipped booths entirely and only gave talks — in their own rooms, not shared halls. I discovered Selectel for the first time.\n\nFrom all the talks I took away a few ideas I want to try in practice.\n\nA good metric is not one perfect number but a range. In high-load systems the value varies constantly, and it\'s fine for it to drift within certain bounds. If latency usually sits between 50 and 80 ms, the goal isn\'t to hold it exactly at 60 — it\'s to stay inside a healthy range.\n\nShare stories, not solutions. Not "we use this tool" but "we adopted this and here\'s why things got better." Stories land; abstract solutions don\'t.\n\nThe most unexpected talk was about team-building. The speaker came to engineering leadership from football coaching. Core idea: at the start, a team needs a small win. After the first shared success people start trusting themselves and each other.\n\nAnd my favourite: ML in alerting at T-Bank. The idea is to eliminate noisy alerts using the engineers themselves. Likes and dislikes become a labelled training set. A classifier is fine-tuned on it; for each new alert it estimates the probability of noise and suppresses likely spam. It hits a real pain point for anyone whose on-call chat never stops ringing.'
+      },
+      {
         id: 'edya-virtual-friend', tag: 'project', title: 'Edya | Your Virtual Friend', status: 'published', date: '2026-05-28', telegramUrl: 'https://t.me/nikpeg_dramas/42',
         images: [{ src: '/assets/posts/edya-virtual-friend-1.jpg', alt: 'Edya — AI friend bot' }],
         text: 'My friend Fei once wrote in his signature style: "All AIs are garbage, because they can\'t write first. This isn\'t support — it\'s an answering machine."',
@@ -96,6 +111,21 @@ export const content = {
   },
   ru: {
     posts: [
+      {
+        id: 'codefest', tag: 'эссе', title: 'CodeFest: про метрики, футбольные команды и ML против алертов', status: 'published', date: '2026-06-08', telegramUrl: 'https://t.me/nikpeg_dramas/44',
+        images: [
+          { src: '/assets/posts/codefest-1.jpg', alt: 'CodeFest' },
+          { src: '/assets/posts/codefest-2.jpg', alt: 'CodeFest' },
+          { src: '/assets/posts/codefest-3.jpg', alt: 'CodeFest' },
+          { src: '/assets/posts/codefest-4.jpg', alt: 'CodeFest' },
+          { src: '/assets/posts/codefest-5.jpg', alt: 'CodeFest' },
+          { src: '/assets/posts/codefest-6.jpg', alt: 'CodeFest' },
+          { src: '/assets/posts/codefest-7.jpg', alt: 'CodeFest' },
+          { src: '/assets/posts/codefest-8.jpg', alt: 'CodeFest' },
+        ],
+        text: 'Когда на докладах заканчиваются места и люди стоят вдоль стен, понимаешь, что конференция выросла. Таким для меня оказался шестнадцатый CodeFest.',
+        fullText: 'Когда на докладах заканчиваются места и люди стоят вдоль стен, понимаешь, что конференция выросла. Таким для меня оказался шестнадцатый CodeFest.\n\nПо организации виден рост. Стендов компаний стало заметно больше, и они теперь не про листовки, а про взаимодействие. Можно потрогать, поиграть, что-то собрать, поговорить с инженерами по делу. Мерч тоже подрос: раздавали дрип-кофе, был дошик-поинт и бокалы с рассолом (Сибирь есть Сибирь). Яндекс и Т-Банк — вообще без стендов, только доклады, причём в собственных залах, а не в общих. Для себя открыл Selectel, раньше про них не слышал.\n\nИз всех докладов забрал себе несколько мыслей, которые хочется попробовать на практике.\n\nХорошая метрика — это не одна идеальная цифра, а диапазон. В высоконагруженных системах значение всё время варьируется, и нормально, когда оно гуляет в каких-то рамках. Например, если latency обычно колеблется от 50 до 80 мс, то цель не удерживать её ровно на 60, а оставаться внутри здорового диапазона.\n\nДелиться лучше не решениями, а историями. Не «мы используем вот это», а «внедрили вот это, и вот почему стало лучше». Истории заходят, абстрактные решения нет.\n\nСамый неожиданный доклад был про формирование команды. Спикер пришла в тимлиды из футбольных тренеров. Главная идея: в начале команде нужна маленькая победа. После первого совместного успеха люди начинают доверять себе и друг другу.\n\nИ мой фаворит — ML в алертинге у Т-Банка. Идея в том, чтобы убрать мусорные срабатывания руками самих инженеров. Лайки и дизлайки превращаются в размеченную выборку для обучения модели. На ней дообучается классификатор, который для каждого нового алерта прикидывает вероятность, что это флуд, и приглушает такие срабатывания. Бьёт по реальной боли всех, у кого дежурный чат звенит без остановки.'
+      },
       {
         id: 'edya-virtual-friend', tag: 'проект', title: 'Эдя | Твой виртуальный друг', status: 'published', date: '2026-05-28', telegramUrl: 'https://t.me/nikpeg_dramas/42',
         images: [{ src: '/assets/posts/edya-virtual-friend-1.jpg', alt: 'Эдя — бот-друг' }],
