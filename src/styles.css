@@ -214,7 +214,11 @@ button { font: inherit; }
 .status-line { align-items: center; }
 .status-line strong { white-space: nowrap; font-size: .98rem; }
 .modal-backdrop { position: fixed; inset: 0; z-index: 50; display: grid; place-items: center; padding: 1rem; background: rgba(5,4,8,.68); backdrop-filter: blur(14px); }
-.modal-card { position: relative; width: min(860px, 100%); max-height: min(86vh, 860px); overflow: auto; padding: clamp(1.4rem, 4vw, 2.4rem); border: 1px solid var(--line); border-radius: 2rem; background: linear-gradient(145deg, color-mix(in srgb, var(--bg2) 92%, transparent), color-mix(in srgb, var(--bg) 92%, transparent)); box-shadow: var(--shadow); }
+.modal-card { position: relative; width: min(860px, 100%); max-height: min(86vh, 860px); overflow: auto; padding: clamp(1.4rem, 4vw, 2.4rem); border: 1px solid var(--line); border-radius: 2rem; background: linear-gradient(145deg, color-mix(in srgb, var(--bg2) 92%, transparent), color-mix(in srgb, var(--bg) 92%, transparent)); box-shadow: var(--shadow); scrollbar-width: thin; scrollbar-color: var(--line) transparent; }
+.modal-card::-webkit-scrollbar { width: 4px; }
+.modal-card::-webkit-scrollbar-track { background: transparent; }
+.modal-card::-webkit-scrollbar-thumb { background: var(--line); border-radius: 999px; }
+.modal-card::-webkit-scrollbar-thumb:hover { background: var(--muted); }
 .modal-card h2 { margin: 1rem 0; font-size: clamp(2rem, 6vw, 4.6rem); }
 .modal-card p { color: var(--muted); font-size: clamp(1.05rem, 2vw, 1.25rem); line-height: 1.75; white-space: pre-line; }
 .modal-close { position: sticky; top: 0; float: right; width: 2.5rem; height: 2.5rem; border: 1px solid var(--line); border-radius: 999px; background: var(--card); color: var(--text); cursor: pointer; font-size: 1.4rem; }
