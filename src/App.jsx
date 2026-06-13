@@ -902,6 +902,6 @@ export default function App() {
       {tab.startsWith('project:') && <ProjectLanding t={t} data={data} slug={tab.split(':')[1]} go={go} />}
     </main>
     <DetailModal item={selected} onClose={() => setSelected(null)} t={t} />
-    {!tab.startsWith('project:') && <footer className="footer"><button className="ghost footer-brand" onClick={() => go('home')}>{t.footerText}</button><nav className="footer-links" aria-label={t.footerLinksLabel}><a href="https://t.me/nikpeg" target="_blank" rel="noreferrer">Telegram</a><a href="https://www.linkedin.com/in/nikpeg/" target="_blank" rel="noreferrer">LinkedIn</a><a href="https://github.com/NikPeg" target="_blank" rel="noreferrer">GitHub</a></nav></footer>}
+    <footer className={`footer${tab.startsWith('project:') ? ' footer--no-border' : ''}`}><button className="ghost footer-brand" onClick={() => go('home')}>{t.footerText}</button><nav className="footer-links" aria-label={t.footerLinksLabel}><a href="https://t.me/nikpeg" target="_blank" rel="noreferrer">Telegram</a><a href="https://www.linkedin.com/in/nikpeg/" target="_blank" rel="noreferrer">LinkedIn</a><a href="https://github.com/NikPeg" target="_blank" rel="noreferrer">GitHub</a></nav></footer>
   </>;
 }
