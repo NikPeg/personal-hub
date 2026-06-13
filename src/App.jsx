@@ -844,7 +844,11 @@ export default function App() {
   const [tab, setTab] = useState(() => pathToTab(window.location.pathname));
   const [selected, setSelected] = useState(null);
   const [theme, setThemeState] = useState(() => localStorage.getItem('theme') === 'light' ? 'light' : 'dark');
-  const [lang, setLangState] = useState(() => localStorage.getItem('lang') === 'ru' ? 'ru' : 'en');
+  const [lang, setLangState] = useState(() => {
+    const saved = localStorage.getItem('lang');
+    if (saved) return saved;
+    return navigator.language?.toLowerCase().startsWith('ru') ? 'ru' : 'en';
+  });
   const t = dictionary[lang] || dictionary.en;
   const data = content[lang] || content.en;
 
