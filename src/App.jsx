@@ -305,9 +305,9 @@ function Channels({ t, data, go }) {
 function Projects({ t, data, go }) {
   return <section className="section page-hero reveal visible projects-index">
     <PageHeading eyebrow={t.projectsEyebrow} title={t.projectsTitle} lead={t.projectsLead} />
-    <div className="cards three project-index-grid">{data.projects.map((project) => <button className="card project-card" key={project.id} onClick={() => go(`project:${project.slug}`)}>
+    <div className="cards three project-index-grid">{data.projects.map((project) => <button className="card project-card" key={project.id} onClick={() => project.url ? window.open(project.url, '_blank', 'noreferrer') : go(`project:${project.slug}`)}>
       <span className="tag">{project.tag}</span>
-      <h3>{project.title}</h3>
+      <h3>{project.title}{project.url && <svg aria-hidden="true" viewBox="0 0 16 16" width="12" height="12" style={{marginLeft:'6px',verticalAlign:'middle',opacity:0.4}}><path fill="currentColor" d="M6 3h7v7l-2-2-3 3-1.5-1.5 3-3L7.5 5 6 3zm-3 1h2v2H3v6h6v-2h2v4H1V4h2z"/></svg>}</h3>
       <p>{project.text}</p>
       <strong>{t.openLanding}</strong>
     </button>)}</div>
