@@ -14,3 +14,5 @@ We used to digitize reality by making games like Pokémon Go. Now reality isn't 
 Tokenized real estate, carbon credits, compute markets, fan tokens, weather derivatives, personal data markets.
 
 Open question: can human expertise be digitized? Predict how many strong graduates will come out of a given university in a given year — and trade that on a market.
+
+Examples → https://pastebin.com/miaCWSSW
