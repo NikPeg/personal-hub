@@ -2950,3 +2950,52 @@ html[data-theme="light"] .marketplace-carousel {
   background: rgba(240,244,255,.5);
 }
 html[data-theme="light"] .marketplace-portfolio-link { color: #1d4ed8; }
+
+/* ── Marketplace: clickable carousel image ─────────────────────────── */
+.marketplace-carousel-link {
+  display: block;
+  position: relative;
+  cursor: pointer;
+  line-height: 0;
+}
+.marketplace-carousel-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(12, 15, 26, 0);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background .22s ease;
+}
+.marketplace-carousel-overlay span {
+  opacity: 0;
+  transform: translateY(6px) scale(.95);
+  transition: opacity .22s ease, transform .22s ease;
+  background: rgba(255, 255, 255, .96);
+  color: #0c0f1a;
+  padding: .6rem 1.4rem;
+  border-radius: .45rem;
+  font-weight: 700;
+  font-size: .95rem;
+  pointer-events: none;
+  box-shadow: 0 8px 32px rgba(0,0,0,.22);
+}
+.marketplace-carousel-link:hover .marketplace-carousel-overlay { background: rgba(12, 15, 26, .42); }
+.marketplace-carousel-link:hover .marketplace-carousel-overlay span {
+  opacity: 1;
+  transform: none;
+}
+
+/* ── Marketplace: team photos ──────────────────────────────────────── */
+.marketplace-member-photo {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 1rem;
+  border: 2px solid rgba(240, 244, 255, .15);
+  display: block;
+}
+html[data-theme="light"] .marketplace-member-photo {
+  border-color: rgba(12, 15, 26, .12);
+}

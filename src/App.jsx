@@ -862,11 +862,12 @@ function MarketplaceSiteLanding({ t }) {
     portfolioKicker: 'Пример работы',
     portfolioTitle: 'Что уже сделали',
     portfolioVisit: 'Открыть сайт',
+    portfolioVisitLabel: 'Открыть сайт',
     teamKicker: 'Команда',
     teamTitle: 'Кто делает',
     team: [
-      { name: 'NikPeg', role: 'Разработка и продукт', url: 'https://nikpeg.github.io/docs/CV.pdf' },
-      { name: 'Шамшев Андрей', role: 'Дизайн и фронтенд', url: 'https://shveinayafeechka.ru/cv/' },
+      { name: 'NikPeg', role: 'Разработка и продукт', url: 'https://nikpeg.github.io/docs/CV.pdf', photo: '/assets/posts/team-nikpeg.jpg' },
+      { name: 'Шамшев Андрей', role: 'Дизайн и фронтенд', url: 'https://shveinayafeechka.ru/cv/', photo: '/assets/posts/team-shamshev.jpg' },
     ],
     teamCta: 'Резюме',
     footer: 'Маркетплейс остаётся каналом — но перестаёт быть единственной кассой.',
@@ -904,11 +905,12 @@ function MarketplaceSiteLanding({ t }) {
     portfolioKicker: 'Work example',
     portfolioTitle: 'What we\'ve built',
     portfolioVisit: 'Visit site',
+    portfolioVisitLabel: 'Visit site',
     teamKicker: 'Team',
     teamTitle: 'Who builds it',
     team: [
-      { name: 'NikPeg', role: 'Development & product', url: 'https://nikpeg.github.io/docs/CV.pdf' },
-      { name: 'Andrey Shamshev', role: 'Design & frontend', url: 'https://shveinayafeechka.ru/cv/' },
+      { name: 'NikPeg', role: 'Development & product', url: 'https://nikpeg.github.io/docs/CV.pdf', photo: '/assets/posts/team-nikpeg.jpg' },
+      { name: 'Andrey Shamshev', role: 'Design & frontend', url: 'https://shveinayafeechka.ru/cv/', photo: '/assets/posts/team-shamshev.jpg' },
     ],
     teamCta: 'Resume',
     footer: 'Marketplaces stay a channel. They just stop being the only register.',
@@ -975,14 +977,19 @@ function MarketplaceSiteLanding({ t }) {
       <h2 className="marketplace-section-title">{c.portfolioTitle}</h2>
       <div className="marketplace-carousel-wrap">
         <div className="marketplace-carousel">
-          <img src={portfolioItems[slide].src} alt={portfolioItems[slide].alt} />
+          <a href={portfolioItems[slide].url} target="_blank" rel="noreferrer" className="marketplace-carousel-link">
+            <img src={portfolioItems[slide].src} alt={portfolioItems[slide].alt} />
+            <div className="marketplace-carousel-overlay">
+              <span>{c.portfolioVisitLabel} ↗</span>
+            </div>
+          </a>
           {n > 1 && <>
-            <button className="mkt-arrow mkt-prev" onClick={() => setSlide(i => (i - 1 + n) % n)} aria-label="Previous">‹</button>
-            <button className="mkt-arrow mkt-next" onClick={() => setSlide(i => (i + 1) % n)} aria-label="Next">›</button>
+            <button className="mkt-arrow mkt-prev" onClick={(e) => { e.preventDefault(); setSlide(i => (i - 1 + n) % n); }} aria-label="Previous">‹</button>
+            <button className="mkt-arrow mkt-next" onClick={(e) => { e.preventDefault(); setSlide(i => (i + 1) % n); }} aria-label="Next">›</button>
           </>}
           {n > 1 && <div className="mkt-dots">{portfolioItems.map((_, i) => <span key={i} className={i === slide ? 'active' : ''} onClick={() => setSlide(i)} />)}</div>}
         </div>
-        <a className="marketplace-portfolio-link" href={portfolioItems[slide].url} target="_blank" rel="noreferrer">{c.portfolioVisit} → {portfolioItems[slide].url.replace(/^https?:\/\//, '')}</a>
+        <a className="marketplace-portfolio-link" href={portfolioItems[slide].url} target="_blank" rel="noreferrer">{portfolioItems[slide].url.replace(/^https?:\/\//, '')}</a>
       </div>
     </div>
 
@@ -991,6 +998,7 @@ function MarketplaceSiteLanding({ t }) {
       <h2 className="marketplace-section-title">{c.teamTitle}</h2>
       <div className="marketplace-team">
         {c.team.map((m) => <article className="marketplace-member" key={m.name}>
+          {m.photo && <img src={m.photo} alt={m.name} className="marketplace-member-photo" />}
           <h3>{m.name}</h3>
           <p>{m.role}</p>
           <a href={m.url} target="_blank" rel="noreferrer">{c.teamCta} →</a>
