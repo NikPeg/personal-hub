@@ -2999,3 +2999,74 @@ html[data-theme="light"] .marketplace-portfolio-link { color: #1d4ed8; }
 html[data-theme="light"] .marketplace-member-photo {
   border-color: rgba(12, 15, 26, .12);
 }
+
+/* ── Marketplace: portfolio meta + contacts ────────────────────────── */
+.marketplace-portfolio-meta {
+  display: flex;
+  align-items: baseline;
+  gap: .6rem;
+  margin-top: .75rem;
+  flex-wrap: wrap;
+}
+.marketplace-portfolio-meta strong {
+  font-size: .95rem;
+  font-weight: 700;
+  color: #eef2ff;
+}
+.marketplace-portfolio-meta span {
+  font-size: .88rem;
+  color: rgba(240, 244, 255, .55);
+}
+.marketplace-portfolio-meta .marketplace-portfolio-link {
+  margin-top: 0;
+  margin-left: auto;
+}
+html[data-theme="light"] .marketplace-portfolio-meta strong { color: #0c0f1a; }
+html[data-theme="light"] .marketplace-portfolio-meta span { color: rgba(12,15,26,.5); }
+
+.marketplace-contacts {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+.marketplace-contact-card {
+  display: flex;
+  flex-direction: column;
+  gap: .35rem;
+  padding: 1.4rem 1.6rem;
+  border: 1px solid rgba(240, 244, 255, .1);
+  border-radius: .7rem;
+  background: rgba(240, 244, 255, .04);
+  text-decoration: none;
+  transition: border-color .18s, background .18s;
+}
+.marketplace-contact-card:hover {
+  border-color: rgba(147, 197, 253, .45);
+  background: rgba(147, 197, 253, .07);
+}
+.mkt-contact-label {
+  font-size: .75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: #93c5fd;
+}
+.marketplace-contact-card strong {
+  font-size: .95rem;
+  font-weight: 600;
+  color: #eef2ff;
+}
+html[data-theme="light"] .marketplace-contact-card {
+  border-color: rgba(12,15,26,.1);
+  background: rgba(255,255,255,.6);
+}
+html[data-theme="light"] .marketplace-contact-card:hover {
+  border-color: rgba(37,99,235,.35);
+  background: rgba(37,99,235,.06);
+}
+html[data-theme="light"] .mkt-contact-label { color: #1d4ed8; }
+html[data-theme="light"] .marketplace-contact-card strong { color: #0c0f1a; }
+@media (max-width: 900px) {
+  .marketplace-contacts { grid-template-columns: repeat(2, 1fr); }
+}

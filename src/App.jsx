@@ -825,7 +825,7 @@ function MarketplaceSiteLanding({ t }) {
   const [slide, setSlide] = useState(0);
 
   const portfolioItems = [
-    { src: '/assets/posts/marketplace-portfolio-1.png', alt: 'Tkani Italii — интернет-магазин тканей', url: 'http://tkaniitalii.shveinayafeechka.ru/' },
+    { src: '/assets/posts/marketplace-portfolio-1.png', alt: 'Tkani Italii — интернет-магазин тканей', url: 'http://tkaniitalii.shveinayafeechka.ru', label: 'Tkani Italii', desc: isRu ? 'Интернет-магазин итальянских тканей' : 'Italian fabric online store' },
   ];
 
   const c = isRu ? {
@@ -863,6 +863,14 @@ function MarketplaceSiteLanding({ t }) {
     portfolioTitle: 'Что уже сделали',
     portfolioVisit: 'Открыть сайт',
     portfolioVisitLabel: 'Открыть сайт',
+    contactsKicker: 'Связь',
+    contactsTitle: 'Напишите нам',
+    contacts: [
+      { label: 'Telegram', value: '@nikpeg', url: 'https://t.me/nikpeg' },
+      { label: 'WhatsApp', value: '+7 985 696-83-57', url: 'https://wa.me/79856968357' },
+      { label: 'ВКонтакте', value: 'vk.com/nikpeg', url: 'https://vk.com/nikpeg' },
+      { label: 'Email', value: 'peganov.nik@gmail.com', url: 'mailto:peganov.nik@gmail.com' },
+    ],
     teamKicker: 'Команда',
     teamTitle: 'Кто делает',
     team: [
@@ -906,6 +914,14 @@ function MarketplaceSiteLanding({ t }) {
     portfolioTitle: 'What we\'ve built',
     portfolioVisit: 'Visit site',
     portfolioVisitLabel: 'Visit site',
+    contactsKicker: 'Contact',
+    contactsTitle: 'Get in touch',
+    contacts: [
+      { label: 'Telegram', value: '@nikpeg', url: 'https://t.me/nikpeg' },
+      { label: 'WhatsApp', value: '+7 985 696-83-57', url: 'https://wa.me/79856968357' },
+      { label: 'VKontakte', value: 'vk.com/nikpeg', url: 'https://vk.com/nikpeg' },
+      { label: 'Email', value: 'peganov.nik@gmail.com', url: 'mailto:peganov.nik@gmail.com' },
+    ],
     teamKicker: 'Team',
     teamTitle: 'Who builds it',
     team: [
@@ -989,7 +1005,22 @@ function MarketplaceSiteLanding({ t }) {
           </>}
           {n > 1 && <div className="mkt-dots">{portfolioItems.map((_, i) => <span key={i} className={i === slide ? 'active' : ''} onClick={() => setSlide(i)} />)}</div>}
         </div>
-        <a className="marketplace-portfolio-link" href={portfolioItems[slide].url} target="_blank" rel="noreferrer">{portfolioItems[slide].url.replace(/^https?:\/\//, '')}</a>
+        <div className="marketplace-portfolio-meta">
+          <strong>{portfolioItems[slide].label}</strong>
+          <span>{portfolioItems[slide].desc}</span>
+          <a className="marketplace-portfolio-link" href={portfolioItems[slide].url} target="_blank" rel="noreferrer">{portfolioItems[slide].url.replace(/^https?:\/\//, '')}</a>
+        </div>
+      </div>
+    </div>
+
+    <div className="marketplace-section">
+      <p className="startup-kicker">{c.contactsKicker}</p>
+      <h2 className="marketplace-section-title">{c.contactsTitle}</h2>
+      <div className="marketplace-contacts">
+        {c.contacts.map((ct) => <a key={ct.label} className="marketplace-contact-card" href={ct.url} target="_blank" rel="noreferrer">
+          <span className="mkt-contact-label">{ct.label}</span>
+          <strong>{ct.value}</strong>
+        </a>)}
       </div>
     </div>
 
