@@ -2738,10 +2738,29 @@ html[data-theme="light"] .empathy-ai-page {
   gap: 1.2rem;
 }
 .marketplace-process li {
+  position: relative;
   padding: 1.8rem;
   border: 1px solid rgba(240, 244, 255, .1);
   border-radius: .7rem;
   background: rgba(240, 244, 255, .04);
+}
+.marketplace-process li:not(:last-child)::after {
+  content: '›';
+  position: absolute;
+  right: calc(-1.2rem / 2);
+  top: 2.6rem;
+  transform: translateX(50%);
+  font-size: 1.3rem;
+  font-weight: 900;
+  color: rgba(147, 197, 253, .55);
+  pointer-events: none;
+  z-index: 1;
+}
+html[data-theme="light"] .marketplace-process li:not(:last-child)::after {
+  color: rgba(37, 99, 235, .4);
+}
+@media (max-width: 900px) {
+  .marketplace-process li:not(:last-child)::after { display: none; }
 }
 .marketplace-process li > span {
   display: inline-flex;

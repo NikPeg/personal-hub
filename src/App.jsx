@@ -847,7 +847,7 @@ function MarketplaceSiteLanding({ t }) {
     pkgsKicker: 'Форматы работы',
     pkgsTitle: 'С чего начать',
     pkgs: [
-      { title: 'Лендинг', sub: 'Для одного оффера или теста прямого спроса', timing: 'от 10 рабочих дней', price: '10 000 ₽', items: ['Один продающий сценарий', 'Форма заявки и аналитика', 'Адаптивная верстка'] },
+      { title: 'Лендинг', sub: 'Для одного оффера или теста прямого спроса. Подходит для быстрого старта и проверки гипотезы.', timing: 'от 10 рабочих дней', price: '10 000 ₽', items: ['Один продающий сценарий', 'Форма заявки и аналитика', 'Адаптивная верстка'] },
       { title: 'Интернет-магазин', sub: 'Для каталога, повторных покупок и прямой оплаты', timing: 'от 3 недель', price: '30 000 ₽', items: ['Категории и карточки товаров', 'Корзина, заявки или онлайн-оплата', 'SEO-база и аналитика продаж'], featured: true },
       { title: 'Рост', sub: 'Доработка существующего сайта в полноценный канал', timing: 'после аудита', price: '50 000 ₽', items: ['Посадочные под рекламу', 'Интеграции с CRM и рассылками', 'A/B-гипотезы и рост конверсии'] },
     ],
@@ -874,7 +874,7 @@ function MarketplaceSiteLanding({ t }) {
     teamKicker: 'Команда',
     teamTitle: 'Кто делает',
     team: [
-      { name: 'NikPeg', role: 'Разработка и продукт', url: 'https://nikpeg.github.io/docs/CV.pdf', photo: '/assets/posts/team-nikpeg.jpg' },
+      { name: 'Никита Пеганов', role: 'Разработка и продукт', url: 'https://nikpeg.github.io/docs/CV.pdf', photo: '/assets/posts/team-nikpeg.jpg' },
       { name: 'Шамшев Андрей', role: 'Дизайн и фронтенд', url: 'https://shveinayafeechka.ru/cv/', photo: '/assets/posts/team-shamshev.jpg' },
     ],
     teamCta: 'Резюме',
@@ -898,7 +898,7 @@ function MarketplaceSiteLanding({ t }) {
     pkgsKicker: 'Formats',
     pkgsTitle: 'Where to start',
     pkgs: [
-      { title: 'Landing page', sub: 'For a single offer or testing direct demand', timing: 'from 10 business days', price: '10 000 ₽', items: ['One selling scenario', 'Request form and analytics', 'Responsive layout'] },
+      { title: 'Landing page', sub: 'For a single offer or testing direct demand. A fast start to validate the idea before building more.', timing: 'from 10 business days', price: '10 000 ₽', items: ['One selling scenario', 'Request form and analytics', 'Responsive layout'] },
       { title: 'Online store', sub: 'For a catalog, repeat purchases, and direct payment', timing: 'from 3 weeks', price: '30 000 ₽', items: ['Categories and product cards', 'Cart, requests, or online payment', 'SEO basics and sales analytics'], featured: true },
       { title: 'Growth', sub: 'Upgrading an existing site into a full sales channel', timing: 'after audit', price: '50 000 ₽', items: ['Ad landing pages', 'CRM and newsletter integrations', 'A/B tests and conversion lift'] },
     ],
@@ -925,7 +925,7 @@ function MarketplaceSiteLanding({ t }) {
     teamKicker: 'Team',
     teamTitle: 'Who builds it',
     team: [
-      { name: 'NikPeg', role: 'Development & product', url: 'https://nikpeg.github.io/docs/CV.pdf', photo: '/assets/posts/team-nikpeg.jpg' },
+      { name: 'Nikita Peganov', role: 'Development & product', url: 'https://nikpeg.github.io/docs/CV.pdf', photo: '/assets/posts/team-nikpeg.jpg' },
       { name: 'Andrey Shamshev', role: 'Design & frontend', url: 'https://shveinayafeechka.ru/cv/', photo: '/assets/posts/team-shamshev.jpg' },
     ],
     teamCta: 'Resume',
