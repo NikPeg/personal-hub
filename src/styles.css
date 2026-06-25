@@ -2811,3 +2811,142 @@ html[data-theme="light"] .empathy-ai-page {
   .marketplace-process,
   .marketplace-team { grid-template-columns: 1fr; }
 }
+
+/* ── Marketplace: carousel & price button ──────────────────────────── */
+.marketplace-price-btn {
+  font-size: 1.05rem;
+  font-weight: 950;
+  letter-spacing: .01em;
+}
+.marketplace-carousel-wrap {
+  margin-top: 1.5rem;
+}
+.marketplace-carousel {
+  position: relative;
+  border-radius: .8rem;
+  overflow: hidden;
+  border: 1px solid rgba(240, 244, 255, .12);
+  background: rgba(0,0,0,.3);
+  line-height: 0;
+}
+.marketplace-carousel img {
+  width: 100%;
+  height: auto;
+  max-height: 520px;
+  object-fit: cover;
+  object-position: top;
+  display: block;
+}
+.mkt-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 2.6rem;
+  height: 2.6rem;
+  border-radius: 50%;
+  border: none;
+  background: rgba(0,0,0,.55);
+  color: #fff;
+  font-size: 1.4rem;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background .15s;
+}
+.mkt-arrow:hover { background: rgba(0,0,0,.75); }
+.mkt-prev { left: .8rem; }
+.mkt-next { right: .8rem; }
+.mkt-dots {
+  position: absolute;
+  bottom: .8rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: .4rem;
+}
+.mkt-dots span {
+  width: .5rem;
+  height: .5rem;
+  border-radius: 50%;
+  background: rgba(255,255,255,.4);
+  cursor: pointer;
+  transition: background .15s;
+}
+.mkt-dots span.active { background: #fff; }
+.marketplace-portfolio-link {
+  display: inline-block;
+  margin-top: .9rem;
+  font-size: .9rem;
+  color: #93c5fd;
+  font-weight: 600;
+  text-decoration: none;
+}
+.marketplace-portfolio-link:hover { text-decoration: underline; }
+
+/* ── Marketplace: light theme ──────────────────────────────────────── */
+html[data-theme="light"] .marketplace-page {
+  background:
+    linear-gradient(90deg, rgba(15,22,60,.05) 1px, transparent 1px),
+    linear-gradient(180deg, rgba(15,22,60,.04) 1px, transparent 1px),
+    radial-gradient(circle at 72% 16%, rgba(99, 102, 241, .18), transparent 22rem),
+    radial-gradient(circle at 18% 42%, rgba(56, 189, 248, .12), transparent 24rem),
+    linear-gradient(135deg, #f0f4ff 0%, #e8eeff 46%, #edf4ff 100%);
+  color: #0c0f1a;
+}
+html[data-theme="light"] .marketplace-page .startup-kicker {
+  border-color: rgba(59, 130, 246, .45);
+  background: rgba(59, 130, 246, .09);
+  color: #1d4ed8;
+}
+html[data-theme="light"] .marketplace-page .startup-label {
+  border-color: rgba(59, 130, 246, .35);
+  background: rgba(59, 130, 246, .07);
+  color: #1d4ed8;
+}
+html[data-theme="light"] .marketplace-page .startup-btn.primary {
+  background: #2563eb;
+  color: #fff;
+  box-shadow: 0 20px 60px rgba(37, 99, 235, .2);
+}
+html[data-theme="light"] .marketplace-copy h1 { color: #0c0f1a; }
+html[data-theme="light"] .marketplace-copy p { color: rgba(12,15,26,.72); }
+html[data-theme="light"] .marketplace-stats-board,
+html[data-theme="light"] .marketplace-stat,
+html[data-theme="light"] .marketplace-card,
+html[data-theme="light"] .marketplace-pkg,
+html[data-theme="light"] .marketplace-process li,
+html[data-theme="light"] .marketplace-member {
+  border-color: rgba(12,15,26,.12);
+  background: rgba(255,255,255,.7);
+}
+html[data-theme="light"] .marketplace-pkg.featured {
+  border-color: rgba(37,99,235,.38);
+  background: rgba(37,99,235,.06);
+}
+html[data-theme="light"] .marketplace-stat strong { color: #1d4ed8; }
+html[data-theme="light"] .marketplace-stat span { color: rgba(12,15,26,.58); }
+html[data-theme="light"] .marketplace-section-title { color: #0c0f1a; }
+html[data-theme="light"] .marketplace-card h3,
+html[data-theme="light"] .marketplace-pkg h3,
+html[data-theme="light"] .marketplace-process h3,
+html[data-theme="light"] .marketplace-member h3 { color: #0c0f1a; }
+html[data-theme="light"] .marketplace-card p,
+html[data-theme="light"] .marketplace-pkg > p,
+html[data-theme="light"] .marketplace-process p,
+html[data-theme="light"] .marketplace-member p { color: rgba(12,15,26,.58); }
+html[data-theme="light"] .marketplace-pkg > strong { color: #1d4ed8; }
+html[data-theme="light"] .marketplace-pkg li { color: rgba(12,15,26,.72); border-color: rgba(12,15,26,.08); }
+html[data-theme="light"] .marketplace-pkg li::before { color: #2563eb; }
+html[data-theme="light"] .marketplace-process li > span {
+  background: rgba(37,99,235,.12);
+  color: #1d4ed8;
+}
+html[data-theme="light"] .marketplace-member a { color: #1d4ed8; }
+html[data-theme="light"] .marketplace-closing p { color: rgba(12,15,26,.65); }
+html[data-theme="light"] .marketplace-carousel {
+  border-color: rgba(12,15,26,.12);
+  background: rgba(240,244,255,.5);
+}
+html[data-theme="light"] .marketplace-portfolio-link { color: #1d4ed8; }

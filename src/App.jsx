@@ -822,6 +822,12 @@ function EmpathyAiLanding({ t }) {
 
 function MarketplaceSiteLanding({ t }) {
   const isRu = t.brandName === 'НикПег';
+  const [slide, setSlide] = useState(0);
+
+  const portfolioItems = [
+    { src: '/assets/posts/marketplace-portfolio-1.png', alt: 'Tkani Italii — интернет-магазин тканей', url: 'http://tkaniitalii.shveinayafeechka.ru/' },
+  ];
+
   const c = isRu ? {
     kicker: 'Своя витрина',
     title: 'Продавайте\nбез комиссий',
@@ -841,9 +847,9 @@ function MarketplaceSiteLanding({ t }) {
     pkgsKicker: 'Форматы работы',
     pkgsTitle: 'С чего начать',
     pkgs: [
-      { title: 'Лендинг', sub: 'Для одного оффера или теста прямого спроса', timing: 'от 10 рабочих дней', items: ['Один продающий сценарий', 'Форма заявки и аналитика', 'Адаптивная верстка'] },
-      { title: 'Интернет-магазин', sub: 'Для каталога, повторных покупок и прямой оплаты', timing: 'от 3 недель', items: ['Категории и карточки товаров', 'Корзина, заявки или онлайн-оплата', 'SEO-база и аналитика продаж'], featured: true },
-      { title: 'Рост', sub: 'Доработка существующего сайта в полноценный канал', timing: 'после аудита', items: ['Посадочные под рекламу', 'Интеграции с CRM и рассылками', 'A/B-гипотезы и рост конверсии'] },
+      { title: 'Лендинг', sub: 'Для одного оффера или теста прямого спроса', timing: 'от 10 рабочих дней', price: '10 000 ₽', items: ['Один продающий сценарий', 'Форма заявки и аналитика', 'Адаптивная верстка'] },
+      { title: 'Интернет-магазин', sub: 'Для каталога, повторных покупок и прямой оплаты', timing: 'от 3 недель', price: '30 000 ₽', items: ['Категории и карточки товаров', 'Корзина, заявки или онлайн-оплата', 'SEO-база и аналитика продаж'], featured: true },
+      { title: 'Рост', sub: 'Доработка существующего сайта в полноценный канал', timing: 'после аудита', price: '50 000 ₽', items: ['Посадочные под рекламу', 'Интеграции с CRM и рассылками', 'A/B-гипотезы и рост конверсии'] },
     ],
     processKicker: 'Процесс',
     processTitle: 'От разбора до первой заявки',
@@ -853,10 +859,13 @@ function MarketplaceSiteLanding({ t }) {
       { n: '3', title: 'Дизайн и сборка', text: 'Адаптивный интерфейс, формы, аналитика, SEO-разметка и нужные сервисы.' },
       { n: '4', title: 'Запуск', text: 'Проверяем заявки, скорость, мобильную версию, передаём доступы и план улучшений.' },
     ],
+    portfolioKicker: 'Пример работы',
+    portfolioTitle: 'Что уже сделали',
+    portfolioVisit: 'Открыть сайт',
     teamKicker: 'Команда',
     teamTitle: 'Кто делает',
     team: [
-      { name: 'NikPeg', role: 'Разработка и продукт', url: 'https://www.linkedin.com/in/nikpeg/' },
+      { name: 'NikPeg', role: 'Разработка и продукт', url: 'https://nikpeg.github.io/docs/CV.pdf' },
       { name: 'Шамшев Андрей', role: 'Дизайн и фронтенд', url: 'https://shveinayafeechka.ru/cv/' },
     ],
     teamCta: 'Резюме',
@@ -880,9 +889,9 @@ function MarketplaceSiteLanding({ t }) {
     pkgsKicker: 'Formats',
     pkgsTitle: 'Where to start',
     pkgs: [
-      { title: 'Landing page', sub: 'For a single offer or testing direct demand', timing: 'from 10 business days', items: ['One selling scenario', 'Request form and analytics', 'Responsive layout'] },
-      { title: 'Online store', sub: 'For a catalog, repeat purchases, and direct payment', timing: 'from 3 weeks', items: ['Categories and product cards', 'Cart, requests, or online payment', 'SEO basics and sales analytics'], featured: true },
-      { title: 'Growth', sub: 'Upgrading an existing site into a full sales channel', timing: 'after audit', items: ['Ad landing pages', 'CRM and newsletter integrations', 'A/B tests and conversion lift'] },
+      { title: 'Landing page', sub: 'For a single offer or testing direct demand', timing: 'from 10 business days', price: '10 000 ₽', items: ['One selling scenario', 'Request form and analytics', 'Responsive layout'] },
+      { title: 'Online store', sub: 'For a catalog, repeat purchases, and direct payment', timing: 'from 3 weeks', price: '30 000 ₽', items: ['Categories and product cards', 'Cart, requests, or online payment', 'SEO basics and sales analytics'], featured: true },
+      { title: 'Growth', sub: 'Upgrading an existing site into a full sales channel', timing: 'after audit', price: '50 000 ₽', items: ['Ad landing pages', 'CRM and newsletter integrations', 'A/B tests and conversion lift'] },
     ],
     processKicker: 'Process',
     processTitle: 'From kickoff to first lead',
@@ -892,15 +901,20 @@ function MarketplaceSiteLanding({ t }) {
       { n: '3', title: 'Design & build', text: 'Responsive interface, forms, analytics, basic SEO markup, and the right services hooked up.' },
       { n: '4', title: 'Launch', text: 'Check requests, speed, mobile — hand over access and a roadmap of next improvements.' },
     ],
+    portfolioKicker: 'Work example',
+    portfolioTitle: 'What we\'ve built',
+    portfolioVisit: 'Visit site',
     teamKicker: 'Team',
     teamTitle: 'Who builds it',
     team: [
-      { name: 'NikPeg', role: 'Development & product', url: 'https://www.linkedin.com/in/nikpeg/' },
+      { name: 'NikPeg', role: 'Development & product', url: 'https://nikpeg.github.io/docs/CV.pdf' },
       { name: 'Andrey Shamshev', role: 'Design & frontend', url: 'https://shveinayafeechka.ru/cv/' },
     ],
     teamCta: 'Resume',
     footer: 'Marketplaces stay a channel. They just stop being the only register.',
   };
+
+  const n = portfolioItems.length;
 
   return <section className="marketplace-page">
     <div className="marketplace-hero">
@@ -940,7 +954,7 @@ function MarketplaceSiteLanding({ t }) {
           <p>{pkg.sub}</p>
           <strong>{pkg.timing}</strong>
           <ul>{pkg.items.map((item) => <li key={item}>{item}</li>)}</ul>
-          <a className="startup-btn primary" href="https://t.me/nikpeg" target="_blank" rel="noreferrer">{c.cta}</a>
+          <a className="startup-btn primary marketplace-price-btn" href="https://t.me/nikpeg" target="_blank" rel="noreferrer">{pkg.price}</a>
         </article>)}
       </div>
     </div>
@@ -954,6 +968,22 @@ function MarketplaceSiteLanding({ t }) {
           <div><h3>{s.title}</h3><p>{s.text}</p></div>
         </li>)}
       </ol>
+    </div>
+
+    <div className="marketplace-section">
+      <p className="startup-kicker">{c.portfolioKicker}</p>
+      <h2 className="marketplace-section-title">{c.portfolioTitle}</h2>
+      <div className="marketplace-carousel-wrap">
+        <div className="marketplace-carousel">
+          <img src={portfolioItems[slide].src} alt={portfolioItems[slide].alt} />
+          {n > 1 && <>
+            <button className="mkt-arrow mkt-prev" onClick={() => setSlide(i => (i - 1 + n) % n)} aria-label="Previous">‹</button>
+            <button className="mkt-arrow mkt-next" onClick={() => setSlide(i => (i + 1) % n)} aria-label="Next">›</button>
+          </>}
+          {n > 1 && <div className="mkt-dots">{portfolioItems.map((_, i) => <span key={i} className={i === slide ? 'active' : ''} onClick={() => setSlide(i)} />)}</div>}
+        </div>
+        <a className="marketplace-portfolio-link" href={portfolioItems[slide].url} target="_blank" rel="noreferrer">{c.portfolioVisit} → {portfolioItems[slide].url.replace(/^https?:\/\//, '')}</a>
+      </div>
     </div>
 
     <div className="marketplace-section">
