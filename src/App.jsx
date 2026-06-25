@@ -820,9 +820,14 @@ function EmpathyAiLanding({ t }) {
   </section>;
 }
 
+const MKT_TG_TOKEN = '8971665630:AAEXlRfpL_5Ya9yzk5Gbg0hmOMSjJwW6ydA';
+const MKT_TG_CHAT  = import.meta.env.VITE_TG_CHAT_ID || '';
+
 function MarketplaceSiteLanding({ t }) {
   const isRu = t.brandName === 'НикПег';
   const [slide, setSlide] = useState(0);
+  const [form, setForm] = useState({ name: '', contact: '', shop: '', type: '', message: '' });
+  const [status, setStatus] = useState('idle'); // idle | sending | ok | err
 
   const portfolioItems = [
     { src: '/assets/posts/marketplace-portfolio-1.png', alt: 'Tkani Italii — интернет-магазин тканей', url: 'http://tkaniitalii.shveinayafeechka.ru', label: 'Tkani Italii', desc: isRu ? 'Интернет-магазин итальянских тканей' : 'Italian fabric online store' },
@@ -847,7 +852,7 @@ function MarketplaceSiteLanding({ t }) {
     pkgsKicker: 'Форматы работы',
     pkgsTitle: 'С чего начать',
     pkgs: [
-      { title: 'Лендинг', sub: 'Для одного оффера или теста прямого спроса. Подходит для быстрого старта и проверки гипотезы.', timing: 'от 10 рабочих дней', price: '10 000 ₽', items: ['Один продающий сценарий', 'Форма заявки и аналитика', 'Адаптивная верстка'] },
+      { title: 'Лендинг', sub: 'Для одного оффера или теста прямого спроса. Для быстрого старта и проверки гипотезы.', timing: 'от 10 рабочих дней', price: '10 000 ₽', items: ['Один продающий сценарий', 'Форма заявки и аналитика', 'Адаптивная верстка'] },
       { title: 'Интернет-магазин', sub: 'Для каталога, повторных покупок и прямой оплаты', timing: 'от 3 недель', price: '30 000 ₽', items: ['Категории и карточки товаров', 'Корзина, заявки или онлайн-оплата', 'SEO-база и аналитика продаж'], featured: true },
       { title: 'Рост', sub: 'Доработка существующего сайта в полноценный канал', timing: 'после аудита', price: '50 000 ₽', items: ['Посадочные под рекламу', 'Интеграции с CRM и рассылками', 'A/B-гипотезы и рост конверсии'] },
     ],
@@ -863,6 +868,16 @@ function MarketplaceSiteLanding({ t }) {
     portfolioTitle: 'Что уже сделали',
     portfolioVisit: 'Открыть сайт',
     portfolioVisitLabel: 'Открыть сайт',
+    formKicker: 'Заявка',
+    formTitle: 'Отправить заявку',
+    formAnchor: 'Отправить заявку',
+    fName: 'Ваше имя', fContact: 'Telegram, WhatsApp или email',
+    fShop: 'Ссылка на магазин на маркетплейсе (если есть)',
+    fType: 'Что нужно?', fTypeOpts: ['Лендинг — 10 000 ₽', 'Интернет-магазин — 30 000 ₽', 'Улучшение существующего — 50 000 ₽', 'Пока не знаю'],
+    fMsg: 'Что сейчас мешает продавать напрямую? (необязательно)',
+    fSend: 'Отправить', fSending: 'Отправляю…',
+    fOk: 'Заявка принята! Напишем в ближайшее время.',
+    fErr: 'Не удалось отправить. Напишите нам напрямую.',
     contactsKicker: 'Связь',
     contactsTitle: 'Напишите нам',
     contacts: [
@@ -898,7 +913,7 @@ function MarketplaceSiteLanding({ t }) {
     pkgsKicker: 'Formats',
     pkgsTitle: 'Where to start',
     pkgs: [
-      { title: 'Landing page', sub: 'For a single offer or testing direct demand. A fast start to validate the idea before building more.', timing: 'from 10 business days', price: '10 000 ₽', items: ['One selling scenario', 'Request form and analytics', 'Responsive layout'] },
+      { title: 'Landing page', sub: 'For a single offer or testing direct demand. A fast start to validate the idea before investing more.', timing: 'from 10 business days', price: '10 000 ₽', items: ['One selling scenario', 'Request form and analytics', 'Responsive layout'] },
       { title: 'Online store', sub: 'For a catalog, repeat purchases, and direct payment', timing: 'from 3 weeks', price: '30 000 ₽', items: ['Categories and product cards', 'Cart, requests, or online payment', 'SEO basics and sales analytics'], featured: true },
       { title: 'Growth', sub: 'Upgrading an existing site into a full sales channel', timing: 'after audit', price: '50 000 ₽', items: ['Ad landing pages', 'CRM and newsletter integrations', 'A/B tests and conversion lift'] },
     ],
@@ -914,6 +929,16 @@ function MarketplaceSiteLanding({ t }) {
     portfolioTitle: 'What we\'ve built',
     portfolioVisit: 'Visit site',
     portfolioVisitLabel: 'Visit site',
+    formKicker: 'Application',
+    formTitle: 'Send a request',
+    formAnchor: 'Send a request',
+    fName: 'Your name', fContact: 'Telegram, WhatsApp or email',
+    fShop: 'Marketplace store link (if you have one)',
+    fType: 'What do you need?', fTypeOpts: ['Landing page — 10 000 ₽', 'Online store — 30 000 ₽', 'Improve existing site — 50 000 ₽', 'Not sure yet'],
+    fMsg: 'What\'s stopping you from selling directly? (optional)',
+    fSend: 'Send', fSending: 'Sending…',
+    fOk: 'Request received! We\'ll get back to you shortly.',
+    fErr: 'Could not send. Please contact us directly.',
     contactsKicker: 'Contact',
     contactsTitle: 'Get in touch',
     contacts: [
@@ -942,6 +967,7 @@ function MarketplaceSiteLanding({ t }) {
         <p>{c.lead}</p>
         <div className="startup-actions">
           <a className="startup-btn primary" href="https://t.me/nikpeg" target="_blank" rel="noreferrer">{c.cta}</a>
+          <a className="startup-btn secondary" href="#mkt-form">{c.formAnchor}</a>
         </div>
       </div>
       <div className="marketplace-stats-board">
@@ -1035,6 +1061,64 @@ function MarketplaceSiteLanding({ t }) {
           <a href={m.url} target="_blank" rel="noreferrer">{c.teamCta} →</a>
         </article>)}
       </div>
+    </div>
+
+    <div className="marketplace-section" id="mkt-form">
+      <p className="startup-kicker">{c.formKicker}</p>
+      <h2 className="marketplace-section-title">{c.formTitle}</h2>
+      <form className="mkt-form" onSubmit={async (e) => {
+        e.preventDefault();
+        if (!MKT_TG_CHAT) { setStatus('err'); return; }
+        setStatus('sending');
+        const text = [
+          `🏪 <b>Новая заявка — Своя витрина</b>`,
+          `👤 Имя: ${form.name}`,
+          `📞 Контакт: ${form.contact}`,
+          form.shop   ? `🛒 Магазин: ${form.shop}` : null,
+          form.type   ? `📦 Что нужно: ${form.type}` : null,
+          form.message ? `💬 ${form.message}` : null,
+        ].filter(Boolean).join('\n');
+        try {
+          const r = await fetch(`https://api.telegram.org/bot${MKT_TG_TOKEN}/sendMessage`, {
+            method: 'POST', headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ chat_id: MKT_TG_CHAT, text, parse_mode: 'HTML' }),
+          });
+          setStatus(r.ok ? 'ok' : 'err');
+        } catch { setStatus('err'); }
+      }}>
+        <div className="mkt-form-row">
+          <label className="mkt-field">
+            <span>{c.fName} *</span>
+            <input required value={form.name} onChange={e => setForm(f => ({...f, name: e.target.value}))} />
+          </label>
+          <label className="mkt-field">
+            <span>{c.fContact} *</span>
+            <input required value={form.contact} onChange={e => setForm(f => ({...f, contact: e.target.value}))} />
+          </label>
+        </div>
+        <div className="mkt-form-row">
+          <label className="mkt-field">
+            <span>{c.fShop}</span>
+            <input value={form.shop} onChange={e => setForm(f => ({...f, shop: e.target.value}))} placeholder="https://www.wildberries.ru/seller/..." />
+          </label>
+          <label className="mkt-field">
+            <span>{c.fType}</span>
+            <select value={form.type} onChange={e => setForm(f => ({...f, type: e.target.value}))}>
+              <option value="">—</option>
+              {c.fTypeOpts.map(o => <option key={o} value={o}>{o}</option>)}
+            </select>
+          </label>
+        </div>
+        <label className="mkt-field">
+          <span>{c.fMsg}</span>
+          <textarea rows={3} value={form.message} onChange={e => setForm(f => ({...f, message: e.target.value}))} />
+        </label>
+        {status === 'ok'  && <p className="mkt-status ok">{c.fOk}</p>}
+        {status === 'err' && <p className="mkt-status err">{c.fErr}</p>}
+        {status !== 'ok' && <button className="startup-btn primary mkt-submit" type="submit" disabled={status === 'sending'}>
+          {status === 'sending' ? c.fSending : c.fSend}
+        </button>}
+      </form>
     </div>
 
     <div className="marketplace-section marketplace-closing">

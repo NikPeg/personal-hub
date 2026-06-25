@@ -4,3 +4,4 @@ dist/
 
 raw/chunks/
 raw/ideas-translations-en.json
+.env.local
