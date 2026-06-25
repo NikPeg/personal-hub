@@ -826,7 +826,7 @@ const MKT_TG_CHAT  = import.meta.env.VITE_TG_CHAT_ID || '';
 function MarketplaceSiteLanding({ t }) {
   const isRu = t.brandName === 'НикПег';
   const [slide, setSlide] = useState(0);
-  const [form, setForm] = useState({ name: '', contact: '', shop: '', type: '', message: '' });
+  const [form, setForm] = useState({ name: '', contact: '', shop: '', type: '', message: '', consent: false });
   const [status, setStatus] = useState('idle'); // idle | sending | ok | err
 
   const portfolioItems = [
@@ -878,6 +878,8 @@ function MarketplaceSiteLanding({ t }) {
     fSend: 'Отправить', fSending: 'Отправляю…',
     fOk: 'Заявка принята! Напишем в ближайшее время.',
     fErr: 'Не удалось отправить. Напишите нам напрямую.',
+    fConsent: 'Я согласен(а) на обработку персональных данных',
+    disclaimer: 'Цены указаны в ознакомительных целях и не являются публичной офертой.',
     contactsKicker: 'Связь',
     contactsTitle: 'Напишите нам',
     contacts: [
@@ -939,6 +941,8 @@ function MarketplaceSiteLanding({ t }) {
     fSend: 'Send', fSending: 'Sending…',
     fOk: 'Request received! We\'ll get back to you shortly.',
     fErr: 'Could not send. Please contact us directly.',
+    fConsent: 'I agree to the processing of my personal data',
+    disclaimer: 'Prices are indicative and do not constitute a public offer.',
     contactsKicker: 'Contact',
     contactsTitle: 'Get in touch',
     contacts: [
@@ -1001,6 +1005,7 @@ function MarketplaceSiteLanding({ t }) {
           <a className="startup-btn primary marketplace-price-btn" href="https://t.me/nikpeg" target="_blank" rel="noreferrer">{pkg.price}</a>
         </article>)}
       </div>
+      <p className="mkt-not-offer">{c.disclaimer}</p>
     </div>
 
     <div className="marketplace-section">
@@ -1113,6 +1118,10 @@ function MarketplaceSiteLanding({ t }) {
         <label className="mkt-field">
           <span>{c.fMsg}</span>
           <textarea rows={3} value={form.message} onChange={e => setForm(f => ({...f, message: e.target.value}))} />
+        </label>
+        <label className="mkt-field mkt-consent">
+          <input type="checkbox" required checked={form.consent} onChange={e => setForm(f => ({...f, consent: e.target.checked}))} />
+          <span>{c.fConsent}</span>
         </label>
         {status === 'ok'  && <p className="mkt-status ok">{c.fOk}</p>}
         {status === 'err' && <p className="mkt-status err">{c.fErr}</p>}
