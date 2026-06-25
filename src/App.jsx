@@ -967,7 +967,7 @@ function MarketplaceSiteLanding({ t }) {
         <p>{c.lead}</p>
         <div className="startup-actions">
           <a className="startup-btn primary" href="https://t.me/nikpeg" target="_blank" rel="noreferrer">{c.cta}</a>
-          <a className="startup-btn secondary" href="#mkt-form">{c.formAnchor}</a>
+          <button className="startup-btn secondary" type="button" onClick={() => document.getElementById('mkt-form')?.scrollIntoView({ behavior: 'smooth' })}>{c.formAnchor}</button>
         </div>
       </div>
       <div className="marketplace-stats-board">
