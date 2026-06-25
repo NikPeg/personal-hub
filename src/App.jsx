@@ -32,6 +32,7 @@ const pathToTab = (pathname) => {
   if (['feed', 'channels', 'ideas', 'thoughts', 'quotes', 'projects', 'photos'].includes(slug)) return slug;
   if (slug === 'startup-fantasy') return 'project:startup-fantasy';
   if (slug === 'empathy-ai') return 'project:empathy-ai';
+  if (slug === 'marketplace-site') return 'project:marketplace-site';
   return 'home';
 };
 
@@ -1185,6 +1186,8 @@ export default function App() {
       document.title = lang === 'ru' ? 'Фэнтези-лига стартапов' : 'Fantasy Startup League';
     } else if (tab === 'project:empathy-ai') {
       document.title = lang === 'ru' ? 'Эдя — ИИ-психолог' : 'Edya — AI Psychologist';
+    } else if (tab === 'project:marketplace-site') {
+      document.title = lang === 'ru' ? 'Своя витрина' : 'Your Own Storefront';
     } else {
       document.title = lang === 'en' ? 'Who is NikPeg?' : 'Кто такой НикПег?';
     }
