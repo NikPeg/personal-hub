@@ -1039,27 +1039,28 @@ function MarketplaceSiteLanding({ t }) {
       </div>
     </div>
 
-    <div className="marketplace-section">
-      <p className="startup-kicker">{c.contactsKicker}</p>
-      <h2 className="marketplace-section-title">{c.contactsTitle}</h2>
-      <div className="marketplace-contacts">
-        {c.contacts.map((ct) => <a key={ct.label} className="marketplace-contact-card" href={ct.url} target="_blank" rel="noreferrer">
-          <span className="mkt-contact-label">{ct.label}</span>
-          <strong>{ct.value}</strong>
-        </a>)}
+    <div className="marketplace-section mkt-two-col">
+      <div className="mkt-col">
+        <p className="startup-kicker">{c.contactsKicker}</p>
+        <h2 className="marketplace-section-title">{c.contactsTitle}</h2>
+        <div className="marketplace-contacts mkt-contacts-stack">
+          {c.contacts.map((ct) => <a key={ct.label} className="marketplace-contact-card" href={ct.url} target="_blank" rel="noreferrer">
+            <span className="mkt-contact-label">{ct.label}</span>
+            <strong>{ct.value}</strong>
+          </a>)}
+        </div>
       </div>
-    </div>
-
-    <div className="marketplace-section">
-      <p className="startup-kicker">{c.teamKicker}</p>
-      <h2 className="marketplace-section-title">{c.teamTitle}</h2>
-      <div className="marketplace-team">
-        {c.team.map((m) => <article className="marketplace-member" key={m.name}>
-          {m.photo && <img src={m.photo} alt={m.name} className="marketplace-member-photo" />}
-          <h3>{m.name}</h3>
-          <p>{m.role}</p>
-          <a href={m.url} target="_blank" rel="noreferrer">{c.teamCta} →</a>
-        </article>)}
+      <div className="mkt-col">
+        <p className="startup-kicker">{c.teamKicker}</p>
+        <h2 className="marketplace-section-title">{c.teamTitle}</h2>
+        <div className="marketplace-team">
+          {c.team.map((m) => <article className="marketplace-member" key={m.name}>
+            {m.photo && <img src={m.photo} alt={m.name} className="marketplace-member-photo" />}
+            <h3>{m.name}</h3>
+            <p>{m.role}</p>
+            <a href={m.url} target="_blank" rel="noreferrer">{c.teamCta} →</a>
+          </article>)}
+        </div>
       </div>
     </div>
 
@@ -1121,10 +1122,6 @@ function MarketplaceSiteLanding({ t }) {
       </form>
     </div>
 
-    <div className="marketplace-section marketplace-closing">
-      <p>{c.footer}</p>
-      <a className="startup-btn primary" href="https://t.me/nikpeg" target="_blank" rel="noreferrer">{c.cta}</a>
-    </div>
   </section>;
 }
 
