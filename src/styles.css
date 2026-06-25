@@ -3139,6 +3139,36 @@ html[data-theme="light"] .mkt-consent span { color: rgba(12,15,26,.55); }
 .mkt-not-offer { font-size: .78rem; color: rgba(240,244,255,.3); margin-top: 1rem; text-align: center; }
 html[data-theme="light"] .mkt-not-offer { color: rgba(12,15,26,.35); }
 @media (max-width: 700px) { .mkt-form-row { grid-template-columns: 1fr; } }
+.mkt-form-lead { color: rgba(240,244,255,.55); margin-bottom: 1.5rem; }
+html[data-theme="light"] .mkt-form-lead { color: rgba(12,15,26,.5); }
+
+/* ── Marketplace: commission calculator ─────────────────────────────── */
+.mkt-calc-lead { color: rgba(240,244,255,.55); margin-top: .5rem; margin-bottom: 1.75rem; max-width: 600px; }
+.mkt-calc {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: center;
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 1.25rem;
+  padding: 2.25rem 2.5rem;
+}
+.mkt-calc-inputs { display: flex; flex-direction: column; gap: 1.5rem; }
+.mkt-range { width: 100%; height: 4px; accent-color: #60a5fa; cursor: pointer; background: transparent; }
+.mkt-range-val { color: #93c5fd; font-weight: 700; }
+.mkt-calc-result { text-align: center; }
+.mkt-calc-loss-month { display: flex; flex-direction: column; gap: .4rem; margin-bottom: .75rem; }
+.mkt-calc-loss-month > span { font-size: .78rem; font-weight: 700; color: rgba(240,244,255,.45); text-transform: uppercase; letter-spacing: .08em; }
+.mkt-calc-loss-month > strong { font-size: clamp(2.4rem, 5vw, 3.6rem); font-weight: 800; color: #f87171; line-height: 1; }
+.mkt-calc-loss-year { font-size: 1.05rem; color: rgba(240,244,255,.38); }
+html[data-theme="light"] .mkt-calc { background: rgba(0,0,0,.03); border-color: rgba(0,0,0,.07); }
+html[data-theme="light"] .mkt-calc-lead { color: rgba(12,15,26,.5); }
+html[data-theme="light"] .mkt-range-val { color: #2563eb; }
+html[data-theme="light"] .mkt-calc-loss-month > span { color: rgba(12,15,26,.4); }
+html[data-theme="light"] .mkt-calc-loss-month > strong { color: #dc2626; }
+html[data-theme="light"] .mkt-calc-loss-year { color: rgba(12,15,26,.35); }
+@media (max-width: 700px) { .mkt-calc { grid-template-columns: 1fr; gap: 2rem; } }
 
 /* ── Marketplace: side-by-side contacts + team ─────────────────────── */
 .mkt-two-col {

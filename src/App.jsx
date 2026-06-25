@@ -827,8 +827,9 @@ const MKT_TG_CHAT  = import.meta.env.VITE_TG_CHAT_ID || '';
 function MarketplaceSiteLanding({ t }) {
   const isRu = t.brandName === 'НикПег';
   const [slide, setSlide] = useState(0);
-  const [form, setForm] = useState({ name: '', contact: '', shop: '', type: '', message: '', consent: false });
+  const [form, setForm] = useState({ name: '', contact: '', shop: '', type: '', niche: '', message: '', consent: false });
   const [status, setStatus] = useState('idle'); // idle | sending | ok | err
+  const [calc, setCalc] = useState({ turnover: 800000, commission: 18, extra: 7 });
 
   const portfolioItems = [
     { src: '/assets/posts/marketplace-portfolio-1.png', alt: 'Tkani Italii — интернет-магазин тканей', url: 'http://tkaniitalii.shveinayafeechka.ru', label: 'Tkani Italii', desc: isRu ? 'Интернет-магазин итальянских тканей' : 'Italian fabric online store' },
@@ -869,10 +870,21 @@ function MarketplaceSiteLanding({ t }) {
     portfolioTitle: 'Что уже сделали',
     portfolioVisit: 'Открыть сайт',
     portfolioVisitLabel: 'Открыть сайт',
+    calcKicker: 'Быстрый расчёт',
+    calcTitle: 'Сколько денег уходит не в развитие, а в комиссии',
+    calcLead: 'Введите оборот и ставки площадки. Калькулятор покажет, какой бюджет можно вернуть в собственный канал продаж: сайт, рекламу, контент и повторные покупки.',
+    calcTurnover: 'Оборот в месяц, ₽',
+    calcCommission: 'Комиссия площадки',
+    calcExtra: 'Доп. удержания (логистика, хранение…)',
+    calcLossMonth: 'Потери в месяц',
+    calcLossYear: 'в год',
     formKicker: 'Заявка',
     formTitle: 'Отправить заявку',
+    formLead: 'Напишите нишу, оборот и главную боль на маркетплейсе — предложу первый план запуска.',
     formAnchor: 'Отправить заявку',
     fName: 'Ваше имя', fContact: 'Telegram, WhatsApp или email',
+    fNiche: 'Ниша и примерный оборот',
+    fNichePlaceholder: 'Например: косметика, 900 000 ₽/мес',
     fShop: 'Ссылка на магазин на маркетплейсе (если есть)',
     fType: 'Что нужно?', fTypeOpts: ['Лендинг — 10 000 ₽', 'Интернет-магазин — 30 000 ₽', 'Улучшение существующего — 50 000 ₽', 'Пока не знаю'],
     fMsg: 'Что сейчас мешает продавать напрямую? (необязательно)',
@@ -932,10 +944,21 @@ function MarketplaceSiteLanding({ t }) {
     portfolioTitle: 'What we\'ve built',
     portfolioVisit: 'Visit site',
     portfolioVisitLabel: 'Visit site',
+    calcKicker: 'Quick estimate',
+    calcTitle: 'How much goes to commissions right now',
+    calcLead: 'Enter your turnover and platform rates. The calculator shows how much you can reclaim for your own sales channel: site, ads, content, and repeat buyers.',
+    calcTurnover: 'Monthly turnover, ₽',
+    calcCommission: 'Platform commission',
+    calcExtra: 'Extra fees (logistics, storage…)',
+    calcLossMonth: 'Monthly loss',
+    calcLossYear: 'per year',
     formKicker: 'Application',
     formTitle: 'Send a request',
+    formLead: 'Share your niche, turnover, and top pain on marketplaces — I\'ll suggest a launch plan.',
     formAnchor: 'Send a request',
     fName: 'Your name', fContact: 'Telegram, WhatsApp or email',
+    fNiche: 'Niche and approximate turnover',
+    fNichePlaceholder: 'E.g.: beauty products, ₽900 000/mo',
     fShop: 'Marketplace store link (if you have one)',
     fType: 'What do you need?', fTypeOpts: ['Landing page — 10 000 ₽', 'Online store — 30 000 ₽', 'Improve existing site — 50 000 ₽', 'Not sure yet'],
     fMsg: 'What\'s stopping you from selling directly? (optional)',
@@ -980,6 +1003,40 @@ function MarketplaceSiteLanding({ t }) {
           <strong>{s.val}</strong>
           <span>{s.label}</span>
         </div>)}
+      </div>
+    </div>
+
+    <div className="marketplace-section">
+      <p className="startup-kicker">{c.calcKicker}</p>
+      <h2 className="marketplace-section-title">{c.calcTitle}</h2>
+      <p className="mkt-calc-lead">{c.calcLead}</p>
+      <div className="mkt-calc">
+        <div className="mkt-calc-inputs">
+          <label className="mkt-field">
+            <span>{c.calcTurnover}</span>
+            <input type="number" min={0} step={10000} value={calc.turnover}
+              onChange={e => setCalc(prev => ({...prev, turnover: Math.max(0, +e.target.value)}))} />
+          </label>
+          <label className="mkt-field">
+            <span>{c.calcCommission} — <strong className="mkt-range-val">{calc.commission}%</strong></span>
+            <input type="range" min={0} max={40} step={0.5} value={calc.commission}
+              onChange={e => setCalc(prev => ({...prev, commission: +e.target.value}))} className="mkt-range" />
+          </label>
+          <label className="mkt-field">
+            <span>{c.calcExtra} — <strong className="mkt-range-val">{calc.extra}%</strong></span>
+            <input type="range" min={0} max={20} step={0.5} value={calc.extra}
+              onChange={e => setCalc(prev => ({...prev, extra: +e.target.value}))} className="mkt-range" />
+          </label>
+        </div>
+        <div className="mkt-calc-result">
+          <div className="mkt-calc-loss-month">
+            <span>{c.calcLossMonth}</span>
+            <strong>{Math.round(calc.turnover * (calc.commission + calc.extra) / 100).toLocaleString('ru-RU')} ₽</strong>
+          </div>
+          <div className="mkt-calc-loss-year">
+            {(Math.round(calc.turnover * (calc.commission + calc.extra) / 100) * 12).toLocaleString('ru-RU')} ₽ {c.calcLossYear}
+          </div>
+        </div>
       </div>
     </div>
 
@@ -1073,6 +1130,7 @@ function MarketplaceSiteLanding({ t }) {
     <div className="marketplace-section" id="mkt-form">
       <p className="startup-kicker">{c.formKicker}</p>
       <h2 className="marketplace-section-title">{c.formTitle}</h2>
+      <p className="mkt-form-lead">{c.formLead}</p>
       <form className="mkt-form" onSubmit={async (e) => {
         e.preventDefault();
         if (!MKT_TG_CHAT) { setStatus('err'); return; }
@@ -1081,6 +1139,7 @@ function MarketplaceSiteLanding({ t }) {
           `🏪 <b>Новая заявка — Своя витрина</b>`,
           `👤 Имя: ${form.name}`,
           `📞 Контакт: ${form.contact}`,
+          form.niche   ? `🏷 Ниша/оборот: ${form.niche}` : null,
           form.shop   ? `🛒 Магазин: ${form.shop}` : null,
           form.type   ? `📦 Что нужно: ${form.type}` : null,
           form.message ? `💬 ${form.message}` : null,
@@ -1103,6 +1162,10 @@ function MarketplaceSiteLanding({ t }) {
             <input required value={form.contact} onChange={e => setForm(f => ({...f, contact: e.target.value}))} />
           </label>
         </div>
+        <label className="mkt-field">
+          <span>{c.fNiche}</span>
+          <input value={form.niche} onChange={e => setForm(f => ({...f, niche: e.target.value}))} placeholder={c.fNichePlaceholder} />
+        </label>
         <div className="mkt-form-row">
           <label className="mkt-field">
             <span>{c.fShop}</span>
