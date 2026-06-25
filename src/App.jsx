@@ -820,10 +820,166 @@ function EmpathyAiLanding({ t }) {
   </section>;
 }
 
+function MarketplaceSiteLanding({ t }) {
+  const isRu = t.brandName === 'НикПег';
+  const c = isRu ? {
+    kicker: 'Своя витрина',
+    title: 'Продавайте\nбез комиссий',
+    lead: 'Соберём независимый канал продаж: каталог, корзина, оплата, аналитика — всё в вашем контуре, а не у маркетплейса.',
+    cta: 'Обсудить проект',
+    stats: [
+      { val: '0%', label: 'комиссии\nс прямых заказов' },
+      { val: '15–40%', label: 'теряете сейчас\nна площадках' },
+      { val: '30 мин', label: 'бесплатный\nразбор ниши' },
+    ],
+    servicesKicker: 'Что получите',
+    services: [
+      { n: '01', title: 'Продающая витрина', text: 'Структура под ваши товары, подборки, карточки, отзывы и сценарии покупки без шаблонной перегруженности.' },
+      { n: '02', title: 'Заказы и оплата', text: 'Корзина, заявки, онлайн-оплата, уведомления, интеграции с CRM — заявки не теряются.' },
+      { n: '03', title: 'Рост прямых продаж', text: 'Аналитика, SEO-база, посадочные под рекламу, повторные касания и полноценная воронка.' },
+    ],
+    pkgsKicker: 'Форматы работы',
+    pkgsTitle: 'С чего начать',
+    pkgs: [
+      { title: 'Лендинг', sub: 'Для одного оффера или теста прямого спроса', timing: 'от 10 рабочих дней', items: ['Один продающий сценарий', 'Форма заявки и аналитика', 'Адаптивная верстка'] },
+      { title: 'Интернет-магазин', sub: 'Для каталога, повторных покупок и прямой оплаты', timing: 'от 3 недель', items: ['Категории и карточки товаров', 'Корзина, заявки или онлайн-оплата', 'SEO-база и аналитика продаж'], featured: true },
+      { title: 'Рост', sub: 'Доработка существующего сайта в полноценный канал', timing: 'после аудита', items: ['Посадочные под рекламу', 'Интеграции с CRM и рассылками', 'A/B-гипотезы и рост конверсии'] },
+    ],
+    processKicker: 'Процесс',
+    processTitle: 'От разбора до первой заявки',
+    steps: [
+      { n: '1', title: 'Разбор', text: 'Смотрю нишу, товары, маржу и текущие каналы. Определяем, почему покупатель должен идти напрямую.' },
+      { n: '2', title: 'Прототип', text: 'Структура страниц, оффер, блоки доверия, сценарии заявки и карта интеграций.' },
+      { n: '3', title: 'Дизайн и сборка', text: 'Адаптивный интерфейс, формы, аналитика, SEO-разметка и нужные сервисы.' },
+      { n: '4', title: 'Запуск', text: 'Проверяем заявки, скорость, мобильную версию, передаём доступы и план улучшений.' },
+    ],
+    teamKicker: 'Команда',
+    teamTitle: 'Кто делает',
+    team: [
+      { name: 'NikPeg', role: 'Разработка и продукт', url: 'https://www.linkedin.com/in/nikpeg/' },
+      { name: 'Шамшев Андрей', role: 'Дизайн и фронтенд', url: 'https://shveinayafeechka.ru/cv/' },
+    ],
+    teamCta: 'Резюме',
+    footer: 'Маркетплейс остаётся каналом — но перестаёт быть единственной кассой.',
+  } : {
+    kicker: 'Your Own Storefront',
+    title: 'Sell without\ncommissions',
+    lead: 'We build an independent sales channel: catalog, cart, payments, analytics — all in your domain, not the platform\'s.',
+    cta: 'Discuss the project',
+    stats: [
+      { val: '0%', label: 'commission on\ndirect orders' },
+      { val: '15–40%', label: 'you lose now\nto platforms' },
+      { val: '30 min', label: 'free initial\nniche review' },
+    ],
+    servicesKicker: 'What you get',
+    services: [
+      { n: '01', title: 'Selling storefront', text: 'Built for your products, collections, cards, reviews, and purchase flows — no template bloat.' },
+      { n: '02', title: 'Orders & payments', text: 'Cart, requests, online payment, notifications, CRM integrations — no lead falls through.' },
+      { n: '03', title: 'Direct sales growth', text: 'Analytics, SEO basics, ad landing pages, repeat touchpoints, and a full conversion funnel.' },
+    ],
+    pkgsKicker: 'Formats',
+    pkgsTitle: 'Where to start',
+    pkgs: [
+      { title: 'Landing page', sub: 'For a single offer or testing direct demand', timing: 'from 10 business days', items: ['One selling scenario', 'Request form and analytics', 'Responsive layout'] },
+      { title: 'Online store', sub: 'For a catalog, repeat purchases, and direct payment', timing: 'from 3 weeks', items: ['Categories and product cards', 'Cart, requests, or online payment', 'SEO basics and sales analytics'], featured: true },
+      { title: 'Growth', sub: 'Upgrading an existing site into a full sales channel', timing: 'after audit', items: ['Ad landing pages', 'CRM and newsletter integrations', 'A/B tests and conversion lift'] },
+    ],
+    processKicker: 'Process',
+    processTitle: 'From kickoff to first lead',
+    steps: [
+      { n: '1', title: 'Review', text: 'Examine the niche, products, margins, and current channels. Find why a buyer should come directly to you.' },
+      { n: '2', title: 'Prototype', text: 'Page structure, offer, trust blocks, request flows, and integration map.' },
+      { n: '3', title: 'Design & build', text: 'Responsive interface, forms, analytics, basic SEO markup, and the right services hooked up.' },
+      { n: '4', title: 'Launch', text: 'Check requests, speed, mobile — hand over access and a roadmap of next improvements.' },
+    ],
+    teamKicker: 'Team',
+    teamTitle: 'Who builds it',
+    team: [
+      { name: 'NikPeg', role: 'Development & product', url: 'https://www.linkedin.com/in/nikpeg/' },
+      { name: 'Andrey Shamshev', role: 'Design & frontend', url: 'https://shveinayafeechka.ru/cv/' },
+    ],
+    teamCta: 'Resume',
+    footer: 'Marketplaces stay a channel. They just stop being the only register.',
+  };
+
+  return <section className="marketplace-page">
+    <div className="marketplace-hero">
+      <div className="marketplace-copy">
+        <p className="startup-kicker">{c.kicker}</p>
+        <h1>{c.title}</h1>
+        <p>{c.lead}</p>
+        <div className="startup-actions">
+          <a className="startup-btn primary" href="https://t.me/nikpeg" target="_blank" rel="noreferrer">{c.cta}</a>
+        </div>
+      </div>
+      <div className="marketplace-stats-board">
+        {c.stats.map((s) => <div className="marketplace-stat" key={s.val}>
+          <strong>{s.val}</strong>
+          <span>{s.label}</span>
+        </div>)}
+      </div>
+    </div>
+
+    <div className="marketplace-section">
+      <p className="startup-kicker">{c.servicesKicker}</p>
+      <div className="marketplace-grid">
+        {c.services.map((s) => <article className="marketplace-card" key={s.n}>
+          <span className="startup-label">{s.n}</span>
+          <h3>{s.title}</h3>
+          <p>{s.text}</p>
+        </article>)}
+      </div>
+    </div>
+
+    <div className="marketplace-section">
+      <p className="startup-kicker">{c.pkgsKicker}</p>
+      <h2 className="marketplace-section-title">{c.pkgsTitle}</h2>
+      <div className="marketplace-packages">
+        {c.pkgs.map((pkg) => <article className={`marketplace-pkg${pkg.featured ? ' featured' : ''}`} key={pkg.title}>
+          <h3>{pkg.title}</h3>
+          <p>{pkg.sub}</p>
+          <strong>{pkg.timing}</strong>
+          <ul>{pkg.items.map((item) => <li key={item}>{item}</li>)}</ul>
+          <a className="startup-btn primary" href="https://t.me/nikpeg" target="_blank" rel="noreferrer">{c.cta}</a>
+        </article>)}
+      </div>
+    </div>
+
+    <div className="marketplace-section">
+      <p className="startup-kicker">{c.processKicker}</p>
+      <h2 className="marketplace-section-title">{c.processTitle}</h2>
+      <ol className="marketplace-process">
+        {c.steps.map((s) => <li key={s.n}>
+          <span>{s.n}</span>
+          <div><h3>{s.title}</h3><p>{s.text}</p></div>
+        </li>)}
+      </ol>
+    </div>
+
+    <div className="marketplace-section">
+      <p className="startup-kicker">{c.teamKicker}</p>
+      <h2 className="marketplace-section-title">{c.teamTitle}</h2>
+      <div className="marketplace-team">
+        {c.team.map((m) => <article className="marketplace-member" key={m.name}>
+          <h3>{m.name}</h3>
+          <p>{m.role}</p>
+          <a href={m.url} target="_blank" rel="noreferrer">{c.teamCta} →</a>
+        </article>)}
+      </div>
+    </div>
+
+    <div className="marketplace-section marketplace-closing">
+      <p>{c.footer}</p>
+      <a className="startup-btn primary" href="https://t.me/nikpeg" target="_blank" rel="noreferrer">{c.cta}</a>
+    </div>
+  </section>;
+}
+
 function ProjectLanding({ t, data, slug, go }) {
   const project = data.projects.find((item) => item.slug === slug) || data.projects[0];
   if (project.slug === 'startup-fantasy') return <StartupFantasyLanding t={t} />;
   if (project.slug === 'empathy-ai') return <EmpathyAiLanding t={t} />;
+  if (project.slug === 'marketplace-site') return <MarketplaceSiteLanding t={t} />;
   return <section className="section page-hero reveal visible landing-page">
     <p className="eyebrow">{project.tag}</p>
     <h2>{project.title}</h2>
