@@ -821,8 +821,7 @@ function EmpathyAiLanding({ t }) {
   </section>;
 }
 
-const MKT_TG_TOKEN = '8971665630:AAEXlRfpL_5Ya9yzk5Gbg0hmOMSjJwW6ydA';
-const MKT_TG_CHAT  = import.meta.env.VITE_TG_CHAT_ID || '';
+const MKT_WORKER_URL = import.meta.env.VITE_MKT_WORKER_URL || '';
 
 function MarketplaceSiteLanding({ t }) {
   const isRu = t.brandName === 'НикПег';
@@ -1133,21 +1132,21 @@ function MarketplaceSiteLanding({ t }) {
       <p className="mkt-form-lead">{c.formLead}</p>
       <form className="mkt-form" onSubmit={async (e) => {
         e.preventDefault();
-        if (!MKT_TG_CHAT) { setStatus('err'); return; }
+        if (!MKT_WORKER_URL) { setStatus('err'); return; }
         setStatus('sending');
         const text = [
           `🏪 <b>Новая заявка — Своя витрина</b>`,
           `👤 Имя: ${form.name}`,
           `📞 Контакт: ${form.contact}`,
           form.niche   ? `🏷 Ниша/оборот: ${form.niche}` : null,
-          form.shop   ? `🛒 Магазин: ${form.shop}` : null,
-          form.type   ? `📦 Что нужно: ${form.type}` : null,
+          form.shop    ? `🛒 Магазин: ${form.shop}` : null,
+          form.type    ? `📦 Что нужно: ${form.type}` : null,
           form.message ? `💬 ${form.message}` : null,
         ].filter(Boolean).join('\n');
         try {
-          const r = await fetch(`https://api.telegram.org/bot${MKT_TG_TOKEN}/sendMessage`, {
+          const r = await fetch(MKT_WORKER_URL, {
             method: 'POST', headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ chat_id: MKT_TG_CHAT, text, parse_mode: 'HTML' }),
+            body: JSON.stringify({ text }),
           });
           setStatus(r.ok ? 'ok' : 'err');
         } catch { setStatus('err'); }
