@@ -33,6 +33,7 @@ const pathToTab = (pathname) => {
   if (slug === 'startup-fantasy') return 'project:startup-fantasy';
   if (slug === 'empathy-ai') return 'project:empathy-ai';
   if (slug === 'marketplace-site') return 'project:marketplace-site';
+  if (slug === 'ai-bubble') return 'project:ai-bubble';
   return 'home';
 };
 
@@ -1197,11 +1198,272 @@ function MarketplaceSiteLanding({ t }) {
   </section>;
 }
 
+function AiBubbleLanding({ t }) {
+  const isRu = t.brandName === 'НикПег';
+  const canvasRef = useRef(null);
+  const [openSc, setOpenSc] = useState(null);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    let raf, bubbles = [];
+    const resize = () => { canvas.width = canvas.offsetWidth; canvas.height = canvas.offsetHeight; };
+    const mk = () => ({ x: Math.random() * canvas.width, y: canvas.height + 80, r: 22 + Math.random() * 85, vx: (Math.random() - .5) * .7, vy: -(0.18 + Math.random() * .55), h: 180 + Math.random() * 110, o: .18 + Math.random() * .32 });
+    const draw = (b) => {
+      const g = ctx.createRadialGradient(b.x - b.r * .3, b.y - b.r * .35, b.r * .04, b.x, b.y, b.r);
+      g.addColorStop(0, `hsla(${b.h},72%,88%,${b.o * .8})`);
+      g.addColorStop(.4, `hsla(${b.h + 45},65%,65%,${b.o * .1})`);
+      g.addColorStop(1, `hsla(${b.h + 95},55%,55%,0)`);
+      ctx.beginPath(); ctx.arc(b.x, b.y, b.r, 0, Math.PI * 2);
+      ctx.fillStyle = g; ctx.fill();
+      ctx.strokeStyle = `hsla(${b.h},65%,80%,${b.o * .28})`; ctx.lineWidth = 1; ctx.stroke();
+      ctx.beginPath(); ctx.arc(b.x - b.r * .3, b.y - b.r * .33, b.r * .15, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(255,255,255,${b.o * .55})`; ctx.fill();
+    };
+    const frame = () => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      if (Math.random() < .026 && bubbles.length < 20) bubbles.push(mk());
+      bubbles = bubbles.filter(b => b.y + b.r > -160);
+      bubbles.forEach(b => { b.x += b.vx; b.y += b.vy; b.vx += (Math.random() - .5) * .04; draw(b); });
+      raf = requestAnimationFrame(frame);
+    };
+    resize();
+    for (let i = 0; i < 12; i++) { const b = mk(); b.y = Math.random() * canvas.height; bubbles.push(b); }
+    const ro = new ResizeObserver(resize); ro.observe(canvas.parentElement);
+    frame();
+    return () => { cancelAnimationFrame(raf); ro.disconnect(); };
+  }, []);
+
+  useEffect(() => {
+    const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('aib-in'); io.unobserve(e.target); } }), { threshold: .1 });
+    document.querySelectorAll('.aib-fade').forEach(el => io.observe(el));
+    const po = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.style.width = e.target.dataset.w + '%'; po.unobserve(e.target); } }), { threshold: .5 });
+    document.querySelectorAll('.aib-fill').forEach(el => po.observe(el));
+    return () => { io.disconnect(); po.disconnect(); };
+  }, []);
+
+  const c = isRu ? {
+    date: '29 июня 2026 · актуально',
+    kicker: 'Исследование',
+    title: 'Пузырь\nИИ?',
+    lead: 'История знает эту картину. Вопрос в том, чем она закончится на этот раз.',
+    pLabel: 'Мой предикт',
+    pTitle: 'Постепенное сдувание — не взрыв',
+    pText: 'Компании прибыльны — это главное отличие от 2000-го. За высокими оценками стоят реальные деньги. Но $650 млрд капзатрат без гарантии окупаемости создаёт давление, которое рынку придётся переварить.',
+    scrollHint: 'Разобрать аргументы',
+    scKicker: 'Какой исход возможен',
+    scTitle: 'Три сценария',
+    scenarios: [
+      { id: 'crash', badge: 'Менее вероятен', title: 'Резкий взрыв', desc: 'Паника, обвал рынка на 70–80%, волна банкротств — как в 2000-м.', prob: 15,
+        pro: ['5 компаний = 30% S&P 500 — аномальная концентрация, как в 1999-м', '$650 млрд капзатрат без гарантии окупаемости', 'AI-washing: компании клеят ярлык «ИИ» ради оценки', 'ФРС заморозила ставку — 47% шанс повышения к 2027-му'],
+        con: ['Лидеры прибыльны — в 2000-м рухнули стартапы без выручки', 'P/E ~30 vs 200 в пик доткомов', 'B2B-спрос: платят за результат, не за хайп'] },
+      { id: 'deflate', badge: 'Мой предикт', feat: true, title: 'Постепенное сдувание', desc: 'Коррекция есть. Слабые выбывают. Сильные адаптируются — без системного краха.', prob: 55,
+        pro: ['NVIDIA $215 млрд выручки — за ценой стоит реальный бизнес', 'P/E ~30 vs 200 в доткомах — дорого, но не безумие', 'B2B-модель: платят за конкретный результат', 'Слабые игроки уже выбывают без системного шока'],
+        con: ['Если выручка не догонит капзатраты — замедление неизбежно', 'ФРС не смягчается — попутного ветра дешёвых денег нет'] },
+      { id: 'grow', badge: 'Возможен', title: 'Пузыря нет', desc: 'Рост обоснован технологией и реальным спросом, коррекции минимальны.', prob: 30,
+        pro: ['14% рост мощностей ЦОД в год — реальный задокументированный спрос', 'NVIDIA $4.3 трлн подкреплена $215 млрд выручки', 'ИИ реально повышает производительность уже сейчас'],
+        con: ['Капзатраты уже опережают монетизацию', 'ФРС не снижает ставку — стоимость капитала высокая'] },
+    ],
+    proLbl: 'За', conLbl: 'Против', weakLbl: 'Слабые места', showArgs: 'Аргументы', hideArgs: 'Скрыть',
+    metKicker: 'Данные',
+    metTitle: 'Цифры, на которых строится анализ',
+    metrics: [
+      { label: 'Концентрация S&P 500', val: '30%', ctx: 'у 5 компаний — максимум за 50 лет', col: 'amber' },
+      { label: 'P/E NASDAQ сейчас', val: '~30×', ctx: 'в пик доткомов было 200×. Дорого, не безумие', col: '' },
+      { label: 'Capex на ИИ в 2026', val: '$650B', ctx: '+60% к 2025-му. Amazon, Google, Meta, Microsoft', col: 'red' },
+      { label: 'Выручка NVIDIA', val: '$215B', ctx: 'Реальные продажи за реальные чипы', col: 'green' },
+      { label: 'Риск повышения ставки', val: '47%', ctx: 'Рынок оценивает вероятность к июлю 2027-го', col: 'amber' },
+      { label: 'ИИ → рост S&P 500', val: '80%', ctx: 'Доля сектора в общем росте рынка США, 2025', col: 'blue' },
+    ],
+    histKicker: 'Исторический контекст',
+    histTitle: 'Сравнение с другими пузырями',
+    histSub: 'Как ИИ-бум соотносится с прошлыми случаями перегрева рынка?',
+    realTech: 'Реальная технология',
+    simLabel: 'Похожесть на ситуацию с ИИ',
+    hist: [
+      { name: 'Тюльпаномания', year: '1637', peak: '×100', crash: '−99%', tech: false, sim: 10, lesson: 'Первый задокументированный пузырь. Чисто спекулятивный — никакой технологии за тюльпанами не стояло.' },
+      { name: 'Железные дороги', year: '1840-е', peak: '×5', crash: '−60%', tech: true, sim: 80, lesson: 'Самая близкая аналогия: реальная технология + перестроили всю инфраструктуру под будущий спрос, потом оверкапасити. Технология выжила и изменила мир.' },
+      { name: 'Доткомы', year: '1995–2000', peak: '×20', crash: '−78%', tech: true, sim: 65, lesson: 'Интернет оказался реальным. Большинство компаний — нет. Выжившие (Amazon, Google) стали крупнейшими в мире.' },
+      { name: 'Криптовалюта', year: '2017–2018', peak: '×20', crash: '−84%', tech: false, sim: 30, lesson: 'Blockchain реален. Большинство монет — нет. Хайп без фундамента, обвал за год, без системных последствий.' },
+    ],
+    cmpKicker: 'Детальный разбор',
+    cmpTitle: 'Доткомы vs ИИ',
+    cmpHeaders: ['Параметр', 'Доткомы 1999–2000', 'ИИ 2026', ''],
+    cmpRows: [
+      { p: 'Кто ведёт рынок', d: 'Убыточные стартапы', a: 'Прибыльные гиганты', same: false },
+      { p: 'P/E рынка', d: '~200×', a: '~30×', same: false },
+      { p: 'Концентрация', d: 'Горстка компаний = весь рост', a: '5 компаний = 30% S&P 500', same: true },
+      { p: 'Инфраструктура', d: 'Оптика без спроса', a: '$650 млрд на чипы и ЦОД', same: true },
+      { p: 'Бизнес-модель', d: 'B2C: трафик без монетизации', a: 'B2B: платят за результат', same: false },
+      { p: 'Ставка ЦБ', d: 'Повышение → шок', a: 'Заморозка → неопределённость', same: true },
+      { p: 'Ярлык эпохи', d: 'Добавляли «.com»', a: 'Добавляют «AI» / «.ai»', same: true },
+    ],
+    sameLbl: 'Сходство', diffLbl: 'Различие',
+    disclaimer: 'Анализ основан на открытых источниках по состоянию на 29 июня 2026 года. Не является инвестиционной рекомендацией.',
+  } : {
+    date: 'June 29, 2026 · current',
+    kicker: 'Research',
+    title: 'AI\nBubble?',
+    lead: 'History knows this picture. The question is how it ends this time.',
+    pLabel: 'My prediction',
+    pTitle: 'Gradual deflation — not a crash',
+    pText: 'Companies are profitable — that\'s the key difference from 2000. Real money backs the prices. But $650B in capex without guaranteed returns creates pressure the market will have to work through.',
+    scrollHint: 'Explore the arguments',
+    scKicker: 'Possible outcomes',
+    scTitle: 'Three scenarios',
+    scenarios: [
+      { id: 'crash', badge: 'Less likely', title: 'Sharp crash', desc: 'Panic, market drops 70–80%, wave of bankruptcies — like 2000.', prob: 15,
+        pro: ['5 companies = 30% of S&P 500 — abnormal concentration, like 1999', '$650B capex with no guaranteed returns', 'AI-washing: companies slap "AI" on everything for investor valuation', 'Fed froze rate cuts — 47% chance of a hike by 2027'],
+        con: ['Leaders are profitable — 2000 crashed because startups had no revenue', 'P/E ~30 vs 200 at dot-com peak', 'B2B demand: companies pay for real results'] },
+      { id: 'deflate', badge: 'My prediction', feat: true, title: 'Gradual deflation', desc: 'Correction happens. Weak players exit. Strong ones adapt — without a systemic crash.', prob: 55,
+        pro: ['NVIDIA $215B revenue — real business behind the price', 'P/E ~30 vs 200 at dot-com peak — expensive, not insane', 'B2B model: pay for concrete results', 'Weak players already exiting without systemic shock'],
+        con: ['If revenue doesn\'t catch up with capex — slowdown is inevitable', 'Fed isn\'t easing — no tailwind from cheap money'] },
+      { id: 'grow', badge: 'Possible', title: 'No bubble', desc: 'Growth is justified by technology and real demand. Corrections minimal.', prob: 30,
+        pro: ['14% YoY data center capacity growth — documented real demand', 'NVIDIA $4.3T cap backed by $215B revenue', 'AI is actually raising productivity right now'],
+        con: ['Capex already outpacing monetization', 'Fed not cutting — cost of capital remains high'] },
+    ],
+    proLbl: 'For', conLbl: 'Against', weakLbl: 'Weak points', showArgs: 'Arguments', hideArgs: 'Hide',
+    metKicker: 'Data',
+    metTitle: 'Numbers behind the analysis',
+    metrics: [
+      { label: 'S&P 500 concentration', val: '30%', ctx: 'held by 5 companies — highest in 50 years', col: 'amber' },
+      { label: 'NASDAQ P/E now', val: '~30×', ctx: 'was 200× at dot-com peak. Expensive, not crazy', col: '' },
+      { label: 'AI capex in 2026', val: '$650B', ctx: '+60% vs 2025. Amazon, Google, Meta, Microsoft', col: 'red' },
+      { label: 'NVIDIA revenue', val: '$215B', ctx: 'Real sales for real chips', col: 'green' },
+      { label: 'Rate hike risk', val: '47%', ctx: 'Market odds of Fed hike by July 2027', col: 'amber' },
+      { label: 'AI share of S&P growth', val: '80%', ctx: 'Sector share of total US market gains, 2025', col: 'blue' },
+    ],
+    histKicker: 'Historical context',
+    histTitle: 'Comparison with other bubbles',
+    histSub: 'How does the AI boom compare to past market overheats?',
+    realTech: 'Real technology',
+    simLabel: 'Similarity to AI situation',
+    hist: [
+      { name: 'Tulip mania', year: '1637', peak: '×100', crash: '−99%', tech: false, sim: 10, lesson: 'First documented bubble. Pure speculation — no technology behind the tulips.' },
+      { name: 'Railway boom', year: '1840s', peak: '×5', crash: '−60%', tech: true, sim: 80, lesson: 'Closest analogy: real technology + massive infrastructure overbuilding for future demand, then overcapacity. The technology survived and changed the world.' },
+      { name: 'Dot-com', year: '1995–2000', peak: '×20', crash: '−78%', tech: true, sim: 65, lesson: 'The internet was real. Most companies were not. Survivors (Amazon, Google) became the largest in the world.' },
+      { name: 'Crypto', year: '2017–2018', peak: '×20', crash: '−84%', tech: false, sim: 30, lesson: 'Blockchain is real. Most coins were not. Hype without fundamentals, crash in one year, no systemic consequences.' },
+    ],
+    cmpKicker: 'Deep dive',
+    cmpTitle: 'Dot-com vs AI',
+    cmpHeaders: ['Parameter', 'Dot-com 1999–2000', 'AI 2026', ''],
+    cmpRows: [
+      { p: 'Who leads the market', d: 'Unprofitable startups', a: 'Profitable giants', same: false },
+      { p: 'Market P/E', d: '~200×', a: '~30×', same: false },
+      { p: 'Concentration', d: 'A handful of companies = all growth', a: '5 companies = 30% S&P 500', same: true },
+      { p: 'Infrastructure', d: 'Fiber optic with no demand', a: '$650B on chips and data centers', same: true },
+      { p: 'Business model', d: 'B2C: traffic with no monetization', a: 'B2B: paying for results', same: false },
+      { p: 'Central bank rate', d: 'Hikes → shock', a: 'Pause → uncertainty', same: true },
+      { p: 'Era label', d: 'Adding ".com"', a: 'Adding "AI" / ".ai"', same: true },
+    ],
+    sameLbl: 'Similar', diffLbl: 'Different',
+    disclaimer: 'Analysis based on public data as of June 29, 2026. Not investment advice.',
+  };
+
+  const colMap = { amber: '#fbbf24', red: '#f87171', green: '#4ade80', blue: '#60a5fa', '': 'inherit' };
+
+  return <section className="aib-page">
+    <div className="aib-hero">
+      <canvas ref={canvasRef} className="aib-canvas" />
+      <div className="aib-hero-inner">
+        <span className="aib-date-badge">{c.date}</span>
+        <h1 className="aib-title">{c.title}</h1>
+        <p className="aib-lead">{c.lead}</p>
+        <div className="aib-predict">
+          <p className="aib-predict-lbl">⬤ {c.pLabel}</p>
+          <p className="aib-predict-title">{c.pTitle}</p>
+          <p className="aib-predict-text">{c.pText}</p>
+        </div>
+      </div>
+      <div className="aib-scroll-hint"><span>{c.scrollHint}</span><span>↓</span></div>
+    </div>
+
+    <div className="aib-section">
+      <p className="aib-kicker aib-fade">{c.scKicker}</p>
+      <h2 className="aib-sec-title aib-fade">{c.scTitle}</h2>
+      <div className="aib-scenarios">
+        {c.scenarios.map(sc => <div key={sc.id} className={`aib-sc${sc.feat ? ' aib-sc-feat' : ''} aib-fade`}>
+          <span className={`aib-badge aib-badge-${sc.id}`}>{sc.badge}</span>
+          <div className="aib-prob-row">
+            <span>{isRu ? 'Вероятность' : 'Probability'}</span>
+            <strong className={`aib-pval-${sc.id}`}>{sc.prob}%</strong>
+          </div>
+          <div className="aib-track"><div className={`aib-fill aib-fill-${sc.id}`} data-w={sc.prob} style={{width: 0}} /></div>
+          <h3 className="aib-sc-name">{sc.title}</h3>
+          <p className="aib-sc-desc">{sc.desc}</p>
+          <button className="aib-toggle" onClick={() => setOpenSc(openSc === sc.id ? null : sc.id)}>
+            {openSc === sc.id ? c.hideArgs : c.showArgs} <span>{openSc === sc.id ? '↑' : '↓'}</span>
+          </button>
+          {openSc === sc.id && <div className="aib-args">
+            <p className="aib-args-lbl">{c.proLbl}</p>
+            {sc.pro.map((a, i) => <div key={i} className="aib-arg"><span>+</span><span>{a}</span></div>)}
+            <p className="aib-args-lbl">{sc.id === 'deflate' ? c.weakLbl : c.conLbl}</p>
+            {sc.con.map((a, i) => <div key={i} className="aib-arg aib-arg-con"><span>−</span><span>{a}</span></div>)}
+          </div>}
+        </div>)}
+      </div>
+    </div>
+
+    <div className="aib-section aib-section-sep">
+      <p className="aib-kicker aib-fade">{c.metKicker}</p>
+      <h2 className="aib-sec-title aib-fade">{c.metTitle}</h2>
+      <div className="aib-metrics">
+        {c.metrics.map(m => <div key={m.label} className="aib-met aib-fade">
+          <p className="aib-met-lbl">{m.label}</p>
+          <p className="aib-met-val" style={{color: colMap[m.col]}}>{m.val}</p>
+          <p className="aib-met-ctx">{m.ctx}</p>
+        </div>)}
+      </div>
+    </div>
+
+    <div className="aib-section aib-section-sep">
+      <p className="aib-kicker aib-fade">{c.histKicker}</p>
+      <h2 className="aib-sec-title aib-fade">{c.histTitle}</h2>
+      <p className="aib-sec-sub aib-fade">{c.histSub}</p>
+      <div className="aib-hist">
+        {c.hist.map(h => <div key={h.name} className="aib-hist-card aib-fade">
+          <div className="aib-hist-head">
+            <div><p className="aib-hist-name">{h.name}</p><p className="aib-hist-year">{h.year}</p></div>
+            <span className={`aib-tech-badge ${h.tech ? 'yes' : 'no'}`}>{c.realTech}: {h.tech ? '✓' : '✗'}</span>
+          </div>
+          <div className="aib-hist-stats">
+            <div><span>{isRu ? 'Пик' : 'Peak'}</span><strong>{h.peak}</strong></div>
+            <div><span>{isRu ? 'Падение' : 'Crash'}</span><strong style={{color:'#f87171'}}>{h.crash}</strong></div>
+          </div>
+          <p className="aib-hist-lesson">{h.lesson}</p>
+          <div className="aib-sim-head"><span>{c.simLabel}</span><span style={{color:'#60a5fa'}}>{h.sim}%</span></div>
+          <div className="aib-track"><div className="aib-fill aib-fill-deflate" data-w={h.sim} style={{width: 0}} /></div>
+        </div>)}
+      </div>
+    </div>
+
+    <div className="aib-section aib-section-sep">
+      <p className="aib-kicker aib-fade">{c.cmpKicker}</p>
+      <h2 className="aib-sec-title aib-fade">{c.cmpTitle}</h2>
+      <div className="aib-fade" style={{overflowX:'auto'}}>
+        <table className="aib-table">
+          <thead><tr>{c.cmpHeaders.map(h => <th key={h}>{h}</th>)}</tr></thead>
+          <tbody>{c.cmpRows.map(r => <tr key={r.p}>
+            <td style={{fontWeight:600}}>{r.p}</td>
+            <td style={{color:'rgba(232,232,255,.55)'}}>{r.d}</td>
+            <td style={{color:'rgba(232,232,255,.55)'}}>{r.a}</td>
+            <td><span className={r.same ? 'aib-same' : 'aib-diff'}>{r.same ? `▲ ${c.sameLbl}` : `▼ ${c.diffLbl}`}</span></td>
+          </tr>)}</tbody>
+        </table>
+      </div>
+    </div>
+
+    <div className="aib-footer"><p>{c.disclaimer}</p></div>
+  </section>;
+}
+
 function ProjectLanding({ t, data, slug, go }) {
   const project = data.projects.find((item) => item.slug === slug) || data.projects[0];
   if (project.slug === 'startup-fantasy') return <StartupFantasyLanding t={t} />;
   if (project.slug === 'empathy-ai') return <EmpathyAiLanding t={t} />;
   if (project.slug === 'marketplace-site') return <MarketplaceSiteLanding t={t} />;
+  if (project.slug === 'ai-bubble') return <AiBubbleLanding t={t} />;
   return <section className="section page-hero reveal visible landing-page">
     <p className="eyebrow">{project.tag}</p>
     <h2>{project.title}</h2>
@@ -1250,6 +1512,8 @@ export default function App() {
       document.title = lang === 'ru' ? 'Эдя — ИИ-психолог' : 'Edya — AI Psychologist';
     } else if (tab === 'project:marketplace-site') {
       document.title = lang === 'ru' ? 'Своя витрина' : 'Your Own Storefront';
+    } else if (tab === 'project:ai-bubble') {
+      document.title = lang === 'ru' ? 'Пузырь ИИ 2026' : 'AI Bubble 2026';
     } else {
       document.title = lang === 'en' ? 'Who is NikPeg?' : 'Кто такой НикПег?';
     }
