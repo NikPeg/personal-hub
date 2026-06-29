@@ -1202,6 +1202,18 @@ function AiBubbleLanding({ t }) {
   const isRu = t.brandName === 'НикПег';
   const canvasRef = useRef(null);
   const [openSc, setOpenSc] = useState(null);
+  const scenRef = useRef(null);
+  const metRef = useRef(null);
+  const histRef = useRef(null);
+  const compRef = useRef(null);
+  const cmpRef = useRef(null);
+
+  const scrollTo = (ref) => ref.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  const DownBtn = ({ to }) => (
+    <div className="aib-down-wrap">
+      <button className="aib-down-btn" onClick={() => scrollTo(to)}>↓</button>
+    </div>
+  );
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -1235,13 +1247,14 @@ function AiBubbleLanding({ t }) {
     return () => { cancelAnimationFrame(raf); ro.disconnect(); };
   }, []);
 
+  // Re-run when language switches so the new DOM elements get observed
   useEffect(() => {
     const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('aib-in'); io.unobserve(e.target); } }), { threshold: .1 });
     document.querySelectorAll('.aib-fade').forEach(el => io.observe(el));
     const po = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.style.width = e.target.dataset.w + '%'; po.unobserve(e.target); } }), { threshold: .5 });
     document.querySelectorAll('.aib-fill').forEach(el => po.observe(el));
     return () => { io.disconnect(); po.disconnect(); };
-  }, []);
+  }, [isRu]);
 
   const c = isRu ? {
     date: '29 июня 2026 · актуально',
@@ -1287,15 +1300,29 @@ function AiBubbleLanding({ t }) {
       { name: 'Доткомы', year: '1995–2000', peak: '×20', crash: '−78%', tech: true, sim: 65, lesson: 'Интернет оказался реальным. Большинство компаний — нет. Выжившие (Amazon, Google) стали крупнейшими в мире.' },
       { name: 'Криптовалюта', year: '2017–2018', peak: '×20', crash: '−84%', tech: false, sim: 30, lesson: 'Blockchain реален. Большинство монет — нет. Хайп без фундамента, обвал за год, без системных последствий.' },
     ],
+    compKicker: 'Сравнение компаний эпохи',
+    compTitle: 'NVIDIA vs Cisco',
+    compSub: 'Cisco была хребтом интернет-инфраструктуры в 2000-м. NVIDIA — хребет ИИ-инфраструктуры сейчас. Что их разделяет — и что объединяет?',
+    compRows: [
+      { p: 'Роль', n: 'Чипы для ИИ-вычислений', cs: 'Маршрутизаторы для интернета' },
+      { p: 'Капитализация на пике', n: '$3.3 трлн', cs: '$555 млрд (≈$960 млрд сегодня)' },
+      { p: 'P/E на пике', n: '~40×', cs: '~200×', highlight: 'diff' },
+      { p: 'Выручка', n: '$215 млрд', cs: '$18.9 млрд' },
+      { p: 'Рост выручки (г/г)', n: '+114%', cs: '+55%' },
+      { p: 'Прибыльность', n: 'Да, маржа ~55%', cs: 'Да, прибыльна' },
+      { p: 'Падение от пика', n: '?', cs: '−86% за 2 года', highlight: 'warn' },
+      { p: 'Восстановление', n: '?', cs: 'Не восстановилась до 2000-го уровня', highlight: 'warn' },
+    ],
+    compNote: 'Ключевое отличие: P/E NVIDIA в 5× ниже пикового Cisco. Но Cisco тоже была прибыльной — и упала на 86%. Риск не в мошенничестве, а в том, что спрос на чипы может замедлиться так же, как замедлился спрос на маршрутизаторы после 2000-го.',
     cmpKicker: 'Детальный разбор',
     cmpTitle: 'Доткомы vs ИИ',
     cmpHeaders: ['Параметр', 'Доткомы 1999–2000', 'ИИ 2026', ''],
     cmpRows: [
       { p: 'Кто ведёт рынок', d: 'Убыточные стартапы', a: 'Прибыльные гиганты', same: false },
       { p: 'P/E рынка', d: '~200×', a: '~30×', same: false },
+      { p: 'Бизнес-модель', d: 'B2C: трафик без монетизации', a: 'B2B: платят за результат', same: false },
       { p: 'Концентрация', d: 'Горстка компаний = весь рост', a: '5 компаний = 30% S&P 500', same: true },
       { p: 'Инфраструктура', d: 'Оптика без спроса', a: '$650 млрд на чипы и ЦОД', same: true },
-      { p: 'Бизнес-модель', d: 'B2C: трафик без монетизации', a: 'B2B: платят за результат', same: false },
       { p: 'Ставка ЦБ', d: 'Повышение → шок', a: 'Заморозка → неопределённость', same: true },
       { p: 'Ярлык эпохи', d: 'Добавляли «.com»', a: 'Добавляют «AI» / «.ai»', same: true },
     ],
@@ -1345,15 +1372,29 @@ function AiBubbleLanding({ t }) {
       { name: 'Dot-com', year: '1995–2000', peak: '×20', crash: '−78%', tech: true, sim: 65, lesson: 'The internet was real. Most companies were not. Survivors (Amazon, Google) became the largest in the world.' },
       { name: 'Crypto', year: '2017–2018', peak: '×20', crash: '−84%', tech: false, sim: 30, lesson: 'Blockchain is real. Most coins were not. Hype without fundamentals, crash in one year, no systemic consequences.' },
     ],
+    compKicker: 'Company of the era',
+    compTitle: 'NVIDIA vs Cisco',
+    compSub: 'Cisco was the backbone of internet infrastructure in 2000. NVIDIA is the backbone of AI infrastructure now. What separates them — and what connects them?',
+    compRows: [
+      { p: 'Role', n: 'AI compute chips', cs: 'Internet routing hardware' },
+      { p: 'Peak market cap', n: '$3.3T', cs: '$555B (≈$960B today)' },
+      { p: 'P/E at peak', n: '~40×', cs: '~200×', highlight: 'diff' },
+      { p: 'Revenue', n: '$215B', cs: '$18.9B' },
+      { p: 'Revenue growth (YoY)', n: '+114%', cs: '+55%' },
+      { p: 'Profitability', n: 'Yes, ~55% margin', cs: 'Yes, profitable' },
+      { p: 'Post-peak drop', n: '?', cs: '−86% in 2 years', highlight: 'warn' },
+      { p: 'Recovery', n: '?', cs: 'Never recovered to 2000 levels', highlight: 'warn' },
+    ],
+    compNote: 'Key difference: NVIDIA\'s P/E is 5× lower than Cisco\'s at peak. But Cisco was profitable too — and crashed 86%. The risk isn\'t fraud; it\'s that chip demand could slow the same way router demand did after 2000.',
     cmpKicker: 'Deep dive',
     cmpTitle: 'Dot-com vs AI',
     cmpHeaders: ['Parameter', 'Dot-com 1999–2000', 'AI 2026', ''],
     cmpRows: [
       { p: 'Who leads the market', d: 'Unprofitable startups', a: 'Profitable giants', same: false },
       { p: 'Market P/E', d: '~200×', a: '~30×', same: false },
+      { p: 'Business model', d: 'B2C: traffic with no monetization', a: 'B2B: paying for results', same: false },
       { p: 'Concentration', d: 'A handful of companies = all growth', a: '5 companies = 30% S&P 500', same: true },
       { p: 'Infrastructure', d: 'Fiber optic with no demand', a: '$650B on chips and data centers', same: true },
-      { p: 'Business model', d: 'B2C: traffic with no monetization', a: 'B2B: paying for results', same: false },
       { p: 'Central bank rate', d: 'Hikes → shock', a: 'Pause → uncertainty', same: true },
       { p: 'Era label', d: 'Adding ".com"', a: 'Adding "AI" / ".ai"', same: true },
     ],
@@ -1376,10 +1417,12 @@ function AiBubbleLanding({ t }) {
           <p className="aib-predict-text">{c.pText}</p>
         </div>
       </div>
-      <div className="aib-scroll-hint"><span>{c.scrollHint}</span><span>↓</span></div>
+      <button className="aib-scroll-hint" onClick={() => scrollTo(scenRef)}>
+        <span>{c.scrollHint}</span><span>↓</span>
+      </button>
     </div>
 
-    <div className="aib-section">
+    <div className="aib-section" ref={scenRef}>
       <p className="aib-kicker aib-fade">{c.scKicker}</p>
       <h2 className="aib-sec-title aib-fade">{c.scTitle}</h2>
       <div className="aib-scenarios">
@@ -1403,9 +1446,10 @@ function AiBubbleLanding({ t }) {
           </div>}
         </div>)}
       </div>
+      <DownBtn to={metRef} />
     </div>
 
-    <div className="aib-section aib-section-sep">
+    <div className="aib-section aib-section-sep" ref={metRef}>
       <p className="aib-kicker aib-fade">{c.metKicker}</p>
       <h2 className="aib-sec-title aib-fade">{c.metTitle}</h2>
       <div className="aib-metrics">
@@ -1415,9 +1459,10 @@ function AiBubbleLanding({ t }) {
           <p className="aib-met-ctx">{m.ctx}</p>
         </div>)}
       </div>
+      <DownBtn to={histRef} />
     </div>
 
-    <div className="aib-section aib-section-sep">
+    <div className="aib-section aib-section-sep" ref={histRef}>
       <p className="aib-kicker aib-fade">{c.histKicker}</p>
       <h2 className="aib-sec-title aib-fade">{c.histTitle}</h2>
       <p className="aib-sec-sub aib-fade">{c.histSub}</p>
@@ -1429,25 +1474,46 @@ function AiBubbleLanding({ t }) {
           </div>
           <div className="aib-hist-stats">
             <div><span>{isRu ? 'Пик' : 'Peak'}</span><strong>{h.peak}</strong></div>
-            <div><span>{isRu ? 'Падение' : 'Crash'}</span><strong style={{color:'#f87171'}}>{h.crash}</strong></div>
+            <div><span>{isRu ? 'Падение' : 'Crash'}</span><strong className="aib-crash-val">{h.crash}</strong></div>
           </div>
           <p className="aib-hist-lesson">{h.lesson}</p>
-          <div className="aib-sim-head"><span>{c.simLabel}</span><span style={{color:'#60a5fa'}}>{h.sim}%</span></div>
+          <div className="aib-sim-head"><span>{c.simLabel}</span><span className="aib-sim-pct">{h.sim}%</span></div>
           <div className="aib-track"><div className="aib-fill aib-fill-deflate" data-w={h.sim} style={{width: 0}} /></div>
         </div>)}
       </div>
+      <DownBtn to={compRef} />
     </div>
 
-    <div className="aib-section aib-section-sep">
+    <div className="aib-section aib-section-sep" ref={compRef}>
+      <p className="aib-kicker aib-fade">{c.compKicker}</p>
+      <h2 className="aib-sec-title aib-fade">{c.compTitle}</h2>
+      <p className="aib-sec-sub aib-fade">{c.compSub}</p>
+      <div className="aib-comp aib-fade">
+        <div className="aib-comp-head">
+          <div className="aib-comp-col-head aib-comp-nvd">NVIDIA <span>2026</span></div>
+          <div className="aib-comp-col-mid" />
+          <div className="aib-comp-col-head aib-comp-csc">Cisco <span>2000</span></div>
+        </div>
+        {c.compRows.map(r => <div key={r.p} className={`aib-comp-row${r.highlight ? ` aib-comp-hl-${r.highlight}` : ''}`}>
+          <div className="aib-comp-val aib-comp-left">{r.n}</div>
+          <div className="aib-comp-param">{r.p}</div>
+          <div className="aib-comp-val aib-comp-right">{r.cs}</div>
+        </div>)}
+        <p className="aib-comp-note">{c.compNote}</p>
+      </div>
+      <DownBtn to={cmpRef} />
+    </div>
+
+    <div className="aib-section aib-section-sep" ref={cmpRef}>
       <p className="aib-kicker aib-fade">{c.cmpKicker}</p>
       <h2 className="aib-sec-title aib-fade">{c.cmpTitle}</h2>
       <div className="aib-fade" style={{overflowX:'auto'}}>
         <table className="aib-table">
           <thead><tr>{c.cmpHeaders.map(h => <th key={h}>{h}</th>)}</tr></thead>
-          <tbody>{c.cmpRows.map(r => <tr key={r.p}>
-            <td style={{fontWeight:600}}>{r.p}</td>
-            <td style={{color:'rgba(232,232,255,.55)'}}>{r.d}</td>
-            <td style={{color:'rgba(232,232,255,.55)'}}>{r.a}</td>
+          <tbody>{[...c.cmpRows].sort((a, b) => a.same - b.same).map(r => <tr key={r.p}>
+            <td className="aib-td-param">{r.p}</td>
+            <td className="aib-td-val">{r.d}</td>
+            <td className="aib-td-val">{r.a}</td>
             <td><span className={r.same ? 'aib-same' : 'aib-diff'}>{r.same ? `▲ ${c.sameLbl}` : `▼ ${c.diffLbl}`}</span></td>
           </tr>)}</tbody>
         </table>
