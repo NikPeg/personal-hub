@@ -3302,6 +3302,17 @@ html[data-theme="light"] .mkt-calc-loss-year { color: rgba(12,15,26,.35); }
 
 /* ── AI Bubble: light theme ─────────────────────────────────────────── */
 html[data-theme="light"] .aib-page { background: #f0effa; color: #14103a; }
+html[data-theme="light"] .aib-hero {
+  background: url('https://images.unsplash.com/photo-1614796163975?w=1920&q=85&auto=format&fit=crop') center/cover no-repeat;
+}
+html[data-theme="light"] .aib-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(255,255,255,.48);
+  backdrop-filter: blur(1px);
+  z-index: 0;
+}
 html[data-theme="light"] .aib-date-badge { color: rgba(80,60,200,.6); background: rgba(80,60,200,.07); border-color: rgba(80,60,200,.18); }
 html[data-theme="light"] .aib-lead { color: rgba(20,16,58,.5); }
 html[data-theme="light"] .aib-predict { background: rgba(99,102,241,.08); border-color: rgba(99,102,241,.25); }
