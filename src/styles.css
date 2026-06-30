@@ -3323,6 +3323,46 @@ html[data-theme="light"] .mkt-calc-loss-year { color: rgba(12,15,26,.35); }
 .aib-footer { max-width: 1060px; margin: 0 auto; padding: 2.5rem 2rem 4rem; border-top: 1px solid rgba(255,255,255,.07); }
 .aib-footer p { font-size: .78rem; color: rgba(200,210,255,.28); margin: 0; }
 
+/* ── AI Bubble: term & stat interactivity ──────────────────────────── */
+.aib-term { cursor: pointer; }
+.aib-term:hover { opacity: .75; }
+.aib-term-q { display: inline-flex; align-items: center; justify-content: center; width: 1.1em; height: 1.1em; border-radius: 50%; background: rgba(150,165,255,.15); border: 1px solid rgba(150,165,255,.25); color: rgba(150,165,255,.7); font-size: .62em; font-weight: 700; margin-left: .35em; vertical-align: middle; }
+.aib-stat-num { cursor: pointer; transition: opacity .15s; display: flex; align-items: baseline; gap: .12em; }
+.aib-stat-num:hover { opacity: .75; }
+.aib-stat-arrow { font-size: .38em; opacity: .4; vertical-align: super; }
+
+/* popup overlay */
+.aib-overlay { position: fixed; inset: 0; background: rgba(3,3,18,.72); backdrop-filter: blur(6px); z-index: 1000; display: flex; align-items: center; justify-content: center; padding: 1.5rem; animation: aib-fade-in .15s ease; }
+@keyframes aib-fade-in { from { opacity: 0; } to { opacity: 1; } }
+.aib-modal { position: relative; background: #0d0c22; border: 1px solid rgba(255,255,255,.12); border-radius: 1.5rem; padding: 2rem 2.25rem 1.75rem; width: min(500px, 100%); max-height: 90vh; overflow-y: auto; animation: aib-slide-up .2s ease; }
+@keyframes aib-slide-up { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+.aib-modal-close { position: absolute; top: 1rem; right: 1rem; background: rgba(255,255,255,.07); border: none; border-radius: 50%; width: 2rem; height: 2rem; color: rgba(200,210,255,.6); font-size: 1.1rem; cursor: pointer; display: grid; place-items: center; transition: background .15s; }
+.aib-modal-close:hover { background: rgba(255,255,255,.13); }
+.aib-modal-kicker { font-size: .65rem; font-weight: 700; text-transform: uppercase; letter-spacing: .12em; color: rgba(150,165,255,.5); margin-bottom: .5rem; }
+.aib-modal-title { font-size: 1.35rem; font-weight: 800; color: #e8e8ff; margin-bottom: .85rem; }
+.aib-modal-body { font-size: .92rem; color: rgba(200,210,255,.7); line-height: 1.7; margin: 0; }
+
+/* chart inside modal */
+.aib-chart-title { font-size: .8rem; font-weight: 600; color: rgba(200,210,255,.5); margin-bottom: .75rem; }
+.aib-chart { width: 100%; display: block; }
+.aib-chart-note { font-size: .75rem; color: rgba(200,210,255,.38); margin: .5rem 0 .25rem; }
+.aib-chart-src { display: inline-block; margin-top: .6rem; font-size: .75rem; color: rgba(150,165,255,.5); text-decoration: none; transition: color .15s; }
+.aib-chart-src:hover { color: rgba(150,165,255,.9); }
+
+/* light theme modal */
+html[data-theme="light"] .aib-overlay { background: rgba(230,228,250,.65); }
+html[data-theme="light"] .aib-modal { background: #fff; border-color: rgba(0,0,0,.1); }
+html[data-theme="light"] .aib-modal-close { background: rgba(0,0,0,.05); color: rgba(20,16,58,.5); }
+html[data-theme="light"] .aib-modal-close:hover { background: rgba(0,0,0,.1); }
+html[data-theme="light"] .aib-modal-kicker { color: rgba(80,60,200,.45); }
+html[data-theme="light"] .aib-modal-title { color: #14103a; }
+html[data-theme="light"] .aib-modal-body { color: rgba(20,16,58,.65); }
+html[data-theme="light"] .aib-chart-title { color: rgba(20,16,58,.45); }
+html[data-theme="light"] .aib-chart-note { color: rgba(20,16,58,.35); }
+html[data-theme="light"] .aib-chart-src { color: rgba(80,60,200,.45); }
+html[data-theme="light"] .aib-chart-src:hover { color: rgba(80,60,200,.85); }
+html[data-theme="light"] .aib-term-q { background: rgba(80,60,200,.08); border-color: rgba(80,60,200,.2); color: rgba(80,60,200,.6); }
+
 /* ── AI Bubble: light theme ─────────────────────────────────────────── */
 html[data-theme="light"] .aib-page { background: #f0effa; color: #14103a; }
 html[data-theme="light"] .aib-hero {

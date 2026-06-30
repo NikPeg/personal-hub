@@ -1202,6 +1202,7 @@ function AiBubbleLanding({ t }) {
   const isRu = t.brandName === 'НикПег';
   const canvasRef = useRef(null);
   const [openSc, setOpenSc] = useState(null);
+  const [popup, setPopup] = useState(null);
   const logicRef = useRef(null);
   const scenRef = useRef(null);
   const metRef = useRef(null);
@@ -1215,6 +1216,106 @@ function AiBubbleLanding({ t }) {
       <button className="aib-down-btn" onClick={() => scrollTo(to)}>↓</button>
     </div>
   );
+
+  const termDefs = isRu ? {
+    sp500:    { name: 'S&P 500', def: 'Индекс акций 500 крупнейших публичных компаний США по рыночной капитализации. Главный барометр американского рынка — когда S&P 500 растёт, американские инвесторы в среднем зарабатывают.' },
+    pe:       { name: 'P/E', def: 'Price-to-Earnings — отношение цены акции к годовой прибыли на акцию. P/E 30 означает: рынок платит 30 долларов за каждый доллар прибыли. Чем выше — тем дороже акция относительно реальных заработков. В 2000-м NASDAQ имел P/E ~200×.' },
+    fed:      { name: 'ФРС', def: 'Федеральная резервная система — центральный банк США. Управляет ключевой ставкой: низкая ставка делает деньги дешевле и стимулирует рынки. Повышение ставки — «тормоз» для экономики. Аналог Банка России.' },
+    nasdaq:   { name: 'NASDAQ', def: 'Американская фондовая биржа, специализирующаяся на технологических компаниях. Apple, Microsoft, NVIDIA, Alphabet, Meta — все торгуются здесь.' },
+    capex:    { name: 'Capex / капзатраты', def: 'Capital Expenditures — деньги, которые компании тратят на покупку оборудования, серверов и строительство дата-центров. В отличие от операционных расходов, это долгосрочные инвестиции.' },
+    b2b:      { name: 'B2B', def: 'Business-to-Business — продажи между компаниями, не конечным потребителям. В B2B клиент — профессионал, платит за конкретный результат и не поддаётся хайпу. Делает спрос устойчивее, чем в B2C.' },
+    aiwashing:{ name: 'AI-washing', def: 'Практика, когда компании добавляют слово «ИИ» к продуктам ради роста биржевой оценки, даже если реального ИИ внутри минимум. Аналог «greenwashing» в ESG-повестке.' },
+  } : {
+    sp500:    { name: 'S&P 500', def: 'An index of 500 of the largest publicly traded US companies by market cap. The main barometer of the American stock market.' },
+    pe:       { name: 'P/E', def: 'Price-to-Earnings ratio — share price divided by annual earnings per share. A P/E of 30 means the market pays $30 for every $1 of profit. Higher = more expensive relative to real earnings. NASDAQ hit ~200× P/E in 2000.' },
+    fed:      { name: 'The Fed', def: 'Federal Reserve System — the US central bank. Controls the benchmark interest rate: low rates mean cheap money and rising markets. Rate hikes put the brakes on the economy.' },
+    nasdaq:   { name: 'NASDAQ', def: 'US stock exchange specializing in technology companies. Apple, Microsoft, NVIDIA, Alphabet, Meta — all trade here.' },
+    capex:    { name: 'Capex', def: 'Capital Expenditures — money companies spend buying equipment, servers, and building data centers. Unlike operating expenses, these are long-term investments.' },
+    b2b:      { name: 'B2B', def: 'Business-to-Business — selling to other companies rather than end consumers. B2B buyers are professionals paying for concrete results, not hype. Demand is more resilient than in B2C.' },
+    aiwashing:{ name: 'AI-washing', def: 'When companies add "AI" to their products to boost stock valuation, even with minimal real AI inside. The AI equivalent of greenwashing.' },
+  };
+
+  const renderChart = (key) => {
+    const W = 420, H = 170, PX = 36, PY = 24;
+    const cfgs = {
+      concentration: {
+        title: isRu ? 'Топ-5 компаний: доля индекса S&P 500, %' : 'Top-5 companies: S&P 500 share, %',
+        type: 'bar', color: '#fbbf24', unit: '%',
+        pts: [{l:'2000',v:16},{l:'2010',v:11},{l:'2015',v:12},{l:'2020',v:23},{l:'2023',v:27},{l:'2025',v:29},{l:'2026',v:30}],
+        src: 'S&P Global / Goldman Sachs', url: 'https://www.spglobal.com/spdji/en/indices/equity/sp-500/',
+      },
+      pe: {
+        title: isRu ? 'P/E мультипликатор NASDAQ по годам' : 'NASDAQ P/E ratio by year',
+        type: 'line', color: '#818cf8', unit: '×',
+        pts: [{l:'1995',v:25},{l:'1998',v:70},{l:'2000',v:200},{l:'2002',v:28},{l:'2010',v:22},{l:'2015',v:28},{l:'2020',v:35},{l:'2022',v:20},{l:'2024',v:32},{l:'2026',v:30}],
+        note: isRu ? 'Пик доткомов в 2000-м — ~200×' : 'Dot-com peak in 2000 — ~200×',
+        src: 'Multpl.com', url: 'https://www.multpl.com/nasdaq-pe-ratio',
+      },
+      capex: {
+        title: isRu ? 'Капзатраты на ИИ, млрд $' : 'AI capital expenditure, $B',
+        type: 'bar', color: '#f87171', unit: 'B', prefix: '$',
+        pts: [{l:'2022',v:90},{l:'2023',v:150},{l:'2024',v:280},{l:'2025',v:410},{l:'2026',v:650}],
+        note: isRu ? '2025–2026: консенсус-оценки аналитиков' : '2025–2026: consensus analyst estimates',
+        src: 'Goldman Sachs AI Capex Report', url: 'https://www.goldmansachs.com/insights/articles/generative-ai-capex-spending-is-expected-to-surge',
+      },
+      nvidia: {
+        title: isRu ? 'Годовая выручка NVIDIA, млрд $' : 'NVIDIA annual revenue, $B',
+        type: 'bar', color: '#4ade80', unit: 'B', prefix: '$',
+        pts: [{l:'FY20',v:11},{l:'FY21',v:17},{l:'FY22',v:27},{l:'FY23',v:45},{l:'FY24',v:130},{l:'FY25',v:215}],
+        src: 'NVIDIA Investor Relations', url: 'https://investor.nvidia.com/financial-info/annual-reports/',
+      },
+      fed: {
+        title: isRu ? 'Ставка ФРС (federal funds rate), %' : 'Federal funds rate, %',
+        type: 'line', color: '#fbbf24', unit: '%',
+        pts: [{l:'2019',v:2.4},{l:'2020',v:0.1},{l:'2021',v:0.1},{l:'2022',v:4.3},{l:'2023',v:5.3},{l:'2024Q1',v:5.3},{l:'2024Q4',v:4.6},{l:'2025Q2',v:4.3},{l:'2025Q4',v:3.6},{l:'2026',v:3.6}],
+        note: isRu ? '3 снижения в 2025-м → заморозка. Апрель 2026: голосование 8–4, риск повышения' : '3 cuts in 2025 → frozen. April 2026: 8–4 vote, hike risk emerging',
+        src: 'CME FedWatch / FRED', url: 'https://fred.stlouisfed.org/series/FEDFUNDS',
+      },
+      ai_share: {
+        title: isRu ? 'ИИ-сектор: вклад в рост S&P 500, %' : 'AI sector: contribution to S&P 500 return, %',
+        type: 'bar', color: '#60a5fa', unit: '%',
+        pts: [{l:'2022',v:12},{l:'2023',v:38},{l:'2024',v:65},{l:'2025',v:80}],
+        src: 'Goldman Sachs US Equity Research', url: 'https://www.goldmansachs.com',
+      },
+    };
+    const cfg = cfgs[key];
+    if (!cfg) return null;
+    const pts = cfg.pts;
+    const vals = pts.map(p => p.v);
+    const dataMin = cfg.type === 'line' ? Math.min(...vals) * 0.85 : 0;
+    const dataMax = Math.max(...vals);
+    const toX = (i) => PX + (i / (pts.length - 1)) * (W - PX * 2);
+    const toY = (v) => PY + (H - PY * 2) * (1 - (v - dataMin) / ((dataMax - dataMin) || 1));
+    const bSlot = (W - PX * 2) / pts.length;
+    const bw = Math.max(8, bSlot - 5);
+    return <>
+      <p className="aib-chart-title">{cfg.title}</p>
+      <svg viewBox={`0 0 ${W} ${H}`} className="aib-chart">
+        {[0.25,0.5,0.75,1].map(f => { const y = toY(dataMin + (dataMax - dataMin) * f); return <line key={f} x1={PX} y1={y} x2={W-PX} y2={y} stroke="rgba(200,210,255,.07)" strokeWidth="1" />; })}
+        {cfg.type === 'bar' ? pts.map((p, i) => {
+          const bx = PX + i * bSlot + (bSlot - bw) / 2;
+          const bh = ((p.v - dataMin) / ((dataMax - dataMin) || 1)) * (H - PY * 2);
+          const isLast = i === pts.length - 1;
+          return <g key={i}>
+            <rect x={bx} y={toY(p.v)} width={bw} height={bh} fill={isLast ? cfg.color : cfg.color + '55'} rx="3" />
+            <text x={bx + bw/2} y={H-4} textAnchor="middle" fill="rgba(200,210,255,.35)" fontSize="9">{p.l}</text>
+            {isLast && <text x={bx + bw/2} y={toY(p.v) - 5} textAnchor="middle" fill={cfg.color} fontSize="11" fontWeight="700">{cfg.prefix||''}{p.v}{cfg.unit}</text>}
+          </g>;
+        }) : (() => {
+          const d = pts.map((p,i) => `${i===0?'M':'L'} ${toX(i).toFixed(1)} ${toY(p.v).toFixed(1)}`).join(' ');
+          return <>{
+            <path d={d} stroke={cfg.color} strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+          }{pts.map((p,i) => <g key={i}>
+            <circle cx={toX(i)} cy={toY(p.v)} r={i===pts.length-1?4:2.5} fill={cfg.color} />
+            <text x={toX(i)} y={H-4} textAnchor="middle" fill="rgba(200,210,255,.35)" fontSize="9">{p.l}</text>
+            {i===pts.length-1 && <text x={toX(i)-6} y={toY(p.v)-9} textAnchor="end" fill={cfg.color} fontSize="11" fontWeight="700">{p.v}{cfg.unit}</text>}
+          </g>)}</>;
+        })()}
+      </svg>
+      {cfg.note && <p className="aib-chart-note">{cfg.note}</p>}
+      <a href={cfg.url} target="_blank" rel="noreferrer" className="aib-chart-src">↗ {isRu?'Источник':'Source'}: {cfg.src}</a>
+    </>;
+  };
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -1430,6 +1531,9 @@ function AiBubbleLanding({ t }) {
   };
 
   const colMap = { amber: '#fbbf24', red: '#f87171', green: '#4ade80', blue: '#60a5fa', '': 'inherit' };
+  const metKeys = ['concentration', 'pe', 'capex', 'nvidia', 'fed', 'ai_share'];
+  const metTerms = ['sp500', 'pe', 'capex', null, 'fed', 'sp500'];
+  c.metrics = c.metrics.map((m, i) => ({ ...m, statKey: metKeys[i], termKey: metTerms[i] }));
 
   return <section className="aib-page">
     <div className="aib-hero">
@@ -1508,8 +1612,10 @@ function AiBubbleLanding({ t }) {
       <h2 className="aib-sec-title aib-fade">{c.metTitle}</h2>
       <div className="aib-metrics">
         {c.metrics.map(m => <div key={m.label} className="aib-met aib-fade">
-          <p className="aib-met-lbl">{m.label}</p>
-          <p className="aib-met-val" style={{color: colMap[m.col]}}>{m.val}</p>
+          <p className={`aib-met-lbl${m.termKey ? ' aib-term' : ''}`} onClick={m.termKey ? () => setPopup({type:'term',key:m.termKey}) : undefined}>
+            {m.label}{m.termKey && <span className="aib-term-q">?</span>}
+          </p>
+          <p className="aib-met-val aib-stat-num" style={{color: colMap[m.col]}} onClick={() => setPopup({type:'stat',key:m.statKey})}>{m.val}<span className="aib-stat-arrow">↗</span></p>
           <p className="aib-met-ctx">{m.ctx}</p>
         </div>)}
       </div>
@@ -1583,6 +1689,18 @@ function AiBubbleLanding({ t }) {
     </div>
 
     <div className="aib-footer"><p>{c.disclaimer}</p></div>
+
+    {popup && <div className="aib-overlay" onClick={() => setPopup(null)}>
+      <div className="aib-modal" onClick={e => e.stopPropagation()}>
+        <button className="aib-modal-close" onClick={() => setPopup(null)}>×</button>
+        {popup.type === 'term' && termDefs[popup.key] && <>
+          <p className="aib-modal-kicker">{isRu ? 'Определение' : 'Definition'}</p>
+          <h3 className="aib-modal-title">{termDefs[popup.key].name}</h3>
+          <p className="aib-modal-body">{termDefs[popup.key].def}</p>
+        </>}
+        {popup.type === 'stat' && renderChart(popup.key)}
+      </div>
+    </div>}
   </section>;
 }
 
