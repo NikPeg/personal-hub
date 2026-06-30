@@ -3232,6 +3232,22 @@ html[data-theme="light"] .mkt-calc-loss-year { color: rgba(12,15,26,.35); }
 .aib-logic-conclusion { margin-top: 2rem; background: rgba(99,102,241,.08); border: 1px solid rgba(99,102,241,.22); border-radius: 1rem; padding: 1.25rem 1.5rem; }
 .aib-logic-conclusion p { font-size: .95rem; color: rgba(200,210,255,.75); line-height: 1.65; margin: 0; }
 
+/* eval section — is there a bubble? */
+.aib-eval-sub { font-size: 1rem; color: rgba(200,210,255,.65); line-height: 1.65; max-width: 680px; margin: 0 0 2.5rem; }
+.aib-eval-feat { background: linear-gradient(135deg, rgba(248,113,113,.1) 0%, rgba(99,102,241,.08) 100%); border: 1px solid rgba(248,113,113,.28); border-radius: 1.5rem; padding: 2rem 2.5rem; margin-bottom: 2.5rem; }
+.aib-eval-tag { display: inline-block; font-size: .65rem; font-weight: 700; text-transform: uppercase; letter-spacing: .12em; color: #f87171; border: 1px solid rgba(248,113,113,.3); border-radius: 2rem; padding: .2em .8em; margin-bottom: 1rem; }
+.aib-eval-feat-title { font-size: clamp(1.15rem, 2.5vw, 1.5rem); font-weight: 800; color: #e8e8ff; margin: 0 0 .75rem; line-height: 1.3; }
+.aib-eval-feat-body { font-size: .95rem; color: rgba(200,210,255,.75); line-height: 1.65; margin: 0 0 1.25rem; }
+.aib-eval-quote { font-size: .9rem; font-style: italic; color: rgba(200,210,255,.6); border-left: 3px solid rgba(248,113,113,.4); padding-left: 1rem; margin: 0 0 1rem; line-height: 1.55; }
+.aib-eval-src { font-size: .78rem; color: #818cf8; text-decoration: none; opacity: .8; }
+.aib-eval-src:hover { opacity: 1; text-decoration: underline; }
+.aib-eval-args { display: flex; flex-direction: column; gap: 1.25rem; margin-bottom: 2rem; }
+.aib-eval-arg { display: flex; gap: 1.25rem; align-items: flex-start; background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.07); border-radius: 1rem; padding: 1.25rem 1.5rem; }
+.aib-eval-arg-icon { font-size: 1.5rem; flex-shrink: 0; line-height: 1; margin-top: .1rem; }
+.aib-eval-arg-title { font-size: .95rem; font-weight: 700; color: #c4b5fd; margin: 0 0 .35rem; }
+.aib-eval-arg-body { font-size: .88rem; color: rgba(200,210,255,.6); line-height: 1.6; margin: 0; }
+.aib-eval-note { font-size: .9rem; color: rgba(200,210,255,.5); font-style: italic; border-top: 1px solid rgba(255,255,255,.07); padding-top: 1.25rem; margin: 0; line-height: 1.6; }
+
 /* risk shift callout */
 .aib-risk { background: linear-gradient(135deg, rgba(99,102,241,.12) 0%, rgba(139,92,246,.08) 100%); border: 1px solid rgba(99,102,241,.28); border-radius: 1.5rem; padding: 2.5rem 3rem; max-width: 820px; }
 .aib-risk-kicker { font-size: .68rem; font-weight: 700; text-transform: uppercase; letter-spacing: .12em; color: #818cf8; margin-bottom: .6rem; }
@@ -3428,6 +3444,16 @@ html[data-theme="light"] .aib-logic-year { color: rgba(20,16,58,.3); }
 html[data-theme="light"] .aib-logic-val { color: rgba(20,16,58,.5); }
 html[data-theme="light"] .aib-logic-conclusion { background: rgba(99,102,241,.06); border-color: rgba(99,102,241,.18); }
 html[data-theme="light"] .aib-logic-conclusion p { color: rgba(20,16,58,.7); }
+html[data-theme="light"] .aib-eval-sub { color: rgba(20,16,58,.6); }
+html[data-theme="light"] .aib-eval-feat { background: linear-gradient(135deg, rgba(220,38,38,.06) 0%, rgba(99,102,241,.05) 100%); border-color: rgba(220,38,38,.2); }
+html[data-theme="light"] .aib-eval-feat-title { color: #14103a; }
+html[data-theme="light"] .aib-eval-feat-body { color: rgba(20,16,58,.7); }
+html[data-theme="light"] .aib-eval-quote { color: rgba(20,16,58,.55); border-left-color: rgba(220,38,38,.3); }
+html[data-theme="light"] .aib-eval-src { color: #5b50c9; }
+html[data-theme="light"] .aib-eval-arg { background: rgba(0,0,0,.02); border-color: rgba(0,0,0,.07); }
+html[data-theme="light"] .aib-eval-arg-title { color: #5b50c9; }
+html[data-theme="light"] .aib-eval-arg-body { color: rgba(20,16,58,.6); }
+html[data-theme="light"] .aib-eval-note { color: rgba(20,16,58,.45); border-top-color: rgba(0,0,0,.08); }
 html[data-theme="light"] .aib-risk { background: linear-gradient(135deg, rgba(99,102,241,.07) 0%, rgba(139,92,246,.05) 100%); border-color: rgba(99,102,241,.2); }
 html[data-theme="light"] .aib-risk-kicker { color: #5b50c9; }
 html[data-theme="light"] .aib-risk-title { color: #14103a; }

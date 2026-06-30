@@ -1204,6 +1204,7 @@ function AiBubbleLanding({ t }) {
   const [openSc, setOpenSc] = useState(null);
   const [popup, setPopup] = useState(null);
   const logicRef = useRef(null);
+  const evalRef = useRef(null);
   const scenRef = useRef(null);
   const metRef = useRef(null);
   const histRef = useRef(null);
@@ -1391,6 +1392,23 @@ function AiBubbleLanding({ t }) {
     ],
     logicConclusion: 'В 2000-м совпали все три — и рынок упал за недели. В 2026-м второй фактор отсутствует. Это не значит, что пузыря нет. Это значит, что взрыв менее вероятен, чем долгое остывание.',
     lbl2000: '2000', lbl2026: '2026', lblMet: 'Да', lblWarn: 'Частично', lblNo: 'Нет',
+    evalKicker: 'Аргументы за переоценку',
+    evalTitle: 'А пузырь-то есть?',
+    evalSub: 'Три условия резкого обвала — не все сошлись. Но признаки перегрева видны. Вот чем можно обосновать, что рынок переоценён.',
+    evalFeat: {
+      tag: 'Ключевой кейс',
+      title: 'OpenAI: $13 млрд выручки, $21 млрд убытков',
+      body: 'Самая известная ИИ-компания мира с оценкой $300+ млрд тратит $1.60 на каждый заработанный доллар. В 2025-м операционный убыток — $20.9 млрд при выручке $13.1 млрд. В I квартале 2026-го операционная маржа — минус 122%. Прибыль по собственным прогнозам — не раньше 2029–2030 года.',
+      quote: '«Ни один стартап в истории не работал с убытками такого масштаба» — Deutsche Bank',
+      src: 'Fortune / Financial Times, июнь 2026',
+      url: 'https://fortune.com/2026/06/16/openai-financials-leaked-losses-revenue-profit/',
+    },
+    evalArgs: [
+      { icon: '📡', title: 'Capex опережает монетизацию', body: '$650 млрд инфраструктуры строится под спрос, который ещё не пришёл. Компании возводят дата-центры под будущий ИИ — как в 2000-м прокладывали оптику под будущий интернет-трафик. В 2000-м оптика оказалась дешевле ожидаемого: компании разорились, кабели легли тёмными.' },
+      { icon: '📊', title: 'P/E выше исторической нормы на 40–50%', body: '~30× сейчас против исторической нормы NASDAQ в 20–22×. Не безумие доткомов, но и не нейтральная оценка. Любое замедление роста — и рынок вынужден переоценить акции вниз.' },
+      { icon: '🏷', title: 'AI-washing в промышленных масштабах', body: 'Сотни компаний получают оценочную премию за слово «ИИ» в пресс-релизе. Индексы «AI корзин» Goldman Sachs включают компании, у которых ИИ — маркетинговый слой поверх обычного ПО.' },
+    ],
+    evalNote: 'Это не означает, что пузырь лопнет завтра. Но это означает: пространство для разочарования есть — и оно большое.',
     metKicker: 'Данные',
     metTitle: 'Цифры, на которых строится анализ',
     metrics: [
@@ -1476,6 +1494,23 @@ function AiBubbleLanding({ t }) {
     ],
     logicConclusion: 'In 2000, all three aligned — and the market fell in weeks. In 2026, condition #2 is absent. That doesn\'t mean there\'s no bubble. It means an explosion is less likely than a slow cool-down.',
     lbl2000: '2000', lbl2026: '2026', lblMet: 'Yes', lblWarn: 'Partial', lblNo: 'No',
+    evalKicker: 'Arguments for overvaluation',
+    evalTitle: 'Is there even a bubble?',
+    evalSub: 'Not all three crash conditions have converged. But signs of overheating are visible. Here\'s the case that markets are overvalued.',
+    evalFeat: {
+      tag: 'Key case study',
+      title: 'OpenAI: $13B revenue, $21B losses',
+      body: 'The world\'s most recognized AI company — valued at $300B+ — spends $1.60 for every $1 it earns. In 2025: operating loss $20.9B on $13.1B revenue. Q1 2026: operating margin of −122%. Profitable only by 2029–2030 by its own projections.',
+      quote: '"No startup in history has operated with losses on anything approaching this scale" — Deutsche Bank',
+      src: 'Fortune / Financial Times, June 2026',
+      url: 'https://fortune.com/2026/06/16/openai-financials-leaked-losses-revenue-profit/',
+    },
+    evalArgs: [
+      { icon: '📡', title: 'Capex outpaces monetization', body: '$650B of infrastructure is being built for demand that hasn\'t arrived yet. Companies are erecting data centers for future AI — just as 2000s firms laid fiber for future internet traffic. The fiber turned out cheaper than expected: the companies went bankrupt, the cables went dark.' },
+      { icon: '📊', title: 'P/E 40–50% above historical norm', body: '~30× now vs. a NASDAQ historical average of 20–22×. Not dot-com madness, but not neutral either. Any growth slowdown forces the market to re-price equities downward.' },
+      { icon: '🏷', title: 'AI-washing at industrial scale', body: 'Hundreds of companies collect a valuation premium for the word "AI" in a press release. Goldman Sachs "AI basket" indices include firms where AI is a marketing layer on top of ordinary software.' },
+    ],
+    evalNote: 'This doesn\'t mean the bubble bursts tomorrow. It means the room for disappointment is large.',
     metKicker: 'Data',
     metTitle: 'Numbers behind the analysis',
     metrics: [
@@ -1577,6 +1612,32 @@ function AiBubbleLanding({ t }) {
         </div>)}
       </div>
       <div className="aib-logic-conclusion aib-fade"><p>{c.logicConclusion}</p></div>
+      <DownBtn to={evalRef} />
+    </div>
+
+    <div className="aib-section aib-section-sep" ref={evalRef}>
+      <p className="aib-kicker aib-fade">{c.evalKicker}</p>
+      <h2 className="aib-sec-title aib-fade">{c.evalTitle}</h2>
+      <p className="aib-eval-sub aib-fade">{c.evalSub}</p>
+      <div className="aib-eval-feat aib-fade">
+        <span className="aib-eval-tag">{c.evalFeat.tag}</span>
+        <h3 className="aib-eval-feat-title">{c.evalFeat.title}</h3>
+        <p className="aib-eval-feat-body">{c.evalFeat.body}</p>
+        <blockquote className="aib-eval-quote">{c.evalFeat.quote}</blockquote>
+        <a className="aib-eval-src" href={c.evalFeat.url} target="_blank" rel="noreferrer">{c.evalFeat.src} ↗</a>
+      </div>
+      <div className="aib-eval-args">
+        {c.evalArgs.map((a, i) => (
+          <div key={i} className="aib-eval-arg aib-fade">
+            <span className="aib-eval-arg-icon">{a.icon}</span>
+            <div>
+              <p className="aib-eval-arg-title">{a.title}</p>
+              <p className="aib-eval-arg-body">{a.body}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+      <p className="aib-eval-note aib-fade">{c.evalNote}</p>
       <DownBtn to={scenRef} />
     </div>
 
