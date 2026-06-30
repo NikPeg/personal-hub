@@ -1202,6 +1202,7 @@ function AiBubbleLanding({ t }) {
   const isRu = t.brandName === 'НикПег';
   const canvasRef = useRef(null);
   const [openSc, setOpenSc] = useState(null);
+  const logicRef = useRef(null);
   const scenRef = useRef(null);
   const metRef = useRef(null);
   const histRef = useRef(null);
@@ -1279,6 +1280,16 @@ function AiBubbleLanding({ t }) {
         con: ['Капзатраты уже опережают монетизацию', 'ФРС не снижает ставку — стоимость капитала высокая'] },
     ],
     proLbl: 'За', conLbl: 'Против', weakLbl: 'Слабые места', showArgs: 'Аргументы', hideArgs: 'Скрыть',
+    logicKicker: 'Аналитический фреймворк',
+    logicTitle: 'Три условия для резкого обвала',
+    logicSub: 'Чтобы пузырь лопнул быстро — как в 2000-м — нужно совпадение трёх факторов. В 2026-м они не все на месте.',
+    logicConds: [
+      { num: '01', title: 'Цены оторваны от прибыли', desc: 'Акции стоят в разы больше, чем оправдывает реальная выручка компаний.', s2000: 'P/E NASDAQ ~200×', s2026: 'P/E ~30× — высоко, не безумие', ok2026: 'warn' },
+      { num: '02', title: 'Лидеры живут в долг', desc: 'Компании-лидеры берут деньги в долг под рост — и не зарабатывают сами.', s2000: 'Большинство без прибыли', s2026: 'NVIDIA, Google, Microsoft — прибыльны', ok2026: 'no' },
+      { num: '03', title: 'Деньги резко дорожают', desc: 'Центробанк повышает ставку — и поток дешёвых денег, надувавших пузырь, внезапно иссякает.', s2000: 'ФРС резко повышала ставку', s2026: '3 снижения в 2025-м → заморозка в 2026-м', ok2026: 'warn' },
+    ],
+    logicConclusion: 'В 2000-м совпали все три — и рынок упал за недели. В 2026-м второй фактор отсутствует. Это не значит, что пузыря нет. Это значит, что взрыв менее вероятен, чем долгое остывание.',
+    lbl2000: '2000', lbl2026: '2026', lblMet: 'Да', lblWarn: 'Частично', lblNo: 'Нет',
     metKicker: 'Данные',
     metTitle: 'Цифры, на которых строится анализ',
     metrics: [
@@ -1286,7 +1297,7 @@ function AiBubbleLanding({ t }) {
       { label: 'P/E NASDAQ сейчас', val: '~30×', ctx: 'в пик доткомов было 200×. Дорого, не безумие', col: '' },
       { label: 'Capex на ИИ в 2026', val: '$650B', ctx: '+60% к 2025-му. Amazon, Google, Meta, Microsoft', col: 'red' },
       { label: 'Выручка NVIDIA', val: '$215B', ctx: 'Реальные продажи за реальные чипы', col: 'green' },
-      { label: 'Риск повышения ставки', val: '47%', ctx: 'Рынок оценивает вероятность к июлю 2027-го', col: 'amber' },
+      { label: 'Ставка ФРС', val: 'заморожена', ctx: '3 снижения в кон. 2025-го — затем пауза. Часть ФРС за повышение из-за инфляции', col: 'amber' },
       { label: 'ИИ → рост S&P 500', val: '80%', ctx: 'Доля сектора в общем росте рынка США, 2025', col: 'blue' },
     ],
     histKicker: 'Исторический контекст',
@@ -1313,7 +1324,10 @@ function AiBubbleLanding({ t }) {
       { p: 'Падение от пика', n: '?', cs: '−86% за 2 года', highlight: 'warn' },
       { p: 'Восстановление', n: '?', cs: 'Не восстановилась до 2000-го уровня', highlight: 'warn' },
     ],
-    compNote: 'Ключевое отличие: P/E NVIDIA в 5× ниже пикового Cisco. Но Cisco тоже была прибыльной — и упала на 86%. Риск не в мошенничестве, а в том, что спрос на чипы может замедлиться так же, как замедлился спрос на маршрутизаторы после 2000-го.',
+    compNote: 'Обе компании — «продавцы лопат» в золотую лихорадку своей эпохи. Только Cisco продавала надежду на будущие доходы, а NVIDIA продаёт то, за что уже платят живыми деньгами. P/E NVIDIA в 5× ниже пикового Cisco — но Cisco тоже была прибыльной и рухнула на 86%. Риск не в мошенничестве: он в том, что спрос на чипы может замедлиться так же, как замедлился спрос на маршрутизаторы.',
+    riskKicker: 'Вывод',
+    riskTitle: 'Риск не исчез — он сместился',
+    riskText: 'С «внезапного перекрытия денег» на «разочарование: вложения не окупаются». Второй процесс — долгий. Слабые игроки тихо выбывают, сильные адаптируются. Именно это и называется сдуванием, а не взрывом.',
     cmpKicker: 'Детальный разбор',
     cmpTitle: 'Доткомы vs ИИ',
     cmpHeaders: ['Параметр', 'Доткомы 1999–2000', 'ИИ 2026', ''],
@@ -1351,6 +1365,16 @@ function AiBubbleLanding({ t }) {
         con: ['Capex already outpacing monetization', 'Fed not cutting — cost of capital remains high'] },
     ],
     proLbl: 'For', conLbl: 'Against', weakLbl: 'Weak points', showArgs: 'Arguments', hideArgs: 'Hide',
+    logicKicker: 'Analytical framework',
+    logicTitle: 'Three conditions for a sharp crash',
+    logicSub: 'For a bubble to burst fast — like 2000 — three factors must align. In 2026, they\'re not all present.',
+    logicConds: [
+      { num: '01', title: 'Prices detached from earnings', desc: 'Stocks trade at multiples far beyond what real revenue justifies.', s2000: 'NASDAQ P/E ~200×', s2026: 'P/E ~30× — expensive, not insane', ok2026: 'warn' },
+      { num: '02', title: 'Leaders run on borrowed money', desc: 'Market-leading companies rely on debt and don\'t generate profits themselves.', s2000: 'Most were unprofitable', s2026: 'NVIDIA, Google, Microsoft — highly profitable', ok2026: 'no' },
+      { num: '03', title: 'Money suddenly gets expensive', desc: 'The central bank hikes rates — and the cheap-money flow inflating the bubble abruptly dries up.', s2000: 'Fed aggressively hiked rates', s2026: '3 cuts in late 2025 → frozen in 2026', ok2026: 'warn' },
+    ],
+    logicConclusion: 'In 2000, all three aligned — and the market fell in weeks. In 2026, condition #2 is absent. That doesn\'t mean there\'s no bubble. It means an explosion is less likely than a slow cool-down.',
+    lbl2000: '2000', lbl2026: '2026', lblMet: 'Yes', lblWarn: 'Partial', lblNo: 'No',
     metKicker: 'Data',
     metTitle: 'Numbers behind the analysis',
     metrics: [
@@ -1358,7 +1382,7 @@ function AiBubbleLanding({ t }) {
       { label: 'NASDAQ P/E now', val: '~30×', ctx: 'was 200× at dot-com peak. Expensive, not crazy', col: '' },
       { label: 'AI capex in 2026', val: '$650B', ctx: '+60% vs 2025. Amazon, Google, Meta, Microsoft', col: 'red' },
       { label: 'NVIDIA revenue', val: '$215B', ctx: 'Real sales for real chips', col: 'green' },
-      { label: 'Rate hike risk', val: '47%', ctx: 'Market odds of Fed hike by July 2027', col: 'amber' },
+      { label: 'Fed rate', val: 'frozen', ctx: '3 cuts in late 2025 — then paused. Some Fed officials pushing to hike on stubborn inflation', col: 'amber' },
       { label: 'AI share of S&P growth', val: '80%', ctx: 'Sector share of total US market gains, 2025', col: 'blue' },
     ],
     histKicker: 'Historical context',
@@ -1385,7 +1409,10 @@ function AiBubbleLanding({ t }) {
       { p: 'Post-peak drop', n: '?', cs: '−86% in 2 years', highlight: 'warn' },
       { p: 'Recovery', n: '?', cs: 'Never recovered to 2000 levels', highlight: 'warn' },
     ],
-    compNote: 'Key difference: NVIDIA\'s P/E is 5× lower than Cisco\'s at peak. But Cisco was profitable too — and crashed 86%. The risk isn\'t fraud; it\'s that chip demand could slow the same way router demand did after 2000.',
+    compNote: 'Both were "shovel sellers" in their era\'s gold rush. Cisco sold hope for future earnings; NVIDIA sells what people are already paying for today. NVIDIA\'s P/E is 5× lower than Cisco\'s at peak — but Cisco was profitable too, and crashed 86%. The risk isn\'t fraud: it\'s that chip demand could slow the same way router demand did after 2000.',
+    riskKicker: 'Conclusion',
+    riskTitle: 'The risk hasn\'t gone — it shifted',
+    riskText: 'From "sudden money cutoff" to "disappointment that investments don\'t pay off." The second is a slow process. Weak players quietly exit; strong ones adapt. That\'s what deflation looks like — not an explosion.',
     cmpKicker: 'Deep dive',
     cmpTitle: 'Dot-com vs AI',
     cmpHeaders: ['Parameter', 'Dot-com 1999–2000', 'AI 2026', ''],
@@ -1417,12 +1444,39 @@ function AiBubbleLanding({ t }) {
           <p className="aib-predict-text">{c.pText}</p>
         </div>
       </div>
-      <button className="aib-scroll-hint" onClick={() => scrollTo(scenRef)}>
+      <button className="aib-scroll-hint" onClick={() => scrollTo(logicRef)}>
         <span>{c.scrollHint}</span><span>↓</span>
       </button>
     </div>
 
-    <div className="aib-section" ref={scenRef}>
+    <div className="aib-section" ref={logicRef}>
+      <p className="aib-kicker aib-fade">{c.logicKicker}</p>
+      <h2 className="aib-sec-title aib-fade">{c.logicTitle}</h2>
+      <p className="aib-sec-sub aib-fade">{c.logicSub}</p>
+      <div className="aib-logic">
+        {c.logicConds.map(cd => <div key={cd.num} className="aib-logic-card aib-fade">
+          <div className="aib-logic-num">{cd.num}</div>
+          <h3 className="aib-logic-title">{cd.title}</h3>
+          <p className="aib-logic-desc">{cd.desc}</p>
+          <div className="aib-logic-status">
+            <div className="aib-logic-col aib-logic-met">
+              <span className="aib-logic-year">{c.lbl2000}</span>
+              <span className="aib-logic-badge aib-lbadge-yes">✓ {c.lblMet}</span>
+              <span className="aib-logic-val">{cd.s2000}</span>
+            </div>
+            <div className={`aib-logic-col aib-logic-${cd.ok2026}`}>
+              <span className="aib-logic-year">{c.lbl2026}</span>
+              <span className={`aib-logic-badge aib-lbadge-${cd.ok2026}`}>{cd.ok2026 === 'no' ? `✗ ${c.lblNo}` : `⚠ ${c.lblWarn}`}</span>
+              <span className="aib-logic-val">{cd.s2026}</span>
+            </div>
+          </div>
+        </div>)}
+      </div>
+      <div className="aib-logic-conclusion aib-fade"><p>{c.logicConclusion}</p></div>
+      <DownBtn to={scenRef} />
+    </div>
+
+    <div className="aib-section aib-section-sep" ref={scenRef}>
       <p className="aib-kicker aib-fade">{c.scKicker}</p>
       <h2 className="aib-sec-title aib-fade">{c.scTitle}</h2>
       <div className="aib-scenarios">
@@ -1517,6 +1571,14 @@ function AiBubbleLanding({ t }) {
             <td><span className={r.same ? 'aib-same' : 'aib-diff'}>{r.same ? `▲ ${c.sameLbl}` : `▼ ${c.diffLbl}`}</span></td>
           </tr>)}</tbody>
         </table>
+      </div>
+    </div>
+
+    <div className="aib-section aib-section-sep">
+      <div className="aib-risk aib-fade">
+        <p className="aib-risk-kicker">{c.riskKicker}</p>
+        <h2 className="aib-risk-title">{c.riskTitle}</h2>
+        <p className="aib-risk-text">{c.riskText}</p>
       </div>
     </div>
 

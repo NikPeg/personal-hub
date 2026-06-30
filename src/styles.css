@@ -3215,6 +3215,29 @@ html[data-theme="light"] .mkt-calc-loss-year { color: rgba(12,15,26,.35); }
 .aib-down-btn { background: none; border: 1px solid rgba(200,210,255,.15); border-radius: 50%; width: 2.4rem; height: 2.4rem; color: rgba(200,210,255,.4); font-size: 1rem; cursor: pointer; display: grid; place-items: center; transition: all .18s; }
 .aib-down-btn:hover { border-color: rgba(200,210,255,.4); color: rgba(200,210,255,.9); transform: translateY(3px); }
 
+/* logic: 3-condition framework */
+.aib-logic { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; margin-top: 2.5rem; }
+.aib-logic-card { background: rgba(255,255,255,.045); border: 1px solid rgba(255,255,255,.09); border-radius: 1.25rem; padding: 1.75rem; display: flex; flex-direction: column; gap: .65rem; }
+.aib-logic-num { font-size: .65rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: rgba(150,165,255,.35); }
+.aib-logic-title { font-size: 1.05rem; font-weight: 700; color: #e8e8ff; margin: 0; line-height: 1.3; }
+.aib-logic-desc { font-size: .82rem; color: rgba(200,210,255,.5); line-height: 1.6; margin: 0; flex: 1; }
+.aib-logic-status { display: grid; grid-template-columns: 1fr 1fr; gap: .75rem; margin-top: .5rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,.07); }
+.aib-logic-col { display: flex; flex-direction: column; gap: .3rem; }
+.aib-logic-year { font-size: .65rem; font-weight: 700; text-transform: uppercase; letter-spacing: .09em; color: rgba(200,210,255,.3); }
+.aib-logic-badge { font-size: .68rem; font-weight: 700; border-radius: 2rem; padding: .2rem .6rem; width: fit-content; }
+.aib-lbadge-yes { background: rgba(248,113,113,.12); color: #f87171; border: 1px solid rgba(248,113,113,.22); }
+.aib-lbadge-warn { background: rgba(251,191,36,.1); color: #fbbf24; border: 1px solid rgba(251,191,36,.2); }
+.aib-lbadge-no { background: rgba(74,222,128,.1); color: #86efac; border: 1px solid rgba(74,222,128,.2); }
+.aib-logic-val { font-size: .75rem; color: rgba(200,210,255,.5); line-height: 1.45; }
+.aib-logic-conclusion { margin-top: 2rem; background: rgba(99,102,241,.08); border: 1px solid rgba(99,102,241,.22); border-radius: 1rem; padding: 1.25rem 1.5rem; }
+.aib-logic-conclusion p { font-size: .95rem; color: rgba(200,210,255,.75); line-height: 1.65; margin: 0; }
+
+/* risk shift callout */
+.aib-risk { background: linear-gradient(135deg, rgba(99,102,241,.12) 0%, rgba(139,92,246,.08) 100%); border: 1px solid rgba(99,102,241,.28); border-radius: 1.5rem; padding: 2.5rem 3rem; max-width: 820px; }
+.aib-risk-kicker { font-size: .68rem; font-weight: 700; text-transform: uppercase; letter-spacing: .12em; color: #818cf8; margin-bottom: .6rem; }
+.aib-risk-title { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 800; color: #e8e8ff; margin-bottom: .75rem; line-height: 1.2; }
+.aib-risk-text { font-size: 1rem; color: rgba(200,210,255,.65); line-height: 1.7; margin: 0; }
+
 /* scenarios */
 .aib-scenarios { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3rem; }
 .aib-sc { background: rgba(255,255,255,.045); border: 1px solid rgba(255,255,255,.1); border-radius: 1.25rem; padding: 1.75rem; display: flex; flex-direction: column; transition: border-color .2s; }
@@ -3356,6 +3379,19 @@ html[data-theme="light"] .aib-comp-param { color: rgba(20,16,58,.35); }
 html[data-theme="light"] .aib-comp-note { color: rgba(20,16,58,.5); border-color: rgba(0,0,0,.08); }
 html[data-theme="light"] .aib-comp-hl-diff { background: rgba(99,102,241,.06); }
 html[data-theme="light"] .aib-comp-hl-warn { background: rgba(220,38,38,.05); }
+html[data-theme="light"] .aib-logic-card { background: rgba(255,255,255,.75); border-color: rgba(0,0,0,.09); }
+html[data-theme="light"] .aib-logic-num { color: rgba(80,60,200,.3); }
+html[data-theme="light"] .aib-logic-title { color: #14103a; }
+html[data-theme="light"] .aib-logic-desc { color: rgba(20,16,58,.5); }
+html[data-theme="light"] .aib-logic-status { border-color: rgba(0,0,0,.07); }
+html[data-theme="light"] .aib-logic-year { color: rgba(20,16,58,.3); }
+html[data-theme="light"] .aib-logic-val { color: rgba(20,16,58,.5); }
+html[data-theme="light"] .aib-logic-conclusion { background: rgba(99,102,241,.06); border-color: rgba(99,102,241,.18); }
+html[data-theme="light"] .aib-logic-conclusion p { color: rgba(20,16,58,.7); }
+html[data-theme="light"] .aib-risk { background: linear-gradient(135deg, rgba(99,102,241,.07) 0%, rgba(139,92,246,.05) 100%); border-color: rgba(99,102,241,.2); }
+html[data-theme="light"] .aib-risk-kicker { color: #5b50c9; }
+html[data-theme="light"] .aib-risk-title { color: #14103a; }
+html[data-theme="light"] .aib-risk-text { color: rgba(20,16,58,.6); }
 html[data-theme="light"] .aib-table th { color: rgba(20,16,58,.35); border-color: rgba(0,0,0,.1); }
 html[data-theme="light"] .aib-table td { border-color: rgba(0,0,0,.05); }
 html[data-theme="light"] .aib-td-param { color: #14103a; }
@@ -3366,9 +3402,11 @@ html[data-theme="light"] .aib-footer p { color: rgba(20,16,58,.3); }
 /* responsive */
 @media (max-width: 900px) {
   .aib-scenarios { grid-template-columns: 1fr; }
+  .aib-logic { grid-template-columns: 1fr; }
   .aib-metrics { grid-template-columns: repeat(2, 1fr); }
   .aib-hist { grid-template-columns: 1fr; }
   .aib-comp-head, .aib-comp-row { grid-template-columns: 1fr 1fr 1fr; }
+  .aib-risk { padding: 1.75rem; }
 }
 @media (max-width: 600px) {
   .aib-metrics { grid-template-columns: 1fr; }
@@ -3382,4 +3420,6 @@ html[data-theme="light"] .aib-footer p { color: rgba(20,16,58,.3); }
   .aib-comp-col-mid { display: none; }
   .aib-comp-param { text-align: left; padding: .25rem 0 .1rem; color: rgba(200,210,255,.3); }
   html[data-theme="light"] .aib-comp-param { color: rgba(20,16,58,.3); }
+  .aib-risk { padding: 1.25rem; }
+  .aib-logic-status { grid-template-columns: 1fr; }
 }
