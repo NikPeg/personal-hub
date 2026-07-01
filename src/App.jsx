@@ -1205,6 +1205,7 @@ function AiBubbleLanding({ t }) {
   const [popup, setPopup] = useState(null);
   const logicRef = useRef(null);
   const evalRef = useRef(null);
+  const bullRef = useRef(null);
   const scenRef = useRef(null);
   const metRef = useRef(null);
   const histRef = useRef(null);
@@ -1387,7 +1388,7 @@ function AiBubbleLanding({ t }) {
         con: ['Капзатраты уже опережают монетизацию', 'ФРС не снижает ставку — стоимость капитала высокая'] },
     ],
     proLbl: 'За', conLbl: 'Против', weakLbl: 'Слабые места', showArgs: 'Аргументы', hideArgs: 'Скрыть',
-    logicKicker: 'Аналитический фреймворк',
+    logicKicker: 'Критерии обвала',
     logicTitle: 'Три условия для резкого обвала',
     logicSub: 'Чтобы пузырь лопнул быстро — как в 2000-м — нужно совпадение трёх факторов. В 2026-м они не все на месте.',
     logicConds: [
@@ -1399,7 +1400,7 @@ function AiBubbleLanding({ t }) {
     lbl2000: '2000', lbl2026: '2026', lblMet: 'Да', lblWarn: 'Частично', lblNo: 'Нет',
     evalKicker: 'Аргументы за переоценку',
     evalTitle: 'А пузырь-то есть?',
-    evalSub: 'Три условия резкого обвала — не все сошлись. Но признаки перегрева видны. Вот чем можно обосновать, что рынок переоценён.',
+    evalSub: 'Три условия резкого обвала — не все сошлись. Но признаки перегрева видны. Вот что показывает, что рынок переоценен.',
     evalFeat: {
       tag: 'Ключевой кейс',
       title: 'OpenAI: $13 млрд выручки, $21 млрд убытков',
@@ -1412,6 +1413,7 @@ function AiBubbleLanding({ t }) {
       { icon: '📡', title: 'Capex опережает монетизацию', body: '$650 млрд инфраструктуры строится под спрос, который ещё не пришёл. Компании возводят дата-центры под будущий ИИ — как в 2000-м прокладывали оптику под будущий интернет-трафик. В 2000-м оптика оказалась дешевле ожидаемого: компании разорились, кабели легли тёмными.', src: 'Bloomberg Intelligence, 2026', url: 'https://www.bloomberg.com/news/articles/2026-01-27/big-tech-ai-spending-plans-unnerve-some-investors' },
       { icon: '📊', title: 'P/E выше исторической нормы на 40–50%', body: '~30× сейчас против исторической нормы NASDAQ в 20–22×. Не безумие доткомов, но и не нейтральная оценка. Любое замедление роста — и рынок вынужден переоценить акции вниз.', src: 'Macrotrends / Yardeni Research', url: 'https://www.macrotrends.net/stocks/charts/QQQ/invesco-qqq-trust/pe-ratio' },
       { icon: '🏷', title: 'AI-washing в промышленных масштабах', body: 'Сотни компаний получают оценочную премию за слово «ИИ» в пресс-релизе. Индексы «AI корзин» Goldman Sachs включают компании, у которых ИИ — маркетинговый слой поверх обычного ПО.', src: 'Goldman Sachs: «Gen AI: Too Much Spend, Too Little Benefit?», 2024', url: 'https://www.goldmansachs.com/insights/articles/gen-ai-too-much-spend-too-little-benefit.html' },
+      { icon: '🏛', title: 'ФРС на паузе — и не факт, что смягчится', body: 'Три заседания подряд без изменения ставки. В апреле 2026-го голосование прошло 8–4 — впервые с 1992 года четверо членов проголосовали против большинства. Часть аналитиков сдвинула прогноз снижения ставки на 2027-й, риск повышения оценивается в 47%. Дорогие деньги — меньше топлива для дорогих оценок.', src: 'CME FedWatch / FRED', url: 'https://fred.stlouisfed.org/series/FEDFUNDS' },
     ],
     evalNote: 'Это не означает, что пузырь лопнет завтра. Но это означает: пространство для разочарования есть — и оно большое.',
     evalBullKicker: 'Контраргументы',
@@ -1505,7 +1507,7 @@ function AiBubbleLanding({ t }) {
         con: ['Capex already outpacing monetization', 'Fed not cutting — cost of capital remains high'] },
     ],
     proLbl: 'For', conLbl: 'Against', weakLbl: 'Weak points', showArgs: 'Arguments', hideArgs: 'Hide',
-    logicKicker: 'Analytical framework',
+    logicKicker: 'Crash criteria',
     logicTitle: 'Three conditions for a sharp crash',
     logicSub: 'For a bubble to burst fast — like 2000 — three factors must align. In 2026, they\'re not all present.',
     logicConds: [
@@ -1530,6 +1532,7 @@ function AiBubbleLanding({ t }) {
       { icon: '📡', title: 'Capex outpaces monetization', body: '$650B of infrastructure is being built for demand that hasn\'t arrived yet. Companies are erecting data centers for future AI — just as 2000s firms laid fiber for future internet traffic. The fiber turned out cheaper than expected: the companies went bankrupt, the cables went dark.', src: 'Bloomberg Intelligence, 2026', url: 'https://www.bloomberg.com/news/articles/2026-01-27/big-tech-ai-spending-plans-unnerve-some-investors' },
       { icon: '📊', title: 'P/E 40–50% above historical norm', body: '~30× now vs. a NASDAQ historical average of 20–22×. Not dot-com madness, but not neutral either. Any growth slowdown forces the market to re-price equities downward.', src: 'Macrotrends / Yardeni Research', url: 'https://www.macrotrends.net/stocks/charts/QQQ/invesco-qqq-trust/pe-ratio' },
       { icon: '🏷', title: 'AI-washing at industrial scale', body: 'Hundreds of companies collect a valuation premium for the word "AI" in a press release. Goldman Sachs "AI basket" indices include firms where AI is a marketing layer on top of ordinary software.', src: 'Goldman Sachs: "Gen AI: Too Much Spend, Too Little Benefit?", 2024', url: 'https://www.goldmansachs.com/insights/articles/gen-ai-too-much-spend-too-little-benefit.html' },
+      { icon: '🏛', title: 'The Fed is paused — and may not ease', body: 'Three consecutive meetings with no rate change. In April 2026 the vote split 8–4 — the first time since 1992 that four members dissented. Some analysts have pushed rate-cut expectations to 2027; hike risk is estimated at 47%. Expensive money means less fuel for expensive valuations.', src: 'CME FedWatch / FRED', url: 'https://fred.stlouisfed.org/series/FEDFUNDS' },
     ],
     evalNote: 'This doesn\'t mean the bubble bursts tomorrow. It means the room for disappointment is large.',
     evalBullKicker: 'Counter-arguments',
@@ -1606,6 +1609,7 @@ function AiBubbleLanding({ t }) {
   const metKeys = ['concentration', 'pe', 'capex', 'nvidia', 'fed', 'ai_share'];
   const metTerms = ['sp500', 'pe', 'capex', null, 'fed', 'sp500'];
   c.metrics = c.metrics.map((m, i) => ({ ...m, statKey: metKeys[i], termKey: metTerms[i] }));
+  const statTermMap = Object.fromEntries(metKeys.map((k, i) => [k, metTerms[i]]));
 
   return <section className="aib-page">
     <div className="aib-hero">
@@ -1620,12 +1624,39 @@ function AiBubbleLanding({ t }) {
           <p className="aib-predict-text">{c.pText}</p>
         </div>
       </div>
-      <button className="aib-scroll-hint" onClick={() => scrollTo(evalRef)}>
+      <button className="aib-scroll-hint" onClick={() => scrollTo(scenRef)}>
         <span>{c.scrollHint}</span><span>↓</span>
       </button>
     </div>
 
-    <div className="aib-section" ref={evalRef}>
+    <div className="aib-section" ref={scenRef}>
+      <p className="aib-kicker aib-fade">{c.scKicker}</p>
+      <h2 className="aib-sec-title aib-fade">{c.scTitle}</h2>
+      <div className="aib-scenarios">
+        {c.scenarios.map(sc => <div key={sc.id} className={`aib-sc${sc.feat ? ' aib-sc-feat' : ''} aib-fade`}>
+          <span className={`aib-badge aib-badge-${sc.id}`}>{sc.badge}</span>
+          <div className="aib-prob-row">
+            <span>{isRu ? 'Вероятность' : 'Probability'}</span>
+            <strong className={`aib-pval-${sc.id}`}>{sc.prob}%</strong>
+          </div>
+          <div className="aib-track"><div className={`aib-fill aib-fill-${sc.id}`} data-w={sc.prob} style={{width: 0}} /></div>
+          <h3 className="aib-sc-name">{sc.title}</h3>
+          <p className="aib-sc-desc">{sc.desc}</p>
+          <button className="aib-toggle" onClick={() => setOpenSc(openSc === sc.id ? null : sc.id)}>
+            {openSc === sc.id ? c.hideArgs : c.showArgs} <span>{openSc === sc.id ? '↑' : '↓'}</span>
+          </button>
+          {openSc === sc.id && <div className="aib-args">
+            <p className="aib-args-lbl">{c.proLbl}</p>
+            {sc.pro.map((a, i) => <div key={i} className="aib-arg"><span>+</span><span>{a}</span></div>)}
+            <p className="aib-args-lbl">{sc.id === 'deflate' ? c.weakLbl : c.conLbl}</p>
+            {sc.con.map((a, i) => <div key={i} className="aib-arg aib-arg-con"><span>−</span><span>{a}</span></div>)}
+          </div>}
+        </div>)}
+      </div>
+      <DownBtn to={evalRef} />
+    </div>
+
+    <div className="aib-section aib-section-sep" ref={evalRef}>
       <p className="aib-kicker aib-fade">{c.evalKicker}</p>
       <h2 className="aib-sec-title aib-fade">{c.evalTitle}</h2>
       <p className="aib-eval-sub aib-fade">{c.evalSub}</p>
@@ -1649,6 +1680,10 @@ function AiBubbleLanding({ t }) {
         ))}
       </div>
       <p className="aib-eval-note aib-fade">{c.evalNote}</p>
+      <DownBtn to={bullRef} />
+    </div>
+
+    <div className="aib-section aib-section-sep" ref={bullRef}>
       <div className="aib-eval-bull aib-fade">
         <p className="aib-eval-bull-kicker">{c.evalBullKicker}</p>
         <h3 className="aib-eval-bull-title">{c.evalBullTitle}</h3>
@@ -1698,33 +1733,6 @@ function AiBubbleLanding({ t }) {
         </div>)}
       </div>
       <div className="aib-logic-conclusion aib-fade"><p>{c.logicConclusion}</p></div>
-      <DownBtn to={scenRef} />
-    </div>
-
-    <div className="aib-section aib-section-sep" ref={scenRef}>
-      <p className="aib-kicker aib-fade">{c.scKicker}</p>
-      <h2 className="aib-sec-title aib-fade">{c.scTitle}</h2>
-      <div className="aib-scenarios">
-        {c.scenarios.map(sc => <div key={sc.id} className={`aib-sc${sc.feat ? ' aib-sc-feat' : ''} aib-fade`}>
-          <span className={`aib-badge aib-badge-${sc.id}`}>{sc.badge}</span>
-          <div className="aib-prob-row">
-            <span>{isRu ? 'Вероятность' : 'Probability'}</span>
-            <strong className={`aib-pval-${sc.id}`}>{sc.prob}%</strong>
-          </div>
-          <div className="aib-track"><div className={`aib-fill aib-fill-${sc.id}`} data-w={sc.prob} style={{width: 0}} /></div>
-          <h3 className="aib-sc-name">{sc.title}</h3>
-          <p className="aib-sc-desc">{sc.desc}</p>
-          <button className="aib-toggle" onClick={() => setOpenSc(openSc === sc.id ? null : sc.id)}>
-            {openSc === sc.id ? c.hideArgs : c.showArgs} <span>{openSc === sc.id ? '↑' : '↓'}</span>
-          </button>
-          {openSc === sc.id && <div className="aib-args">
-            <p className="aib-args-lbl">{c.proLbl}</p>
-            {sc.pro.map((a, i) => <div key={i} className="aib-arg"><span>+</span><span>{a}</span></div>)}
-            <p className="aib-args-lbl">{sc.id === 'deflate' ? c.weakLbl : c.conLbl}</p>
-            {sc.con.map((a, i) => <div key={i} className="aib-arg aib-arg-con"><span>−</span><span>{a}</span></div>)}
-          </div>}
-        </div>)}
-      </div>
       <DownBtn to={metRef} />
     </div>
 
@@ -1815,12 +1823,13 @@ function AiBubbleLanding({ t }) {
     {popup && <div className="aib-overlay" onClick={() => setPopup(null)}>
       <div className="aib-modal" onClick={e => e.stopPropagation()}>
         <button className="aib-modal-close" onClick={() => setPopup(null)}>×</button>
-        {popup.type === 'term' && termDefs[popup.key] && <>
-          <p className="aib-modal-kicker">{isRu ? 'Определение' : 'Definition'}</p>
-          <h3 className="aib-modal-title">{termDefs[popup.key].name}</h3>
-          <p className="aib-modal-body">{termDefs[popup.key].def}</p>
+        {popup.type === 'stat' && <>
+          {termDefs[statTermMap[popup.key]] && <div className="aib-modal-term">
+            <p className="aib-modal-term-name">{termDefs[statTermMap[popup.key]].name}</p>
+            <p className="aib-modal-term-def">{termDefs[statTermMap[popup.key]].def}</p>
+          </div>}
+          {renderChart(popup.key)}
         </>}
-        {popup.type === 'stat' && renderChart(popup.key)}
       </div>
     </div>}
   </section>;
