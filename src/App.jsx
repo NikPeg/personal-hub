@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
+import { createPortal } from 'react-dom';
 import { content } from './content.js';
 import { dictionary } from './i18n.js';
 import { loadArchive } from './archiveFiles.js';
@@ -1427,9 +1428,9 @@ function AiBubbleLanding({ t }) {
       url: 'https://fortune.com/2026/06/16/openai-financials-leaked-losses-revenue-profit/',
     },
     evalBullArgs: [
-      { icon: '⚡', title: 'Спрос на чипы — реальный', body: 'NVIDIA продаёт чипы за живые деньги. Hyperscalers — AWS, Azure, GCP — прибыльны и финансируют capex из операционного денежного потока, не из долга. Это не пустые обещания.' },
-      { icon: '📈', title: 'Производительность растёт', body: 'McKinsey и Goldman Sachs фиксируют 25–35% рост производительности у разработчиков, использующих ИИ. Если ИИ действительно повышает ВВП на 7% (прогноз Goldman), нынешние оценки выглядят консервативно.' },
-      { icon: '🏦', title: 'Не все стартапы — OpenAI', body: 'Anthropic, Mistral и прочие — меньше. Большинство выручки ИИ-сектора генерируют прибыльные компании: Google, Microsoft, NVIDIA. Убытки OpenAI — исключение, а не норма.' },
+      { icon: '⚡', title: 'Спрос на чипы — реальный', body: 'NVIDIA продаёт чипы за живые деньги. Hyperscalers — AWS, Azure, GCP — прибыльны и финансируют capex из операционного денежного потока, не из долга. Это не пустые обещания.', src: 'NVIDIA Investor Relations', url: 'https://investor.nvidia.com/financial-info/annual-reports/' },
+      { icon: '📈', title: 'Производительность растёт', body: 'McKinsey и Goldman Sachs фиксируют 25–35% рост производительности у разработчиков, использующих ИИ. Если ИИ действительно повышает ВВП на 7% (прогноз Goldman), нынешние оценки выглядят консервативно.', src: 'McKinsey: Unleashing Developer Productivity with Generative AI', url: 'https://www.mckinsey.com/capabilities/tech-and-ai/our-insights/unleashing-developer-productivity-with-generative-ai' },
+      { icon: '🏦', title: 'Не все стартапы — OpenAI', body: 'Anthropic, Mistral и прочие — меньше. Большинство выручки ИИ-сектора генерируют прибыльные компании: Google, Microsoft, NVIDIA. Убытки OpenAI — исключение, а не норма.', src: 'CNBC: Google, Microsoft and Amazon cloud earnings, 2026', url: 'https://www.cnbc.com/2026/04/30/google-microsoft-and-amazon-all-report-cloud-beats-in-earnings.html' },
     ],
     metKicker: 'Данные',
     metTitle: 'Цифры, на которых строится анализ',
@@ -1546,9 +1547,9 @@ function AiBubbleLanding({ t }) {
       url: 'https://fortune.com/2026/06/16/openai-financials-leaked-losses-revenue-profit/',
     },
     evalBullArgs: [
-      { icon: '⚡', title: 'Chip demand is real', body: 'NVIDIA sells chips for real money. Hyperscalers — AWS, Azure, GCP — are profitable and fund capex from operating cash flow, not debt. This isn\'t empty promises.' },
-      { icon: '📈', title: 'Productivity gains are measurable', body: 'McKinsey and Goldman Sachs document 25–35% productivity gains among developers using AI. If AI genuinely raises GDP by 7% (Goldman\'s forecast), today\'s valuations look conservative.' },
-      { icon: '🏦', title: 'Not every AI company is OpenAI', body: 'Most AI-sector revenue comes from profitable companies: Google, Microsoft, NVIDIA. OpenAI\'s losses are the exception, not the norm.' },
+      { icon: '⚡', title: 'Chip demand is real', body: 'NVIDIA sells chips for real money. Hyperscalers — AWS, Azure, GCP — are profitable and fund capex from operating cash flow, not debt. This isn\'t empty promises.', src: 'NVIDIA Investor Relations', url: 'https://investor.nvidia.com/financial-info/annual-reports/' },
+      { icon: '📈', title: 'Productivity gains are measurable', body: 'McKinsey and Goldman Sachs document 25–35% productivity gains among developers using AI. If AI genuinely raises GDP by 7% (Goldman\'s forecast), today\'s valuations look conservative.', src: 'McKinsey: Unleashing Developer Productivity with Generative AI', url: 'https://www.mckinsey.com/capabilities/tech-and-ai/our-insights/unleashing-developer-productivity-with-generative-ai' },
+      { icon: '🏦', title: 'Not every AI company is OpenAI', body: 'Most AI-sector revenue comes from profitable companies: Google, Microsoft, NVIDIA. OpenAI\'s losses are the exception, not the norm.', src: 'CNBC: Google, Microsoft and Amazon cloud earnings, 2026', url: 'https://www.cnbc.com/2026/04/30/google-microsoft-and-amazon-all-report-cloud-beats-in-earnings.html' },
     ],
     metKicker: 'Data',
     metTitle: 'Numbers behind the analysis',
@@ -1701,6 +1702,7 @@ function AiBubbleLanding({ t }) {
               <div>
                 <p className="aib-eval-arg-title">{a.title}</p>
                 <p className="aib-eval-arg-body">{a.body}</p>
+                {a.src && <a className="aib-eval-arg-src" href={a.url} target="_blank" rel="noreferrer">{a.src} ↗</a>}
               </div>
             </div>
           ))}
@@ -1820,18 +1822,21 @@ function AiBubbleLanding({ t }) {
 
     <div className="aib-footer"><p>{c.disclaimer}</p></div>
 
-    {popup && <div className="aib-overlay" onClick={() => setPopup(null)}>
-      <div className="aib-modal" onClick={e => e.stopPropagation()}>
-        <button className="aib-modal-close" onClick={() => setPopup(null)}>×</button>
-        {popup.type === 'stat' && <>
-          {termDefs[statTermMap[popup.key]] && <div className="aib-modal-term">
-            <p className="aib-modal-term-name">{termDefs[statTermMap[popup.key]].name}</p>
-            <p className="aib-modal-term-def">{termDefs[statTermMap[popup.key]].def}</p>
-          </div>}
-          {renderChart(popup.key)}
-        </>}
-      </div>
-    </div>}
+    {popup && createPortal(
+      <div className="aib-overlay" onClick={() => setPopup(null)}>
+        <div className="aib-modal" onClick={e => e.stopPropagation()}>
+          <button className="aib-modal-close" onClick={() => setPopup(null)}>×</button>
+          {popup.type === 'stat' && <>
+            {termDefs[statTermMap[popup.key]] && <div className="aib-modal-term">
+              <p className="aib-modal-term-name">{termDefs[statTermMap[popup.key]].name}</p>
+              <p className="aib-modal-term-def">{termDefs[statTermMap[popup.key]].def}</p>
+            </div>}
+            {renderChart(popup.key)}
+          </>}
+        </div>
+      </div>,
+      document.body
+    )}
   </section>;
 }
 

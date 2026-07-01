@@ -3400,20 +3400,19 @@ html[data-theme="light"] .aib-canvas { display: none; }
 html[data-theme="light"] .aib-hero {
   background: url('/assets/aib-soap-bubbles.jpg') center/cover no-repeat;
 }
-html[data-theme="light"] .aib-hero::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: rgba(255,255,255,.48);
-  backdrop-filter: blur(1px);
-  z-index: 0;
+html[data-theme="light"] .aib-hero-inner {
+  background: rgba(255,255,255,.92);
+  border: 1px solid rgba(255,255,255,.7);
+  border-radius: 2rem;
+  box-shadow: 0 30px 80px rgba(20,16,58,.2);
+  backdrop-filter: blur(24px);
 }
 html[data-theme="light"] .aib-date-badge { color: rgba(80,60,200,.6); background: rgba(80,60,200,.07); border-color: rgba(80,60,200,.18); }
 html[data-theme="light"] .aib-lead { color: rgba(20,16,58,.5); }
 html[data-theme="light"] .aib-predict { background: rgba(99,102,241,.08); border-color: rgba(99,102,241,.25); }
 html[data-theme="light"] .aib-predict-title { color: #14103a; }
 html[data-theme="light"] .aib-predict-text { color: rgba(20,16,58,.55); }
-html[data-theme="light"] .aib-scroll-hint { color: rgba(80,60,200,.5); border-color: rgba(80,60,200,.2); }
+html[data-theme="light"] .aib-scroll-hint { color: rgba(80,60,200,.5); border-color: rgba(80,60,200,.2); background: rgba(255,255,255,.75); backdrop-filter: blur(10px); }
 html[data-theme="light"] .aib-scroll-hint:hover { color: rgba(80,60,200,.9); border-color: rgba(80,60,200,.5); }
 html[data-theme="light"] .aib-section-sep { border-color: rgba(0,0,0,.08); }
 html[data-theme="light"] .aib-kicker { color: rgba(80,60,200,.5); }
