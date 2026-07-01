@@ -32,7 +32,12 @@ export default {
       }
     );
 
-    return cors(null, tgRes.ok ? 200 : 502);
+    const tgBody = await tgRes.text();
+    if (!tgRes.ok) {
+      console.error('Telegram error', tgRes.status, tgBody);
+      return cors(JSON.stringify({ ok: false, tg: tgBody }), 502);
+    }
+    return cors(JSON.stringify({ ok: true }), 200);
   },
 };
 
