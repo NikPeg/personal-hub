@@ -1359,6 +1359,11 @@ function AiBubbleLanding({ t }) {
     return () => { io.disconnect(); po.disconnect(); };
   }, [isRu]);
 
+  useEffect(() => {
+    if (popup) { document.body.style.overflow = 'hidden'; }
+    return () => { document.body.style.overflow = ''; };
+  }, [popup]);
+
   const c = isRu ? {
     date: '29 июня 2026 · актуально',
     kicker: 'Исследование',
@@ -1404,13 +1409,29 @@ function AiBubbleLanding({ t }) {
       url: 'https://fortune.com/2026/06/16/openai-financials-leaked-losses-revenue-profit/',
     },
     evalArgs: [
-      { icon: '📡', title: 'Capex опережает монетизацию', body: '$650 млрд инфраструктуры строится под спрос, который ещё не пришёл. Компании возводят дата-центры под будущий ИИ — как в 2000-м прокладывали оптику под будущий интернет-трафик. В 2000-м оптика оказалась дешевле ожидаемого: компании разорились, кабели легли тёмными.' },
-      { icon: '📊', title: 'P/E выше исторической нормы на 40–50%', body: '~30× сейчас против исторической нормы NASDAQ в 20–22×. Не безумие доткомов, но и не нейтральная оценка. Любое замедление роста — и рынок вынужден переоценить акции вниз.' },
-      { icon: '🏷', title: 'AI-washing в промышленных масштабах', body: 'Сотни компаний получают оценочную премию за слово «ИИ» в пресс-релизе. Индексы «AI корзин» Goldman Sachs включают компании, у которых ИИ — маркетинговый слой поверх обычного ПО.' },
+      { icon: '📡', title: 'Capex опережает монетизацию', body: '$650 млрд инфраструктуры строится под спрос, который ещё не пришёл. Компании возводят дата-центры под будущий ИИ — как в 2000-м прокладывали оптику под будущий интернет-трафик. В 2000-м оптика оказалась дешевле ожидаемого: компании разорились, кабели легли тёмными.', src: 'Bloomberg Intelligence, 2026', url: 'https://www.bloomberg.com/news/articles/2026-01-27/big-tech-ai-spending-plans-unnerve-some-investors' },
+      { icon: '📊', title: 'P/E выше исторической нормы на 40–50%', body: '~30× сейчас против исторической нормы NASDAQ в 20–22×. Не безумие доткомов, но и не нейтральная оценка. Любое замедление роста — и рынок вынужден переоценить акции вниз.', src: 'Macrotrends / Yardeni Research', url: 'https://www.macrotrends.net/stocks/charts/QQQ/invesco-qqq-trust/pe-ratio' },
+      { icon: '🏷', title: 'AI-washing в промышленных масштабах', body: 'Сотни компаний получают оценочную премию за слово «ИИ» в пресс-релизе. Индексы «AI корзин» Goldman Sachs включают компании, у которых ИИ — маркетинговый слой поверх обычного ПО.', src: 'Goldman Sachs: «Gen AI: Too Much Spend, Too Little Benefit?», 2024', url: 'https://www.goldmansachs.com/insights/articles/gen-ai-too-much-spend-too-little-benefit.html' },
     ],
     evalNote: 'Это не означает, что пузырь лопнет завтра. Но это означает: пространство для разочарования есть — и оно большое.',
+    evalBullKicker: 'Контраргументы',
+    evalBullTitle: 'Почему пузыря может и не быть',
+    evalBullSub: 'Пессимистичный сценарий не единственный. Вот аргументы в пользу того, что нынешние оценки оправданы.',
+    evalBullFeat: {
+      tag: 'Контркейс',
+      title: 'OpenAI: убытки огромные, рост — тоже',
+      body: 'Да, OpenAI тратит $1.60 на каждый заработанный доллар. Но выручка выросла с $700 млн (2022) до $2.7 млрд (2023) до $13.1 млрд (2025) — почти 20× за три года. 300 млн еженедельных пользователей ChatGPT. Убытки — это инвестиции в масштаб, а не признак неработающей модели.',
+      src: 'Fortune / Financial Times, июнь 2026',
+      url: 'https://fortune.com/2026/06/16/openai-financials-leaked-losses-revenue-profit/',
+    },
+    evalBullArgs: [
+      { icon: '⚡', title: 'Спрос на чипы — реальный', body: 'NVIDIA продаёт чипы за живые деньги. Hyperscalers — AWS, Azure, GCP — прибыльны и финансируют capex из операционного денежного потока, не из долга. Это не пустые обещания.' },
+      { icon: '📈', title: 'Производительность растёт', body: 'McKinsey и Goldman Sachs фиксируют 25–35% рост производительности у разработчиков, использующих ИИ. Если ИИ действительно повышает ВВП на 7% (прогноз Goldman), нынешние оценки выглядят консервативно.' },
+      { icon: '🏦', title: 'Не все стартапы — OpenAI', body: 'Anthropic, Mistral и прочие — меньше. Большинство выручки ИИ-сектора генерируют прибыльные компании: Google, Microsoft, NVIDIA. Убытки OpenAI — исключение, а не норма.' },
+    ],
     metKicker: 'Данные',
     metTitle: 'Цифры, на которых строится анализ',
+    metHint: 'Нажмите на любую карточку — увидите график с источником данных',
     metrics: [
       { label: 'Концентрация S&P 500', val: '30%', ctx: 'у 5 компаний — максимум за 50 лет', col: 'amber' },
       { label: 'P/E NASDAQ сейчас', val: '~30×', ctx: 'в пик доткомов было 200×. Дорого, не безумие', col: '' },
@@ -1506,13 +1527,29 @@ function AiBubbleLanding({ t }) {
       url: 'https://fortune.com/2026/06/16/openai-financials-leaked-losses-revenue-profit/',
     },
     evalArgs: [
-      { icon: '📡', title: 'Capex outpaces monetization', body: '$650B of infrastructure is being built for demand that hasn\'t arrived yet. Companies are erecting data centers for future AI — just as 2000s firms laid fiber for future internet traffic. The fiber turned out cheaper than expected: the companies went bankrupt, the cables went dark.' },
-      { icon: '📊', title: 'P/E 40–50% above historical norm', body: '~30× now vs. a NASDAQ historical average of 20–22×. Not dot-com madness, but not neutral either. Any growth slowdown forces the market to re-price equities downward.' },
-      { icon: '🏷', title: 'AI-washing at industrial scale', body: 'Hundreds of companies collect a valuation premium for the word "AI" in a press release. Goldman Sachs "AI basket" indices include firms where AI is a marketing layer on top of ordinary software.' },
+      { icon: '📡', title: 'Capex outpaces monetization', body: '$650B of infrastructure is being built for demand that hasn\'t arrived yet. Companies are erecting data centers for future AI — just as 2000s firms laid fiber for future internet traffic. The fiber turned out cheaper than expected: the companies went bankrupt, the cables went dark.', src: 'Bloomberg Intelligence, 2026', url: 'https://www.bloomberg.com/news/articles/2026-01-27/big-tech-ai-spending-plans-unnerve-some-investors' },
+      { icon: '📊', title: 'P/E 40–50% above historical norm', body: '~30× now vs. a NASDAQ historical average of 20–22×. Not dot-com madness, but not neutral either. Any growth slowdown forces the market to re-price equities downward.', src: 'Macrotrends / Yardeni Research', url: 'https://www.macrotrends.net/stocks/charts/QQQ/invesco-qqq-trust/pe-ratio' },
+      { icon: '🏷', title: 'AI-washing at industrial scale', body: 'Hundreds of companies collect a valuation premium for the word "AI" in a press release. Goldman Sachs "AI basket" indices include firms where AI is a marketing layer on top of ordinary software.', src: 'Goldman Sachs: "Gen AI: Too Much Spend, Too Little Benefit?", 2024', url: 'https://www.goldmansachs.com/insights/articles/gen-ai-too-much-spend-too-little-benefit.html' },
     ],
     evalNote: 'This doesn\'t mean the bubble bursts tomorrow. It means the room for disappointment is large.',
+    evalBullKicker: 'Counter-arguments',
+    evalBullTitle: 'Why there may be no bubble',
+    evalBullSub: 'The pessimistic scenario isn\'t the only one. Here\'s the case that current valuations are justified.',
+    evalBullFeat: {
+      tag: 'Counter-case',
+      title: 'OpenAI: massive losses, massive growth too',
+      body: 'Yes, OpenAI spends $1.60 for every dollar earned. But revenue grew from $700M (2022) to $2.7B (2023) to $13.1B (2025) — nearly 20× in three years. 300M weekly ChatGPT users. The losses are investment in scale, not proof that the model doesn\'t work.',
+      src: 'Fortune / Financial Times, June 2026',
+      url: 'https://fortune.com/2026/06/16/openai-financials-leaked-losses-revenue-profit/',
+    },
+    evalBullArgs: [
+      { icon: '⚡', title: 'Chip demand is real', body: 'NVIDIA sells chips for real money. Hyperscalers — AWS, Azure, GCP — are profitable and fund capex from operating cash flow, not debt. This isn\'t empty promises.' },
+      { icon: '📈', title: 'Productivity gains are measurable', body: 'McKinsey and Goldman Sachs document 25–35% productivity gains among developers using AI. If AI genuinely raises GDP by 7% (Goldman\'s forecast), today\'s valuations look conservative.' },
+      { icon: '🏦', title: 'Not every AI company is OpenAI', body: 'Most AI-sector revenue comes from profitable companies: Google, Microsoft, NVIDIA. OpenAI\'s losses are the exception, not the norm.' },
+    ],
     metKicker: 'Data',
     metTitle: 'Numbers behind the analysis',
+    metHint: 'Click any card to see the chart and data source',
     metrics: [
       { label: 'S&P 500 concentration', val: '30%', ctx: 'held by 5 companies — highest in 50 years', col: 'amber' },
       { label: 'NASDAQ P/E now', val: '~30×', ctx: 'was 200× at dot-com peak. Expensive, not crazy', col: '' },
@@ -1583,12 +1620,61 @@ function AiBubbleLanding({ t }) {
           <p className="aib-predict-text">{c.pText}</p>
         </div>
       </div>
-      <button className="aib-scroll-hint" onClick={() => scrollTo(logicRef)}>
+      <button className="aib-scroll-hint" onClick={() => scrollTo(evalRef)}>
         <span>{c.scrollHint}</span><span>↓</span>
       </button>
     </div>
 
-    <div className="aib-section" ref={logicRef}>
+    <div className="aib-section" ref={evalRef}>
+      <p className="aib-kicker aib-fade">{c.evalKicker}</p>
+      <h2 className="aib-sec-title aib-fade">{c.evalTitle}</h2>
+      <p className="aib-eval-sub aib-fade">{c.evalSub}</p>
+      <div className="aib-eval-feat aib-fade">
+        <span className="aib-eval-tag">{c.evalFeat.tag}</span>
+        <h3 className="aib-eval-feat-title">{c.evalFeat.title}</h3>
+        <p className="aib-eval-feat-body">{c.evalFeat.body}</p>
+        <blockquote className="aib-eval-quote">{c.evalFeat.quote}</blockquote>
+        <a className="aib-eval-src" href={c.evalFeat.url} target="_blank" rel="noreferrer">{c.evalFeat.src} ↗</a>
+      </div>
+      <div className="aib-eval-args">
+        {c.evalArgs.map((a, i) => (
+          <div key={i} className="aib-eval-arg aib-fade">
+            <span className="aib-eval-arg-icon">{a.icon}</span>
+            <div>
+              <p className="aib-eval-arg-title">{a.title}</p>
+              <p className="aib-eval-arg-body">{a.body}</p>
+              {a.src && <a className="aib-eval-arg-src" href={a.url} target="_blank" rel="noreferrer">{a.src} ↗</a>}
+            </div>
+          </div>
+        ))}
+      </div>
+      <p className="aib-eval-note aib-fade">{c.evalNote}</p>
+      <div className="aib-eval-bull aib-fade">
+        <p className="aib-eval-bull-kicker">{c.evalBullKicker}</p>
+        <h3 className="aib-eval-bull-title">{c.evalBullTitle}</h3>
+        <p className="aib-eval-bull-sub">{c.evalBullSub}</p>
+        <div className="aib-eval-bull-feat">
+          <span className="aib-eval-bull-tag">{c.evalBullFeat.tag}</span>
+          <h4 className="aib-eval-bull-feat-title">{c.evalBullFeat.title}</h4>
+          <p className="aib-eval-bull-feat-body">{c.evalBullFeat.body}</p>
+          <a className="aib-eval-src" href={c.evalBullFeat.url} target="_blank" rel="noreferrer">{c.evalBullFeat.src} ↗</a>
+        </div>
+        <div className="aib-eval-args aib-eval-bull-args">
+          {c.evalBullArgs.map((a, i) => (
+            <div key={i} className="aib-eval-arg aib-eval-bull-arg">
+              <span className="aib-eval-arg-icon">{a.icon}</span>
+              <div>
+                <p className="aib-eval-arg-title">{a.title}</p>
+                <p className="aib-eval-arg-body">{a.body}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+      <DownBtn to={logicRef} />
+    </div>
+
+    <div className="aib-section aib-section-sep" ref={logicRef}>
       <p className="aib-kicker aib-fade">{c.logicKicker}</p>
       <h2 className="aib-sec-title aib-fade">{c.logicTitle}</h2>
       <p className="aib-sec-sub aib-fade">{c.logicSub}</p>
@@ -1612,32 +1698,6 @@ function AiBubbleLanding({ t }) {
         </div>)}
       </div>
       <div className="aib-logic-conclusion aib-fade"><p>{c.logicConclusion}</p></div>
-      <DownBtn to={evalRef} />
-    </div>
-
-    <div className="aib-section aib-section-sep" ref={evalRef}>
-      <p className="aib-kicker aib-fade">{c.evalKicker}</p>
-      <h2 className="aib-sec-title aib-fade">{c.evalTitle}</h2>
-      <p className="aib-eval-sub aib-fade">{c.evalSub}</p>
-      <div className="aib-eval-feat aib-fade">
-        <span className="aib-eval-tag">{c.evalFeat.tag}</span>
-        <h3 className="aib-eval-feat-title">{c.evalFeat.title}</h3>
-        <p className="aib-eval-feat-body">{c.evalFeat.body}</p>
-        <blockquote className="aib-eval-quote">{c.evalFeat.quote}</blockquote>
-        <a className="aib-eval-src" href={c.evalFeat.url} target="_blank" rel="noreferrer">{c.evalFeat.src} ↗</a>
-      </div>
-      <div className="aib-eval-args">
-        {c.evalArgs.map((a, i) => (
-          <div key={i} className="aib-eval-arg aib-fade">
-            <span className="aib-eval-arg-icon">{a.icon}</span>
-            <div>
-              <p className="aib-eval-arg-title">{a.title}</p>
-              <p className="aib-eval-arg-body">{a.body}</p>
-            </div>
-          </div>
-        ))}
-      </div>
-      <p className="aib-eval-note aib-fade">{c.evalNote}</p>
       <DownBtn to={scenRef} />
     </div>
 
@@ -1671,12 +1731,13 @@ function AiBubbleLanding({ t }) {
     <div className="aib-section aib-section-sep" ref={metRef}>
       <p className="aib-kicker aib-fade">{c.metKicker}</p>
       <h2 className="aib-sec-title aib-fade">{c.metTitle}</h2>
+      <p className="aib-met-hint aib-fade">{c.metHint}</p>
       <div className="aib-metrics">
-        {c.metrics.map(m => <div key={m.label} className="aib-met aib-fade">
-          <p className={`aib-met-lbl${m.termKey ? ' aib-term' : ''}`} onClick={m.termKey ? () => setPopup({type:'term',key:m.termKey}) : undefined}>
+        {c.metrics.map(m => <div key={m.label} className="aib-met aib-fade" onClick={() => setPopup({type:'stat',key:m.statKey})}>
+          <p className={`aib-met-lbl${m.termKey ? ' aib-term' : ''}`}>
             {m.label}{m.termKey && <span className="aib-term-q">?</span>}
           </p>
-          <p className="aib-met-val aib-stat-num" style={{color: colMap[m.col]}} onClick={() => setPopup({type:'stat',key:m.statKey})}>{m.val}<span className="aib-stat-arrow">↗</span></p>
+          <p className="aib-met-val" style={{color: colMap[m.col]}}>{m.val}<span className="aib-stat-arrow">↗</span></p>
           <p className="aib-met-ctx">{m.ctx}</p>
         </div>)}
       </div>
@@ -1702,6 +1763,23 @@ function AiBubbleLanding({ t }) {
           <div className="aib-track"><div className="aib-fill aib-fill-deflate" data-w={h.sim} style={{width: 0}} /></div>
         </div>)}
       </div>
+      <DownBtn to={cmpRef} />
+    </div>
+
+    <div className="aib-section aib-section-sep" ref={cmpRef}>
+      <p className="aib-kicker aib-fade">{c.cmpKicker}</p>
+      <h2 className="aib-sec-title aib-fade">{c.cmpTitle}</h2>
+      <div className="aib-fade" style={{overflowX:'auto'}}>
+        <table className="aib-table">
+          <thead><tr>{c.cmpHeaders.map(h => <th key={h}>{h}</th>)}</tr></thead>
+          <tbody>{[...c.cmpRows].sort((a, b) => a.same - b.same).map(r => <tr key={r.p}>
+            <td className="aib-td-param">{r.p}</td>
+            <td className="aib-td-val">{r.d}</td>
+            <td className="aib-td-val">{r.a}</td>
+            <td><span className={r.same ? 'aib-same' : 'aib-diff'}>{r.same ? `▲ ${c.sameLbl}` : `▼ ${c.diffLbl}`}</span></td>
+          </tr>)}</tbody>
+        </table>
+      </div>
       <DownBtn to={compRef} />
     </div>
 
@@ -1721,23 +1799,6 @@ function AiBubbleLanding({ t }) {
           <div className="aib-comp-val aib-comp-right">{r.cs}</div>
         </div>)}
         <p className="aib-comp-note">{c.compNote}</p>
-      </div>
-      <DownBtn to={cmpRef} />
-    </div>
-
-    <div className="aib-section aib-section-sep" ref={cmpRef}>
-      <p className="aib-kicker aib-fade">{c.cmpKicker}</p>
-      <h2 className="aib-sec-title aib-fade">{c.cmpTitle}</h2>
-      <div className="aib-fade" style={{overflowX:'auto'}}>
-        <table className="aib-table">
-          <thead><tr>{c.cmpHeaders.map(h => <th key={h}>{h}</th>)}</tr></thead>
-          <tbody>{[...c.cmpRows].sort((a, b) => a.same - b.same).map(r => <tr key={r.p}>
-            <td className="aib-td-param">{r.p}</td>
-            <td className="aib-td-val">{r.d}</td>
-            <td className="aib-td-val">{r.a}</td>
-            <td><span className={r.same ? 'aib-same' : 'aib-diff'}>{r.same ? `▲ ${c.sameLbl}` : `▼ ${c.diffLbl}`}</span></td>
-          </tr>)}</tbody>
-        </table>
       </div>
     </div>
 
