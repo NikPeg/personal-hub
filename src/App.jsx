@@ -1264,7 +1264,7 @@ function AiBubbleLanding({ t }) {
       nvidia: {
         title: isRu ? 'Годовая выручка NVIDIA, млрд $' : 'NVIDIA annual revenue, $B',
         type: 'bar', color: '#4ade80', unit: 'B', prefix: '$',
-        pts: [{l:'FY20',v:11},{l:'FY21',v:17},{l:'FY22',v:27},{l:'FY23',v:45},{l:'FY24',v:130},{l:'FY25',v:215}],
+        pts: [{l:'FY20',v:11},{l:'FY21',v:17},{l:'FY22',v:27},{l:'FY23',v:27},{l:'FY24',v:61},{l:'FY25',v:130},{l:'FY26',v:215}],
         src: 'NVIDIA Investor Relations', url: 'https://investor.nvidia.com/financial-info/annual-reports/',
       },
       fed: {
@@ -1378,13 +1378,13 @@ function AiBubbleLanding({ t }) {
     scKicker: 'Какой исход возможен',
     scTitle: 'Три сценария',
     scenarios: [
-      { id: 'crash', badge: 'Менее вероятен', title: 'Резкий взрыв', desc: 'Паника, обвал рынка на 70–80%, волна банкротств — как в 2000-м.', prob: 15,
+      { id: 'crash', badge: 'Менее вероятен', title: 'Резкий взрыв', desc: 'Паника, обвал рынка на 70–80%, волна банкротств — как в 2000-м.', likelihood: 'Маловероятно', level: 1,
         pro: ['5 компаний = 30% S&P 500 — аномальная концентрация, как в 1999-м', '$650 млрд капзатрат без гарантии окупаемости', 'AI-washing: компании клеят ярлык «ИИ» ради оценки', 'ФРС заморозила ставку — 47% шанс повышения к 2027-му'],
         con: ['Лидеры прибыльны — в 2000-м рухнули стартапы без выручки', 'P/E ~30 vs 200 в пик доткомов', 'B2B-спрос: платят за результат, не за хайп'] },
-      { id: 'deflate', badge: 'Мой предикт', feat: true, title: 'Постепенное сдувание', desc: 'Коррекция есть. Слабые выбывают. Сильные адаптируются — без системного краха.', prob: 55,
+      { id: 'deflate', badge: 'Мой предикт', feat: true, title: 'Постепенное сдувание', desc: 'Коррекция есть. Слабые выбывают. Сильные адаптируются — без системного краха.', likelihood: 'Наиболее вероятно', level: 3,
         pro: ['NVIDIA $215 млрд выручки — за ценой стоит реальный бизнес', 'P/E ~30 vs 200 в доткомах — дорого, но не безумие', 'B2B-модель: платят за конкретный результат', 'Слабые игроки уже выбывают без системного шока'],
         con: ['Если выручка не догонит капзатраты — замедление неизбежно', 'ФРС не смягчается — попутного ветра дешёвых денег нет'] },
-      { id: 'grow', badge: 'Возможен', title: 'Пузыря нет', desc: 'Рост обоснован технологией и реальным спросом, коррекции минимальны.', prob: 30,
+      { id: 'grow', badge: 'Возможен', title: 'Пузыря нет', desc: 'Рост обоснован технологией и реальным спросом, коррекции минимальны.', likelihood: 'Возможно', level: 2,
         pro: ['14% рост мощностей ЦОД в год — реальный задокументированный спрос', 'NVIDIA $4.3 трлн подкреплена $215 млрд выручки', 'ИИ реально повышает производительность уже сейчас'],
         con: ['Капзатраты уже опережают монетизацию', 'ФРС не снижает ставку — стоимость капитала высокая'] },
     ],
@@ -1415,6 +1415,7 @@ function AiBubbleLanding({ t }) {
       { icon: '📊', title: 'P/E выше исторической нормы на 40–50%', body: '~30× сейчас против исторической нормы NASDAQ в 20–22×. Не безумие доткомов, но и не нейтральная оценка. Любое замедление роста — и рынок вынужден переоценить акции вниз.', src: 'Macrotrends / Yardeni Research', url: 'https://www.macrotrends.net/stocks/charts/QQQ/invesco-qqq-trust/pe-ratio' },
       { icon: '🏷', title: 'AI-washing в промышленных масштабах', body: 'Сотни компаний получают оценочную премию за слово «ИИ» в пресс-релизе. Индексы «AI корзин» Goldman Sachs включают компании, у которых ИИ — маркетинговый слой поверх обычного ПО.', src: 'Goldman Sachs: «Gen AI: Too Much Spend, Too Little Benefit?», 2024', url: 'https://www.goldmansachs.com/insights/articles/gen-ai-too-much-spend-too-little-benefit.html' },
       { icon: '🏛', title: 'ФРС на паузе — и не факт, что смягчится', body: 'Три заседания подряд без изменения ставки. В апреле 2026-го голосование прошло 8–4 — впервые с 1992 года четверо членов проголосовали против большинства. Часть аналитиков сдвинула прогноз снижения ставки на 2027-й, риск повышения оценивается в 47%. Дорогие деньги — меньше топлива для дорогих оценок.', src: 'CME FedWatch / FRED', url: 'https://fred.stlouisfed.org/series/FEDFUNDS' },
+      { icon: '💳', title: 'Capex всё больше держится на долге', body: 'Ещё в 2025-м Amazon, Microsoft, Alphabet и Meta закрывали capex операционным денежным потоком. В 2026-м это уже не так: по оценке Bank of America, крупнейшие игроки тратят на capex около 90% операционного денежного потока против 65% годом ранее, а заимствования, по прогнозу Morgan Stanley, превысят $400 млрд — вдвое больше, чем в 2025-м. Amazon прямо предупредила инвесторов о возможном привлечении долга и капитала. Чем больше бум держится на кредитном плече, а не на свободном кэше, тем он более уязвим к перепадам ставки и настроений на рынке.', src: 'Epoch AI: Hyperscaler Capex vs. Cash Flow', url: 'https://epoch.ai/data-insights/hyperscaler-capex-vs-cash-flow' },
     ],
     evalNote: 'Это не означает, что пузырь лопнет завтра. Но это означает: пространство для разочарования есть — и оно большое.',
     evalBullKicker: 'Контраргументы',
@@ -1428,7 +1429,6 @@ function AiBubbleLanding({ t }) {
       url: 'https://fortune.com/2026/06/16/openai-financials-leaked-losses-revenue-profit/',
     },
     evalBullArgs: [
-      { icon: '⚡', title: 'Спрос на чипы — реальный', body: 'NVIDIA продаёт чипы за живые деньги. Hyperscalers — AWS, Azure, GCP — прибыльны и финансируют capex из операционного денежного потока, не из долга. Это не пустые обещания.', src: 'NVIDIA Investor Relations', url: 'https://investor.nvidia.com/financial-info/annual-reports/' },
       { icon: '📈', title: 'Производительность растёт', body: 'McKinsey и Goldman Sachs фиксируют 25–35% рост производительности у разработчиков, использующих ИИ. Если ИИ действительно повышает ВВП на 7% (прогноз Goldman), нынешние оценки выглядят консервативно.', src: 'McKinsey: Unleashing Developer Productivity with Generative AI', url: 'https://www.mckinsey.com/capabilities/tech-and-ai/our-insights/unleashing-developer-productivity-with-generative-ai' },
       { icon: '🏦', title: 'Не все стартапы — OpenAI', body: 'Anthropic, Mistral и прочие — меньше. Большинство выручки ИИ-сектора генерируют прибыльные компании: Google, Microsoft, NVIDIA. Убытки OpenAI — исключение, а не норма.', src: 'CNBC: Google, Microsoft and Amazon cloud earnings, 2026', url: 'https://www.cnbc.com/2026/04/30/google-microsoft-and-amazon-all-report-cloud-beats-in-earnings.html' },
     ],
@@ -1497,13 +1497,13 @@ function AiBubbleLanding({ t }) {
     scKicker: 'Possible outcomes',
     scTitle: 'Three scenarios',
     scenarios: [
-      { id: 'crash', badge: 'Less likely', title: 'Sharp crash', desc: 'Panic, market drops 70–80%, wave of bankruptcies — like 2000.', prob: 15,
+      { id: 'crash', badge: 'Less likely', title: 'Sharp crash', desc: 'Panic, market drops 70–80%, wave of bankruptcies — like 2000.', likelihood: 'Unlikely', level: 1,
         pro: ['5 companies = 30% of S&P 500 — abnormal concentration, like 1999', '$650B capex with no guaranteed returns', 'AI-washing: companies slap "AI" on everything for investor valuation', 'Fed froze rate cuts — 47% chance of a hike by 2027'],
         con: ['Leaders are profitable — 2000 crashed because startups had no revenue', 'P/E ~30 vs 200 at dot-com peak', 'B2B demand: companies pay for real results'] },
-      { id: 'deflate', badge: 'My prediction', feat: true, title: 'Gradual deflation', desc: 'Correction happens. Weak players exit. Strong ones adapt — without a systemic crash.', prob: 55,
+      { id: 'deflate', badge: 'My prediction', feat: true, title: 'Gradual deflation', desc: 'Correction happens. Weak players exit. Strong ones adapt — without a systemic crash.', likelihood: 'Most likely', level: 3,
         pro: ['NVIDIA $215B revenue — real business behind the price', 'P/E ~30 vs 200 at dot-com peak — expensive, not insane', 'B2B model: pay for concrete results', 'Weak players already exiting without systemic shock'],
         con: ['If revenue doesn\'t catch up with capex — slowdown is inevitable', 'Fed isn\'t easing — no tailwind from cheap money'] },
-      { id: 'grow', badge: 'Possible', title: 'No bubble', desc: 'Growth is justified by technology and real demand. Corrections minimal.', prob: 30,
+      { id: 'grow', badge: 'Possible', title: 'No bubble', desc: 'Growth is justified by technology and real demand. Corrections minimal.', likelihood: 'Possible', level: 2,
         pro: ['14% YoY data center capacity growth — documented real demand', 'NVIDIA $4.3T cap backed by $215B revenue', 'AI is actually raising productivity right now'],
         con: ['Capex already outpacing monetization', 'Fed not cutting — cost of capital remains high'] },
     ],
@@ -1534,6 +1534,7 @@ function AiBubbleLanding({ t }) {
       { icon: '📊', title: 'P/E 40–50% above historical norm', body: '~30× now vs. a NASDAQ historical average of 20–22×. Not dot-com madness, but not neutral either. Any growth slowdown forces the market to re-price equities downward.', src: 'Macrotrends / Yardeni Research', url: 'https://www.macrotrends.net/stocks/charts/QQQ/invesco-qqq-trust/pe-ratio' },
       { icon: '🏷', title: 'AI-washing at industrial scale', body: 'Hundreds of companies collect a valuation premium for the word "AI" in a press release. Goldman Sachs "AI basket" indices include firms where AI is a marketing layer on top of ordinary software.', src: 'Goldman Sachs: "Gen AI: Too Much Spend, Too Little Benefit?", 2024', url: 'https://www.goldmansachs.com/insights/articles/gen-ai-too-much-spend-too-little-benefit.html' },
       { icon: '🏛', title: 'The Fed is paused — and may not ease', body: 'Three consecutive meetings with no rate change. In April 2026 the vote split 8–4 — the first time since 1992 that four members dissented. Some analysts have pushed rate-cut expectations to 2027; hike risk is estimated at 47%. Expensive money means less fuel for expensive valuations.', src: 'CME FedWatch / FRED', url: 'https://fred.stlouisfed.org/series/FEDFUNDS' },
+      { icon: '💳', title: 'Capex is leaning more on debt', body: 'As recently as 2025, Amazon, Microsoft, Alphabet and Meta covered capex out of operating cash flow. That\'s no longer true in 2026: Bank of America estimates the biggest players are now spending about 90% of operating cash flow on capex, up from 65% a year earlier, and Morgan Stanley projects hyperscaler borrowing will top $400B — more than double 2025\'s $165B. Amazon has explicitly flagged to investors that it may raise debt and equity. The more the boom runs on leverage instead of free cash, the more exposed it is to swings in rates and sentiment.', src: 'Epoch AI: Hyperscaler Capex vs. Cash Flow', url: 'https://epoch.ai/data-insights/hyperscaler-capex-vs-cash-flow' },
     ],
     evalNote: 'This doesn\'t mean the bubble bursts tomorrow. It means the room for disappointment is large.',
     evalBullKicker: 'Counter-arguments',
@@ -1547,7 +1548,6 @@ function AiBubbleLanding({ t }) {
       url: 'https://fortune.com/2026/06/16/openai-financials-leaked-losses-revenue-profit/',
     },
     evalBullArgs: [
-      { icon: '⚡', title: 'Chip demand is real', body: 'NVIDIA sells chips for real money. Hyperscalers — AWS, Azure, GCP — are profitable and fund capex from operating cash flow, not debt. This isn\'t empty promises.', src: 'NVIDIA Investor Relations', url: 'https://investor.nvidia.com/financial-info/annual-reports/' },
       { icon: '📈', title: 'Productivity gains are measurable', body: 'McKinsey and Goldman Sachs document 25–35% productivity gains among developers using AI. If AI genuinely raises GDP by 7% (Goldman\'s forecast), today\'s valuations look conservative.', src: 'McKinsey: Unleashing Developer Productivity with Generative AI', url: 'https://www.mckinsey.com/capabilities/tech-and-ai/our-insights/unleashing-developer-productivity-with-generative-ai' },
       { icon: '🏦', title: 'Not every AI company is OpenAI', body: 'Most AI-sector revenue comes from profitable companies: Google, Microsoft, NVIDIA. OpenAI\'s losses are the exception, not the norm.', src: 'CNBC: Google, Microsoft and Amazon cloud earnings, 2026', url: 'https://www.cnbc.com/2026/04/30/google-microsoft-and-amazon-all-report-cloud-beats-in-earnings.html' },
     ],
@@ -1625,35 +1625,35 @@ function AiBubbleLanding({ t }) {
           <p className="aib-predict-text">{c.pText}</p>
         </div>
       </div>
-      <button className="aib-scroll-hint" onClick={() => scrollTo(scenRef)}>
+      <button className="aib-scroll-hint" onClick={() => scrollTo(logicRef)}>
         <span>{c.scrollHint}</span><span>↓</span>
       </button>
     </div>
 
-    <div className="aib-section" ref={scenRef}>
-      <p className="aib-kicker aib-fade">{c.scKicker}</p>
-      <h2 className="aib-sec-title aib-fade">{c.scTitle}</h2>
-      <div className="aib-scenarios">
-        {c.scenarios.map(sc => <div key={sc.id} className={`aib-sc${sc.feat ? ' aib-sc-feat' : ''} aib-fade`}>
-          <span className={`aib-badge aib-badge-${sc.id}`}>{sc.badge}</span>
-          <div className="aib-prob-row">
-            <span>{isRu ? 'Вероятность' : 'Probability'}</span>
-            <strong className={`aib-pval-${sc.id}`}>{sc.prob}%</strong>
+    <div className="aib-section" ref={logicRef}>
+      <p className="aib-kicker aib-fade">{c.logicKicker}</p>
+      <h2 className="aib-sec-title aib-fade">{c.logicTitle}</h2>
+      <p className="aib-sec-sub aib-fade">{c.logicSub}</p>
+      <div className="aib-logic">
+        {c.logicConds.map(cd => <div key={cd.num} className="aib-logic-card aib-fade">
+          <div className="aib-logic-num">{cd.num}</div>
+          <h3 className="aib-logic-title">{cd.title}</h3>
+          <p className="aib-logic-desc">{cd.desc}</p>
+          <div className="aib-logic-status">
+            <div className="aib-logic-col aib-logic-met">
+              <span className="aib-logic-year">{c.lbl2000}</span>
+              <span className="aib-logic-badge aib-lbadge-yes">✓ {c.lblMet}</span>
+              <span className="aib-logic-val">{cd.s2000}</span>
+            </div>
+            <div className={`aib-logic-col aib-logic-${cd.ok2026}`}>
+              <span className="aib-logic-year">{c.lbl2026}</span>
+              <span className={`aib-logic-badge aib-lbadge-${cd.ok2026}`}>{cd.ok2026 === 'no' ? `✗ ${c.lblNo}` : `⚠ ${c.lblWarn}`}</span>
+              <span className="aib-logic-val">{cd.s2026}</span>
+            </div>
           </div>
-          <div className="aib-track"><div className={`aib-fill aib-fill-${sc.id}`} data-w={sc.prob} style={{width: 0}} /></div>
-          <h3 className="aib-sc-name">{sc.title}</h3>
-          <p className="aib-sc-desc">{sc.desc}</p>
-          <button className="aib-toggle" onClick={() => setOpenSc(openSc === sc.id ? null : sc.id)}>
-            {openSc === sc.id ? c.hideArgs : c.showArgs} <span>{openSc === sc.id ? '↑' : '↓'}</span>
-          </button>
-          {openSc === sc.id && <div className="aib-args">
-            <p className="aib-args-lbl">{c.proLbl}</p>
-            {sc.pro.map((a, i) => <div key={i} className="aib-arg"><span>+</span><span>{a}</span></div>)}
-            <p className="aib-args-lbl">{sc.id === 'deflate' ? c.weakLbl : c.conLbl}</p>
-            {sc.con.map((a, i) => <div key={i} className="aib-arg aib-arg-con"><span>−</span><span>{a}</span></div>)}
-          </div>}
         </div>)}
       </div>
+      <div className="aib-logic-conclusion aib-fade"><p>{c.logicConclusion}</p></div>
       <DownBtn to={evalRef} />
     </div>
 
@@ -1708,33 +1708,35 @@ function AiBubbleLanding({ t }) {
           ))}
         </div>
       </div>
-      <DownBtn to={logicRef} />
+      <DownBtn to={scenRef} />
     </div>
 
-    <div className="aib-section aib-section-sep" ref={logicRef}>
-      <p className="aib-kicker aib-fade">{c.logicKicker}</p>
-      <h2 className="aib-sec-title aib-fade">{c.logicTitle}</h2>
-      <p className="aib-sec-sub aib-fade">{c.logicSub}</p>
-      <div className="aib-logic">
-        {c.logicConds.map(cd => <div key={cd.num} className="aib-logic-card aib-fade">
-          <div className="aib-logic-num">{cd.num}</div>
-          <h3 className="aib-logic-title">{cd.title}</h3>
-          <p className="aib-logic-desc">{cd.desc}</p>
-          <div className="aib-logic-status">
-            <div className="aib-logic-col aib-logic-met">
-              <span className="aib-logic-year">{c.lbl2000}</span>
-              <span className="aib-logic-badge aib-lbadge-yes">✓ {c.lblMet}</span>
-              <span className="aib-logic-val">{cd.s2000}</span>
-            </div>
-            <div className={`aib-logic-col aib-logic-${cd.ok2026}`}>
-              <span className="aib-logic-year">{c.lbl2026}</span>
-              <span className={`aib-logic-badge aib-lbadge-${cd.ok2026}`}>{cd.ok2026 === 'no' ? `✗ ${c.lblNo}` : `⚠ ${c.lblWarn}`}</span>
-              <span className="aib-logic-val">{cd.s2026}</span>
-            </div>
+    <div className="aib-section aib-section-sep" ref={scenRef}>
+      <p className="aib-kicker aib-fade">{c.scKicker}</p>
+      <h2 className="aib-sec-title aib-fade">{c.scTitle}</h2>
+      <div className="aib-scenarios">
+        {c.scenarios.map(sc => <div key={sc.id} className={`aib-sc${sc.feat ? ' aib-sc-feat' : ''} aib-fade`}>
+          <span className={`aib-badge aib-badge-${sc.id}`}>{sc.badge}</span>
+          <div className="aib-prob-row">
+            <span>{isRu ? 'Вероятность' : 'Likelihood'}</span>
+            <strong className={`aib-pval-${sc.id}`}>{sc.likelihood}</strong>
           </div>
+          <div className="aib-level-row">
+            {[1, 2, 3].map(n => <span key={n} className={`aib-level-dot${n <= sc.level ? ` on-${sc.id}` : ''}`} />)}
+          </div>
+          <h3 className="aib-sc-name">{sc.title}</h3>
+          <p className="aib-sc-desc">{sc.desc}</p>
+          <button className="aib-toggle" onClick={() => setOpenSc(openSc === sc.id ? null : sc.id)}>
+            {openSc === sc.id ? c.hideArgs : c.showArgs} <span>{openSc === sc.id ? '↑' : '↓'}</span>
+          </button>
+          {openSc === sc.id && <div className="aib-args">
+            <p className="aib-args-lbl">{c.proLbl}</p>
+            {sc.pro.map((a, i) => <div key={i} className="aib-arg"><span>+</span><span>{a}</span></div>)}
+            <p className="aib-args-lbl">{sc.id === 'deflate' ? c.weakLbl : c.conLbl}</p>
+            {sc.con.map((a, i) => <div key={i} className="aib-arg aib-arg-con"><span>−</span><span>{a}</span></div>)}
+          </div>}
         </div>)}
       </div>
-      <div className="aib-logic-conclusion aib-fade"><p>{c.logicConclusion}</p></div>
       <DownBtn to={metRef} />
     </div>
 
