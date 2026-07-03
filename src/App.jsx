@@ -1320,6 +1320,61 @@ function AiBubbleLanding({ t }) {
     </>;
   };
 
+  const radarAxes = isRu ? [
+    { k: 'pe', label: 'Цена/прибыль' },
+    { k: 'debt', label: 'Долг лидеров' },
+    { k: 'money', label: 'Дорогие деньги' },
+    { k: 'tech', label: 'Технология' },
+    { k: 'hype', label: 'Ажиотаж' },
+  ] : [
+    { k: 'pe', label: 'Price/earnings' },
+    { k: 'debt', label: 'Debt-driven' },
+    { k: 'money', label: 'Tight money' },
+    { k: 'tech', label: 'Real tech' },
+    { k: 'hype', label: 'Frenzy' },
+  ];
+  const radarData = {
+    tulip:   { pe: 95, debt: 40, money: 10, tech: 0,  hype: 100 },
+    railway: { pe: 70, debt: 75, money: 70, tech: 90, hype: 85 },
+    dotcom:  { pe: 95, debt: 90, money: 75, tech: 90, hype: 85 },
+    crypto:  { pe: 90, debt: 60, money: 50, tech: 40, hype: 95 },
+  };
+  const aiRadar = { pe: 55, debt: 20, money: 45, tech: 85, hype: 50 };
+
+  const renderRadar = (key) => {
+    const data = radarData[key];
+    if (!data) return null;
+    const histItem = c.hist.find(h => h.id === key);
+    const N = radarAxes.length;
+    const size = 440, cx = 220, cy = 165, R = 95, labelR = 118;
+    const angle = (i) => -Math.PI / 2 + i * (2 * Math.PI / N);
+    const pt = (i, v) => { const a = angle(i); const r = (v / 100) * R; return [cx + r * Math.cos(a), cy + r * Math.sin(a)]; };
+    const poly = (vals) => radarAxes.map((ax, i) => pt(i, vals[ax.k]).join(',')).join(' ');
+    return <>
+      <p className="aib-chart-title">{isRu ? `Профиль пузыря: ${histItem?.name}` : `Bubble profile: ${histItem?.name}`}</p>
+      <svg viewBox={`0 0 ${size} 320`} className="aib-chart aib-radar">
+        {[0.25, 0.5, 0.75, 1].map(f => (
+          <polygon key={f} points={radarAxes.map((ax, i) => pt(i, f * 100).join(',')).join(' ')} fill="none" stroke="rgba(200,210,255,.1)" strokeWidth="1" />
+        ))}
+        {radarAxes.map((ax, i) => { const [x, y] = pt(i, 100); return <line key={ax.k} x1={cx} y1={cy} x2={x} y2={y} stroke="rgba(200,210,255,.1)" strokeWidth="1" />; })}
+        <polygon points={poly(aiRadar)} fill="rgba(129,140,248,.16)" stroke="#818cf8" strokeWidth="2" />
+        <polygon points={poly(data)} fill="rgba(248,113,113,.18)" stroke="#f87171" strokeWidth="2" />
+        {radarAxes.map((ax, i) => {
+          const a = angle(i);
+          const x = cx + labelR * Math.cos(a);
+          const y = cy + labelR * Math.sin(a);
+          const cosA = Math.cos(a);
+          const anchor = Math.abs(cosA) < 0.3 ? 'middle' : (cosA > 0 ? 'start' : 'end');
+          return <text key={ax.k} x={x} y={y} textAnchor={anchor} dominantBaseline="middle" fontSize="11" fill="rgba(200,210,255,.55)">{ax.label}</text>;
+        })}
+      </svg>
+      <div className="aib-radar-legend">
+        <span><i className="aib-radar-dot aib-radar-dot-hist" />{histItem?.name}</span>
+        <span><i className="aib-radar-dot aib-radar-dot-ai" />{isRu ? 'ИИ 2026' : 'AI 2026'}</span>
+      </div>
+    </>;
+  };
+
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
@@ -1449,11 +1504,12 @@ function AiBubbleLanding({ t }) {
     histSub: 'Как ИИ-бум соотносится с прошлыми случаями перегрева рынка?',
     realTech: 'Реальная технология',
     simLabel: 'Похожесть на ситуацию с ИИ',
+    histHint: 'Нажмите на карточку — увидите диаграмму по признакам пузыря',
     hist: [
-      { name: 'Тюльпаномания', year: '1637', peak: '×100', crash: '−99%', tech: false, sim: 10, lesson: 'Первый задокументированный пузырь. Чисто спекулятивный — никакой технологии за тюльпанами не стояло.' },
-      { name: 'Железные дороги', year: '1840-е', peak: '×5', crash: '−60%', tech: true, sim: 80, lesson: 'Самая близкая аналогия: реальная технология + перестроили всю инфраструктуру под будущий спрос, потом оверкапасити. Технология выжила и изменила мир.' },
-      { name: 'Доткомы', year: '1995–2000', peak: '×20', crash: '−78%', tech: true, sim: 65, lesson: 'Интернет оказался реальным. Большинство компаний — нет. Выжившие (Amazon, Google) стали крупнейшими в мире.' },
-      { name: 'Криптовалюта', year: '2017–2018', peak: '×20', crash: '−84%', tech: false, sim: 30, lesson: 'Blockchain реален. Большинство монет — нет. Хайп без фундамента, обвал за год, без системных последствий.' },
+      { id: 'tulip', name: 'Тюльпаномания', year: '1637', peak: '×100', crash: '−99%', tech: false, sim: 10, lesson: 'Первый задокументированный пузырь. Чисто спекулятивный — никакой технологии за тюльпанами не стояло.' },
+      { id: 'railway', name: 'Железные дороги', year: '1840-е', peak: '×5', crash: '−60%', tech: true, sim: 80, lesson: 'Самая близкая аналогия: реальная технология + перестроили всю инфраструктуру под будущий спрос, потом оверкапасити. Технология выжила и изменила мир.' },
+      { id: 'dotcom', name: 'Доткомы', year: '1995–2000', peak: '×20', crash: '−78%', tech: true, sim: 65, lesson: 'Интернет оказался реальным. Большинство компаний — нет. Выжившие (Amazon, Google) стали крупнейшими в мире.' },
+      { id: 'crypto', name: 'Криптовалюта', year: '2017–2018', peak: '×20', crash: '−84%', tech: false, sim: 30, lesson: 'Blockchain реален. Большинство монет — нет. Хайп без фундамента, обвал за год, без системных последствий.' },
     ],
     compKicker: 'Сравнение компаний эпохи',
     compTitle: 'NVIDIA vs Cisco',
@@ -1569,11 +1625,12 @@ function AiBubbleLanding({ t }) {
     histSub: 'How does the AI boom compare to past market overheats?',
     realTech: 'Real technology',
     simLabel: 'Similarity to AI situation',
+    histHint: 'Click a card to see the bubble-trait diagram',
     hist: [
-      { name: 'Tulip mania', year: '1637', peak: '×100', crash: '−99%', tech: false, sim: 10, lesson: 'First documented bubble. Pure speculation — no technology behind the tulips.' },
-      { name: 'Railway boom', year: '1840s', peak: '×5', crash: '−60%', tech: true, sim: 80, lesson: 'Closest analogy: real technology + massive infrastructure overbuilding for future demand, then overcapacity. The technology survived and changed the world.' },
-      { name: 'Dot-com', year: '1995–2000', peak: '×20', crash: '−78%', tech: true, sim: 65, lesson: 'The internet was real. Most companies were not. Survivors (Amazon, Google) became the largest in the world.' },
-      { name: 'Crypto', year: '2017–2018', peak: '×20', crash: '−84%', tech: false, sim: 30, lesson: 'Blockchain is real. Most coins were not. Hype without fundamentals, crash in one year, no systemic consequences.' },
+      { id: 'tulip', name: 'Tulip mania', year: '1637', peak: '×100', crash: '−99%', tech: false, sim: 10, lesson: 'First documented bubble. Pure speculation — no technology behind the tulips.' },
+      { id: 'railway', name: 'Railway boom', year: '1840s', peak: '×5', crash: '−60%', tech: true, sim: 80, lesson: 'Closest analogy: real technology + massive infrastructure overbuilding for future demand, then overcapacity. The technology survived and changed the world.' },
+      { id: 'dotcom', name: 'Dot-com', year: '1995–2000', peak: '×20', crash: '−78%', tech: true, sim: 65, lesson: 'The internet was real. Most companies were not. Survivors (Amazon, Google) became the largest in the world.' },
+      { id: 'crypto', name: 'Crypto', year: '2017–2018', peak: '×20', crash: '−84%', tech: false, sim: 30, lesson: 'Blockchain is real. Most coins were not. Hype without fundamentals, crash in one year, no systemic consequences.' },
     ],
     compKicker: 'Company of the era',
     compTitle: 'NVIDIA vs Cisco',
@@ -1762,8 +1819,9 @@ function AiBubbleLanding({ t }) {
       <p className="aib-kicker aib-fade">{c.histKicker}</p>
       <h2 className="aib-sec-title aib-fade">{c.histTitle}</h2>
       <p className="aib-sec-sub aib-fade">{c.histSub}</p>
+      <p className="aib-met-hint aib-fade">{c.histHint}</p>
       <div className="aib-hist">
-        {c.hist.map(h => <div key={h.name} className="aib-hist-card aib-fade">
+        {c.hist.map(h => <div key={h.name} className="aib-hist-card aib-fade" onClick={() => setPopup({type:'radar',key:h.id})}>
           <div className="aib-hist-head">
             <div><p className="aib-hist-name">{h.name}</p><p className="aib-hist-year">{h.year}</p></div>
             <span className={`aib-tech-badge ${h.tech ? 'yes' : 'no'}`}>{c.realTech}: {h.tech ? '✓' : '✗'}</span>
@@ -1773,7 +1831,7 @@ function AiBubbleLanding({ t }) {
             <div><span>{isRu ? 'Падение' : 'Crash'}</span><strong className="aib-crash-val">{h.crash}</strong></div>
           </div>
           <p className="aib-hist-lesson">{h.lesson}</p>
-          <div className="aib-sim-head"><span>{c.simLabel}</span><span className="aib-sim-pct">{h.sim}%</span></div>
+          <div className="aib-sim-head"><span>{c.simLabel}</span><span className="aib-sim-pct">{h.sim}%<span className="aib-stat-arrow">↗</span></span></div>
           <div className="aib-track"><div className="aib-fill aib-fill-deflate" data-w={h.sim} style={{width: 0}} /></div>
         </div>)}
       </div>
@@ -1837,6 +1895,7 @@ function AiBubbleLanding({ t }) {
             </div>}
             {renderChart(popup.key)}
           </>}
+          {popup.type === 'radar' && renderRadar(popup.key)}
         </div>
       </div>,
       document.body
