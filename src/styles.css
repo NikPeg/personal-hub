@@ -3328,8 +3328,14 @@ html[data-theme="light"] .mkt-calc-loss-year { color: rgba(12,15,26,.35); }
 
 /* historical bubbles */
 .aib-hist { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-top: 2.5rem; }
-.aib-hist-card { background: rgba(255,255,255,.045); border: 1px solid rgba(255,255,255,.09); border-radius: 1.25rem; padding: 1.75rem; cursor: pointer; transition: border-color .18s, background .18s; }
-.aib-hist-card:hover { background: rgba(255,255,255,.07); border-color: rgba(200,210,255,.22); }
+.aib-hist-card { background: rgba(255,255,255,.045); border: 1px solid rgba(255,255,255,.09); border-radius: 1.25rem; padding: 1.75rem; cursor: pointer; transition: border-color .18s, background .18s; animation: aib-met-invite 3s ease-in-out infinite; }
+.aib-hist-card:hover { background: rgba(255,255,255,.07); border-color: rgba(200,210,255,.22); animation-play-state: paused; }
+.aib-hist-card:nth-child(2) { animation-delay: .15s; }
+.aib-hist-card:nth-child(3) { animation-delay: .3s; }
+.aib-hist-card:nth-child(4) { animation-delay: .45s; }
+@media (prefers-reduced-motion: reduce) {
+  .aib-hist-card { animation: none; }
+}
 .aib-hist-head { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1.25rem; gap: 1rem; }
 .aib-hist-name { font-size: 1.1rem; font-weight: 700; color: #e8e8ff; margin-bottom: .2rem; }
 .aib-hist-year { font-size: .78rem; color: rgba(200,210,255,.4); }
@@ -3467,7 +3473,7 @@ html[data-theme="light"] .aib-prob-row { color: rgba(20,16,58,.4); }
 html[data-theme="light"] .aib-met { background: rgba(255,255,255,.75); border-color: rgba(0,0,0,.09); }
 html[data-theme="light"] .aib-met-lbl { color: rgba(20,16,58,.4); }
 html[data-theme="light"] .aib-met-ctx { color: rgba(20,16,58,.45); }
-html[data-theme="light"] .aib-hist-card { background: rgba(255,255,255,.75); border-color: rgba(0,0,0,.09); }
+html[data-theme="light"] .aib-hist-card { background: rgba(255,255,255,.75); border-color: rgba(0,0,0,.09); animation-name: aib-met-invite-light; }
 html[data-theme="light"] .aib-hist-card:hover { background: rgba(255,255,255,.95); border-color: rgba(80,60,200,.2); }
 html[data-theme="light"] .aib-hist-name { color: #14103a; }
 html[data-theme="light"] .aib-hist-year { color: rgba(20,16,58,.4); }
