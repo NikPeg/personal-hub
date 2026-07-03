@@ -1252,14 +1252,14 @@ function AiBubbleLanding({ t }) {
         type: 'line', color: '#818cf8', unit: '×',
         pts: [{l:'1995',v:25},{l:'1998',v:70},{l:'2000',v:200},{l:'2002',v:28},{l:'2010',v:22},{l:'2015',v:28},{l:'2020',v:35},{l:'2022',v:20},{l:'2024',v:32},{l:'2026',v:30}],
         note: isRu ? 'Пик доткомов в 2000-м — ~200×' : 'Dot-com peak in 2000 — ~200×',
-        src: 'Multpl.com', url: 'https://www.multpl.com/nasdaq-pe-ratio',
+        src: 'Wikipedia: Dot-com bubble', url: 'https://en.wikipedia.org/wiki/Dot-com_bubble',
       },
       capex: {
         title: isRu ? 'Капзатраты на ИИ, млрд $' : 'AI capital expenditure, $B',
         type: 'bar', color: '#f87171', unit: 'B', prefix: '$',
         pts: [{l:'2022',v:90},{l:'2023',v:150},{l:'2024',v:280},{l:'2025',v:410},{l:'2026',v:650}],
         note: isRu ? '2025–2026: консенсус-оценки аналитиков' : '2025–2026: consensus analyst estimates',
-        src: 'Goldman Sachs AI Capex Report', url: 'https://www.goldmansachs.com/insights/articles/generative-ai-capex-spending-is-expected-to-surge',
+        src: 'Goldman Sachs: Why AI Companies May Invest $500B+ in 2026', url: 'https://www.goldmansachs.com/insights/articles/why-ai-companies-may-invest-more-than-500-billion-in-2026',
       },
       nvidia: {
         title: isRu ? 'Годовая выручка NVIDIA, млрд $' : 'NVIDIA annual revenue, $B',
@@ -1278,7 +1278,7 @@ function AiBubbleLanding({ t }) {
         title: isRu ? 'ИИ-сектор: вклад в рост S&P 500, %' : 'AI sector: contribution to S&P 500 return, %',
         type: 'bar', color: '#60a5fa', unit: '%',
         pts: [{l:'2022',v:12},{l:'2023',v:38},{l:'2024',v:65},{l:'2025',v:80}],
-        src: 'Goldman Sachs US Equity Research', url: 'https://www.goldmansachs.com',
+        src: 'Fortune: Morgan Stanley Wealth Mgmt / JPMorgan on AI concentration', url: 'https://fortune.com/2025/10/07/ai-bubble-cisco-moment-dotcom-crash-nvidia-jensen-huang-top-analyst/',
       },
     };
     const cfg = cfgs[key];
@@ -1468,7 +1468,7 @@ function AiBubbleLanding({ t }) {
     evalArgs: [
       { icon: '📡', title: 'Capex опережает монетизацию', body: '$650 млрд инфраструктуры строится под спрос, который ещё не пришёл. Компании возводят дата-центры под будущий ИИ — как в 2000-м прокладывали оптику под будущий интернет-трафик. В 2000-м оптика оказалась дешевле ожидаемого: компании разорились, кабели легли тёмными.', src: 'Bloomberg Intelligence, 2026', url: 'https://www.bloomberg.com/news/articles/2026-01-27/big-tech-ai-spending-plans-unnerve-some-investors' },
       { icon: '📊', title: 'P/E выше исторической нормы на 40–50%', body: '~30× сейчас против исторической нормы NASDAQ в 20–22×. Не безумие доткомов, но и не нейтральная оценка. Любое замедление роста — и рынок вынужден переоценить акции вниз.', src: 'Macrotrends / Yardeni Research', url: 'https://www.macrotrends.net/stocks/charts/QQQ/invesco-qqq-trust/pe-ratio' },
-      { icon: '🏷', title: 'AI-washing в промышленных масштабах', body: 'Сотни компаний получают оценочную премию за слово «ИИ» в пресс-релизе. Индексы «AI корзин» Goldman Sachs включают компании, у которых ИИ — маркетинговый слой поверх обычного ПО.', src: 'Goldman Sachs: «Gen AI: Too Much Spend, Too Little Benefit?», 2024', url: 'https://www.goldmansachs.com/insights/articles/gen-ai-too-much-spend-too-little-benefit.html' },
+      { icon: '🏷', title: 'AI-washing в промышленных масштабах', body: 'Сотни компаний получают оценочную премию за слово «ИИ» в пресс-релизе. Индексы «AI корзин» Goldman Sachs включают компании, у которых ИИ — маркетинговый слой поверх обычного ПО.', src: 'Goldman Sachs: «Gen AI: Too Much Spend, Too Little Benefit?», 2024', url: 'https://www.goldmansachs.com/insights/top-of-mind/gen-ai-too-much-spend-too-little-benefit' },
       { icon: '🏛', title: 'ФРС на паузе — и не факт, что смягчится', body: 'Четыре заседания подряд без изменения ставки (3.5–3.75%). В апреле 2026-го голосование прошло 8–4 — впервые с 1992 года четверо членов проголосовали против большинства. После июньской встречи под руководством нового главы ФРС Кевина Уорша риторика стала жёстче: минимум 3 из 12 голосующих членов уже допускают повышение в этом году — притом что ещё недавно рынок ждал одного снижения. Причина — инфляция разогналась до 4.2% в мае, максимум с апреля 2023-го, на фоне скачка цен на нефть из-за войны с Ираном. Дорогие деньги — меньше топлива для дорогих оценок.', src: 'CBS News: заседание ФРС, июнь 2026', url: 'https://www.cbsnews.com/news/federal-reserve-interest-rates-kevin-warsh-june-2026/' },
       { icon: '💳', title: 'Capex всё больше держится на долге', body: 'Ещё в 2025-м Amazon, Microsoft, Alphabet и Meta закрывали capex преимущественно операционным денежным потоком. В 2026-м это уже не так: только за первые пять месяцев года пятёрка крупнейших облачных и ИИ-компаний разместила облигаций на $159 млрд — на 47% больше, чем за тот же период годом раньше, а Morgan Stanley ждёт, что весь ИИ-долг за 2026-й почти удвоится и достигнет примерно $570 млрд. Капзатраты гигантов уже съедают почти весь операционный денежный поток против ~40% в среднем за десятилетие — стройка всё больше финансируется в долг, а не из прибыли.', src: 'Tech Times: Morgan Stanley об ИИ-долге, 2026', url: 'https://www.techtimes.com/articles/318171/20260610/morgan-stanley-sees-ai-debt-nearly-doubling-570-billion-2026-bonds-now-fund-buildout.htm' },
     ],
@@ -1590,7 +1590,7 @@ function AiBubbleLanding({ t }) {
     evalArgs: [
       { icon: '📡', title: 'Capex outpaces monetization', body: '$650B of infrastructure is being built for demand that hasn\'t arrived yet. Companies are erecting data centers for future AI — just as 2000s firms laid fiber for future internet traffic. The fiber turned out cheaper than expected: the companies went bankrupt, the cables went dark.', src: 'Bloomberg Intelligence, 2026', url: 'https://www.bloomberg.com/news/articles/2026-01-27/big-tech-ai-spending-plans-unnerve-some-investors' },
       { icon: '📊', title: 'P/E 40–50% above historical norm', body: '~30× now vs. a NASDAQ historical average of 20–22×. Not dot-com madness, but not neutral either. Any growth slowdown forces the market to re-price equities downward.', src: 'Macrotrends / Yardeni Research', url: 'https://www.macrotrends.net/stocks/charts/QQQ/invesco-qqq-trust/pe-ratio' },
-      { icon: '🏷', title: 'AI-washing at industrial scale', body: 'Hundreds of companies collect a valuation premium for the word "AI" in a press release. Goldman Sachs "AI basket" indices include firms where AI is a marketing layer on top of ordinary software.', src: 'Goldman Sachs: "Gen AI: Too Much Spend, Too Little Benefit?", 2024', url: 'https://www.goldmansachs.com/insights/articles/gen-ai-too-much-spend-too-little-benefit.html' },
+      { icon: '🏷', title: 'AI-washing at industrial scale', body: 'Hundreds of companies collect a valuation premium for the word "AI" in a press release. Goldman Sachs "AI basket" indices include firms where AI is a marketing layer on top of ordinary software.', src: 'Goldman Sachs: "Gen AI: Too Much Spend, Too Little Benefit?", 2024', url: 'https://www.goldmansachs.com/insights/top-of-mind/gen-ai-too-much-spend-too-little-benefit' },
       { icon: '🏛', title: 'The Fed is paused — and may not ease', body: 'Four consecutive meetings with no rate change (3.5–3.75%). In April 2026 the vote split 8–4 — the first time since 1992 that four members dissented. After the June meeting under new Fed Chair Kevin Warsh, the tone hardened further: at least 3 of 12 voting members now project a hike this year, reversing what was recently a market expectation of a cut. The trigger: inflation accelerated to 4.2% in May, the highest since April 2023, driven by an oil-price spike from the war with Iran. Expensive money means less fuel for expensive valuations.', src: 'CBS News: Fed meeting, June 2026', url: 'https://www.cbsnews.com/news/federal-reserve-interest-rates-kevin-warsh-june-2026/' },
       { icon: '💳', title: 'Capex is leaning more on debt', body: 'As recently as 2025, Amazon, Microsoft, Alphabet and Meta covered most of their capex out of operating cash flow. That\'s no longer true in 2026: in just the first five months of the year, the top five cloud and AI companies issued $159B in bonds — up 47% year over year — and Morgan Stanley expects total 2026 AI debt to nearly double to roughly $570B. Capex is now consuming almost all of the giants\' operating cash flow, versus a 10-year average of about 40% — the buildout increasingly runs on debt, not profit.', src: 'Tech Times: Morgan Stanley on AI debt, 2026', url: 'https://www.techtimes.com/articles/318171/20260610/morgan-stanley-sees-ai-debt-nearly-doubling-570-billion-2026-bonds-now-fund-buildout.htm' },
     ],
