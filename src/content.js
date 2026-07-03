@@ -2,6 +2,21 @@ export const content = {
   en: {
     posts: [
       {
+        id: 'ai-bubble-wont-pop', tag: 'analysis', title: 'The AI Bubble Won\'t Pop. Probably.', status: 'published', date: '2026-07-03', telegramUrl: 'https://t.me/nikpeg_dramas/79',
+        images: [
+          { src: '/assets/posts/ai-bubble-1.jpg', alt: 'AI bubble analysis' },
+          { src: '/assets/posts/ai-bubble-2.jpg', alt: 'AI bubble analysis' },
+          { src: '/assets/posts/ai-bubble-3.jpg', alt: 'AI bubble analysis' },
+          { src: '/assets/posts/ai-bubble-4.jpg', alt: 'AI bubble analysis' },
+          { src: '/assets/posts/ai-bubble-5.jpg', alt: 'AI bubble analysis' },
+          { src: '/assets/posts/ai-bubble-6.jpg', alt: 'AI bubble analysis' },
+          { src: '/assets/posts/ai-bubble-7.jpg', alt: 'AI bubble analysis' },
+          { src: '/assets/posts/ai-bubble-8.jpg', alt: 'AI bubble analysis' },
+        ],
+        text: 'Everyone\'s waiting for a dot-com repeat. But for a bubble to truly pop, three things must converge at once.',
+        fullText: 'Everyone\'s waiting for a dot-com repeat. But for a bubble to truly pop, three things must converge at once: prices detached from real earnings, market leaders running on borrowed money instead of revenue, and someone suddenly shutting off the cheap money tap.\n\nIn 2000, all three aligned — and the market deflated for two years, losing three-quarters of its value.\n\nToday the picture is different. Nvidia, Google, Microsoft — these aren\'t startups with a beautiful pitch deck and zero revenue. They\'re giants that post profits every quarter. Yes, stocks are expensive — noticeably above historical norms. But in 2000, companies with literally zero revenue were valued like established giants. We\'re nowhere near that kind of madness.\n\nThere is one worrying shift worth watching: the giants have started borrowing heavily to build data centers. For now those debts are small relative to their profits, but this is exactly the indicator that separates "slow cool-down" from "sharp pop." If construction keeps being financed with debt while returns lag behind — the risk becomes more real.\n\nSo my prediction: not a crash, but a cooling. Weak AI projects with no real revenue will quietly deflate; the strong ones will keep growing, just more slowly.\n\nI broke down all three conditions in detail — arguments for and against, comparison with dot-com, tulip mania, and the railway bubble. Charts and data — one click away at nikpeg.me/ai-bubble'
+      },
+      {
         id: 'parasitism-architecture-of-reality', tag: 'essay', title: 'Parasitism Is the Architecture of Reality', status: 'published', date: '2026-06-22', telegramUrl: 'https://t.me/nikpeg_dramas/74',
         images: [
           { src: '/assets/posts/parasitism-1.jpg', alt: 'Parasitism as the architecture of reality' },
@@ -123,6 +138,21 @@ export const content = {
   },
   ru: {
     posts: [
+      {
+        id: 'ai-bubble-wont-pop', tag: 'аналитика', title: 'ИИ-пузырь не лопнет. Скорее всего.', status: 'published', date: '2026-07-03', telegramUrl: 'https://t.me/nikpeg_dramas/79',
+        images: [
+          { src: '/assets/posts/ai-bubble-1.jpg', alt: 'Аналитика ИИ-пузыря' },
+          { src: '/assets/posts/ai-bubble-2.jpg', alt: 'Аналитика ИИ-пузыря' },
+          { src: '/assets/posts/ai-bubble-3.jpg', alt: 'Аналитика ИИ-пузыря' },
+          { src: '/assets/posts/ai-bubble-4.jpg', alt: 'Аналитика ИИ-пузыря' },
+          { src: '/assets/posts/ai-bubble-5.jpg', alt: 'Аналитика ИИ-пузыря' },
+          { src: '/assets/posts/ai-bubble-6.jpg', alt: 'Аналитика ИИ-пузыря' },
+          { src: '/assets/posts/ai-bubble-7.jpg', alt: 'Аналитика ИИ-пузыря' },
+          { src: '/assets/posts/ai-bubble-8.jpg', alt: 'Аналитика ИИ-пузыря' },
+        ],
+        text: 'Все ждут повторения краха доткомов. Но чтобы пузырь лопнул по-настоящему, должны совпасть три условия сразу.',
+        fullText: 'Все ждут повторения краха доткомов. Но чтобы пузырь лопнул по-настоящему, должны совпасть три пункта сразу: цены оторвались от реальных прибылей, лидеры рынка живут на чужие деньги, а не на выручку, и кто-то внезапно перекрывает кран дешёвых денег.\n\nВ 2000-м сошлись все три — и рынок сдувался пару лет, потеряв три четверти стоимости.\n\nСейчас картина другая. Nvidia, Google, Microsoft — не стартапы с красивой презентацией и нулевой выручкой. Это гиганты, которые приносят прибыль каждый квартал. Да, акции стоят дорого — заметно дороже исторической нормы. Но в 2000-м компании без единого доллара выручки оценивали как состоявшихся гигантов — до такого безумия далеко.\n\nЕсть один тревожный сдвиг, за которым стоит следить: гиганты начали активно брать в долг на строительство дата-центров. Пока эти долги невелики на фоне их прибылей, но именно этот индикатор отличает «медленное остывание» от «резкого хлопка». Если стройка продолжит финансироваться в долг, а отдача запоздает — риск станет реальнее.\n\nПоэтому мой предикт — не обвал, а остывание: слабые ИИ-проекты без реальной выручки тихо сдуются, сильные продолжат расти, просто медленнее.\n\nРазобрал все три условия подробно — аргументы за и против, сравнение с доткомами, тюльпаноманией и железнодорожной лихорадкой. Графики и цифры — по клику на nikpeg.me/ai-bubble'
+      },
       {
         id: 'parasitism-architecture-of-reality', tag: 'эссе', title: 'Паразитизм — архитектура реальности', status: 'published', date: '2026-06-22', telegramUrl: 'https://t.me/nikpeg_dramas/74',
         images: [
